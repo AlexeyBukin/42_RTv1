@@ -1,12 +1,13 @@
 RTv1
 .idea
+build/*
 
 # LibSDL
-libsdl/bin*
-libsdl/build_sdl*
-libsdl/lib*
-libsdl/share*
-libsdl/include*
+libsdl/bin/*
+libsdl/build_sdl/*
+libsdl/lib/*
+libsdl/share/*
+libsdl/include/*
 
 # Prerequisites
 *.d
