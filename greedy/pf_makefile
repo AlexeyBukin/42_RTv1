@@ -1,0 +1,180 @@
+# Makefile for ft_printf project in school 21 (ecole 42)
+# written by kcharla, 2019
+#
+# Usage:
+#
+# 1) `make all' OR `make libftprintf.a' to compile libftprintf.a
+#
+# 2.1) `make clean' to delete objects locally and in libft
+# 2.2) `make lclean' to delete objects locally only (don't touch libft)
+#
+# 3.1) `make fclean' to delete libftprintf.a, libft.a and objects locally and
+#			in libft
+# 3.2) `make lfclean' to delete libftprintf.a and objects locally
+#			(don't touch libft)
+#
+# 4.1) `make re' to run `make fclean' and `make all'
+# 4.2) `make lre' to run `make lfclean' and `make all'
+#
+# TO USE DEBUG add `DEBUG=-g' before rule like this: `make DEBUG=-g re'
+
+NAME = libftprintf.a
+
+CC = clang
+DEBUG =
+
+CFLAGS = -Wall -Wextra -Werror $(DEBUG)
+
+INCLUDE = -I include/
+
+BUILD_DIR = build/
+SRC_DIR = src
+
+#SRC_FILES = $(shell find $(SRC_DIR) -not \( -path $(MAIN_DIR) -prune \) -type f -name "*.c")
+#find . -type f -name '*.c' | sed "s/\$/ \\\\/" | cut -c 3-
+
+SRC_FILES = \
+src/flags/f/f_after_dot.c \
+src/flags/f/f_special.c \
+src/flags/f/flags_f.c \
+src/flags/f/good_way_after.c \
+src/flags/f/good_way_before.c \
+src/flags/f/width_format.c \
+src/flags/flags_c.c \
+src/flags/flags_di.c \
+src/flags/flags_o.c \
+src/flags/flags_p.c \
+src/flags/flags_perc.c \
+src/flags/flags_s.c \
+src/flags/flags_u.c \
+src/flags/flags_x.c \
+src/libft/atoi_itoa/ft_atoi.c \
+src/libft/atoi_itoa/ft_atoi_base.c \
+src/libft/atoi_itoa/ft_itoa.c \
+src/libft/atoi_itoa/ft_itoa_base.c \
+src/libft/atoi_itoa/ft_lltoa.c \
+src/libft/atoi_itoa/ft_mtob.c \
+src/libft/atoi_itoa/ft_mtob_raw.c \
+src/libft/atoi_itoa/ft_ulltoa.c \
+src/libft/atoi_itoa/ft_utoa.c \
+src/libft/atoi_itoa/ft_utoa_base.c \
+src/libft/ft_abs.c \
+src/libft/ft_bzero.c \
+src/libft/ft_char_to_str.c \
+src/libft/ft_free_char_2d_arr.c \
+src/libft/ft_pow.c \
+src/libft/ft_power_ten.c \
+src/libft/ft_return.c \
+src/libft/ft_tolower.c \
+src/libft/ft_toupper.c \
+src/libft/ft_word_count.c \
+src/libft/is/ft_isalnum.c \
+src/libft/is/ft_isalpha.c \
+src/libft/is/ft_isascii.c \
+src/libft/is/ft_isblank.c \
+src/libft/is/ft_isdigit.c \
+src/libft/is/ft_isprint.c \
+src/libft/lst/ft_lstadd.c \
+src/libft/lst/ft_lstappend.c \
+src/libft/lst/ft_lstdel.c \
+src/libft/lst/ft_lstdelone.c \
+src/libft/lst/ft_lstiter.c \
+src/libft/lst/ft_lstmap.c \
+src/libft/lst/ft_lstnew.c \
+src/libft/mem/ft_mem_rev.c \
+src/libft/mem/ft_memalloc.c \
+src/libft/mem/ft_memccpy.c \
+src/libft/mem/ft_memchr.c \
+src/libft/mem/ft_memcmp.c \
+src/libft/mem/ft_memcpy.c \
+src/libft/mem/ft_memdel.c \
+src/libft/mem/ft_memdup.c \
+src/libft/mem/ft_memmove.c \
+src/libft/mem/ft_memset.c \
+src/libft/put/ft_putchar.c \
+src/libft/put/ft_putchar_fd.c \
+src/libft/put/ft_putendl.c \
+src/libft/put/ft_putendl_fd.c \
+src/libft/put/ft_putendl_free.c \
+src/libft/put/ft_putendl_int_var.c \
+src/libft/put/ft_puterror.c \
+src/libft/put/ft_putnbr.c \
+src/libft/put/ft_putnbr_fd.c \
+src/libft/put/ft_putstr.c \
+src/libft/put/ft_putstr_fd.c \
+src/libft/put/ft_putstr_free.c \
+src/libft/str/ft_str_div_by.c \
+src/libft/str/ft_str_div_by_ins.c \
+src/libft/str/ft_str_dup_rev.c \
+src/libft/str/ft_str_low.c \
+src/libft/str/ft_str_spam.c \
+src/libft/str/ft_str_up.c \
+src/libft/str/ft_strcat.c \
+src/libft/str/ft_strcfnr.c \
+src/libft/str/ft_strchr.c \
+src/libft/str/ft_strclr.c \
+src/libft/str/ft_strcmp.c \
+src/libft/str/ft_strcpy.c \
+src/libft/str/ft_strdel.c \
+src/libft/str/ft_strdup.c \
+src/libft/str/ft_strequ.c \
+src/libft/str/ft_strfnr.c \
+src/libft/str/ft_striter.c \
+src/libft/str/ft_striteri.c \
+src/libft/str/ft_strjoin.c \
+src/libft/str/ft_strjoin_free.c \
+src/libft/str/ft_strlcat.c \
+src/libft/str/ft_strlen.c \
+src/libft/str/ft_strmap.c \
+src/libft/str/ft_strmapi.c \
+src/libft/str/ft_strncat.c \
+src/libft/str/ft_strncmp.c \
+src/libft/str/ft_strncpy.c \
+src/libft/str/ft_strnequ.c \
+src/libft/str/ft_strnew.c \
+src/libft/str/ft_strnstr.c \
+src/libft/str/ft_strrchr.c \
+src/libft/str/ft_strrev.c \
+src/libft/str/ft_strsplit.c \
+src/libft/str/ft_strstr.c \
+src/libft/str/ft_strsub.c \
+src/libft/str/ft_strtrim.c \
+src/libft/test/insert_func.c \
+src/libft/test/insert_mem.c \
+src/parse_flags.c \
+src/printf.c \
+src/resolve_arg.c
+
+O_FILES = $(patsubst $(SRC_DIR)%.c, $(BUILD_DIR)%.o, $(SRC_FILES))
+
+SRC_DIRS = $(shell find $(SRC_DIR) -type d)
+BUILD_DIRS_REC = $(patsubst $(SRC_DIR)%, $(BUILD_DIR)%, $(SRC_DIRS))
+
+HEADER_FILES_NAMES = ldouble.h printf.h
+HEADER_FILES = $(addprefix include/, $(HEADER_FILES_NAMES))
+
+.PHONY: clean fclean all
+
+all: $(NAME)
+
+$(NAME): $(BUILD_DIRS_REC) $(O_FILES)
+	@ranlib $(NAME)
+	@echo $(SRC_FILES)
+
+$(BUILD_DIRS_REC):
+	@mkdir -vp $(BUILD_DIRS_REC)
+
+$(BUILD_DIR)%.o: $(SRC_DIR)%.c ${HEADER_FILES}
+	$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
+	@ar rcs $(NAME) $@
+
+clean:
+	@rm -rf $(BUILD_DIR)
+	@echo "make: Done clean of \`$(NAME)'."
+
+fclean: clean
+	@rm -f $(NAME)
+	@echo "make: Done full clean of \`$(NAME)'."
+
+re: fclean all
+	@echo "make: Done recompile of \`$(NAME)'."
