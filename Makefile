@@ -18,10 +18,10 @@ LIB_SDL_FILE = $(LIB_SDL)/lib/libSDL2$(LIB_SDL_EXTENSION)
 
 INCLUDE = -I include/ -I $(LIB_FT)include/ -I $(LIB_SDL)include/SDL2/
 
+HEADER=include/rtv1.h
+
 BUILD_DIR = build/
 SRC_DIR = src/
-
-SRC_FILES_OLD = $(shell find $(SRC_DIR) -not \( -path $(MAIN_DIR) -prune \) -type f -name "*.c")
 
 #SRC_FILES = $(shell find $(SRC_DIR) -not \( -path $(MAIN_DIR) -prune \) -type f -name "*.c")
 #find src -type f -name '*.c' | sed "s/\$/ \\\\/"
@@ -59,7 +59,7 @@ $(LIB_SDL_FILE):
 $(BUILD_DIRS_REC):
 	@mkdir -vp $(BUILD_DIRS_REC)
 
-$(BUILD_DIR)%.o: $(SRC_DIR)%.c
+$(BUILD_DIR)%.o: $(SRC_DIR)%.c ${HEADER}
 	$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
 	@ar rc $(NAME) $@
 
