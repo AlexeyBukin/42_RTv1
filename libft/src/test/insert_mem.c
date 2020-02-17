@@ -22,14 +22,14 @@
 
 void	*ft_insert_mem(void *memory, void *ins, size_t index, size_t inslen)
 {
-	uint8_t	*result;
-	uint8_t	*mem;
-	uint8_t	*insert;
+	t_byte	*result;
+	t_byte	*mem;
+	t_byte	*insert;
 	int		i;
 
-	mem = (uint8_t*)memory;
-	insert = (uint8_t*)ins;
-	result = (uint8_t*)malloc(sizeof(uint8_t) * (inslen + 2));
+	mem = (t_byte*)memory;
+	insert = (t_byte*)ins;
+	result = (t_byte*)malloc(sizeof(t_byte) * (inslen + 2));
 	if (result == NULL)
 		return (NULL);
 	i = -1;

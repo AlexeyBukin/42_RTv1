@@ -25,6 +25,7 @@ SDL_DIR_NAME=SDL2-2.0.10-source
 BUILD_DIR = build_sdl/
 
 CC = $(SDL_DIR_NAME)/build-scripts/gcc-fat.sh
+#CC = clang
 
 CLEAN_DIRS=$(BUILD_DIR) bin lib share
 FCLEAN_DIRS=include

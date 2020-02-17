@@ -15,13 +15,13 @@
 int		ft_strcmp(const char *s1, const char *s2)
 {
 	size_t		i;
-	uint8_t		*t1;
-	uint8_t		*t2;
+	t_byte		*t1;
+	t_byte		*t2;
 
 	i = 0;
-	t1 = (uint8_t*)s1;
-	t2 = (uint8_t*)s2;
-	while (t1[i] != (uint8_t)'\0')
+	t1 = (t_byte*)s1;
+	t2 = (t_byte*)s2;
+	while (t1[i] != (t_byte)'\0')
 	{
 		if (t1[i] != t2[i])
 			return (t1[i] - t2[i]);

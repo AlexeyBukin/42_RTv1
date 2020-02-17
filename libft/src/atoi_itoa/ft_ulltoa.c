@@ -14,7 +14,7 @@
 
 char			*ft_ulltoa(unsigned long long int n)
 {
-	uint8_t len;
+	t_byte	len;
 	char	*res;
 
 	res = NULL;

@@ -15,11 +15,11 @@
 void	*ft_memmove(void *dest, const void *source, size_t count)
 {
 	size_t		i;
-	uint8_t		*tp;
-	uint8_t		*tps;
+	t_byte		*tp;
+	t_byte		*tps;
 
-	tp = (uint8_t*)dest;
-	tps = (uint8_t*)source;
+	tp = (t_byte*)dest;
+	tps = (t_byte*)source;
 	if (tp < tps)
 	{
 		i = 0;

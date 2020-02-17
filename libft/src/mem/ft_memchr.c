@@ -15,12 +15,12 @@
 void	*ft_memchr(const void *p, int c, size_t n)
 {
 	size_t		i;
-	uint8_t		bc;
-	uint8_t		*bp;
+	t_byte		bc;
+	t_byte		*bp;
 
 	i = 0;
-	bp = (uint8_t*)p;
-	bc = (uint8_t)c;
+	bp = (t_byte*)p;
+	bc = (t_byte)c;
 	while (i < n)
 	{
 		if (bp[i] == bc)

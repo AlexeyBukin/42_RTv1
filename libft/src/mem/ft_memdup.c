@@ -14,9 +14,9 @@
 
 void	*ft_memdup(const void *source, size_t count)
 {
-	uint8_t		*res;
+	t_byte		*res;
 
-	res = (uint8_t*)malloc(sizeof(char) * count);
+	res = (t_byte*)malloc(sizeof(char) * count);
 	ft_memcpy(res, source, count);
 	return (res);
 }

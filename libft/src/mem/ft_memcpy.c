@@ -15,12 +15,12 @@
 void	*ft_memcpy(void *dest, const void *source, size_t count)
 {
 	size_t		i;
-	uint8_t		*tp;
-	uint8_t		*tps;
+	t_byte		*tp;
+	t_byte		*tps;
 
 	i = 0;
-	tp = (uint8_t*)dest;
-	tps = (uint8_t*)source;
+	tp = (t_byte*)dest;
+	tps = (t_byte*)source;
 	if (tp == NULL && tps == NULL)
 	{
 		return (NULL);

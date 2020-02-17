@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static char			*do_if_ok(uint8_t len, long long int n)
+static char			*do_if_ok(t_byte len, long long int n)
 {
 	char	sign;
 	char	*res;

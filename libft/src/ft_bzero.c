@@ -15,10 +15,10 @@
 void	*ft_bzero(void *buf, size_t len)
 {
 	size_t		i;
-	uint8_t		*pointer;
+	t_byte		*pointer;
 
 	i = 0;
-	pointer = (uint8_t*)buf;
+	pointer = (t_byte*)buf;
 	while (i < len)
 	{
 		pointer[i] = 0;

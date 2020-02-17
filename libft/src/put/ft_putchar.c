@@ -14,8 +14,8 @@
 
 void	ft_putchar(char c)
 {
-	uint8_t		ct;
+	t_byte		ct;
 
-	ct = (uint8_t)c;
+	ct = (t_byte)c;
 	write(1, &ct, 1);
 }

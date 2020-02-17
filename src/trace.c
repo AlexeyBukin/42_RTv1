@@ -15,7 +15,10 @@
 t_color		trace(t_rtv1 *rtv1, t_double3 direction)
 {
 	if (rtv1 == NULL)
-		return (ft_puterror(1, "redraw(): pointer rtv1 is NULL"));
+	{
+		ft_putendl("trace(): pointer rtv1 is NULL");
+		return (color(0, 0, 0));
+	}
 	(void)direction;
 	return (color(255, 255, 255));
 }

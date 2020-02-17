@@ -15,12 +15,12 @@
 int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	size_t		i;
-	uint8_t		*t1;
-	uint8_t		*t2;
+	t_byte		*t1;
+	t_byte		*t2;
 
 	i = 0;
-	t1 = (uint8_t*)s1;
-	t2 = (uint8_t*)s2;
+	t1 = (t_byte*)s1;
+	t2 = (t_byte*)s2;
 	while (i < n)
 	{
 		if (t1[i] != t2[i])

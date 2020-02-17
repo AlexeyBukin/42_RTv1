@@ -14,12 +14,12 @@
 
 void	*ft_memalloc(size_t size)
 {
-	uint8_t		*tp;
+	t_byte		*tp;
 
-	tp = (uint8_t*)malloc(size);
+	tp = (t_byte*)malloc(size);
 	if (tp != 0)
 	{
-		tp = (uint8_t*)ft_bzero(tp, size);
+		tp = (t_byte*)ft_bzero(tp, size);
 	}
 	return (tp);
 }

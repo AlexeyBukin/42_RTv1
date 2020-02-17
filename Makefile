@@ -12,8 +12,9 @@ CFLAGS = -Wall -Wextra -Werror $(DEBUG)
 LIB_FT = libft/
 LIB_FT_FILE = $(LIB_FT)/libft.a
 
+LIB_SDL_EXTENSION = .dylib
 LIB_SDL = libsdl/
-LIB_SDL_FILE = $(LIB_SDL)/lib/libSDL2.dylib
+LIB_SDL_FILE = $(LIB_SDL)/lib/libSDL2$(LIB_SDL_EXTENSION)
 
 INCLUDE = -I include/ -I $(LIB_FT)include/ -I $(LIB_SDL)include/SDL2/
 
@@ -63,8 +64,8 @@ $(BUILD_DIR)%.o: $(SRC_DIR)%.c
 	@ar rc $(NAME) $@
 
 clean:
-	@make clean -C $(LIB_FT)
-	@make clean -C $(LIB_SDL)
+	@make -C $(LIB_FT) clean
+	@make $(LIB_SDL_COMPILER) -C $(LIB_SDL) clean
 	@rm -rf $(BUILD_DIR)
 	@echo "make: Done clean of \`$(NAME)'."
 

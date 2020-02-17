@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static char		*do_if_ok(uint8_t len, int n)
+static char		*do_if_ok(t_byte len, int n)
 {
 	char	sign;
 	char	*res;
@@ -37,7 +37,7 @@ static char		*do_if_ok(uint8_t len, int n)
 
 char			*ft_itoa(int n)
 {
-	uint8_t	len;
+	t_byte	len;
 	char	*res;
 
 	if (n != 0)
