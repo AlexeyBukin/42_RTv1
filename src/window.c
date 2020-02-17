@@ -47,18 +47,18 @@ int				window_render(t_window *win)
 		return (ft_puterror(1, "render_window(): pointer is NULL"));
 	if (SDL_RenderClear(win->sdl_renderer) < 0)
 	{
-		return (ft_puterror(1,
+		return (ft_puterror(2,
 				"render_window(): problem running SDL_RenderClear()"));
 	}
 	if (SDL_UpdateTexture(win->sdl_texture, NULL,
 			win->texture.img, win->texture.size_x * 4) < 0)
 	{
-		return (ft_puterror(1,
+		return (ft_puterror(3,
 				"render_window(): problem running SDL_UpdateTexture()"));
 	}
 	if (SDL_RenderCopy(win->sdl_renderer, win->sdl_texture, NULL, NULL) < 0)
 	{
-		return (ft_puterror(1,
+		return (ft_puterror(4,
 				"render_window(): problem running SDL_RenderCopy()"));
 	}
 	SDL_RenderPresent(win->sdl_renderer);

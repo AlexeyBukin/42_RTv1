@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/17 00:45:33 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/02/17 05:39:34 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@
 # define COLOR_MIN 0
 # define ALPHA_MAX 255
 # define ALPHA_MIN 0
+
+# define WIN_WIDTH  1280
+# define WIN_HEIGHT 720
+
+typedef struct		s_double3
+{
+	double 			x;
+	double 			y;
+	double 			z;
+}					t_double3;
 
 typedef enum		e_result_code
 {
@@ -51,13 +61,25 @@ typedef struct		s_window
 	SDL_Renderer	*sdl_renderer;
 }					t_window;
 
+typedef struct		s_camera
+{
+	t_double3 		pos;
+	t_double3		plane_pos;
+	t_double3 		direction;
+	t_double3 		direction_x;
+	t_double3 		direction_y;
+	double 			size_x;
+	double 			size_y;
+}					t_camera;
+
 typedef struct		s_rtv1
 {
 	t_window		*window;
+	t_camera		camera;
 	int				velocity_up_down;
 	int				velocity_left_right;
 	int				velocity_forward_backward;
-	t_bool			LMB_down;
+	t_bool			lmb_down;
 }					t_rtv1;
 
 /*
@@ -106,5 +128,23 @@ void				texture_put_pixel(t_texture texture, t_color col,
 
 t_color				color_alpha(t_byte r, t_byte g, t_byte b, t_byte a);
 t_color				color(t_byte red, t_byte green, t_byte blue);
+
+/*
+** camera.c
+*/
+
+int			camera_init_static(t_camera *cam);
+
+/*
+** project.c
+*/
+
+int			project(t_rtv1 *rtv1);
+
+/*
+** trace.c
+*/
+
+t_color		trace(t_rtv1 *rtv1, t_double3 direction);
 
 #endif

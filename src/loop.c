@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 18:13:19 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/17 01:01:56 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/02/17 05:49:19 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,27 +40,38 @@ int		iterate_events(t_rtv1 *rtv1)
 	return (OK);
 }
 
+int		redraw(t_rtv1 *rtv1)
+{
+	if (rtv1 == NULL)
+		return (ft_puterror(1, "redraw(): pointer rtv1 is NULL"));
+	if (rtv1->window == NULL)
+		return (ft_puterror(1, "redraw(): pointer rtv1->window is NULL"));
+	texture_fill(rtv1->window->texture, color(0, 0, 0));
+	if (project(rtv1) < 0)
+		return (ft_puterror(5, "rtv1_loop(): project()"));
+	if (window_render(rtv1->window) < 0)
+		return (ft_puterror(6, "rtv1_loop(): window_render()"));
+	return (0);
+}
+
 int		rtv1_loop(t_rtv1 *rtv1)
 {
 	int				result_code;
 
-	if (window_render(rtv1->window) < 0)
-		return (ft_puterror(1, "rtv1_loop(): problem running render_window()"));
+	if (rtv1 == NULL)
+		return (ft_puterror(1, "rtv1_loop(): pointer rtv1 is NULL"));
+	if (redraw(rtv1) < 0)
+		return (ft_puterror(3, "rtv1_loop(): problem running redraw()"));
 	while (TRUE)
 	{
-		result_code = iterate_events(rtv1);
-		if (result_code < 0)
-		{
-			return (ft_puterror(2,
-					"rtv1_loop(): problem running iterate_events()"));
-		}
+		if ((result_code = iterate_events(rtv1)) < 0)
+			return (ft_puterror(4, "rtv1_loop(): iterate_events()"));
 		else if (result_code == EXIT)
-		{
 			return (EXIT);
-		}
 		else if (result_code == RENDER)
 		{
-			window_render(rtv1->window);
+			if (redraw(rtv1) < 0)
+				return (ft_puterror(3, "rtv1_loop(): redraw()"));
 		}
 	}
 	return (0);

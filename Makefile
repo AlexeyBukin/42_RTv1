@@ -26,12 +26,15 @@ SRC_FILES_OLD = $(shell find $(SRC_DIR) -not \( -path $(MAIN_DIR) -prune \) -typ
 #find src -type f -name '*.c' | sed "s/\$/ \\\\/"
 
 SRC_FILES=\
+src/camera.c \
 src/color.c \
 src/destroy.c \
 src/events.c \
 src/loop.c \
 src/main.c \
+src/project.c \
 src/texture.c \
+src/trace.c \
 src/window.c
 
 O_FILES = $(patsubst $(SRC_DIR)%.c, $(BUILD_DIR)%.o, $(SRC_FILES))

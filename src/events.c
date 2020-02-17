@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 00:26:47 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/17 01:03:00 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/02/17 02:07:44 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		on_mouse_down(t_rtv1 *rtv1, SDL_Scancode scancode)
 {
 	if (scancode == SDL_BUTTON_LEFT)
 	{
-		rtv1->LMB_down = TRUE;
+		rtv1->lmb_down = TRUE;
 		return (OK);
 	}
 	return (OK);
@@ -44,7 +44,7 @@ int		on_mouse_up(t_rtv1 *rtv1, SDL_Scancode scancode)
 {
 	if (scancode == SDL_BUTTON_LEFT)
 	{
-		rtv1->LMB_down = FALSE;
+		rtv1->lmb_down = FALSE;
 		return (OK);
 	}
 	return (OK);
@@ -59,7 +59,7 @@ int		on_mouse_move(t_rtv1 *rtv1, int x, int y)
 		return (ft_puterror(2,
 				"on_mouse_move(): rtv1->window pointer is NULL"));
 	}
-	if (rtv1->LMB_down == TRUE)
+	if (rtv1->lmb_down == TRUE)
 	{
 		texture_put_pixel(rtv1->window->texture, color(255, 255, 255), x, y);
 		return (RENDER);
