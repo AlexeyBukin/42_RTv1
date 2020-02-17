@@ -1,6 +1,10 @@
+# RTv1
 RTv1
 .idea
 build/*
+
+# libft
+libft/build/*
 
 # LibSDL
 libsdl/bin/*
