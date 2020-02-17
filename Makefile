@@ -61,7 +61,6 @@ $(BUILD_DIRS_REC):
 
 $(BUILD_DIR)%.o: $(SRC_DIR)%.c ${HEADER}
 	$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
-	@ar rc $(NAME) $@
 
 clean:
 	@make -C $(LIB_FT) clean

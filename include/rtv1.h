@@ -21,8 +21,8 @@
 # define ALPHA_MAX 255
 # define ALPHA_MIN 0
 
-# define WIN_WIDTH  1280
-# define WIN_HEIGHT 720
+# define WIN_WIDTH  640
+# define WIN_HEIGHT 480
 
 typedef struct		s_double3
 {
