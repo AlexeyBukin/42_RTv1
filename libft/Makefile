@@ -46,6 +46,7 @@ src/ft_abs.c \
 src/ft_bzero.c \
 src/ft_char_to_str.c \
 src/ft_free_char_2d_arr.c \
+src/ft_free.c \
 src/ft_pow.c \
 src/ft_power_ten.c \
 src/ft_return.c \

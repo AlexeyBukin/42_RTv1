@@ -154,6 +154,7 @@ double				d3_dist_sqr(t_double3 a, t_double3 b);
 double				d3_dist(t_double3 a, t_double3 b);
 
 char				*d3_to_str(t_double3 a);
+char				*d3_to_str_color(t_double3 a);
 
 /*
 ** trace.c

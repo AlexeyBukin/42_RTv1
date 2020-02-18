@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 03:26:48 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/18 19:34:27 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/02/18 21:49:54 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ t_color		trace(t_rtv1 *rtv1, t_double3 direction)
 	{
 		return (color(0, 255, 0));
 	}
-	if (iters < 7)
+	int needed = WIN_WIDTH / 3;
+	if (iters % needed == 0 && iters < WIN_WIDTH)
 	{
 		ft_printf ("dist_sqr is %f, dir is \'%s\'\n", dist_sqr, d3_to_str(direction));
 	}

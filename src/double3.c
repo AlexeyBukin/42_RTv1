@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 09:37:27 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/18 21:27:34 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/02/18 23:51:33 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,36 @@ double		d3_dist(t_double3 a, t_double3 b)
 	return (sqrt(d3_dist_sqr(a, b)));
 }
 
+char		*d3_len(t_double3 a)
+{
+	t_double	zero;
 
-//TODO replace with normal double output
+	zero = {0, 0, 0};
+	return (d3_dist(zero, a));
+}
+
 char		*d3_to_str(t_double3 a)
 {
 	char		*res;
 
-	res = ft_strjoin_free(ft_strdup("( "), ft_ldtoa(a.x));
-	res = ft_strjoin_free(res, ft_strdup(" "));
+	res = ft_strjoin_free(ft_strdup("("), ft_ldtoa(a.x));
+	res = ft_strjoin_free(res, ft_strdup(" | "));
 	res = ft_strjoin_free(res, ft_ldtoa(a.y));
-	res = ft_strjoin_free(res, ft_strdup(" "));
+	res = ft_strjoin_free(res, ft_strdup(" | "));
 	res = ft_strjoin_free(res, ft_ldtoa(a.z));
-	res = ft_strjoin_free(res, ft_strdup(" )"));
+	res = ft_strjoin_free(res, ft_strdup(")"));
+	return (res);
+}
+
+char		*d3_to_str_color(t_double3 a)
+{
+	char		*res;
+
+	res = ft_strjoin_free(ft_strdup("(\033[0;31m"), ft_ldtoa(a.x));
+	res = ft_strjoin_free(res, ft_strdup("\033[0m | \033[0;32m"));
+	res = ft_strjoin_free(res, ft_ldtoa(a.y));
+	res = ft_strjoin_free(res, ft_strdup("\033[0m | \033[0;34m"));
+	res = ft_strjoin_free(res, ft_ldtoa(a.z));
+	res = ft_strjoin_free(res, ft_strdup("\033[0m)"));
 	return (res);
 }
