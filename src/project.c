@@ -6,35 +6,13 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 04:16:09 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/17 05:51:42 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/02/17 09:38:21 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-t_double3	plus(t_double3 a, t_double3 b)
-{
-	a.x += b.x;
-	a.y += b.y;
-	a.z += b.z;
-	return (a);
-}
 
-t_double3	minus(t_double3 a, t_double3 b)
-{
-	a.x -= b.x;
-	a.y -= b.y;
-	a.z -= b.z;
-	return (a);
-}
-
-t_double3	mult(t_double3 a, double b)
-{
-	a.x *= b;
-	a.y *= b;
-	a.z *= b;
-	return (a);
-}
 
 int			project(t_rtv1 *rtv1)
 {
@@ -54,11 +32,11 @@ int			project(t_rtv1 *rtv1)
 	{
 		while (++x < WIN_WIDTH)
 		{
-			dot = plus(cam.plane_pos, mult(cam.direction_x,
+			dot = d3_plus(cam.plane_pos, d3_mult(cam.direction_x,
 					cam.size_x * ((x / WIN_WIDTH) - (1 / 2))));
-			dot = plus(dot, mult(cam.direction_y,
+			dot = d3_plus(dot, d3_mult(cam.direction_y,
 					cam.size_y * ((y / WIN_HEIGHT) - (1 / 2))));
-			traced = trace(rtv1, minus(dot, cam.pos));
+			traced = trace(rtv1, d3_minus(dot, cam.pos));
 			texture_put_pixel(rtv1->window->texture, traced, x, y);
 		}
 	}

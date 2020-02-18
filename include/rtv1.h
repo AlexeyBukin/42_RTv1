@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/17 05:39:34 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/02/17 10:06:41 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,16 @@ int			camera_init_static(t_camera *cam);
 */
 
 int			project(t_rtv1 *rtv1);
+
+/*
+** double3.c
+*/
+
+t_double3	d3_plus(t_double3 a, t_double3 b);
+t_double3	d3_minus(t_double3 a, t_double3 b);
+t_double3	d3_mult(t_double3 a, double b);
+double		d3_dist_sqr(t_double3 a, t_double3 b);
+double		d3_dist(t_double3 a, t_double3 b);
 
 /*
 ** trace.c

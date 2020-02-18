@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <math.h>
 
 typedef unsigned char	t_byte;
 typedef char			t_bool;
