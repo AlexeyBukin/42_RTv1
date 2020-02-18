@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/13 17:26:10 by kcharla           #+#    #+#             */
-/*   Updated: 2019/11/06 19:16:31 by kcharla          ###   ########.fr       */
+/*   Created: 2020/02/18 21:18:54 by kcharla           #+#    #+#             */
+/*   Updated: 2020/02/18 21:18:54 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+char	*ft_strndup(const char *source, size_t n)
 {
-	char	*res;
+	char	*dest;
 
-	res = (char*)malloc(sizeof(char) * (size + 1));
-	if (res == NULL)
-	{
-		return (NULL);
-	}
-	res = (char*)ft_bzero(res, size + 1);
-	return (res);
+	dest = ft_strnew(n);
+	dest = ft_strncpy(dest, source, n);
+	return (dest);
 }

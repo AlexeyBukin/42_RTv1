@@ -58,7 +58,7 @@ t_color		trace(t_rtv1 *rtv1, t_double3 direction)
 	}
 	if (iters < 7)
 	{
-		printf ("dist_sqr is %f, dir is \'%s\'\n", dist_sqr, d3_to_str(direction));
+		ft_printf ("dist_sqr is %f, dir is \'%s\'\n", dist_sqr, d3_to_str(direction));
 	}
 	return (color(40, 40, 40));
 }

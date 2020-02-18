@@ -34,6 +34,8 @@ src/atoi_itoa/ft_atoi.c \
 src/atoi_itoa/ft_atoi_base.c \
 src/atoi_itoa/ft_itoa.c \
 src/atoi_itoa/ft_itoa_base.c \
+src/atoi_itoa/ft_ldtoa.c \
+src/atoi_itoa/ft_ldtoa_prec.c \
 src/atoi_itoa/ft_lltoa.c \
 src/atoi_itoa/ft_mtob.c \
 src/atoi_itoa/ft_mtob_raw.c \
@@ -130,6 +132,7 @@ src/str/ft_strmapi.c \
 src/str/ft_strncat.c \
 src/str/ft_strncmp.c \
 src/str/ft_strncpy.c \
+src/str/ft_strndup.c \
 src/str/ft_strnequ.c \
 src/str/ft_strnew.c \
 src/str/ft_strnstr.c \
@@ -138,6 +141,7 @@ src/str/ft_strrev.c \
 src/str/ft_strsplit.c \
 src/str/ft_strstr.c \
 src/str/ft_strsub.c \
+src/str/ft_strsub_free.c \
 src/str/ft_strtrim.c \
 src/test/insert_func.c \
 src/test/insert_mem.c
@@ -147,7 +151,7 @@ O_FILES = $(patsubst $(SRC_DIR)%.c, $(BUILD_DIR)%.o, $(SRC_FILES))
 SRC_DIRS = $(shell find $(SRC_DIR) -type d)
 BUILD_DIRS_REC = $(patsubst $(SRC_DIR)%, $(BUILD_DIR)%, $(SRC_DIRS))
 
-HEADER_FILE = include/libft.h
+HEADER_FILES = include/libft.h include/printf.h
 
 .PHONY: clean fclean all
 
@@ -160,7 +164,7 @@ $(NAME): $(BUILD_DIRS_REC) $(O_FILES)
 $(BUILD_DIRS_REC):
 	@mkdir -vp $(BUILD_DIRS_REC)
 
-$(BUILD_DIR)%.o: $(SRC_DIR)%.c $(HEADER_FILE)
+$(BUILD_DIR)%.o: $(SRC_DIR)%.c $(HEADER_FILES)
 	$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
 	@ar rcs $(NAME) $@
 

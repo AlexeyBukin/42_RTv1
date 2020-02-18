@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 19:12:07 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/18 20:38:18 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/02/18 21:29:42 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ int				ft_atoi_base(const char *s, char base);
 char			*ft_itoa(int n);
 char			*ft_itoa_base(int value, char *base);
 char			*ft_ulltoa_base(unsigned long long int value, char *base);
-
+char			*ft_ldtoa(long double num);
+char			*ft_ldtoa_prec(long double num, int prec);
 char			*ft_lltoa(long long int n);
 
 char			*ft_mtob(void const *ptr, size_t byte_size);
@@ -158,6 +159,7 @@ char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char			*ft_strncat(char *s1, const char *s2, size_t count);
 int				ft_strncmp(const char *str1, const char *str2, size_t n);
 char			*ft_strncpy(char *dest, const char *source, size_t n);
+char			*ft_strndup(const char *source, size_t n);
 int				ft_strnequ(char const *s1, char const *s2, size_t n);
 char			*ft_strnew(size_t size);
 char			*ft_strnstr(const char *s1, const char *s2, size_t len);
@@ -169,6 +171,7 @@ char			*ft_str_dup_rev(const char *s);
 char			**ft_strsplit(char const *s, char c);
 char			*ft_strstr(const char *s1, const char *s2);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
+char			*ft_strsub_free(char *s, unsigned int start, size_t len);
 
 char			*ft_strtrim(char const *s);
 

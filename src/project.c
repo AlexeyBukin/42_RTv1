@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 04:16:09 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/18 20:28:36 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/02/18 21:00:08 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ int			project(t_rtv1 *rtv1)
 
 			if (x < 6 && y == 0)
 			{
+				ft_printf ("cam.pos is \'%s\'\n", d3_to_str(cam.pos));
 				ft_printf ("dot is \'%s\'\n", d3_to_str(dot));
-				printf("\n");
+//				ft_printf ("dot is \'%s\'\n", d3_to_str(dot));
 			}
 
 //			if (y < 5 && x < 5)
