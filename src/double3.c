@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 09:37:27 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/18 15:59:04 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/02/18 19:15:16 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,17 @@ double		d3_dist_sqr(t_double3 a, t_double3 b)
 double		d3_dist(t_double3 a, t_double3 b)
 {
 	return (sqrt(d3_dist_sqr(a, b)));
+}
+
+
+//TODO replace with normal double output
+char		*d3_to_str(t_double3 a)
+{
+	char		*res;
+
+	res = ft_strjoin_free(ft_itoa((int) a.x), ft_strdup(" "));
+	res = ft_strjoin_free(res, ft_itoa((int) a.y));
+	res = ft_strjoin_free(res, ft_strdup(" "));
+	res = ft_strjoin_free(res, ft_itoa((int) a.z));
+	return (res);
 }

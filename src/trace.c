@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 03:26:48 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/18 15:59:08 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/02/18 19:34:27 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 t_color		trace(t_rtv1 *rtv1, t_double3 direction)
 {
+	static int iters = 0;
+	iters++;
+
 	if (rtv1 == NULL)
 	{
 		ft_putendl("trace(): pointer rtv1 is NULL");
@@ -48,9 +51,14 @@ t_color		trace(t_rtv1 *rtv1, t_double3 direction)
 	dot.z = args_p123.z * alpha + args_xyz.z;
 	//(void)direction;
 
-	if (d3_dist_sqr(dot, sphere_center) <= sphere_radius * sphere_radius)
+	double dist_sqr = d3_dist_sqr(dot, sphere_center);
+	if (dist_sqr <= sphere_radius * sphere_radius)
 	{
 		return (color(0, 255, 0));
+	}
+	if (iters < 7)
+	{
+		printf ("dist_sqr is %f, dir is \'%s\'\n", dist_sqr, d3_to_str(direction));
 	}
 	return (color(40, 40, 40));
 }

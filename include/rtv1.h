@@ -6,13 +6,16 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/18 15:59:04 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/02/18 19:04:42 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RTV1_H
 # define RTV1_H
 
+//TODO delete stdio.h
+
+# include <stdio.h>
 # include "libft.h"
 # include "SDL.h"
 
@@ -128,28 +131,32 @@ void				texture_put_pixel(t_texture texture, t_color col,
 
 t_color				color_alpha(t_byte r, t_byte g, t_byte b, t_byte a);
 t_color				color(t_byte red, t_byte green, t_byte blue);
+t_color				color_from_int(int src);
+int					color_to_int(t_color col);
 
 /*
 ** camera.c
 */
 
-int			camera_init_static(t_camera *cam);
+int					camera_init_static(t_camera *cam);
 
 /*
 ** project.c
 */
 
-int			project(t_rtv1 *rtv1);
+int					project(t_rtv1 *rtv1);
 
 /*
 ** double3.c
 */
 
-t_double3	d3_plus(t_double3 a, t_double3 b);
-t_double3	d3_minus(t_double3 a, t_double3 b);
-t_double3	d3_mult(t_double3 a, double b);
-double		d3_dist_sqr(t_double3 a, t_double3 b);
-double		d3_dist(t_double3 a, t_double3 b);
+t_double3			d3_plus(t_double3 a, t_double3 b);
+t_double3			d3_minus(t_double3 a, t_double3 b);
+t_double3			d3_mult(t_double3 a, double b);
+double				d3_dist_sqr(t_double3 a, t_double3 b);
+double				d3_dist(t_double3 a, t_double3 b);
+
+char				*d3_to_str(t_double3 a);
 
 /*
 ** trace.c
