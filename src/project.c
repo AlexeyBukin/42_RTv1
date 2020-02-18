@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 04:16:09 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/18 19:36:09 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/02/18 20:28:36 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ int			project(t_rtv1 *rtv1)
 			traced = trace(rtv1, d3_minus(dot, cam.pos)); ///d3_minus = zero (0) !!!!!!!!!!!!!
 			texture_put_pixel(rtv1->window->texture, traced, x, y);
 
+			if (x < 6 && y == 0)
+			{
+				ft_printf ("dot is \'%s\'\n", d3_to_str(dot));
+				printf("\n");
+			}
+
 //			if (y < 5 && x < 5)
 //			{
 //				//char * str = ft_itoa(color_to_int(traced));
@@ -44,7 +50,7 @@ int			project(t_rtv1 *rtv1)
 //				//free(str;)
 //			}
 		}
-//		if (y < 5)
+//		if (y < 6)
 //		{
 //			printf("\n");
 //		}

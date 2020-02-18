@@ -6,16 +6,13 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/18 19:04:42 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/02/18 21:00:39 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RTV1_H
 # define RTV1_H
 
-//TODO delete stdio.h
-
-# include <stdio.h>
 # include "libft.h"
 # include "SDL.h"
 
