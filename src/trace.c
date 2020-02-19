@@ -14,9 +14,6 @@
 
 t_color		trace(t_rtv1 *rtv1, t_double3 direction)
 {
-	static int iters = 0;
-	iters++;
-
 	if (rtv1 == NULL)
 	{
 		ft_putendl("trace(): pointer rtv1 is NULL");
@@ -52,14 +49,15 @@ t_color		trace(t_rtv1 *rtv1, t_double3 direction)
 	//(void)direction;
 
 	double dist_sqr = d3_dist_sqr(dot, sphere_center);
-	if (dist_sqr <= sphere_radius * sphere_radius)
+	if (dist_sqr <= sphere_radius * sphere_radius) //4
 	{
 		return (color(0, 255, 0));
 	}
-	int needed = WIN_WIDTH / 3;
-	if (iters % needed == 0 && iters < WIN_WIDTH)
+
+	if (rtv1->trace == TRUE)
 	{
-		ft_printf ("dist_sqr is %f, dir is \'%s\'\n", dist_sqr, d3_to_str(direction));
+		ft_printf ("%-30s is %-30f | ", "dist_sqr", dist_sqr);
+		ft_printf ("%-30s is %-30s\n", "dir", d3_to_str_color(direction));
 	}
 	return (color(40, 40, 40));
 }

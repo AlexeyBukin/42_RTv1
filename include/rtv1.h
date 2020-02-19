@@ -24,6 +24,9 @@
 # define WIN_WIDTH  640
 # define WIN_HEIGHT 480
 
+//# define WIN_WIDTH  100
+//# define WIN_HEIGHT 50
+
 typedef struct		s_double3
 {
 	double 			x;
@@ -80,6 +83,7 @@ typedef struct		s_rtv1
 	int				velocity_left_right;
 	int				velocity_forward_backward;
 	t_bool			lmb_down;
+	t_bool			trace;
 }					t_rtv1;
 
 /*

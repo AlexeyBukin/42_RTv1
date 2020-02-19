@@ -20,12 +20,16 @@ int			project(t_rtv1 *rtv1)
 	int			y;
 	int			x;
 
+//	ft_putendl("projection called...");
 	if (rtv1 == NULL)
 		return (ft_puterror(1, "project(): rtv1 pointer is NULL"));
 	if (rtv1->window == NULL)
 		return (ft_puterror(2, "project(): rtv1->window pointer is NULL"));
 	cam = rtv1->camera;
 	y = -1;
+
+	int pixel_num = 0;
+
 	while (++y < WIN_HEIGHT && (x = -1) == -1)
 	{
 		while (++x < WIN_WIDTH)
@@ -39,33 +43,36 @@ int			project(t_rtv1 *rtv1)
 			dot = d3_plus(dot_2, d3_mult(cam.direction_up,
 					(double) cam.size_y * ((double) (yd / WIN_HEIGHT) - (1.0 / 2.0))));
 
-
+			int needed = WIN_WIDTH / 5;
+			if (pixel_num % needed == 0 && pixel_num < WIN_WIDTH)
+			{
+				rtv1->trace = TRUE;
+			}
+			else
+			{
+				rtv1->trace = FALSE;
+			}
 
 			traced = trace(rtv1, d3_minus(dot, cam.pos)); ///d3_minus = zero (0) !!!!!!!!!!!!!
 			texture_put_pixel(rtv1->window->texture, traced, x, y);
 
 			//TODO wtf? make this!
-			static int iters = 0;
-			iters++;
-			int needed = WIN_WIDTH / 3;
-			if (iters % needed == 0 && iters < WIN_WIDTH)
+
+			//int needed = WIN_WIDTH / 3;
+			if (pixel_num % needed == 0 && pixel_num < WIN_WIDTH)
 			{
 				double xd = (double) x;
-				ft_printf ("x               is \'%f\'\n", (double)(x));
-				ft_printf ("xd              is \'%f\'\n", xd);
-				ft_printf ("(x / WIN_WIDTH) is \'%f\'\n", (double)(x / WIN_WIDTH));
-				ft_printf ("(xd / WIN_WIDTH)is \'%f\'\n", (double)(xd / WIN_WIDTH));
-				ft_printf ("cam.pos         is \'%s\'\n", d3_to_str_color(cam.pos));
-				ft_printf ("cam.plane_pos   is \'%s\'\n", d3_to_str_color(cam.plane_pos));
-				ft_printf ("dot_1           is \'%s\'\n", d3_to_str_color(dot_1));
-				ft_printf ("dot_2           is \'%s\'\n", d3_to_str_color(dot_2));
-				ft_printf ("cam.direction_r is \'%s\'\n", d3_to_str_color(cam.direction_right));
-				ft_printf ("cam.direction_upis \'%s\'\n", d3_to_str_color(cam.direction_up));
-				ft_printf ("dot_1           is \'%s\'\n", d3_to_str_color(dot_1));
-				ft_printf ("dot             is \'%s\'\n", d3_to_str_color(dot));
+				ft_printf ("%-30s is %-30f | ", "xd", xd);
+				ft_printf ("%-30s is %-30f\n", "yd", yd);
+				ft_printf ("%-30s is %-30d | ", "x", x);
+				ft_printf ("%-30s is %-30d\n", "y", y);
+				ft_printf ("%-30s is %-30s\n", "cam.pos", d3_to_str_color(cam.pos));
+				ft_printf ("%-30s is %-30s\n", "cam.plane_pos", d3_to_str_color(cam.plane_pos));
+				ft_printf ("%-30s is %-30s\n", "dot", d3_to_str_color(dot));
 				ft_printf ("\n");
 //				ft_printf ("dot is \'%s\'\n", d3_to_str(dot));
 			}
+			pixel_num++;
 
 //			if (y < 5 && x < 5)
 //			{
