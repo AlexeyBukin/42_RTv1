@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VAR="LIB_SDL_COMPILER=CC\=clang LIB_SDL_EXTENSION=.so"
+VAR="LIB_SDL_COMPILER=CC\=clang LIB_SDL_EXTENSION=.so LIBM=-lm"
 
 if [ "$1" = "" ]; then
         echo "making..."
