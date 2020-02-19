@@ -30,17 +30,14 @@ int			project(t_rtv1 *rtv1)
 	{
 		while (++x < WIN_WIDTH)
 		{
-			t_double3 dot_1 = d3_mult(cam.direction_x,
-									  (double) cam.size_x * ((x / WIN_WIDTH) - (1.0 / 2.0)));
+			double xd = (double) x;
+			double yd = (double) y;
+			t_double3 dot_1 = d3_mult(cam.direction_right,
+									  (double) cam.size_x * ((double) (xd / WIN_WIDTH) - (1.0 / 2.0)));
 
 			t_double3 dot_2 = d3_plus(cam.plane_pos, dot_1);
-			dot = d3_plus(dot_1, d3_mult(cam.direction_y,
-					(double) cam.size_y * ((y / WIN_HEIGHT) - (1 / 2))));
-
-
-
-
-
+			dot = d3_plus(dot_2, d3_mult(cam.direction_up,
+					(double) cam.size_y * ((double) (yd / WIN_HEIGHT) - (1.0 / 2.0))));
 
 
 
@@ -53,12 +50,17 @@ int			project(t_rtv1 *rtv1)
 			int needed = WIN_WIDTH / 3;
 			if (iters % needed == 0 && iters < WIN_WIDTH)
 			{
+				double xd = (double) x;
+				ft_printf ("x               is \'%f\'\n", (double)(x));
+				ft_printf ("xd              is \'%f\'\n", xd);
+				ft_printf ("(x / WIN_WIDTH) is \'%f\'\n", (double)(x / WIN_WIDTH));
+				ft_printf ("(xd / WIN_WIDTH)is \'%f\'\n", (double)(xd / WIN_WIDTH));
 				ft_printf ("cam.pos         is \'%s\'\n", d3_to_str_color(cam.pos));
 				ft_printf ("cam.plane_pos   is \'%s\'\n", d3_to_str_color(cam.plane_pos));
 				ft_printf ("dot_1           is \'%s\'\n", d3_to_str_color(dot_1));
 				ft_printf ("dot_2           is \'%s\'\n", d3_to_str_color(dot_2));
-				ft_printf ("cam.direction_x is \'%s\'\n", d3_to_str_color(cam.direction_x));
-				ft_printf ("cam.direction_y is \'%s\'\n", d3_to_str_color(cam.direction_y));
+				ft_printf ("cam.direction_r is \'%s\'\n", d3_to_str_color(cam.direction_right));
+				ft_printf ("cam.direction_upis \'%s\'\n", d3_to_str_color(cam.direction_up));
 				ft_printf ("dot_1           is \'%s\'\n", d3_to_str_color(dot_1));
 				ft_printf ("dot             is \'%s\'\n", d3_to_str_color(dot));
 				ft_printf ("\n");

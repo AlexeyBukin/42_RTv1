@@ -66,8 +66,8 @@ typedef struct		s_camera
 	t_double3 		pos;
 	t_double3		plane_pos;
 	t_double3 		direction;
-	t_double3 		direction_x;
-	t_double3 		direction_y;
+	t_double3 		direction_right;
+	t_double3 		direction_up;
 	double 			size_x;
 	double 			size_y;
 }					t_camera;

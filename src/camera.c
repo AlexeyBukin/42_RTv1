@@ -25,7 +25,7 @@ int			camera_init_static(t_camera *cam)
 	(*cam).plane_pos = (t_double3) {0.0, (double)WIN_WIDTH / 100 / 2, 1.8};
 	(*cam).size_x = (double)WIN_WIDTH / 100;
 	(*cam).size_y = (double)WIN_HEIGHT / 100;
-	(*cam).direction_x = (t_double3) {1.0, 0.0, 0.0};
-	(*cam).direction_y = (t_double3) {0.0, 0.0, 1.0};
+	(*cam).direction_right = (t_double3) {1.0, 0.0, 0.0};
+	(*cam).direction_up = (t_double3) {0.0, 0.0, 1.0};
 	return (0);
 }
