@@ -56,7 +56,7 @@ int			project(t_rtv1 *rtv1)
 			traced = trace(rtv1, d3_minus(dot, cam.pos)); ///d3_minus = zero (0) !!!!!!!!!!!!!
 			texture_put_pixel(rtv1->window->texture, traced, x, y);
 
-			//TODO wtf? make this!
+			//TODO manual tracing with debuging
 
 			//int needed = WIN_WIDTH / 3;
 			if (pixel_num % needed == 0 && pixel_num < WIN_WIDTH)
