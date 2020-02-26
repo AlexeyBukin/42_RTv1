@@ -5,6 +5,7 @@ NAME = RTv1
 
 CC = clang
 
+LIBM =
 DEBUG =
 
 CFLAGS = -Wall -Wextra -Werror $(DEBUG)
@@ -49,7 +50,9 @@ BUILD_DIRS_REC = $(patsubst $(SRC_DIR)%, $(BUILD_DIR)%, $(SRC_DIRS))
 all: $(NAME)
 
 $(NAME): $(LIB_FT_FILE) $(LIB_SDL_FILE) $(BUILD_DIRS_REC) $(O_FILES)
-	$(CC) $(CFLAGS) $(O_FILES) $(INCLUDE) -o $(NAME) $(LIB_FT_FILE) $(LIB_SDL_FILE)
+	@echo "\033[0;32m" "Building RTv1 executable..." "\033[0m"
+	$(CC) $(CFLAGS) $(O_FILES) $(INCLUDE) -o $(NAME) $(LIB_FT_FILE) $(LIB_SDL_FILE) $(LIBM)
+	@echo "\033[0;32m" "Done" "\033[0m"
 
 $(LIB_FT_FILE):
 	@make DEBUG=$(DEBUG) -C $(LIB_FT)
@@ -61,7 +64,11 @@ $(BUILD_DIRS_REC):
 	@mkdir -vp $(BUILD_DIRS_REC)
 
 $(BUILD_DIR)%.o: $(SRC_DIR)%.c ${HEADER}
-	$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
+	@echo -n "\033[0;32m"
+	@printf "%-30s | %-25s" $@ $<
+	@echo "\033[0m"
+	@$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
+
 
 clean:
 	@make -C $(LIB_FT) clean

@@ -51,11 +51,11 @@ double		d3_dist(t_double3 a, t_double3 b)
 	return (sqrt(d3_dist_sqr(a, b)));
 }
 
-char		*d3_len(t_double3 a)
+double		d3_len(t_double3 a)
 {
-	t_double	zero;
+	t_double3	zero;
 
-	zero = {0, 0, 0};
+	zero = (t_double3){0, 0, 0};
 	return (d3_dist(zero, a));
 }
 

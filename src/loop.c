@@ -45,12 +45,12 @@ int		redraw(t_rtv1 *rtv1)
 	if (rtv1 == NULL)
 		return (ft_puterror(1, "redraw(): pointer rtv1 is NULL"));
 	if (rtv1->window == NULL)
-		return (ft_puterror(1, "redraw(): pointer rtv1->window is NULL"));
+		return (ft_puterror(2, "redraw(): pointer rtv1->window is NULL"));
 	texture_fill(rtv1->window->texture, color(0, 0, 0));
 	if (project(rtv1) < 0)
-		return (ft_puterror(5, "rtv1_loop(): project()"));
+		return (ft_puterror(3, "rtv1_loop(): project()"));
 	if (window_render(rtv1->window) < 0)
-		return (ft_puterror(6, "rtv1_loop(): window_render()"));
+		return (ft_puterror(4, "rtv1_loop(): window_render()"));
 	return (0);
 }
 
@@ -70,6 +70,7 @@ int		rtv1_loop(t_rtv1 *rtv1)
 			return (EXIT);
 		else if (result_code == RENDER)
 		{
+			ft_putendl("calling redraw...");
 			if (redraw(rtv1) < 0)
 				return (ft_puterror(3, "rtv1_loop(): redraw()"));
 		}

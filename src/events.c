@@ -20,6 +20,11 @@ int		on_key_down(t_rtv1 *rtv1, SDL_Scancode scancode)
 		ft_putendl("Escape pressed!");
 		return (EXIT);
 	}
+	else if (scancode == SDL_SCANCODE_R)
+	{
+		ft_putendl("\'R\' pressed!");
+		return (RENDER);
+	}
 	return (OK);
 }
 
@@ -59,10 +64,12 @@ int		on_mouse_move(t_rtv1 *rtv1, int x, int y)
 		return (ft_puterror(2,
 				"on_mouse_move(): rtv1->window pointer is NULL"));
 	}
-	if (rtv1->lmb_down == TRUE)
-	{
-		texture_put_pixel(rtv1->window->texture, color(255, 255, 255), x, y);
-		return (RENDER);
-	}
+	(void)x;
+	(void)y;
+//	if (rtv1->lmb_down == TRUE)
+//	{
+//		texture_put_pixel(rtv1->window->texture, color(255, 255, 255), x, y);
+//		return (RENDER);
+//	}
 	return (OK);
 }
