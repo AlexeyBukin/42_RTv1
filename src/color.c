@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 18:14:06 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/18 23:06:29 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/02/27 04:48:07 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,34 @@ t_color		color_from_int(int src)
 	col.g = (src >> 16) & 255;
 	col.g = (src >> 24) & 255;
 	return (col);
+}
+
+char * color_to_str(t_color color)
+{
+	char * res;
+
+	res = ft_strjoin_free(ft_strdup("(r: "), ft_itoa(color.r));
+	res = ft_strjoin_free(res, ft_strdup("; g: "));
+	res = ft_strjoin_free(res, ft_itoa(color.g));
+	res = ft_strjoin_free(res, ft_strdup("; b: "));
+	res = ft_strjoin_free(res, ft_itoa(color.b));
+	res = ft_strjoin_free(res, ft_strdup("; a: "));
+	res = ft_strjoin_free(res, ft_itoa(color.a));
+	res = ft_strjoin_free(res, ft_strdup(")"));
+	return (res);
+}
+
+char * color_to_str_color(t_color color)
+{
+	char * res;
+
+	res = ft_strjoin_free(ft_strdup("(\033[0;31mr: "), ft_itoa(color.r));
+	res = ft_strjoin_free(res, ft_strdup("\033[0m; \033[0;32mg: "));
+	res = ft_strjoin_free(res, ft_itoa(color.g));
+	res = ft_strjoin_free(res, ft_strdup("\033[0m; \033[0;34mb: "));
+	res = ft_strjoin_free(res, ft_itoa(color.b));
+	res = ft_strjoin_free(res, ft_strdup("\033[0m; a: "));
+	res = ft_strjoin_free(res, ft_itoa(color.a));
+	res = ft_strjoin_free(res, ft_strdup(")"));
+	return (res);
 }

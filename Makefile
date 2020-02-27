@@ -38,7 +38,8 @@ src/project.c \
 src/texture.c \
 src/trace.c \
 src/window.c \
-src/double3.c
+src/double3.c \
+src/init.c
 
 O_FILES = $(patsubst $(SRC_DIR)%.c, $(BUILD_DIR)%.o, $(SRC_FILES))
 

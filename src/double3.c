@@ -6,11 +6,29 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 09:37:27 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/18 23:51:33 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/02/27 06:49:11 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+double	d3_dot_product(t_double3 a, t_double3 b)
+{
+	a.x *= b.x;
+	a.y *= b.y;
+	a.z *= b.z;
+	return (a.x + a.y + a.z);
+}
+
+t_double3	d3_vector_product(t_double3 a, t_double3 b)
+{
+	t_double3	vp;
+
+	vp.x = a.y * b.z - b.y * a.z;
+	vp.y = a.z * b.x - b.z * a.x;
+	vp.z = a.x * b.y - b.x * a.y;
+	return (vp);
+}
 
 t_double3	d3_plus(t_double3 a, t_double3 b)
 {

@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/18 21:00:39 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/02/27 06:32:59 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,8 @@ t_color				color_alpha(t_byte r, t_byte g, t_byte b, t_byte a);
 t_color				color(t_byte red, t_byte green, t_byte blue);
 t_color				color_from_int(int src);
 int					color_to_int(t_color col);
+char				*color_to_str(t_color color);
+char				*color_to_str_color(t_color color);
 
 /*
 ** camera.c
@@ -157,13 +159,24 @@ t_double3			d3_mult(t_double3 a, double b);
 double				d3_dist_sqr(t_double3 a, t_double3 b);
 double				d3_dist(t_double3 a, t_double3 b);
 
+double				d3_dot_product(t_double3 a, t_double3 b);
+t_double3			d3_vector_product(t_double3 a, t_double3 b);
+
 char				*d3_to_str(t_double3 a);
 char				*d3_to_str_color(t_double3 a);
+
+/*
+** init.c
+*/
+int			rtv1_init(t_rtv1 **rtv1);
+//main
+void		rtv1_quit(t_rtv1 *rtv1);
 
 /*
 ** trace.c
 */
 
-t_color		trace(t_rtv1 *rtv1, t_double3 direction);
+t_color		trace(t_rtv1 *rtv1, t_double3 X, t_double3 Y);
+//t_color		trace(t_rtv1 *rtv1, t_double3 direction);
 
 #endif

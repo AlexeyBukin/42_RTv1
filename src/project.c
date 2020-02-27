@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 04:16:09 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/18 23:51:16 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/02/27 06:47:31 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int			project(t_rtv1 *rtv1)
 	int			y;
 	int			x;
 
-//	ft_putendl("projection called...");
 	if (rtv1 == NULL)
 		return (ft_puterror(1, "project(): rtv1 pointer is NULL"));
 	if (rtv1->window == NULL)
@@ -53,7 +52,7 @@ int			project(t_rtv1 *rtv1)
 				rtv1->trace = FALSE;
 			}
 
-			traced = trace(rtv1, d3_minus(dot, cam.pos)); ///d3_minus = zero (0) !!!!!!!!!!!!!
+			traced = trace(rtv1, cam.pos, dot); ///d3_minus = zero (0) !!!!!!!!!!!!!
 			texture_put_pixel(rtv1->window->texture, traced, x, y);
 
 			//TODO manual tracing with debuging
@@ -86,5 +85,5 @@ int			project(t_rtv1 *rtv1)
 //			printf("\n");
 //		}
 	}
-	return (0);
+	return (OK);
 }
