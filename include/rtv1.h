@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/27 06:32:59 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/02/28 23:51:30 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 
 //# define WIN_WIDTH  100
 //# define WIN_HEIGHT 50
+
+# define INFINITY_POSITIVE_RAW (0x7ff0000000000000)
+# define INFINITY_NEGATIVE_RAW (0xfff0000000000000)
 
 typedef struct		s_double3
 {
@@ -63,6 +66,64 @@ typedef struct		s_window
 	SDL_Texture		*sdl_texture;
 	SDL_Renderer	*sdl_renderer;
 }					t_window;
+
+/*
+** basic figures block
+*/
+
+typedef enum		e_figure_type
+{
+	FIG_PLANE,
+	FIG_SPHERE,
+	FIG_CONE,
+	FIG_CYLINDER,
+	FIG_TYPES_NUM
+}					t_figure_type;
+
+typedef	struct	s_base_fig_plane
+{
+	t_figure_type	type;
+	t_double3		pos;
+	t_color			col;
+	t_double3		a;
+	t_double3		b;
+}				t_base_fig_plane;
+
+typedef	struct	s_base_fig_sphere
+{
+	double		r;
+}				t_base_fig_sphere;
+
+typedef	struct	s_base_fig_cone
+{
+	t_double3	top;
+	double		r;
+}				t_base_fig_cone;
+
+typedef	struct	s_base_fig_cylinder
+{
+	t_double3	a;
+	t_double3	b;
+}				t_base_fig_cylinder;
+
+typedef	union	s_base_fig_u
+{
+	t_base_fig_plane	plane;
+	t_base_fig_sphere	sphere;
+	t_base_fig_cylinder	cylinder;
+	t_base_fig_cone		cone;
+}				s_base_fig_u;
+
+typedef	struct	s_base_fig
+{
+	t_figure_type	type;
+	t_double3		pos;
+	t_color			col;
+}				t_base_fig;
+
+/*
+** camera block
+*/
 
 typedef struct		s_camera
 {
@@ -168,15 +229,30 @@ char				*d3_to_str_color(t_double3 a);
 /*
 ** init.c
 */
-int			rtv1_init(t_rtv1 **rtv1);
+int					rtv1_init(t_rtv1 **rtv1);
 //main
-void		rtv1_quit(t_rtv1 *rtv1);
+void				rtv1_quit(t_rtv1 *rtv1);
 
 /*
 ** trace.c
 */
 
-t_color		trace(t_rtv1 *rtv1, t_double3 X, t_double3 Y);
+t_color				trace(t_rtv1 *rtv1, t_double3 X, t_double3 Y);
 //t_color		trace(t_rtv1 *rtv1, t_double3 direction);
+
+/*
+** utils.c
+*/
+
+double	clamp(double val, double min, double max);
+
+/*
+** infinity.c
+*/
+
+double		get_inf();
+t_bool		is_inf(double d);
+t_double3	d3_get_inf();
+t_bool		d3_is_inf(t_double3 a);
 
 #endif
