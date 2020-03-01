@@ -3,6 +3,8 @@ RTv1
 .idea
 build/*
 cmake*
+*/CMake*
+CMake*
 
 # libft
 libft/build/*
