@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 18:14:02 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/01 14:41:59 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/01 18:46:10 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void		texture_put_pixel(t_texture *texture, t_color col, size_t x, size_t y)
 		return ;
 	}
 	offset = y * texture->size_x * 4 + x * 4;
-	texture->img[offset + 0] = col.r;
+	texture->img[offset + 0] = col.b;
 	texture->img[offset + 1] = col.g;
-	texture->img[offset + 2] = col.b;
+	texture->img[offset + 2] = col.r;
 	texture->img[offset + 3] = col.a;
 }
 
@@ -49,9 +49,9 @@ void		texture_fill(t_texture *texture, t_color col)
 		while (j < texture->size_x)
 		{
 			offset = i * texture->size_x * 4 + j * 4;
-			texture->img[offset + 0] = col.r;
+			texture->img[offset + 0] = col.b;
 			texture->img[offset + 1] = col.g;
-			texture->img[offset + 2] = col.b;
+			texture->img[offset + 2] = col.r;
 			texture->img[offset + 3] = col.a;
 			j++;
 		}

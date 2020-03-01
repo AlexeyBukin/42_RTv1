@@ -77,6 +77,17 @@ double		d3_len(t_double3 a)
 	return (d3_dist(zero, a));
 }
 
+t_double3	d3_normilize(t_double3 vec)
+{
+	double		len;
+
+	len = d3_len(vec);
+	vec.x /= len;
+	vec.y /= len;
+	vec.z /= len;
+	return (vec);
+}
+
 char		*d3_to_str(t_double3 a)
 {
 	char		*res;

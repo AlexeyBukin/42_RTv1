@@ -52,7 +52,7 @@ int			project(t_rtv1 *rtv1)
 				rtv1->trace = FALSE;
 			}
 
-			traced = trace(rtv1, cam.pos, dot); ///d3_minus = zero (0) !!!!!!!!!!!!!
+			traced = trace(rtv1, cam.pos, d3_minus(dot, cam.pos)); ///d3_minus = zero (0) !!!!!!!!!!!!!
 			texture_put_pixel(rtv1->window->texture, traced, x, y);
 
 			//TODO manual tracing with debuging

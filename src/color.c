@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 18:14:06 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/27 04:48:07 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/01 18:40:48 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,20 @@ t_color		color(t_byte red, t_byte green, t_byte blue)
 	col.g = green;
 	col.b = blue;
 	col.a = ALPHA_MAX;
+	return (col);
+}
+
+//todo 	if slow col = mask.r * (col.r > mask.r) + col * !(col.r > mask.r);
+t_color		col_mask(t_color col, t_color mask)
+{
+	if (col.r > mask.r)
+		col.r = mask.r;
+	if (col.g > mask.g)
+		col.g = mask.g;
+	if (col.b > mask.b)
+		col.b = mask.b;
+	if (col.a > mask.a)
+		col.a = mask.a;
 	return (col);
 }
 

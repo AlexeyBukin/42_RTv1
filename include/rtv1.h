@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/01 15:32:27 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/01 18:42:05 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,9 +157,9 @@ typedef struct		s_rtv1
 	t_window		*window;
 	t_camera		camera;
 	t_scene			*scene;
-	int				velocity_up_down;
-	int				velocity_left_right;
-	int				velocity_forward_backward;
+//	int				velocity_up_down;
+//	int				velocity_left_right;
+//	int				velocity_forward_backward;
 	t_bool			lmb_down;
 	t_bool			trace;
 }					t_rtv1;
@@ -209,6 +209,7 @@ void				texture_put_pixel(t_texture *texture, t_color col,
 ** color.c
 */
 
+t_color				col_mask(t_color col, t_color mask);
 t_color				color_alpha(t_byte r, t_byte g, t_byte b, t_byte a);
 t_color				color(t_byte red, t_byte green, t_byte blue);
 t_color				color_from_int(int src);
@@ -240,6 +241,8 @@ double				d3_dist(t_double3 a, t_double3 b);
 
 double				d3_dot_product(t_double3 a, t_double3 b);
 t_double3			d3_vector_product(t_double3 a, t_double3 b);
+t_double3			d3_normilize(t_double3 vec);
+double				d3_len(t_double3 a);
 
 char				*d3_to_str(t_double3 a);
 char				*d3_to_str_color(t_double3 a);
