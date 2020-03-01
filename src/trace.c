@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 03:26:48 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/01 18:48:59 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/01 18:50:18 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ t_double3		trace_sphere(t_double3 a, t_double3 ab, t_base_fig_sphere s)
 	return (result);
 }
 
+int a = 3;
 
 t_double3		trace_plane(t_double3 from, t_double3 to, t_base_fig_plane pl)
 {
