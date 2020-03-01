@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 03:26:48 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/01 14:16:42 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/01 14:17:03 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ t_color		trace(t_rtv1 *rtv1, t_double3 X, t_double3 Y)
 		ft_putendl("trace(): pointer rtv1 is NULL");
 		return (color(0, 0, 0));
 	}
-
 	t_base_fig_plane pl;
 //	pl.pos  = (t_double3){4.0, 0.0, 0.0};
 //	pl.a    = (t_double3){3.0, 0.0, 1.0};

@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/01 14:39:30 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/01 15:31:09 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,39 +91,55 @@ typedef	struct	s_base_fig_plane
 
 typedef	struct	s_base_fig_sphere
 {
-	double		r;
+	t_figure_type	type;
+	t_double3		pos;
+	t_color			col;
+	double 			r;
 }				t_base_fig_sphere;
 
 typedef	struct	s_base_fig_cone
 {
-	t_double3	top;
-	double		r;
+	t_figure_type	type;
+	t_double3		pos;
+	t_color			col;
+	t_double3		top;
+	double 			r;
 }				t_base_fig_cone;
 
 typedef	struct	s_base_fig_cylinder
 {
-	t_double3	a;
-	t_double3	b;
+	t_figure_type	type;
+	t_double3		pos;
+	t_color			col;
+	t_double3		top;
+	double 			r;
 }				t_base_fig_cylinder;
 
-typedef	union	s_base_fig_u
-{
-	t_base_fig_plane	plane;
-	t_base_fig_sphere	sphere;
-	t_base_fig_cylinder	cylinder;
-	t_base_fig_cone		cone;
-}				s_base_fig_u;
-
-typedef	struct	s_base_fig
+typedef	struct	s_figure_base
 {
 	t_figure_type	type;
 	t_double3		pos;
 	t_color			col;
+}				t_figure_base;
+
+typedef	union	s_base_fig
+{
+	t_figure_base		base;
+	t_base_fig_plane	plane;
+	t_base_fig_sphere	sphere;
+	t_base_fig_cylinder	cylinder;
+	t_base_fig_cone		cone;
 }				t_base_fig;
 
 /*
 ** camera block
 */
+
+typedef struct		s_scene
+{
+	t_base_fig		*figures;
+	size_t			fig_num;
+}					t_scene;
 
 typedef struct		s_camera
 {
@@ -140,6 +156,7 @@ typedef struct		s_rtv1
 {
 	t_window		*window;
 	t_camera		camera;
+	t_scene			*scene;
 	int				velocity_up_down;
 	int				velocity_left_right;
 	int				velocity_forward_backward;
