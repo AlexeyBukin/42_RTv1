@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 20:41:18 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/18 20:58:44 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/01 23:01:46 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ typedef struct			s_stg
 ** Functions list
 */
 
-int						ft_printf(const char *restrict format, ...);
+int						ft_printf(const char *format, ...);
 
 t_stg					ft_resolve_arg(char *string, va_list arg, int *flags);
 char					*ft_insert_d(va_list arg, int *flags);

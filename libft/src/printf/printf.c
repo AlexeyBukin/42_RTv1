@@ -74,7 +74,7 @@ t_data	init(char *str)
 	return (my_data);
 }
 
-int		ft_printf(const char *restrict format, ...)
+int		ft_printf(const char *format, ...)
 {
 	int		flags[FLAGS_LEN];
 	t_stg	resolved;

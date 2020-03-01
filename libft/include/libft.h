@@ -187,7 +187,6 @@ void			*ft_bzero(void *buf, size_t len);
 
 char			*ft_char_to_str(char c);
 
-
 int				ft_free(void *p);
 void			ft_free_char_2d_arr(char ***input);
 
