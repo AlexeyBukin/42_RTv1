@@ -39,7 +39,7 @@ src/texture.c \
 src/trace.c \
 src/window.c \
 src/double3.c \
-src/init.c \
+src/rtv1_init.c \
 src/utils.c \
 src/infinity.c
 

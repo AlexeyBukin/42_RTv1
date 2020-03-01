@@ -45,8 +45,8 @@ src/atoi_itoa/ft_utoa_base.c \
 src/ft_abs.c \
 src/ft_bzero.c \
 src/ft_char_to_str.c \
-src/ft_free_char_2d_arr.c \
 src/ft_free.c \
+src/ft_free_char_2d_arr.c \
 src/ft_pow.c \
 src/ft_power_ten.c \
 src/ft_return.c \
@@ -100,6 +100,7 @@ src/put/ft_putendl.c \
 src/put/ft_putendl_fd.c \
 src/put/ft_putendl_free.c \
 src/put/ft_putendl_int_var.c \
+src/put/ft_puterr_null.c \
 src/put/ft_puterror.c \
 src/put/ft_putnbr.c \
 src/put/ft_putnbr_fd.c \

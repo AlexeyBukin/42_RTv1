@@ -6,17 +6,26 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 20:49:47 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/16 20:50:04 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/01 14:37:23 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
+void		destroy_texture(t_texture *texture)
+{
+	if (texture == NULL)
+		return ;
+	free(texture->img);
+	free(texture);
+	return ;
+}
+
 void		destroy_window(t_window *win)
 {
 	if (win == NULL)
 		return ;
-	free(win->texture.img);
+	destroy_texture(win->texture);
 	SDL_DestroyWindow(win->sdl_window);
 	SDL_DestroyTexture(win->sdl_texture);
 	SDL_DestroyRenderer(win->sdl_renderer);

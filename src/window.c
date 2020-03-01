@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 00:29:47 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/17 01:07:59 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/01 14:45:56 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int				window_init(t_window **win, size_t w, size_t h)
 		return (ft_puterror(1, "window_init(): win pointer is NULL"));
 	if ((*win = (t_window*)malloc(sizeof(t_window))) == NULL)
 		return (ft_puterror(2, "window_init(): cannot malloc window"));
-	if (texture_init(&((*win)->texture), w, h) < 0)
+	if (((*win)->texture = texture_create(w, h)) == NULL)
 		return (ft_puterror(3, "window_init(): cannot init texture"));
 	if (((*win)->sdl_window = SDL_CreateWindow("RTv1", SDL_WINDOWPOS_UNDEFINED,
 			SDL_WINDOWPOS_UNDEFINED, w, h, SDL_WINDOW_SHOWN)) == NULL)
@@ -38,6 +38,7 @@ int				window_init(t_window **win, size_t w, size_t h)
 		return (ft_puterror(7,
 				"window_init(): cannot set SDL texture blend mode"));
 	}
+//	texture_fill((*rtv1)->window->texture, color(0, 0, 0));
 	return (0);
 }
 
@@ -45,20 +46,22 @@ int				window_render(t_window *win)
 {
 	if (win == NULL)
 		return (ft_puterror(1, "render_window(): pointer is NULL"));
+	if (win->texture == NULL)
+		return (ft_puterror(2, "render_window(): texture pointer is NULL"));
 	if (SDL_RenderClear(win->sdl_renderer) < 0)
 	{
-		return (ft_puterror(2,
+		return (ft_puterror(3,
 				"render_window(): problem running SDL_RenderClear()"));
 	}
 	if (SDL_UpdateTexture(win->sdl_texture, NULL,
-			win->texture.img, win->texture.size_x * 4) < 0)
+			win->texture->img, win->texture->size_x * 4) < 0)
 	{
-		return (ft_puterror(3,
+		return (ft_puterror(4,
 				"render_window(): problem running SDL_UpdateTexture()"));
 	}
 	if (SDL_RenderCopy(win->sdl_renderer, win->sdl_texture, NULL, NULL) < 0)
 	{
-		return (ft_puterror(4,
+		return (ft_puterror(5,
 				"render_window(): problem running SDL_RenderCopy()"));
 	}
 	SDL_RenderPresent(win->sdl_renderer);

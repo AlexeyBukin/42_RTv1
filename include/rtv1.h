@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/28 23:51:30 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/01 14:39:30 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct		s_texture
 
 typedef struct		s_window
 {
-	t_texture		texture;
+	t_texture		*texture;
 	SDL_Window		*sdl_window;
 	SDL_Texture		*sdl_texture;
 	SDL_Renderer	*sdl_renderer;
@@ -182,9 +182,10 @@ int					window_render(t_window *win);
 ** texture.c
 */
 
+t_texture			*texture_create(size_t w, size_t h);
 int					texture_init(t_texture *texture, size_t w, size_t h);
-void				texture_fill(t_texture texture, t_color col);
-void				texture_put_pixel(t_texture texture, t_color col,
+void				texture_fill(t_texture *texture, t_color col);
+void				texture_put_pixel(t_texture *texture, t_color col,
 						size_t x, size_t y);
 
 /*
@@ -237,8 +238,7 @@ void				rtv1_quit(t_rtv1 *rtv1);
 ** trace.c
 */
 
-t_color				trace(t_rtv1 *rtv1, t_double3 X, t_double3 Y);
-//t_color		trace(t_rtv1 *rtv1, t_double3 direction);
+t_color				trace(t_rtv1 *rtv1, t_double3 from, t_double3 to);
 
 /*
 ** utils.c

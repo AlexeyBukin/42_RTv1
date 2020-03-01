@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 19:12:07 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/18 21:29:42 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/01 14:49:23 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ void			ft_putendl(char const *s);
 void			ft_putendl_fd(char const *s, int fd);
 void			ft_putendl_free(char *s);
 void			ft_putendl_int_var(const char *var_name, int var);
+void			*ft_puterr_null(int error_code, char *err_msg);
 int				ft_puterror(int error_code, char *err_msg);
 void			ft_putnbr(int n);
 void			ft_putnbr_fd(int n, int fd);

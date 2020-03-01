@@ -17,7 +17,7 @@ int		ft_puterror(int error_code, char *err_msg)
 	ft_putstr("Error occured! (error code: ");
 	ft_putnbr(error_code);
 	ft_putstr(" )\n");
-	if (err_msg == 0)
+	if (err_msg != 0)
 	{
 		ft_putstr("Error message: \'");
 		ft_putstr(err_msg);
