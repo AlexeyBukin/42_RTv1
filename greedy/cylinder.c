@@ -6,14 +6,14 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 15:49:44 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/02 19:01:11 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/02 18:47:35 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static double		get_t(t_base_fig_cyl *cyl, t_vec ao_x_ab,
-					t_vec v_x_ab, double *ab2)
+static double	get_t(t_base_fig_cyl *cyl, t_vec ao_x_ab,
+t_vec v_x_ab, double *ab2)
 {
 	t_double3	ab;
 	double		a;
@@ -34,44 +34,47 @@ static double		get_t(t_base_fig_cyl *cyl, t_vec ao_x_ab,
 	return ((-b - sqrt(d)) / (2 * a));
 }
 
-static t_vec		intersect(t_double3 i_pos, double ab2, t_base_fig_cyl *cyl)
+t_double3		trace_cyl(t_double3 orig, t_double3 dir, t_base_fig_cyl *cyl)
 {
+	t_double3	ao;
+	t_double3	ab;
+	t_double3	ao_x_ab;
+	t_double3	v_x_ab;
+	double		ab2;
+	double		t;
+	t_double3	i_pos;
 	t_double3	i_pos_len;
 	double		t_lim;
 
 	if (cyl == NULL)
 		return (d3_get_inf());
+	dir = d3_normalize(dir);
+	ab = d3_minus(cyl->top, cyl->pos);
+	ao = d3_minus(orig, cyl->pos);
+	ao_x_ab = d3_vector_product(ao, ab);
+	v_x_ab = d3_vector_product(dir, ab);
+
+	t = get_t(cyl, ao_x_ab, v_x_ab, &ab2);
+	if (t == get_inf())
+	{
+		//only null
+		return (d3_get_inf());
+	}
+	else if (t < 0)
+	{
+		//do shit to check caps
+		return (d3_get_inf());
+	}
+
+	i_pos     = d3_plus(d3_mult(dir, t), orig);
 	i_pos_len = d3_minus(i_pos, cyl->pos);
-	t_lim = d3_dot_product(i_pos_len, d3_minus(cyl->top, cyl->pos)) / ab2;
+	t_lim     = d3_dot_product(i_pos_len, ab) / ab2;
+
 	if (t_lim >= 0 && t_lim <= 1)
 	{
 		return (i_pos);
 	}
 	return (d3_get_inf());
-}
-
-t_double3			trace_cyl(t_double3 orig, t_double3 dir,
-					t_base_fig_cyl *cyl)
-{
-	t_double3	ab;
-	double		ab2;
-	double		t;
-
-	if (cyl == NULL)
-		return (d3_get_inf());
-	dir = d3_normalize(dir);
-	ab = d3_minus(cyl->top, cyl->pos);
-	t = get_t(cyl, d3_vector_product(d3_minus(orig, cyl->pos), ab),
-		d3_vector_product(dir, ab), &ab2);
-	if (t == get_inf())
-	{
-		return (d3_get_inf());
-	}
-	else if (t < 0)
-	{
-		return (d3_get_inf());
-	}
-	return (intersect(d3_plus(d3_mult(dir, t), orig), ab2, cyl));
 }
 
 /*
@@ -83,7 +86,8 @@ t_base_fig_cyl		*fig_cyl_create(void)
 {
 	t_base_fig_cyl		*cyl;
 
-	if ((cyl = (t_base_fig_cyl*)malloc(sizeof(t_base_fig_cyl))) == NULL)
+	if ((cyl = (t_base_fig_cyl*)malloc(sizeof(t_base_fig_cyl)))
+																	== NULL)
 		return (ft_puterr_null(1, "fig_cyl_create(): cannot "
 		"malloc scene struct"));
 	cyl->type = FIG_CYLINDER;
