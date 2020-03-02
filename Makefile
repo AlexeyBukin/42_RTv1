@@ -41,7 +41,8 @@ src/window.c \
 src/double3.c \
 src/rtv1_init.c \
 src/utils.c \
-src/infinity.c
+src/infinity.c \
+src/figures/cylinder.c
 
 O_FILES = $(patsubst $(SRC_DIR)%.c, $(BUILD_DIR)%.o, $(SRC_FILES))
 

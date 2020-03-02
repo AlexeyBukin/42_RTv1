@@ -77,7 +77,7 @@ double		d3_len(t_double3 a)
 	return (d3_dist(zero, a));
 }
 
-t_double3	d3_normilize(t_double3 vec)
+t_double3	d3_normalize(t_double3 vec)
 {
 	double		len;
 

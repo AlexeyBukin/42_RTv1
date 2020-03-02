@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/01 18:42:05 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/02 16:38:24 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ typedef struct		s_double3
 	double 			y;
 	double 			z;
 }					t_double3;
+
+//todo make vector type
+//typedef t_double3	vector;
 
 typedef enum		e_result_code
 {
@@ -106,14 +109,14 @@ typedef	struct	s_base_fig_cone
 	double 			r;
 }				t_base_fig_cone;
 
-typedef	struct	s_base_fig_cylinder
+typedef	struct	s_base_fig_cyl
 {
 	t_figure_type	type;
 	t_double3		pos;
 	t_color			col;
 	t_double3		top;
 	double 			r;
-}				t_base_fig_cylinder;
+}				t_base_fig_cyl;
 
 typedef	struct	s_figure_base
 {
@@ -127,7 +130,7 @@ typedef	union	s_base_fig
 	t_figure_base		base;
 	t_base_fig_plane	plane;
 	t_base_fig_sphere	sphere;
-	t_base_fig_cylinder	cylinder;
+	t_base_fig_cyl		cyl;
 	t_base_fig_cone		cone;
 }				t_base_fig;
 
@@ -241,7 +244,7 @@ double				d3_dist(t_double3 a, t_double3 b);
 
 double				d3_dot_product(t_double3 a, t_double3 b);
 t_double3			d3_vector_product(t_double3 a, t_double3 b);
-t_double3			d3_normilize(t_double3 vec);
+t_double3			d3_normalize(t_double3 vec);
 double				d3_len(t_double3 a);
 
 char				*d3_to_str(t_double3 a);
@@ -274,5 +277,10 @@ double		get_inf();
 t_bool		is_inf(double d);
 t_double3	d3_get_inf();
 t_bool		d3_is_inf(t_double3 a);
+
+/*
+** cylinder.c
+*/
+t_base_fig_cyl		*fig_cyl_create();
 
 #endif
