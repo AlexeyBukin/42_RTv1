@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 18:13:19 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/26 20:53:08 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/02 17:24:14 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		iterate_events(t_rtv1 *rtv1)
 	int					result_code;
 
 	render_needed = FALSE;
+	//result_code = EXIT;
 	while (SDL_PollEvent(&event))
 	{
 		if (event.type == SDL_KEYDOWN)
@@ -67,7 +68,7 @@ int		rtv1_loop(t_rtv1 *rtv1)
 		if ((result_code = iterate_events(rtv1)) < 0)
 			return (ft_puterror(4, "rtv1_loop(): iterate_events()"));
 		else if (result_code == EXIT)
-			return (EXIT);
+			break;
 		else if (result_code == RENDER)
 		{
 			ft_putendl("calling redraw...");
@@ -75,5 +76,5 @@ int		rtv1_loop(t_rtv1 *rtv1)
 				return (ft_puterror(3, "rtv1_loop(): redraw()"));
 		}
 	}
-	return (0);
+	return (EXIT);
 }
