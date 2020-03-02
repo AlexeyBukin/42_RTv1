@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 18:13:19 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/02 18:01:05 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/02 18:01:31 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int		iterate_events(t_rtv1 *rtv1)
 	while (SDL_PollEvent(&event))
 	{
 		result_code = check_event(rtv1, event);
+		if (result_code == EXIT)
+			return (EXIT);
 		render_needed = (result_code == RENDER) ? TRUE : FALSE;
 	}
 	if (render_needed == TRUE)

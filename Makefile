@@ -7,8 +7,9 @@ CC = clang
 
 LIBM =
 DEBUG =
+OPTIM = -O2
 
-CFLAGS = -Wall -Wextra -Werror $(DEBUG)
+CFLAGS = -Wall -Wextra -Werror $(DEBUG) $(OPTIM)
 
 LIB_FT = libft/
 LIB_FT_FILE = $(LIB_FT)/libft.a
@@ -43,9 +44,6 @@ src/main.c \
 src/project.c \
 src/rtv1_init.c \
 src/scene.c \
-src/test/test_dist.c \
-src/test/test_time.c \
-src/test/test_trace.c \
 src/texture.c \
 src/trace.c \
 src/utils.c \

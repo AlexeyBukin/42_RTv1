@@ -18,6 +18,7 @@ NAME = libft.a
 
 CC = clang
 DEBUG =
+OPTIM = -O2
 
 CFLAGS = -Wall -Wextra -Werror $(DEBUG)
 
@@ -144,9 +145,7 @@ src/str/ft_strsplit.c \
 src/str/ft_strstr.c \
 src/str/ft_strsub.c \
 src/str/ft_strsub_free.c \
-src/str/ft_strtrim.c \
-src/test/insert_func.c \
-src/test/insert_mem.c
+src/str/ft_strtrim.c
 
 O_FILES = $(patsubst $(SRC_DIR)%.c, $(BUILD_DIR)%.o, $(SRC_FILES))
 

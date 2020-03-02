@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/02 17:53:19 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/02 18:28:22 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ typedef struct		s_double3
 }					t_double3;
 
 //todo make vector type
-//typedef t_double3	vector;
+typedef t_double3	t_vec;
+typedef t_double3	t_dot;
 
 typedef enum		e_result_code
 {
@@ -283,6 +284,8 @@ t_bool		d3_is_inf(t_double3 a);
 /*
 ** cylinder.c
 */
+t_double3			trace_cyl(t_double3 orig,
+						t_double3 dir, t_base_fig_cyl *cyl);
 t_base_fig_cyl		*fig_cyl_create();
 
 #endif
