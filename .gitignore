@@ -2,7 +2,7 @@
 RTv1
 .idea
 build/*
-cmake*
+cmake-build-debug
 
 # libft
 libft/build/*
