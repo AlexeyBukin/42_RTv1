@@ -30,19 +30,28 @@ SRC_DIR = src/
 SRC_FILES=\
 src/camera.c \
 src/color.c \
+src/color_2.c \
 src/destroy.c \
+src/double3.c \
+src/double3_str.c \
 src/events.c \
+src/figures/cylinder.c \
+src/figures/plane.c \
+src/infinity.c \
 src/loop.c \
 src/main.c \
 src/project.c \
+src/rtv1_init.c \
+src/scene.c \
+src/test/test_dist.c \
+src/test/test_time.c \
+src/test/test_trace.c \
 src/texture.c \
 src/trace.c \
-src/window.c \
-src/double3.c \
-src/rtv1_init.c \
 src/utils.c \
-src/infinity.c \
-src/figures/cylinder.c
+src/vector_math.c \
+src/window.c \
+
 
 O_FILES = $(patsubst $(SRC_DIR)%.c, $(BUILD_DIR)%.o, $(SRC_FILES))
 

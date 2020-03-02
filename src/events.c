@@ -66,10 +66,5 @@ int		on_mouse_move(t_rtv1 *rtv1, int x, int y)
 	}
 	(void)x;
 	(void)y;
-//	if (rtv1->lmb_down == TRUE)
-//	{
-//		texture_put_pixel(rtv1->window->texture, color(255, 255, 255), x, y);
-//		return (RENDER);
-//	}
 	return (OK);
 }

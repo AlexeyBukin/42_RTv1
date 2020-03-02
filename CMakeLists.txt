@@ -8,11 +8,14 @@ project(RTv1)
 
 #file(GLOB SOURCES "src/*.c")
 
+#find src -type f -name '*.c' | sed "s/^/        /"
 set(SOURCES
         src/camera.c
         src/color.c
+        src/color_2.c
         src/destroy.c
         src/double3.c
+        src/double3_str.c
         src/events.c
         src/figures/cylinder.c
         src/figures/plane.c
@@ -28,6 +31,7 @@ set(SOURCES
         src/texture.c
         src/trace.c
         src/utils.c
+        src/vector_math.c
         src/window.c
         )
 

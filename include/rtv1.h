@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/02 16:38:42 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/02 17:53:19 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ typedef enum		e_result_code
 {
 	OK,
 	EXIT,
-	RENDER
+	RENDER,
+	ERROR,
+	UNSET
 }					t_result_code;
 
 typedef struct		s_color

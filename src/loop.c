@@ -6,11 +6,31 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 18:13:19 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/02 17:24:14 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/02 18:01:05 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+int		check_event(t_rtv1 *rtv1, SDL_Event event)
+{
+	int					result_code;
+
+	result_code = UNSET;
+	if (event.type == SDL_KEYDOWN)
+		result_code = on_key_down(rtv1, event.button.button);
+	else if (event.type == SDL_KEYUP)
+		result_code = on_key_up(rtv1, event.button.button);
+	else if (event.type == SDL_MOUSEBUTTONDOWN)
+		result_code = on_mouse_down(rtv1, event.button.button);
+	else if (event.type == SDL_MOUSEBUTTONUP)
+		result_code = on_mouse_up(rtv1, event.button.button);
+	else if (event.type == SDL_MOUSEMOTION)
+		result_code = on_mouse_move(rtv1, event.motion.x, event.motion.y);
+	if (event.type == SDL_QUIT)
+		result_code = EXIT;
+	return (result_code);
+}
 
 int		iterate_events(t_rtv1 *rtv1)
 {
@@ -18,23 +38,13 @@ int		iterate_events(t_rtv1 *rtv1)
 	t_bool				render_needed;
 	int					result_code;
 
+	if (rtv1 == NULL)
+		return (ERROR);
 	render_needed = FALSE;
-	//result_code = EXIT;
 	while (SDL_PollEvent(&event))
 	{
-		if (event.type == SDL_KEYDOWN)
-			result_code = on_key_down(rtv1, event.button.button);
-		else if (event.type == SDL_KEYUP)
-			result_code = on_key_up(rtv1, event.button.button);
-		else if (event.type == SDL_MOUSEBUTTONDOWN)
-			result_code = on_mouse_down(rtv1, event.button.button);
-		else if (event.type == SDL_MOUSEBUTTONUP)
-			result_code = on_mouse_up(rtv1, event.button.button);
-		else if (event.type == SDL_MOUSEMOTION)
-			result_code = on_mouse_move(rtv1, event.motion.x, event.motion.y);
-		if (event.type == SDL_QUIT || result_code == EXIT)
-			return (EXIT);
-		render_needed = result_code == RENDER ? TRUE : FALSE;
+		result_code = check_event(rtv1, event);
+		render_needed = (result_code == RENDER) ? TRUE : FALSE;
 	}
 	if (render_needed == TRUE)
 		return (RENDER);
@@ -68,7 +78,7 @@ int		rtv1_loop(t_rtv1 *rtv1)
 		if ((result_code = iterate_events(rtv1)) < 0)
 			return (ft_puterror(4, "rtv1_loop(): iterate_events()"));
 		else if (result_code == EXIT)
-			break;
+			break ;
 		else if (result_code == RENDER)
 		{
 			ft_putendl("calling redraw...");

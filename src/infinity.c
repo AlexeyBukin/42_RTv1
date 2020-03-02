@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-double		get_inf()
+double		get_inf(void)
 {
 	double				d;
 	unsigned long long	ull;
@@ -32,7 +32,7 @@ t_bool		is_inf(double d)
 	return (FALSE);
 }
 
-t_double3	d3_get_inf()
+t_double3	d3_get_inf(void)
 {
 	t_double3	a;
 

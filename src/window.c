@@ -38,7 +38,6 @@ int				window_init(t_window **win, size_t w, size_t h)
 		return (ft_puterror(7,
 				"window_init(): cannot set SDL texture blend mode"));
 	}
-//	texture_fill((*rtv1)->window->texture, color(0, 0, 0));
 	return (0);
 }
 
