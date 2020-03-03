@@ -28,7 +28,7 @@ SRC_DIR = src/
 #SRC_FILES = $(shell find $(SRC_DIR) -not \( -path $(MAIN_DIR) -prune \) -type f -name "*.c")
 #find src -type f -name '*.c' | sed "s/\$/ \\\\/"
 
-SRC_FILES=\
+SRC_FILES = \
 src/camera.c \
 src/color.c \
 src/color_2.c \
@@ -38,6 +38,7 @@ src/double3_str.c \
 src/events.c \
 src/figures/cylinder.c \
 src/figures/plane.c \
+src/figures/sphere.c \
 src/infinity.c \
 src/loop.c \
 src/main.c \

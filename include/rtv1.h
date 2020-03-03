@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/02 18:28:22 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/03 16:21:24 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 
 # define WIN_WIDTH  640
 # define WIN_HEIGHT 480
-
+//
 //# define WIN_WIDTH  100
-//# define WIN_HEIGHT 50
+//# define WIN_HEIGHT 100
 
 # define INFINITY_POSITIVE_RAW (0x7ff0000000000000)
 # define INFINITY_NEGATIVE_RAW (0xfff0000000000000)
@@ -163,9 +163,9 @@ typedef struct		s_rtv1
 	t_window		*window;
 	t_camera		camera;
 	t_scene			*scene;
-//	int				velocity_up_down;
-//	int				velocity_left_right;
-//	int				velocity_forward_backward;
+	double			vel_forward;
+	double			vel_right;
+	double			vel_up;
 	t_bool			lmb_down;
 	t_bool			trace;
 }					t_rtv1;
@@ -227,6 +227,8 @@ char				*color_to_str_color(t_color color);
 ** camera.c
 */
 
+int					camera_move_global(t_camera *cam, t_vec dir);
+int					camera_move_local(t_camera *cam, t_vec dir);
 int					camera_init_static(t_camera *cam);
 
 /*
@@ -284,8 +286,24 @@ t_bool		d3_is_inf(t_double3 a);
 /*
 ** cylinder.c
 */
+
 t_double3			trace_cyl(t_double3 orig,
 						t_double3 dir, t_base_fig_cyl *cyl);
 t_base_fig_cyl		*fig_cyl_create();
+
+/*
+** plane.c
+*/
+
+t_double3			trace_plane(t_double3 orig, t_vec dir, t_base_fig_plane *pl);
+t_base_fig_plane	*fig_plane_create(void);
+
+/*
+** sphere.c
+*/
+
+t_double3			trace_sphere(t_double3 orig, t_double3 dir,
+  						t_base_fig_sphere *s);
+t_base_fig_sphere	*fig_sphere_create(void);
 
 #endif

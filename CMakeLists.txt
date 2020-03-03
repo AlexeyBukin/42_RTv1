@@ -19,6 +19,7 @@ set(SOURCES
         src/events.c
         src/figures/cylinder.c
         src/figures/plane.c
+        src/figures/sphere.c
         src/infinity.c
         src/loop.c
         src/main.c

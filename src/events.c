@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 00:26:47 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/17 02:07:44 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/03 15:44:46 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,84 @@ int		on_key_down(t_rtv1 *rtv1, SDL_Scancode scancode)
 		ft_putendl("\'R\' pressed!");
 		return (RENDER);
 	}
+	else if (scancode == SDL_SCANCODE_A)
+	{
+		if (rtv1->vel_right != 0)
+			rtv1->vel_right = 0;
+		else
+			rtv1->vel_right = -0.1;
+		ft_putendl("\'A\' pressed!");
+		return (RENDER);
+	}
+	else if (scancode == SDL_SCANCODE_D)
+	{
+		if (rtv1->vel_right != 0)
+			rtv1->vel_right = 0;
+		else
+			rtv1->vel_right = 0.1;
+		ft_putendl("\'D\' pressed!");
+		return (RENDER);
+	}
+	else if (scancode == SDL_SCANCODE_Q)
+	{
+		if (rtv1->vel_up != 0)
+			rtv1->vel_up = 0;
+		else
+			rtv1->vel_up = 0.1;
+		ft_putendl("\'Q\' pressed!");
+		return (RENDER);
+	}
+	else if (scancode == SDL_SCANCODE_E)
+	{
+		if (rtv1->vel_up != 0)
+			rtv1->vel_up = 0;
+		else
+			rtv1->vel_up = -0.1;
+		ft_putendl("\'E\' pressed!");
+		return (RENDER);
+	}
+	else if (scancode == SDL_SCANCODE_W)
+	{
+		if (rtv1->vel_forward != 0)
+			rtv1->vel_forward = 0;
+		else
+			rtv1->vel_forward = 0.1;
+		ft_putendl("\'W\' pressed!");
+		return (RENDER);
+	}
+	else if (scancode == SDL_SCANCODE_S)
+	{
+		if (rtv1->vel_forward != 0)
+			rtv1->vel_forward = 0;
+		else
+			rtv1->vel_forward = -0.1;
+		ft_putendl("\'S\' pressed!");
+		return (RENDER);
+	}
 	return (OK);
 }
 
 int		on_key_up(t_rtv1 *rtv1, SDL_Scancode scancode)
 {
+	if (scancode == SDL_SCANCODE_A || scancode == SDL_SCANCODE_D)
+	{
+		rtv1->vel_right = 0;
+		ft_putendl("\'A_D\' released!");
+		return (RENDER);
+	}
+	if (scancode == SDL_SCANCODE_Q || scancode == SDL_SCANCODE_E)
+	{
+		rtv1->vel_up = 0;
+		ft_putendl("\'Q_E\' released!");
+		return (RENDER);
+	}
+	if (scancode == SDL_SCANCODE_W || scancode == SDL_SCANCODE_S)
+	{
+		rtv1->vel_forward = 0;
+		ft_putendl("\'W_S\' released!");
+		return (RENDER);
+	}
+
 	(void)rtv1;
 	(void)scancode;
 	return (OK);

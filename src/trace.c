@@ -6,40 +6,13 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 03:26:48 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/02 18:06:39 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/03 15:38:49 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-t_double3		trace_sphere(t_double3 orig, t_double3 dir, t_base_fig_sphere s)
-{
-	t_double3	ao;
-	double		cos_a;
-	double		sin_a;
-	double		dist;
-	double		perp;
-	double		square;
-	double		root;
-	double		ac_len;
-	t_double3	c;
-	t_double3	result;
 
-	ao = d3_minus(s.pos, orig);
-	dir = d3_normalize(dir);
-	dist = d3_len(ao);
-	square = d3_dot_product(ao, dir);
-	cos_a = square / (dist);
-	sin_a = sqrt(1.0 - cos_a * cos_a);
-	perp = dist * sin_a;
-	if (perp > s.r)
-		return(d3_get_inf());
-	ac_len = dist * cos_a;
-	c = d3_plus(orig, d3_mult(dir, ac_len));
-	root = sqrt(s.r * s.r - perp * perp);
-	result = d3_minus(c, d3_mult(dir, root));
-	return (result);
-}
 
 
 //TODO array of figures
@@ -50,7 +23,9 @@ t_color		trace(t_rtv1 *rtv1, t_double3 orig, t_double3 dir)
 		ft_putendl("trace(): pointer rtv1 is NULL");
 		return (color(0, 0, 0));
 	}
-	t_double3	res;
+	t_double3	cyl_res;
+	t_double3	sp_res;
+	t_double3	pl_res;
 //	t_base_fig_plane pl;
 //	pl.pos  = (t_double3){4.0, 0.0, 0.0};
 //	pl.a    = (t_double3){3.0, 0.0, 1.0};
@@ -71,18 +46,58 @@ t_color		trace(t_rtv1 *rtv1, t_double3 orig, t_double3 dir)
 //
 //	res = trace_sphere(orig, dir, sphere);
 
+	t_color rescol = color(0, 0, 0);
+
+
+	t_base_fig_sphere  *sphere;
+	sphere = fig_sphere_create();
+	sp_res = trace_sphere(orig, dir, sphere);
+
 	t_base_fig_cyl  *cyl;
 	cyl = fig_cyl_create();
-	res = trace_cyl(orig, dir, cyl);
+	cyl_res = trace_cyl(orig, dir, cyl);
+
+	t_base_fig_plane *pl;
+	pl = fig_plane_create();
+	pl_res = trace_plane(orig, dir, pl);
+
+	double dist_sp = d3_dist(orig, sp_res);
+	double dist_cyl = d3_dist(orig, cyl_res);
+	double dist_pl = d3_dist(orig, pl_res);
+
+	double dist = 50.0;
+	if (dist_sp < dist)
+	{
+		dist = dist_sp;
+		rescol = sphere->col;
+	}
+
+	if (dist_cyl < dist)
+	{
+		dist = dist_cyl;
+		rescol = cyl->col;
+	}
+
+	if (dist_pl < dist)
+	{
+		dist = dist_pl;
+		rescol = pl->col;
+	}
 
 	//res = trace_plane(orig, dir, pl);
 
-	if (d3_is_inf(res))
-	{
+//	if (d3_is_inf(res))
+//	{
+//		return (color(0, 0, 0));
+//	}
+//	double dist = d3_dist(orig, res);
+	if (dist > 50)
 		return (color(0, 0, 0));
-	}
-	double dist = d3_dist(orig, res);
-	int col = (double)(clamp(dist, 0.0, 25) * 10.0);
-	return (col_mask(color(col + 100, col + 100, col + 100), cyl->col));
+	if (is_inf (dist))
+		return (color(0, 0, 0));
+
+	//int col = (int)(clamp(dist, 0.0, 25) * 10.0);
+	return (rescol);
+	//return (col_mask(color(col + 100, col + 100, col + 100), rescol));
 	//return (color_alpha(255, 255, 255, 100));
 }

@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 04:16:09 by kcharla           #+#    #+#             */
-/*   Updated: 2020/02/27 06:47:31 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/03 16:44:06 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,43 @@ int			project(t_rtv1 *rtv1)
 			t_double3 dot_1 = d3_mult(cam.direction_right,
 									  (double) cam.size_x * ((double) (xd / WIN_WIDTH) - (1.0 / 2.0)));
 
-			t_double3 dot_2 = d3_plus(cam.plane_pos, dot_1);
-			dot = d3_plus(dot_2, d3_mult(cam.direction_up,
-					(double) cam.size_y * ((double) (yd / WIN_HEIGHT) - (1.0 / 2.0))));
+			t_double3 dot_2 = d3_plus(dot_1, d3_mult(cam.direction_up,
+								   (double) -1 * cam.size_y *    ((double) (yd / WIN_HEIGHT) - (1.0 / 2.0))   ));
 
-			int needed = WIN_WIDTH / 5;
-			if (pixel_num % needed == 0 && pixel_num < WIN_WIDTH)
+			dot = d3_plus(cam.plane_pos, dot_2);
+
+//			int needed = WIN_WIDTH / 5;
+//			if (pixel_num % needed == 0 && pixel_num < WIN_WIDTH)
+//			{
+//				rtv1->trace = TRUE;
+//			}
+//			else
+//			{
+//				rtv1->trace = FALSE;
+//			}
+
+			rtv1->trace = FALSE;
+
+			if (x == 0 && y == 0)
 			{
 				rtv1->trace = TRUE;
 			}
-			else
+
+			if (x == WIN_WIDTH - 1 && y == 0)
 			{
-				rtv1->trace = FALSE;
+				rtv1->trace = TRUE;
 			}
+
+			if (x == 0 && y == WIN_HEIGHT - 1)
+			{
+				rtv1->trace = TRUE;
+			}
+
+			if (x == WIN_WIDTH - 1 && y == WIN_HEIGHT - 1)
+			{
+				rtv1->trace = TRUE;
+			}
+
 
 			traced = trace(rtv1, cam.pos, d3_minus(dot, cam.pos)); ///d3_minus = zero (0) !!!!!!!!!!!!!
 			texture_put_pixel(rtv1->window->texture, traced, x, y);
@@ -58,7 +82,7 @@ int			project(t_rtv1 *rtv1)
 			//TODO manual tracing with debuging
 
 			//int needed = WIN_WIDTH / 3;
-			if (pixel_num % needed == 0 && pixel_num < WIN_WIDTH)
+			if (rtv1->trace == TRUE)
 			{
 				double xd = (double) x;
 				ft_printf ("%-30s is %-30f | ", "xd", xd);
@@ -67,7 +91,10 @@ int			project(t_rtv1 *rtv1)
 				ft_printf ("%-30s is %-30d\n", "y", y);
 				ft_printf ("%-30s is %-30s\n", "cam.pos", d3_to_str_color(cam.pos));
 				ft_printf ("%-30s is %-30s\n", "cam.plane_pos", d3_to_str_color(cam.plane_pos));
+				ft_printf ("%-30s is %-30s\n", "dot1", d3_to_str_color(dot_1));
+				ft_printf ("%-30s is %-30s\n", "dot2", d3_to_str_color(dot_2));
 				ft_printf ("%-30s is %-30s\n", "dot", d3_to_str_color(dot));
+				ft_printf ("%-30s is %-30s\n", "dir", d3_to_str_color(d3_minus(dot, cam.pos)));
 				ft_printf ("\n");
 //				ft_printf ("dot is \'%s\'\n", d3_to_str(dot));
 			}

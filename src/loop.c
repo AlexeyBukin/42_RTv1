@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 18:13:19 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/02 18:01:31 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/03 15:47:27 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,12 @@ int		rtv1_loop(t_rtv1 *rtv1)
 			return (ft_puterror(4, "rtv1_loop(): iterate_events()"));
 		else if (result_code == EXIT)
 			break ;
-		else if (result_code == RENDER)
+		if (rtv1->vel_forward != 0 || rtv1->vel_right != 0 || rtv1->vel_up != 0)
+		{
+			camera_move_local(&rtv1->camera, (t_vec) {rtv1->vel_forward, rtv1->vel_right, rtv1->vel_up});
+			result_code = RENDER;
+		}
+		if (result_code == RENDER)
 		{
 			ft_putendl("calling redraw...");
 			if (redraw(rtv1) < 0)

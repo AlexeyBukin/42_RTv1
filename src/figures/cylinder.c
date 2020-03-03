@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 15:49:44 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/02 19:01:11 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/02 19:05:46 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ t_base_fig_cyl		*fig_cyl_create(void)
 		"malloc scene struct"));
 	cyl->type = FIG_CYLINDER;
 	cyl->top = (t_double3){4.0, 0.0, 1.0};
-	cyl->pos = (t_double3){3.0, 0.0, -1.0};
+	cyl->pos = (t_double3){4.0, 0.0, -1.0};
 	cyl->r = 1;
 	cyl->col = color(128, 128, 128);
 	return (cyl);
