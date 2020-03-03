@@ -8,31 +8,33 @@ project(RTv1)
 
 #file(GLOB SOURCES "src/*.c")
 
-#find src -type f -name '*.c' | sed "s/^/        /"
+# find src -type f -name '*.c' | sed "s/^/        /"
 set(SOURCES
-        src/camera.c
-        src/events.c
-        src/figures/cylinder.c
-        src/figures/figures.c
-        src/figures/plane.c
-        src/figures/sphere.c
         src/loop.c
-        src/main.c
         src/project.c
+        src/main.c
         src/rtv1_init.c
-        src/scene.c
         src/texture.c
-        src/trace.c
-        src/utils/color.c
-        src/utils/color_2.c
-        src/utils/destroy.c
-        src/utils/double3.c
-        src/utils/double3_str.c
-        src/utils/infinity.c
-        src/utils/smart_array.c
-        src/utils/utils.c
         src/utils/vector_math.c
+        src/utils/color.c
+        src/utils/double3.c
+        src/utils/infinity.c
+        src/utils/destroy.c
+        src/utils/color_2.c
+        src/utils/double3_str.c
+        src/utils/utils.c
+        src/utils/smart_array.c
+        src/trace.c
         src/window.c
+        src/events.c
+        src/camera.c
+        src/scene/scene.c
+        src/scene/sphere.c
+        src/scene/figures.c
+        src/scene/cylinder.c
+        src/scene/lights.c
+        src/scene/plane.c
+
         )
 
 add_executable(${PROJECT_NAME} ${SOURCES})

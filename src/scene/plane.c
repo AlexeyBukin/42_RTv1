@@ -12,9 +12,9 @@
 
 #include "rtv1.h"
 
-t_double3			trace_plane(t_double3 orig, t_vec dir, t_base_fig_plane *pl)
+t_dot				trace_plane(t_dot orig, t_vec dir, t_base_fig_plane *pl)
 {
-	t_double3	normal;
+	t_vec		normal;
 	t_double3	v;
 	t_double3	intersect;
 	double		e;

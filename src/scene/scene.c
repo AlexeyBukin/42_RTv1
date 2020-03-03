@@ -25,7 +25,7 @@ t_scene		*scene_create(void)
 		"cannot malloc scene struct"));
 	if ((scene->figures = fig_arr_create(3)) == NULL)
 		return (ft_puterr_null(1, "scene_create():"
-				"cannot malloc figures array"));
+				"cannot malloc scene array"));
 	scene->figures[0] = (t_base_fig*)fig_sphere_create();
 	scene->figures[1] = (t_base_fig*)fig_plane_create();
 	scene->figures[2] = (t_base_fig*)fig_cyl_create();
@@ -35,6 +35,6 @@ t_scene		*scene_create(void)
 }
 
 /*
-** TODO smart arrays for storage lights and figures
+** TODO smart arrays for storage lights and scene
 */
 

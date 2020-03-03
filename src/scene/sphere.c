@@ -28,7 +28,7 @@ t_double3		trace_sphere(t_double3 orig, t_double3 dir, t_base_fig_sphere *s)
 	if (s == NULL)
 		return(d3_get_inf());
 	ao = d3_minus(s->pos, orig);
-	dir = d3_normalize(dir);
+	dir = vec_normalize(dir);
 	dist = d3_len(ao);
 	square = d3_dot_product(ao, dir);
 	cos_a = square / (dist);

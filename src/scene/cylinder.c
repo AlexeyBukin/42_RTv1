@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 15:49:44 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/03 19:41:17 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/04 01:10:58 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,16 @@ static t_vec		intersect(t_double3 i_pos, double ab2, t_base_fig_cyl *cyl)
 	return (d3_get_inf());
 }
 
-t_double3			trace_cyl(t_double3 orig, t_double3 dir,
+t_double3			trace_cyl(t_dot orig, t_vec dir,
 					t_base_fig_cyl *cyl)
 {
-	t_double3	ab;
+	t_vec		ab;
 	double		ab2;
 	double		t;
 
 	if (cyl == NULL)
 		return (d3_get_inf());
-	dir = d3_normalize(dir);
+	dir = vec_normalize(dir);
 	ab = d3_minus(cyl->top, cyl->pos);
 	t = get_t(cyl, d3_vector_product(d3_minus(orig, cyl->pos), ab),
 		d3_vector_product(dir, ab), &ab2);

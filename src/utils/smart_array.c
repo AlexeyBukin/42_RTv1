@@ -13,5 +13,5 @@
 #include "rtv1.h"
 
 /*
-** TODO smatr arrays with minimum realloc calls
+** TODO smart arrays with minimum realloc calls
 */
