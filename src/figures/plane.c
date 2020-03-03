@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 16:04:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/03 16:40:41 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/03 19:41:17 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_base_fig_plane	*fig_plane_create(void)
 {
 	t_base_fig_plane		*plane;
 
-	if ((plane = (t_base_fig_plane*)malloc(sizeof(t_base_fig_plane))) == NULL)
+	if ((plane = (t_base_fig_plane*)fig_create()) == NULL)
 		return (ft_puterr_null(1, "fig_plane_create(): cannot"
 		" malloc scene struct"));
 	plane->type = FIG_PLANE;

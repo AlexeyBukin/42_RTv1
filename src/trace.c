@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 03:26:48 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/03 15:38:49 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/03 20:59:38 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,23 +49,20 @@ t_color		trace(t_rtv1 *rtv1, t_double3 orig, t_double3 dir)
 	t_color rescol = color(0, 0, 0);
 
 
-	t_base_fig_sphere  *sphere;
-	sphere = fig_sphere_create();
+	t_base_fig_sphere	*sphere = (t_base_fig_sphere*)rtv1->scene->figures[0];
 	sp_res = trace_sphere(orig, dir, sphere);
 
-	t_base_fig_cyl  *cyl;
-	cyl = fig_cyl_create();
-	cyl_res = trace_cyl(orig, dir, cyl);
-
-	t_base_fig_plane *pl;
-	pl = fig_plane_create();
+	t_base_fig_plane	*pl = (t_base_fig_plane*)rtv1->scene->figures[1];
 	pl_res = trace_plane(orig, dir, pl);
+
+	t_base_fig_cyl		*cyl = (t_base_fig_cyl*)rtv1->scene->figures[2];
+	cyl_res = trace_cyl(orig, dir, cyl);
 
 	double dist_sp = d3_dist(orig, sp_res);
 	double dist_cyl = d3_dist(orig, cyl_res);
 	double dist_pl = d3_dist(orig, pl_res);
 
-	double dist = 50.0;
+	double dist = 100.0;
 	if (dist_sp < dist)
 	{
 		dist = dist_sp;

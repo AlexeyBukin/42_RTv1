@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/03 16:21:24 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/03 20:53:54 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,10 +141,25 @@ typedef	union	s_base_fig
 ** camera block
 */
 
+typedef enum		e_falloff
+{
+	FALLOFF_LINEAR,
+	FALLOFF_QUADRATIC,
+}					t_falloff;
+
+typedef	struct	t_point_light
+{
+	t_double3		pos;
+	t_color			col;
+	double 			power;
+	t_falloff		type;
+	double 			falloff;
+}				t_point_light;
+
 typedef struct		s_scene
 {
-	t_base_fig		*figures;
-	size_t			fig_num;
+	t_base_fig		**figures;
+	t_point_light	**lights;
 }					t_scene;
 
 typedef struct		s_camera
@@ -263,6 +278,13 @@ int					rtv1_init(t_rtv1 **rtv1);
 void				rtv1_quit(t_rtv1 *rtv1);
 
 /*
+** scene.c
+*/
+
+t_scene				*scene_create(void);
+int					scene_replace_figs(t_scene *scene, t_base_fig *figs_new);
+
+/*
 ** trace.c
 */
 
@@ -282,6 +304,16 @@ double		get_inf();
 t_bool		is_inf(double d);
 t_double3	d3_get_inf();
 t_bool		d3_is_inf(t_double3 a);
+
+/*
+** figure.c
+*/
+
+t_base_fig			*fig_create(void);
+int					fig_destroy(t_base_fig *fig);
+t_base_fig			**fig_arr_create(size_t num);
+int					fig_arr_destroy(t_base_fig **fig_arr);
+
 
 /*
 ** cylinder.c
@@ -305,5 +337,6 @@ t_base_fig_plane	*fig_plane_create(void);
 t_double3			trace_sphere(t_double3 orig, t_double3 dir,
   						t_base_fig_sphere *s);
 t_base_fig_sphere	*fig_sphere_create(void);
+
 
 #endif

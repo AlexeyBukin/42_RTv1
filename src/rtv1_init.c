@@ -29,6 +29,7 @@ int			rtv1_init(t_rtv1 **rtv1)
 	new->vel_forward = 0;
 	new->vel_right = 0;
 	new->vel_up = 0;
+	new->scene = scene_create();
 	*rtv1 = new;
 	return (0);
 }

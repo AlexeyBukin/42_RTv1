@@ -11,28 +11,27 @@ project(RTv1)
 #find src -type f -name '*.c' | sed "s/^/        /"
 set(SOURCES
         src/camera.c
-        src/color.c
-        src/color_2.c
-        src/destroy.c
-        src/double3.c
-        src/double3_str.c
         src/events.c
         src/figures/cylinder.c
+        src/figures/figures.c
         src/figures/plane.c
         src/figures/sphere.c
-        src/infinity.c
         src/loop.c
         src/main.c
         src/project.c
         src/rtv1_init.c
         src/scene.c
-        src/test/test_dist.c
-        src/test/test_time.c
-        src/test/test_trace.c
         src/texture.c
         src/trace.c
-        src/utils.c
-        src/vector_math.c
+        src/utils/color.c
+        src/utils/color_2.c
+        src/utils/destroy.c
+        src/utils/double3.c
+        src/utils/double3_str.c
+        src/utils/infinity.c
+        src/utils/smart_array.c
+        src/utils/utils.c
+        src/utils/vector_math.c
         src/window.c
         )
 

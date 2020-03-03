@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 16:04:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/03 15:18:19 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/03 20:42:58 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,24 @@ t_double3		trace_sphere(t_double3 orig, t_double3 dir, t_base_fig_sphere *s)
 	return (result);
 }
 
+t_base_fig_sphere	fig_sphere_get(void)
+{
+	t_base_fig_sphere		sphere;
+
+	sphere.type = FIG_SPHERE;
+	sphere.pos = (t_double3){5.0, 2.0, 2.0};
+	sphere.r = 1;
+	sphere.col = color(255, 128, 128);
+	return (sphere);
+}
+
 t_base_fig_sphere	*fig_sphere_create(void)
 {
 	t_base_fig_sphere		*sphere;
 
-	if ((sphere = (t_base_fig_sphere*)malloc(sizeof(t_base_fig_sphere))) == NULL)
+	if ((sphere = (t_base_fig_sphere*)fig_create()) == NULL)
 		return (ft_puterr_null(1, "fig_sphere_create():"
 							" cannot malloc scene struct"));
-	sphere->type = FIG_SPHERE;
-	sphere->pos = (t_double3){5.0, 2.0, 2.0};
-	sphere->r = 1;
-	sphere->col = color(255, 128, 128);
+	*sphere = fig_sphere_get();
 	return (sphere);
 }

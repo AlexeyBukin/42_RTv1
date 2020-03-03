@@ -82,22 +82,22 @@ int			project(t_rtv1 *rtv1)
 			//TODO manual tracing with debuging
 
 			//int needed = WIN_WIDTH / 3;
-			if (rtv1->trace == TRUE)
-			{
-				double xd = (double) x;
-				ft_printf ("%-30s is %-30f | ", "xd", xd);
-				ft_printf ("%-30s is %-30f\n", "yd", yd);
-				ft_printf ("%-30s is %-30d | ", "x", x);
-				ft_printf ("%-30s is %-30d\n", "y", y);
-				ft_printf ("%-30s is %-30s\n", "cam.pos", d3_to_str_color(cam.pos));
-				ft_printf ("%-30s is %-30s\n", "cam.plane_pos", d3_to_str_color(cam.plane_pos));
-				ft_printf ("%-30s is %-30s\n", "dot1", d3_to_str_color(dot_1));
-				ft_printf ("%-30s is %-30s\n", "dot2", d3_to_str_color(dot_2));
-				ft_printf ("%-30s is %-30s\n", "dot", d3_to_str_color(dot));
-				ft_printf ("%-30s is %-30s\n", "dir", d3_to_str_color(d3_minus(dot, cam.pos)));
-				ft_printf ("\n");
-//				ft_printf ("dot is \'%s\'\n", d3_to_str(dot));
-			}
+//			if (rtv1->trace == TRUE)
+//			{
+//				double xd = (double) x;
+//				ft_printf ("%-30s is %-30f | ", "xd", xd);
+//				ft_printf ("%-30s is %-30f\n", "yd", yd);
+//				ft_printf ("%-30s is %-30d | ", "x", x);
+//				ft_printf ("%-30s is %-30d\n", "y", y);
+//				ft_printf ("%-30s is %-30s\n", "cam.pos", d3_to_str_color(cam.pos));
+//				ft_printf ("%-30s is %-30s\n", "cam.plane_pos", d3_to_str_color(cam.plane_pos));
+//				ft_printf ("%-30s is %-30s\n", "dot1", d3_to_str_color(dot_1));
+//				ft_printf ("%-30s is %-30s\n", "dot2", d3_to_str_color(dot_2));
+//				ft_printf ("%-30s is %-30s\n", "dot", d3_to_str_color(dot));
+//				ft_printf ("%-30s is %-30s\n", "dir", d3_to_str_color(d3_minus(dot, cam.pos)));
+//				ft_printf ("\n");
+////				ft_printf ("dot is \'%s\'\n", d3_to_str(dot));
+//			}
 			pixel_num++;
 
 //			if (y < 5 && x < 5)

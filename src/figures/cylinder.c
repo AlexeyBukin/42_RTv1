@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 15:49:44 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/02 19:05:46 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/03 19:41:17 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ t_base_fig_cyl		*fig_cyl_create(void)
 {
 	t_base_fig_cyl		*cyl;
 
-	if ((cyl = (t_base_fig_cyl*)malloc(sizeof(t_base_fig_cyl))) == NULL)
+	if ((cyl = (t_base_fig_cyl*)fig_create()) == NULL)
 		return (ft_puterr_null(1, "fig_cyl_create(): cannot "
 		"malloc scene struct"));
 	cyl->type = FIG_CYLINDER;

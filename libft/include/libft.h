@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <math.h>
+# include <stdint.h>
 # include "printf.h"
 
 typedef unsigned char	t_byte;
