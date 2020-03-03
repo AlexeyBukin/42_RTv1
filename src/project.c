@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 04:16:09 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/03 16:44:06 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/03 21:00:22 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int			project(t_rtv1 *rtv1)
 									  (double) cam.size_x * ((double) (xd / WIN_WIDTH) - (1.0 / 2.0)));
 
 			t_double3 dot_2 = d3_plus(dot_1, d3_mult(cam.direction_up,
-								   (double) -1 * cam.size_y *    ((double) (yd / WIN_HEIGHT) - (1.0 / 2.0))   ));
+								   (double) -1 * cam.size_y * ((double) (yd / WIN_HEIGHT) - (1.0 / 2.0))));
 
 			dot = d3_plus(cam.plane_pos, dot_2);
 

@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/03 20:53:54 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/03 21:36:25 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 
 # define WIN_WIDTH  640
 # define WIN_HEIGHT 480
+
+# define VEL_DELTA 0.2
 //
 //# define WIN_WIDTH  100
 //# define WIN_HEIGHT 100
@@ -45,6 +47,7 @@ typedef enum		e_result_code
 {
 	OK,
 	EXIT,
+	MOVE,
 	RENDER,
 	ERROR,
 	UNSET
@@ -173,6 +176,14 @@ typedef struct		s_camera
 	double 			size_y;
 }					t_camera;
 
+typedef struct		s_keys
+{
+	t_bool 			w;
+	t_bool 			a;
+	t_bool 			s;
+	t_bool 			d;
+}					t_keys;
+
 typedef struct		s_rtv1
 {
 	t_window		*window;
@@ -183,6 +194,12 @@ typedef struct		s_rtv1
 	double			vel_up;
 	t_bool			lmb_down;
 	t_bool			trace;
+	t_bool 			w;
+	t_bool 			a;
+	t_bool 			s;
+	t_bool 			d;
+	t_bool 			q;
+	t_bool 			e;
 }					t_rtv1;
 
 /*
@@ -271,11 +288,19 @@ char				*d3_to_str(t_double3 a);
 char				*d3_to_str_color(t_double3 a);
 
 /*
+** main.c
+*/
+void				rtv1_quit(t_rtv1 *rtv1);
+
+/*
 ** init.c
 */
+
 int					rtv1_init(t_rtv1 **rtv1);
-//main
-void				rtv1_quit(t_rtv1 *rtv1);
+t_scene				*rtv1_scene(t_rtv1 *rtv1);
+t_window			*rtv1_window(t_rtv1 *rtv1);
+t_base_fig			**rtv1_scene_figs(t_rtv1 *rtv1);
+t_point_light		**rtv1_scene_lights(t_rtv1 *rtv1);
 
 /*
 ** scene.c

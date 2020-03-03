@@ -6,13 +6,13 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 04:36:18 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/03 15:45:15 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/03 21:30:31 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int			rtv1_init(t_rtv1 **rtv1)
+int				rtv1_init(t_rtv1 **rtv1)
 {
 	t_rtv1		*new;
 
@@ -30,6 +30,56 @@ int			rtv1_init(t_rtv1 **rtv1)
 	new->vel_right = 0;
 	new->vel_up = 0;
 	new->scene = scene_create();
+	new->w = FALSE;
+	new->a = FALSE;
+	new->s = FALSE;
+	new->d = FALSE;
+	new->q = FALSE;
+	new->e = FALSE;
 	*rtv1 = new;
 	return (0);
+}
+
+t_scene			*rtv1_scene(t_rtv1 *rtv1)
+{
+	if (rtv1 == NULL)
+	{
+		return (NULL);
+	}
+	return (rtv1->scene);
+}
+
+t_window		*rtv1_window(t_rtv1 *rtv1)
+{
+	if (rtv1 == NULL)
+	{
+		return (NULL);
+	}
+	return (rtv1->window);
+}
+
+t_base_fig**	rtv1_scene_figs(t_rtv1 *rtv1)
+{
+	if (rtv1 == NULL)
+	{
+		return (NULL);
+	}
+	if (rtv1->scene == NULL)
+	{
+		return (NULL);
+	}
+	return (rtv1->scene->figures);
+}
+
+t_point_light**	rtv1_scene_lights(t_rtv1 *rtv1)
+{
+	if (rtv1 == NULL)
+	{
+		return (NULL);
+	}
+	if (rtv1->scene == NULL)
+	{
+		return (NULL);
+	}
+	return (rtv1->scene->lights);
 }

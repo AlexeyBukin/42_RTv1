@@ -6,12 +6,39 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 18:13:19 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/03 15:47:27 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/03 21:51:31 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
+int		check_input(t_rtv1 *rtv1)
+{
+	rtv1->vel_forward = 0;
+	rtv1->vel_right = 0;
+	rtv1->vel_up = 0;
+
+	if (rtv1->w && !rtv1->s)
+		rtv1->vel_forward = VEL_DELTA;
+	if (rtv1->s && !rtv1->w)
+		rtv1->vel_forward = -VEL_DELTA;
+
+	if (rtv1->d && !rtv1->a)
+		rtv1->vel_right = VEL_DELTA;
+	if (rtv1->a && !rtv1->d)
+		rtv1->vel_right = -VEL_DELTA;
+
+	if (rtv1->q && !rtv1->e)
+		rtv1->vel_up = VEL_DELTA;
+	if (rtv1->e && !rtv1->q)
+		rtv1->vel_up = -VEL_DELTA;
+
+	if (rtv1->vel_up != 0 || rtv1->vel_right != 0 || rtv1->vel_forward != 0)
+	{
+		return (MOVE);
+	}
+	return (OK);
+}
 int		check_event(t_rtv1 *rtv1, SDL_Event event)
 {
 	int					result_code;
@@ -46,11 +73,9 @@ int		iterate_events(t_rtv1 *rtv1)
 		result_code = check_event(rtv1, event);
 		if (result_code == EXIT)
 			return (EXIT);
-		render_needed = (result_code == RENDER) ? TRUE : FALSE;
+		render_needed = (result_code == RENDER) ? TRUE : render_needed;
 	}
-	if (render_needed == TRUE)
-		return (RENDER);
-	return (OK);
+	return (check_input(rtv1));
 }
 
 int		redraw(t_rtv1 *rtv1)
@@ -81,7 +106,7 @@ int		rtv1_loop(t_rtv1 *rtv1)
 			return (ft_puterror(4, "rtv1_loop(): iterate_events()"));
 		else if (result_code == EXIT)
 			break ;
-		if (rtv1->vel_forward != 0 || rtv1->vel_right != 0 || rtv1->vel_up != 0)
+		if (result_code == MOVE)
 		{
 			camera_move_local(&rtv1->camera, (t_vec) {rtv1->vel_forward, rtv1->vel_right, rtv1->vel_up});
 			result_code = RENDER;
