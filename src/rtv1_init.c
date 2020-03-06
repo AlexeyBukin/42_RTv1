@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 04:36:18 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/06 03:10:00 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/06 03:57:49 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,23 @@ t_base_fig**	rtv1_scene_figs(t_rtv1 *rtv1)
 		return (NULL);
 	}
 	return (rtv1->scene->figures);
+}
+
+t_base_fig	*rtv1_scene_fig_at(t_rtv1 *rtv1, size_t id)
+{
+	if (rtv1 == NULL)
+	{
+		return (NULL);
+	}
+	if (rtv1->scene == NULL)
+	{
+		return (NULL);
+	}
+	if (rtv1->scene->figures == NULL)
+	{
+		return (NULL);
+	}
+	return (rtv1->scene->figures[id]);
 }
 
 t_point_light**	rtv1_scene_lights(t_rtv1 *rtv1)

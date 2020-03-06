@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 00:59:24 by hush              #+#    #+#             */
-/*   Updated: 2020/03/06 03:10:00 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/06 04:10:26 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ typedef enum		e_falloff
 	FALLOFF_QUADRATIC,
 }					t_falloff;
 
-typedef	struct	t_point_light
+typedef	struct	s_point_light
 {
 	t_double3		pos;
 	t_color			col;
@@ -113,6 +113,14 @@ typedef struct		s_scene
 {
 	t_base_fig		**figures;
 	t_point_light	**lights;
+	t_dot 			(*func_trace_dist[FIG_TYPES_NUM])(t_dot, t_vec, t_base_fig *);
+	t_color			(*func_trace_full[FIG_TYPES_NUM])(struct s_scene*, t_dot, t_vec, t_base_fig *);
 }					t_scene;
+
+typedef	struct	s_ray
+{
+  t_dot			pos;
+  t_vec			dir;
+}				t_ray;
 
 #endif

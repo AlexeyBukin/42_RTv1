@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 15:49:44 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/06 03:10:00 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/06 03:36:44 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,16 @@ static t_vec		intersect(t_double3 i_pos, double ab2, t_base_fig_cyl *cyl)
 }
 
 t_double3			trace_cyl(t_dot orig, t_vec dir,
-					t_base_fig_cyl *cyl)
+					t_base_fig *fig)
 {
-	t_vec		ab;
-	double		ab2;
-	double		t;
+	t_base_fig_cyl	*cyl;
+	t_vec			ab;
+	double			ab2;
+	double			t;
 
-	if (cyl == NULL)
+	if (fig == NULL)
 		return (d3_get_inf());
+	cyl = (t_base_fig_cyl*)fig;
 	dir = vec_normalize(dir);
 	ab = d3_minus(cyl->top, cyl->pos);
 	t = get_t(cyl, vec_cross_product(d3_minus(orig, cyl->pos), ab),

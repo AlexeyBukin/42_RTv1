@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 15:14:45 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/06 03:10:00 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/06 03:35:28 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ t_scene		*scene_create(void)
 	scene->figures[2] = (t_base_fig*)fig_cyl_create();
 	scene->figures[3] = NULL;
 	scene->lights = NULL;
+	scene->func_trace_dist[FIG_SPHERE] = trace_sphere;
+	scene->func_trace_dist[FIG_PLANE] = trace_plane;
+	scene->func_trace_dist[FIG_CYLINDER] = trace_cyl;
 	return (scene);
 }
 

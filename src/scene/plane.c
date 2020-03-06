@@ -6,20 +6,24 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 16:04:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/06 03:10:00 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/06 03:34:53 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-t_dot				trace_plane(t_dot orig, t_vec dir, t_base_fig_plane *pl)
+t_dot				trace_plane(t_dot orig, t_vec dir, t_base_fig *fig)
 {
-	t_vec		normal;
-	t_double3	v;
-	t_double3	intersect;
-	double		e;
+	t_base_fig_plane	*pl;
+	t_vec				normal;
+	t_double3			v;
+	t_double3			intersect;
+	double				e;
 
-	if (pl == NULL)
+	if (fig == NULL)
+		return (d3_get_inf());
+	pl = (t_base_fig_plane*) fig;
+	if (pl->type != FIG_PLANE)
 		return (d3_get_inf());
 	normal = vec_cross_product(d3_minus(pl->a, pl->pos),
 		d3_minus(pl->b, pl->pos));

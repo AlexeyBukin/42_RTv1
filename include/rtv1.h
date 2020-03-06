@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/06 03:10:00 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/06 03:58:36 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,7 @@ t_scene				*rtv1_scene(t_rtv1 *rtv1);
 t_window			*rtv1_window(t_rtv1 *rtv1);
 t_base_fig			**rtv1_scene_figs(t_rtv1 *rtv1);
 t_point_light		**rtv1_scene_lights(t_rtv1 *rtv1);
+t_base_fig			*rtv1_scene_fig_at(t_rtv1 *rtv1, size_t id);
 
 /*
 ** scene.c
@@ -205,14 +206,14 @@ int					fig_arr_destroy(t_base_fig **fig_arr);
 */
 
 t_double3			trace_cyl(t_double3 orig,
-						t_double3 dir, t_base_fig_cyl *cyl);
+						t_double3 dir, t_base_fig *fig);
 t_base_fig_cyl		*fig_cyl_create();
 
 /*
 ** plane.c
 */
 
-t_double3			trace_plane(t_double3 orig, t_vec dir, t_base_fig_plane *pl);
+t_double3			trace_plane(t_double3 orig, t_vec dir, t_base_fig *pl);
 t_base_fig_plane	*fig_plane_create(void);
 
 /*
@@ -220,7 +221,7 @@ t_base_fig_plane	*fig_plane_create(void);
 */
 
 t_double3			trace_sphere(t_double3 orig, t_double3 dir,
-  						t_base_fig_sphere *s);
+  						t_base_fig *s);
 t_base_fig_sphere	*fig_sphere_create(void);
 
 /*

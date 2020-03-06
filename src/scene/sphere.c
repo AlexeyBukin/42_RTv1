@@ -6,14 +6,15 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 16:04:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/06 03:10:00 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/06 03:32:02 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-t_double3		trace_sphere(t_double3 orig, t_double3 dir, t_base_fig_sphere *s)
+t_double3		trace_sphere(t_double3 orig, t_double3 dir, t_base_fig *fig)
 {
+	t_base_fig_sphere	*s;
 	t_double3	ao;
 	double		cos_a;
 	double		sin_a;
@@ -25,7 +26,10 @@ t_double3		trace_sphere(t_double3 orig, t_double3 dir, t_base_fig_sphere *s)
 	t_double3	c;
 	t_double3	result;
 
-	if (s == NULL)
+	if (fig == NULL)
+		return(d3_get_inf());
+	s = (t_base_fig_sphere *)fig;
+	if (s->type != FIG_SPHERE)
 		return(d3_get_inf());
 	ao = d3_minus(s->pos, orig);
 	dir = vec_normalize(dir);
