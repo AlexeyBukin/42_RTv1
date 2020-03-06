@@ -46,5 +46,6 @@ char				*d3_to_str(t_double3 a);
 char				*d3_to_str_color(t_double3 a);
 
 t_vec				vec(double x, double y, double z);
+double				vec_angle_cos(t_vec a, t_vec b);
 
 #endif

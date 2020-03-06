@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 04:16:09 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/06 04:22:52 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/06 21:40:20 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,25 +56,30 @@ int			project(t_rtv1 *rtv1)
 
 			rtv1->trace = FALSE;
 
-			if (x == 0 && y == 0)
+			if (x == WIN_WIDTH / 2 && y == WIN_HEIGHT / 2)
 			{
 				rtv1->trace = TRUE;
 			}
 
-			if (x == WIN_WIDTH - 1 && y == 0)
-			{
-				rtv1->trace = TRUE;
-			}
-
-			if (x == 0 && y == WIN_HEIGHT - 1)
-			{
-				rtv1->trace = TRUE;
-			}
-
-			if (x == WIN_WIDTH - 1 && y == WIN_HEIGHT - 1)
-			{
-				rtv1->trace = TRUE;
-			}
+//			if (x == 0 && y == 0)
+//			{
+//				rtv1->trace = TRUE;
+//			}
+//
+//			if (x == WIN_WIDTH - 1 && y == 0)
+//			{
+//				rtv1->trace = TRUE;
+//			}
+//
+//			if (x == 0 && y == WIN_HEIGHT - 1)
+//			{
+//				rtv1->trace = TRUE;
+//			}
+//
+//			if (x == WIN_WIDTH - 1 && y == WIN_HEIGHT - 1)
+//			{
+//				rtv1->trace = TRUE;
+//			}
 
 			ray.pos = cam.pos;
 			ray.dir = d3_minus(dot, cam.pos);
@@ -114,5 +119,7 @@ int			project(t_rtv1 *rtv1)
 //			printf("\n");
 //		}
 	}
+//	double cos_a = vec_angle_cos(vec(0, 1, 0), vec(0, 1, 0));
+//	ft_printf("cos = %f\n", cos_a);
 	return (OK);
 }

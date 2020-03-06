@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 18:14:06 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/06 03:10:00 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/06 21:19:31 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,24 @@ t_color		color(t_byte red, t_byte green, t_byte blue)
 
 t_color		color_add(t_color a, t_color b)
 {
-	a.r = (t_byte)((int)(a.r + b.r));
-	a.g = (t_byte)((int)(a.g + b.g));
-	a.b = (t_byte)((int)(a.b + b.b));
-	a.a = (t_byte)((int)(a.a + b.a));
+	int		temp;
+//
+	temp = (a.r + b.r);
+
+	a.r = ((int)(a.r + b.r)) > 255 ? 255 : (a.r + b.r);
+	if (temp > 255 && a.r != 255)
+		ft_printf("overload happen\n");
+
+	a.g = ((int)(a.g + b.g)) > 255 ? 255 : (a.g + b.g);
+	a.b = ((int)(a.b + b.b)) > 255 ? 255 : (a.b + b.b);
+	a.a = ((int)(a.a + b.a)) > 255 ? 255 : (a.a + b.a);
 	return (a);
+
+//	a.r = (t_byte)((int)(a.r + b.r));
+//	a.g = (t_byte)((int)(a.g + b.g));
+//	a.b = (t_byte)((int)(a.b + b.b));
+//	a.a = (t_byte)((int)(a.a + b.a));
+//	return (a);
 }
 
 /*

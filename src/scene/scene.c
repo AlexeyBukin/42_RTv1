@@ -31,7 +31,7 @@ t_scene		*scene_create(void)
 //	scene->figures[1] = (t_base_fig*)fig_plane_create(dot(4.0, 0.0, -2.0), dot(7.0, 1.0, -2.0), dot(6.0, 0.0, -2.0), color(0, 100, 0));
 //	scene->figures[2] = (t_base_fig*)fig_cyl_create();
 
-    if ((scene->figures = fig_arr_create(7)) == NULL)
+    if ((scene->figures = fig_arr_create(5)) == NULL)
         return (ft_puterr_null(1, "scene_create():"
                                   "cannot malloc figures array"));
     scene->figures[0] = (t_base_fig*)fig_plane_create(vec(0, 1, 0), 3.0, color(100, 100, 0));
@@ -40,8 +40,8 @@ t_scene		*scene_create(void)
     scene->figures[3] = (t_base_fig*)fig_plane_create(vec(0, 0, -1), 3.0, color(0, 100, 100));
     scene->figures[4] = (t_base_fig*)fig_plane_create(vec(-1, 0, 0), 20.0, color(100, 100, 100));
 
-    scene->figures[5] = (t_base_fig*)fig_sphere_create();
-    scene->figures[6] = (t_base_fig*)fig_cyl_create();
+//    scene->figures[5] = (t_base_fig*)fig_sphere_create();
+//    scene->figures[6] = (t_base_fig*)fig_cyl_create();
 
 
 	if ((scene->lights = light_arr_create(1)) == NULL)
