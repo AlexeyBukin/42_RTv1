@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 15:14:45 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/06 06:12:15 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/06 22:22:04 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_scene		*scene_create(void)
     scene->figures[0] = (t_base_fig*)fig_plane_create(vec(0, 1, 0), 3.0, color(100, 100, 0));
     scene->figures[1] = (t_base_fig*)fig_plane_create(vec(0, -1, 0), 3.0, color(100, 0, 0));
     scene->figures[2] = (t_base_fig*)fig_plane_create(vec(0, 0, 1), 3.0, color(0, 100, 0));
-    scene->figures[3] = (t_base_fig*)fig_plane_create(vec(0, 0, -1), 3.0, color(0, 100, 100));
+    scene->figures[3] = (t_base_fig*)fig_plane_create(vec(0, 0, -1), 5.0, color(0, 100, 100));
     scene->figures[4] = (t_base_fig*)fig_plane_create(vec(-1, 0, 0), 20.0, color(100, 100, 100));
 
 //    scene->figures[5] = (t_base_fig*)fig_sphere_create();

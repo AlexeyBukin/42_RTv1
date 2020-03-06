@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 18:14:06 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/06 21:19:31 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/06 22:42:09 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,11 @@ t_color		col_mask(t_color col, t_color mask)
 	if (col.a > mask.a)
 		col.a = mask.a;
 	return (col);
+}
+
+t_color		col_clamp(t_color col)
+{
+	return (col_mask(col, color(255, 255, 255)));
 }
 
 /*

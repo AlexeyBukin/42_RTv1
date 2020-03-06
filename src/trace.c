@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 03:26:48 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/06 21:44:51 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/06 22:41:33 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,49 @@ t_color		trace_full(t_rtv1 *rtv1, t_ray ray, size_t id)
     	ft_printf("bounce = %s\n", d3_to_str_color(bounce.dir));
     	ft_printf("to_light = %s\n", d3_to_str_color(bounce_to_light));
 	}
-    if (cos_a > 0 && cos_a < 1)
+
+	double light_koeff = 3.0;
+    double light_power = 1.0 / (vec_len(bounce_to_light) + EPSILON) * light_koeff;
+
+    //diffuse
+	cos_a = (cos_a + 1) / 2;
+	t_byte mask = cos_a * 255;
+	mask = (mask * light_power > 255 ? 255 : mask * light_power);
+	t_color mask_col = color_add(color(mask, mask, mask), color(1, 1, 1));
+	t_color dist_col = col_mask(base->col, mask_col);
+
+	//real light
+	double shine_bound = 0.9;
+	if (cos_a > shine_bound)
 	{
-		t_color dist_col = base->col;
-//		t_byte mask = (ft_absd(cos_a) > 1 ? 1 : ft_absd(cos_a)) * 255;
-		t_byte mask = 255;
-		dist_col = color_add(base->col, color(mask, mask, mask));
-		return (dist_col);
+		double koeff = (cos_a - shine_bound) / (1.0 - shine_bound);
+//		if (koeff > 0.5)
+//			ft_printf("more\n");
+		t_byte additive = clamp(koeff * 255, 0, 255);
+//		additive = (additive * 100 > 255 ? 255 : additive * 100);
+		additive = (additive * light_power > 255 ? 255 : additive * light_power);
+		dist_col = color_add(dist_col, color(additive, additive, additive));
 	}
+
+	return (dist_col);
+
+//    if (cos_a >= 0 && cos_a <= 1.0)
+//	{
+//		t_color dist_col = base->col;
+//		t_byte mask = (ft_absd(cos_a) > 1 ? 1 : ft_absd(cos_a)) * 255;
+////		t_byte mask = 255;
+//		dist_col = col_mask(base->col, color(mask, mask, mask));
+//		return (dist_col);
+//	}
+//	if (cos_a >= -1 && cos_a < 0)
+//	{
+//		cos_a = cos_a + 1;
+//		t_color dist_col = base->col;
+//		t_byte mask = cos_a * 255;
+////		t_byte mask = 255;
+//		dist_col = col_mask(base->col, color(mask, mask, mask));
+//		return (dist_col);
+//	}
     //bounce = rtv1->scene->func_trace_bounce[base->type](ray, (t_base_fig*)base);
 //	i = 0;
 //	light_amount = 0;
