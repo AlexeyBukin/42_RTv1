@@ -209,8 +209,7 @@ int					fig_arr_destroy(t_base_fig **fig_arr);
 ** cylinder.c
 */
 
-t_double3			trace_cyl(t_double3 orig,
-						t_double3 dir, t_base_fig *fig);
+t_double3			trace_cyl(t_ray ray, t_base_fig *fig);
 t_base_fig_cyl		*fig_cyl_create();
 
 /*
@@ -218,15 +217,15 @@ t_base_fig_cyl		*fig_cyl_create();
 */
 
 t_ray 				trace_plane_bounce(t_ray ray, t_base_fig *fig);
-t_double3			trace_plane(t_double3 orig, t_vec dir, t_base_fig *pl);
+t_double3			trace_plane(t_ray ray, t_base_fig *pl);
 t_base_fig      	*fig_plane_create(t_vec normal, double arg_d, t_color col);
+t_base_fig			*fig_plane_from_dots(t_dot a, t_dot b, t_dot c, t_color col);
 
 /*
 ** sphere.c
 */
 
-t_double3			trace_sphere(t_double3 orig, t_double3 dir,
-  						t_base_fig *s);
+t_double3			trace_sphere(t_ray ray,	t_base_fig *s);
 t_base_fig_sphere	*fig_sphere_create(void);
 
 /*

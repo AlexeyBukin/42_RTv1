@@ -27,7 +27,7 @@ t_dot		trace_fig(t_rtv1 *rtv1, t_ray ray, t_base_fig *fig)
 		return (d3_get_inf());
 	if (rtv1->scene->func_trace_dot[fig->base.type] == NULL)
 		return (d3_get_inf());
-	return (rtv1->scene->func_trace_dot[fig->base.type](ray.pos, ray.dir, fig));
+	return (rtv1->scene->func_trace_dot[fig->base.type](ray, fig));
 }
 
 t_color		trace_full(t_rtv1 *rtv1, t_ray ray, size_t id)

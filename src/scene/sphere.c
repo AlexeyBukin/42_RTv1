@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-t_double3		trace_sphere(t_double3 orig, t_double3 dir, t_base_fig *fig)
+t_double3		trace_sphere(t_ray ray, t_base_fig *fig)
 {
 	t_base_fig_sphere	*s;
 	t_double3	ao;
@@ -31,19 +31,19 @@ t_double3		trace_sphere(t_double3 orig, t_double3 dir, t_base_fig *fig)
 	s = (t_base_fig_sphere *)fig;
 	if (s->type != FIG_SPHERE)
 		return(d3_get_inf());
-	ao = d3_minus(s->pos, orig);
-	dir = vec_normalize(dir);
+	ao = d3_minus(s->pos, ray.pos);
+	ray.dir = vec_normalize(ray.dir);
 	dist = vec_len(ao);
-	square = vec_dot_product(ao, dir);
+	square = vec_dot_product(ao, ray.dir);
 	cos_a = square / (dist);
 	sin_a = sqrt(1.0 - cos_a * cos_a);
 	perp = dist * sin_a;
 	if (perp > s->r)
 		return(d3_get_inf());
 	ac_len = dist * cos_a;
-	c = d3_plus(orig, d3_mult(dir, ac_len));
+	c = d3_plus(ray.pos, d3_mult(ray.dir, ac_len));
 	root = sqrt(s->r * s->r - perp * perp);
-	result = d3_minus(c, d3_mult(dir, root));
+	result = d3_minus(c, d3_mult(ray.dir, root));
 	return (result);
 }
 

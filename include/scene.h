@@ -127,7 +127,7 @@ typedef struct		s_scene
 {
 	t_base_fig		**figures;
   	t_light			**lights;
-	t_dot 			(*func_trace_dot[FIG_TYPES_NUM])(t_dot, t_vec, t_base_fig*);
+	t_dot 			(*func_trace_dot[FIG_TYPES_NUM])(t_ray, t_base_fig*);
 	t_ray			(*func_trace_bounce[FIG_TYPES_NUM])(t_ray, t_base_fig*);
 }					t_scene;
 

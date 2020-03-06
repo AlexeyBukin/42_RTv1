@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 15:49:44 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/06 03:36:44 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/06 19:33:39 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,7 @@ static t_vec		intersect(t_double3 i_pos, double ab2, t_base_fig_cyl *cyl)
 	return (d3_get_inf());
 }
 
-t_double3			trace_cyl(t_dot orig, t_vec dir,
-					t_base_fig *fig)
+t_double3			trace_cyl(t_ray ray, t_base_fig *fig)
 {
 	t_base_fig_cyl	*cyl;
 	t_vec			ab;
@@ -61,10 +60,10 @@ t_double3			trace_cyl(t_dot orig, t_vec dir,
 	if (fig == NULL)
 		return (d3_get_inf());
 	cyl = (t_base_fig_cyl*)fig;
-	dir = vec_normalize(dir);
+	ray.dir = vec_normalize(ray.dir);
 	ab = d3_minus(cyl->top, cyl->pos);
-	t = get_t(cyl, vec_cross_product(d3_minus(orig, cyl->pos), ab),
-			  vec_cross_product(dir, ab), &ab2);
+	t = get_t(cyl, vec_cross_product(d3_minus(ray.pos, cyl->pos), ab),
+		vec_cross_product(ray.dir, ab), &ab2);
 	if (t == get_inf())
 	{
 		return (d3_get_inf());
@@ -73,7 +72,7 @@ t_double3			trace_cyl(t_dot orig, t_vec dir,
 	{
 		return (d3_get_inf());
 	}
-	return (intersect(d3_plus(d3_mult(dir, t), orig), ab2, cyl));
+	return (intersect(d3_plus(d3_mult(ray.dir, t), ray.pos), ab2, cyl));
 }
 
 /*

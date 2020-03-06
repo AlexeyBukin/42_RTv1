@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 03:14:27 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/06 03:14:28 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/06 19:35:37 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ t_base_fig		**fig_arr_create(size_t num)
 {
 	t_base_fig		**fig_arr;
 
-	if (num > SIZE_MAX / sizeof (t_base_fig*) - 1)
+	if (num > SIZE_MAX / sizeof(t_base_fig*) - 1)
 		return (NULL);
 	fig_arr = (t_base_fig**)malloc(sizeof(t_base_fig*) * (num + 1));
 	if (fig_arr != NULL)
-	    fig_arr[num] = NULL;
+		fig_arr[num] = NULL;
 	return (fig_arr);
 }
 
@@ -44,7 +44,7 @@ int				fig_arr_destroy(t_base_fig **fig_arr)
 
 	if (fig_arr == NULL)
 		return (ft_puterror(1, "fig_arr_destroy():"
-								  " fig_arr is NULL"));
+		" fig_arr is NULL"));
 	i = 0;
 	while (fig_arr[i] != NULL)
 	{
