@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 16:04:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/03 19:41:17 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/06 03:10:00 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ t_dot				trace_plane(t_dot orig, t_vec dir, t_base_fig_plane *pl)
 
 	if (pl == NULL)
 		return (d3_get_inf());
-	normal = d3_vector_product(d3_minus(pl->a, pl->pos),
+	normal = vec_cross_product(d3_minus(pl->a, pl->pos),
 		d3_minus(pl->b, pl->pos));
 	v = d3_minus(pl->pos, orig);
-	e = d3_dot_product(normal, dir);
+	e = vec_dot_product(normal, dir);
 	if (e <= 0)
 		return (d3_get_inf());
 	intersect = d3_plus(orig,
-	d3_mult(dir, (double)(d3_dot_product(normal, v) / e)));
+	d3_mult(dir, (double)(vec_dot_product(normal, v) / e)));
 	return (intersect);
 }
 

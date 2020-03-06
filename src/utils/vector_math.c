@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-double			d3_dot_product(t_double3 a, t_double3 b)
+double			vec_dot_product(t_double3 a, t_double3 b)
 {
 	a.x *= b.x;
 	a.y *= b.y;
@@ -20,7 +20,7 @@ double			d3_dot_product(t_double3 a, t_double3 b)
 	return (a.x + a.y + a.z);
 }
 
-t_double3		d3_vector_product(t_double3 a, t_double3 b)
+t_double3		vec_cross_product(t_double3 a, t_double3 b)
 {
 	t_double3	vp;
 
@@ -30,7 +30,7 @@ t_double3		d3_vector_product(t_double3 a, t_double3 b)
 	return (vp);
 }
 
-double			d3_len(t_double3 a)
+double			vec_len(t_double3 a)
 {
 	t_double3	zero;
 
@@ -42,7 +42,7 @@ t_double3		vec_normalize(t_double3 vec)
 {
 	double		len;
 
-	len = d3_len(vec);
+	len = vec_len(vec);
 	vec.x /= len;
 	vec.y /= len;
 	vec.z /= len;

@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 15:49:44 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/04 01:10:58 by hush             ###   ########.fr       */
+/*   Updated: 2020/03/06 03:10:00 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ static double		get_t(t_base_fig_cyl *cyl, t_vec ao_x_ab,
 	if (cyl == NULL || ab2 == NULL)
 		return (get_inf());
 	ab = d3_minus(cyl->top, cyl->pos);
-	*ab2 = d3_dot_product(ab, ab);
-	a = d3_dot_product(v_x_ab, v_x_ab);
-	b = 2.0 * d3_dot_product(v_x_ab, ao_x_ab);
-	c = d3_dot_product(ao_x_ab, ao_x_ab) - (cyl->r * cyl->r * (*ab2));
+	*ab2 = vec_dot_product(ab, ab);
+	a = vec_dot_product(v_x_ab, v_x_ab);
+	b = 2.0 * vec_dot_product(v_x_ab, ao_x_ab);
+	c = vec_dot_product(ao_x_ab, ao_x_ab) - (cyl->r * cyl->r * (*ab2));
 	d = b * b - 4.0 * a * c;
 	if (d < 0)
 		return (get_inf());
@@ -42,7 +42,7 @@ static t_vec		intersect(t_double3 i_pos, double ab2, t_base_fig_cyl *cyl)
 	if (cyl == NULL)
 		return (d3_get_inf());
 	i_pos_len = d3_minus(i_pos, cyl->pos);
-	t_lim = d3_dot_product(i_pos_len, d3_minus(cyl->top, cyl->pos)) / ab2;
+	t_lim = vec_dot_product(i_pos_len, d3_minus(cyl->top, cyl->pos)) / ab2;
 	if (t_lim >= 0 && t_lim <= 1)
 	{
 		return (i_pos);
@@ -61,8 +61,8 @@ t_double3			trace_cyl(t_dot orig, t_vec dir,
 		return (d3_get_inf());
 	dir = vec_normalize(dir);
 	ab = d3_minus(cyl->top, cyl->pos);
-	t = get_t(cyl, d3_vector_product(d3_minus(orig, cyl->pos), ab),
-		d3_vector_product(dir, ab), &ab2);
+	t = get_t(cyl, vec_cross_product(d3_minus(orig, cyl->pos), ab),
+			  vec_cross_product(dir, ab), &ab2);
 	if (t == get_inf())
 	{
 		return (d3_get_inf());

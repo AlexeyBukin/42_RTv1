@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 16:04:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/03 20:42:58 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/06 03:10:00 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ t_double3		trace_sphere(t_double3 orig, t_double3 dir, t_base_fig_sphere *s)
 		return(d3_get_inf());
 	ao = d3_minus(s->pos, orig);
 	dir = vec_normalize(dir);
-	dist = d3_len(ao);
-	square = d3_dot_product(ao, dir);
+	dist = vec_len(ao);
+	square = vec_dot_product(ao, dir);
 	cos_a = square / (dist);
 	sin_a = sqrt(1.0 - cos_a * cos_a);
 	perp = dist * sin_a;

@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 15:14:45 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/03 20:52:02 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/06 03:10:00 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,3 @@ t_scene		*scene_create(void)
 /*
 ** TODO smart arrays for storage lights and scene
 */
-

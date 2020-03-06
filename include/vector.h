@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 01:05:29 by hush              #+#    #+#             */
-/*   Updated: 2020/03/04 01:08:13 by hush             ###   ########.fr       */
+/*   Updated: 2020/03/06 03:10:00 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ t_double3			d3_mult(t_double3 a, double b);
 double				d3_dist_sqr(t_double3 a, t_double3 b);
 double				d3_dist(t_double3 a, t_double3 b);
 
-double				d3_dot_product(t_double3 a, t_double3 b);
-t_double3			d3_vector_product(t_double3 a, t_double3 b);
+double			    vec_dot_product(t_double3 a, t_double3 b);
+t_double3   		vec_cross_product(t_double3 a, t_double3 b);
 t_double3			vec_normalize(t_double3 vec);
-double				d3_len(t_double3 a);
+double				vec_len(t_double3 a);
 
 char				*d3_to_str(t_double3 a);
 char				*d3_to_str_color(t_double3 a);
