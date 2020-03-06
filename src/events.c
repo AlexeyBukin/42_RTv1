@@ -80,6 +80,16 @@ int		on_key_up(t_rtv1 *rtv1, SDL_Scancode scancode)
 		rtv1->d = FALSE;
 		ft_putendl("\'D\' released!");
 	}
+    else if (scancode == SDL_SCANCODE_Q)
+    {
+        rtv1->q = FALSE;
+        ft_putendl("\'D\' released!");
+    }
+    else if (scancode == SDL_SCANCODE_E)
+    {
+        rtv1->e = FALSE;
+        ft_putendl("\'D\' released!");
+    }
 	return (OK);
 }
 

@@ -17,6 +17,12 @@ t_light		*light_create(void)
 	t_light		*light;
 
 	light = (t_light*)malloc(sizeof(t_light));
+	if (light != NULL)
+    {
+	    light->point.pos = dot(0, 0, 2);
+	    light->point.col = color(255, 255, 255);
+	    light->point.power = 100.0;
+    }
 	return (light);
 }
 
@@ -26,7 +32,11 @@ t_light		**light_arr_create(size_t num)
 
 	if (num > SIZE_MAX / sizeof (t_light*) - 1)
 		return (NULL);
-	light_arr = (t_light**)malloc(sizeof(t_light*) * ++num);
+	light_arr = (t_light**)malloc(sizeof(t_light*) * (num + 1));
+	if (light_arr != NULL)
+    {
+	    light_arr[num] = NULL;
+    }
 	return (light_arr);
 }
 

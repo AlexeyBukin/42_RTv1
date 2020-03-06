@@ -36,6 +36,16 @@ t_double3	d3_mult(t_double3 a, double b)
 	return (a);
 }
 
+t_dot	dot(double x, double y, double z)
+{
+    t_dot   dot;
+
+    dot.x = x;
+    dot.y = y;
+    dot.z = z;
+    return (dot);
+}
+
 double		d3_dist_sqr(t_double3 a, t_double3 b)
 {
 	double		dist_sqr;

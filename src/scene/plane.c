@@ -21,29 +21,25 @@ t_ray 				trace_plane_bounce(t_ray ray, t_base_fig *fig)
 
 t_dot				trace_plane(t_dot orig, t_vec dir, t_base_fig *fig)
 {
-	t_base_fig_plane	*pl;
-	t_vec				normal;
-	t_double3			v;
-	t_double3			intersect;
-	double				e;
+    t_base_fig_plane	*pl;
+    double              denom;
+	double				t;
 
-	if (fig == NULL)
-		return (d3_get_inf());
-	pl = (t_base_fig_plane*) fig;
-	if (pl->type != FIG_PLANE)
-		return (d3_get_inf());
-	normal = vec_cross_product(d3_minus(pl->a, pl->pos),
-		d3_minus(pl->b, pl->pos));
-	v = d3_minus(pl->pos, orig);
-	e = vec_dot_product(normal, dir);
-	if (e <= 0)
-		return (d3_get_inf());
-	intersect = d3_plus(orig,
-	d3_mult(dir, (double)(vec_dot_product(normal, v) / e)));
-	return (intersect);
+    if (fig == NULL)
+        return (d3_get_inf());
+    pl = (t_base_fig_plane*)fig;
+    if (pl->type != FIG_PLANE)
+        return (d3_get_inf());
+    denom = vec_dot_product(pl->n, dir);
+    if (ft_absd(denom) < EPSILON)
+        return (d3_get_inf());
+    t = -1 * (vec_dot_product(pl->n, orig) + pl->d) / denom;
+    if (t < EPSILON)
+        return (d3_get_inf());
+    return (d3_plus(orig, d3_mult(dir, t)));
 }
 
-t_base_fig_plane	*fig_plane_create(void)
+t_base_fig      	*fig_plane_create(t_vec normal, double arg_d, t_color col)
 {
 	t_base_fig_plane		*plane;
 
@@ -51,9 +47,8 @@ t_base_fig_plane	*fig_plane_create(void)
 		return (ft_puterr_null(1, "fig_plane_create(): cannot"
 		" malloc scene struct"));
 	plane->type = FIG_PLANE;
-	plane->pos = (t_dot){4.0, 0.0, -2.0};
-	plane->a = (t_dot){7.0, 1.0, -2.0};
-	plane->b = (t_dot){6.0, 0.0, -2.0};
-	plane->col = color(0, 200, 0);
-	return (plane);
+	plane->d = arg_d;
+	plane->n = normal;
+	plane->col = col;
+	return ((t_base_fig*)plane);
 }

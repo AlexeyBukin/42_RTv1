@@ -26,6 +26,8 @@
 
 # define VEL_DELTA 0.2
 
+# define EPSILON   0.0001
+
 # define RENDER_MAX_DIST 100.0
 //
 //# define WIN_WIDTH  100
@@ -217,7 +219,7 @@ t_base_fig_cyl		*fig_cyl_create();
 
 t_ray 				trace_plane_bounce(t_ray ray, t_base_fig *fig);
 t_double3			trace_plane(t_double3 orig, t_vec dir, t_base_fig *pl);
-t_base_fig_plane	*fig_plane_create(void);
+t_base_fig      	*fig_plane_create(t_vec normal, double arg_d, t_color col);
 
 /*
 ** sphere.c
@@ -231,9 +233,12 @@ t_base_fig_sphere	*fig_sphere_create(void);
 ** utils.c
 */
 double	clamp(double val, double min, double max);
+t_dot	dot(double x, double y, double z);
 
 /*
 ** lights.c
 */
 t_light			**light_arr_create(size_t num);
+t_light		    *light_create(void);
+
 #endif

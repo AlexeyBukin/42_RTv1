@@ -183,6 +183,7 @@ char			*ft_strtrim(char const *s);
 
 int				ft_abs(int a);
 long long int	ft_absl(long long int a);
+double			ft_absd(double a);
 
 void			*ft_bzero(void *buf, size_t len);
 

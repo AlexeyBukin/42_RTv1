@@ -34,6 +34,15 @@ t_color		color(t_byte red, t_byte green, t_byte blue)
 	return (col);
 }
 
+t_color		color_add(t_color a, t_color b)
+{
+	a.r = (t_byte)((int)(a.r + b.r));
+	a.g = (t_byte)((int)(a.g + b.g));
+	a.b = (t_byte)((int)(a.b + b.b));
+	a.a = (t_byte)((int)(a.a + b.a));
+	return (a);
+}
+
 /*
 ** todo 	if slow col = mask.r * (col.r > mask.r) + col * !(col.r > mask.r);
 */

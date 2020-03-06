@@ -26,7 +26,9 @@ t_base_fig		**fig_arr_create(size_t num)
 
 	if (num > SIZE_MAX / sizeof (t_base_fig*) - 1)
 		return (NULL);
-	fig_arr = (t_base_fig**)malloc(sizeof(t_base_fig*) * ++num);
+	fig_arr = (t_base_fig**)malloc(sizeof(t_base_fig*) * (num + 1));
+	if (fig_arr != NULL)
+	    fig_arr[num] = NULL;
 	return (fig_arr);
 }
 

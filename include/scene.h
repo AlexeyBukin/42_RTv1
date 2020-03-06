@@ -30,13 +30,21 @@ typedef enum		e_figure_type
 	FIG_TYPES_NUM
 }					t_figure_type;
 
-typedef	struct	s_base_fig_plane
+typedef	struct	s_base_fig_plane_old
 {
 	t_figure_type	type;
 	t_double3		pos;
 	t_color			col;
 	t_double3		a;
 	t_double3		b;
+}				t_base_fig_plane_old;
+
+typedef	struct	s_base_fig_plane
+{
+	t_figure_type	type;
+	t_vec			n;
+	t_color			col;
+	double			d;
 }				t_base_fig_plane;
 
 typedef	struct	s_base_fig_sphere

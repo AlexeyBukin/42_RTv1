@@ -12,6 +12,16 @@
 
 #include "rtv1.h"
 
+t_vec			vec(double x, double y, double z)
+{
+	t_vec   vec;
+
+	vec.x = x;
+	vec.y = y;
+	vec.z = z;
+	return (vec);
+}
+
 double			vec_dot_product(t_double3 a, t_double3 b)
 {
 	a.x *= b.x;

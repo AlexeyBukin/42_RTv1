@@ -47,10 +47,10 @@ int			camera_init_static(t_camera *cam)
 		return (ft_puterror(1, "camera_init_static(): cam pointer is NULL"));
 	cam->pos = (t_dot) {0.0, 0.0, 0.0};
 //	cam->direction = (t_double3) {1.0, 0.0, 0.0};
-	cam->plane_pos = (t_dot) {(double)WIN_WIDTH / 100 / 2, 0.0, 0};
+	cam->plane_pos = dot((double)WIN_WIDTH / 100.0 / 2.0, 0.0, 0.0);
 	cam->direction = d3_minus(cam->plane_pos, cam->pos);
-	cam->size_x = (double)WIN_WIDTH / 100;
-	cam->size_y = (double)WIN_HEIGHT / 100;
+	cam->size_x = (double)WIN_WIDTH / 100.0;
+	cam->size_y = (double)WIN_HEIGHT / 100.0;
 	cam->direction_right = (t_vec) {0.0, 1.0, 0.0};
 	cam->direction_up = (t_vec) {0.0, 0.0, 1.0};
 	return (OK);

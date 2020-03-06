@@ -25,3 +25,10 @@ long long int	ft_absl(long long int a)
 		return (a * (-1));
 	return (a);
 }
+
+double          ft_absd(double a)
+{
+    if (a < 0)
+        return (a * (-1));
+    return (a);
+}
