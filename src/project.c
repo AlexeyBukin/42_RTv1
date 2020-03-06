@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 04:16:09 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/06 03:10:00 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/06 04:22:52 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int			project(t_rtv1 *rtv1)
 {
+	t_ray		ray;
 	t_double3	dot;
 	t_camera	cam;
 	t_color		traced;
@@ -75,9 +76,10 @@ int			project(t_rtv1 *rtv1)
 				rtv1->trace = TRUE;
 			}
 
-
-			traced = trace(rtv1, cam.pos, d3_minus(dot, cam.pos)); ///d3_minus = zero (0) !!!!!!!!!!!!!
-			texture_put_pixel(rtv1->window->texture, traced, x, y);
+			ray.pos = cam.pos;
+			ray.dir = d3_minus(dot, cam.pos);
+			traced = trace(rtv1, ray);
+			texture_put_pixel(rtv1_window_texture(rtv1), traced, x, y);
 
 			//TODO manual tracing with debuging
 

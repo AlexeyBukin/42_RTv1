@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 00:59:24 by hush              #+#    #+#             */
-/*   Updated: 2020/03/06 04:10:26 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/06 04:55:13 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,12 @@ typedef	union	s_light
 	t_point_light		point;
 }				t_light;
 
+typedef	struct	s_ray
+{
+  t_dot			pos;
+  t_vec			dir;
+}				t_ray;
+
 /*
 ** scene
 */
@@ -112,15 +118,9 @@ typedef	union	s_light
 typedef struct		s_scene
 {
 	t_base_fig		**figures;
-	t_point_light	**lights;
-	t_dot 			(*func_trace_dist[FIG_TYPES_NUM])(t_dot, t_vec, t_base_fig *);
-	t_color			(*func_trace_full[FIG_TYPES_NUM])(struct s_scene*, t_dot, t_vec, t_base_fig *);
+  	t_light			**lights;
+	t_dot 			(*func_trace_dot[FIG_TYPES_NUM])(t_dot, t_vec, t_base_fig*);
+	t_ray			(*func_trace_bounce[FIG_TYPES_NUM])(t_ray, t_base_fig*);
 }					t_scene;
-
-typedef	struct	s_ray
-{
-  t_dot			pos;
-  t_vec			dir;
-}				t_ray;
 
 #endif

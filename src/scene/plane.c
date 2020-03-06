@@ -6,11 +6,18 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 16:04:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/06 03:34:53 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/06 04:56:01 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+t_ray 				trace_plane_bounce(t_ray ray, t_base_fig *fig)
+{
+	//TODO redo normally
+	(void)fig;
+	return (ray);
+}
 
 t_dot				trace_plane(t_dot orig, t_vec dir, t_base_fig *fig)
 {

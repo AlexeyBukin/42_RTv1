@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 04:36:18 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/06 03:57:49 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/06 04:50:34 by kcharla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,20 @@ t_base_fig**	rtv1_scene_figs(t_rtv1 *rtv1)
 	return (rtv1->scene->figures);
 }
 
-t_base_fig	*rtv1_scene_fig_at(t_rtv1 *rtv1, size_t id)
+t_texture		*rtv1_window_texture(t_rtv1 *rtv1)
+{
+	if (rtv1 == NULL)
+	{
+		return (NULL);
+	}
+	if (rtv1->window == NULL)
+	{
+		return (NULL);
+	}
+	return (rtv1->window->texture);
+}
+
+t_base_fig		*rtv1_scene_fig_at(t_rtv1 *rtv1, size_t id)
 {
 	if (rtv1 == NULL)
 	{
@@ -88,7 +101,7 @@ t_base_fig	*rtv1_scene_fig_at(t_rtv1 *rtv1, size_t id)
 	return (rtv1->scene->figures[id]);
 }
 
-t_point_light**	rtv1_scene_lights(t_rtv1 *rtv1)
+t_light			**rtv1_scene_lights(t_rtv1 *rtv1)
 {
 	if (rtv1 == NULL)
 	{
