@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="RTv1" targetName="RTv1" />
+      <config projectName="RTv1" targetName="libft_cmake.a" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0b82b6a7-b361-47c4-806f-3c7acc36a66c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/RTv1.1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1YiAIoF9pJqAKz9Q4XFbXsKH0UV" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C/C++" />
+  </component>
+  <component name="RunManager" selected="CMake Application.RTv1">
+    <configuration name="RTv1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="RTv1" TARGET_NAME="RTv1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="RTv1" RUN_TARGET_NAME="RTv1">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="libft_cmake.a" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="RTv1" TARGET_NAME="libft_cmake.a" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.RTv1" />
+      <item itemvalue="CMake Application.libft_cmake.a" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0b82b6a7-b361-47c4-806f-3c7acc36a66c" name="Default Changelist" comment="" />
+      <created>1583414965035</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583414965035</updated>
+      <workItem from="1583414973996" duration="1247000" />
+      <workItem from="1583452551058" duration="192000" />
+      <workItem from="1583453398468" duration="6347000" />
+      <workItem from="1583462791197" duration="1525000" />
+      <workItem from="1583496831929" duration="6215000" />
+      <workItem from="1583511065492" duration="1148000" />
+      <workItem from="1583512259014" duration="8508000" />
+      <workItem from="1583673790592" duration="841000" />
+      <workItem from="1583678860916" duration="228000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="998" y="482" key="SettingsEditor" timestamp="1583679048629">
+      <screen x="0" y="0" width="2880" height="1540" />
+    </state>
+    <state x="887" y="426" key="SettingsEditor/0.0.2560.1360@0.0.2560.1360" timestamp="1583512275340" />
+    <state x="998" y="482" key="SettingsEditor/0.0.2880.1540@0.0.2880.1540" timestamp="1583679048629" />
+    <state x="1109" y="539" key="SettingsEditor/0.0.3200.1720@0.0.3200.1720" timestamp="1583455203536" />
+    <state x="887" y="442" key="SettingsEditor/0.23.2560.1337@0.23.2560.1337" timestamp="1583500282638" />
+    <state x="1151" y="680" key="com.intellij.ide.util.TipDialog" timestamp="1583673808981">
+      <screen x="0" y="23" width="2880" height="1517" />
+    </state>
+    <state x="1023" y="589" key="com.intellij.ide.util.TipDialog/0.0.2560.1360@0.0.2560.1360" timestamp="1583512259801" />
+    <state x="1279" y="745" key="com.intellij.ide.util.TipDialog/0.0.3200.1720@0.0.3200.1720" timestamp="1583453401663" />
+    <state x="1023" y="602" key="com.intellij.ide.util.TipDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1583496831170" />
+    <state x="1151" y="680" key="com.intellij.ide.util.TipDialog/0.23.2880.1517@0.23.2880.1517" timestamp="1583673808981" />
+    <state x="1279" y="758" key="com.intellij.ide.util.TipDialog/0.23.3200.1697@0.23.3200.1697" timestamp="1583462946120" />
+    <state x="1265" y="435" key="run.anything.popup" timestamp="1583462944945">
+      <screen x="0" y="23" width="3200" height="1697" />
+    </state>
+    <state x="1265" y="435" key="run.anything.popup/0.23.3200.1697@0.23.3200.1697" timestamp="1583462944945" />
+  </component>
+</project>

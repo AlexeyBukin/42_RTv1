@@ -1,8 +1,10 @@
 # RTv1
 RTv1
-.idea
 build/*
 cmake-build-debug
+
+!.gitignore
+!.idea
 
 # libft
 libft/build/*
