@@ -3,26 +3,22 @@
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
       <config projectName="RTv1" targetName="RTv1" />
-      <config projectName="RTv1" targetName="libft_cmake.a" />
+      <config projectName="RTv1" targetName="ft" />
     </generated>
   </component>
-  <component name="CMakeSettings">
+  <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b82b6a7-b361-47c4-806f-3c7acc36a66c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/RTv1.1.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/rtv1.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/rtv1.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libft/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/libft/CMakeLists.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,14 +51,14 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="libft_cmake.a" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="RTv1" TARGET_NAME="libft_cmake.a" CONFIG_NAME="Debug">
+    <configuration name="ft" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="RTv1" TARGET_NAME="ft" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <list>
       <item itemvalue="CMake Application.RTv1" />
-      <item itemvalue="CMake Application.libft_cmake.a" />
+      <item itemvalue="CMake Application.ft" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -84,6 +80,8 @@
       <workItem from="1583512259014" duration="8508000" />
       <workItem from="1583673790592" duration="841000" />
       <workItem from="1583678860916" duration="228000" />
+      <workItem from="1583686817893" duration="780000" />
+      <workItem from="1583688959251" duration="3440000" />
     </task>
     <servers />
   </component>
@@ -91,24 +89,28 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="998" y="482" key="SettingsEditor" timestamp="1583679048629">
+    <state x="1464" y="266" width="1092" height="722" key="SettingsEditor" timestamp="1583693288552">
       <screen x="0" y="0" width="2880" height="1540" />
     </state>
     <state x="887" y="426" key="SettingsEditor/0.0.2560.1360@0.0.2560.1360" timestamp="1583512275340" />
-    <state x="998" y="482" key="SettingsEditor/0.0.2880.1540@0.0.2880.1540" timestamp="1583679048629" />
+    <state x="1464" y="266" width="1092" height="722" key="SettingsEditor/0.0.2880.1540@0.0.2880.1540" timestamp="1583693288552" />
     <state x="1109" y="539" key="SettingsEditor/0.0.3200.1720@0.0.3200.1720" timestamp="1583455203536" />
     <state x="887" y="442" key="SettingsEditor/0.23.2560.1337@0.23.2560.1337" timestamp="1583500282638" />
-    <state x="1151" y="680" key="com.intellij.ide.util.TipDialog" timestamp="1583673808981">
+    <state x="1151" y="680" key="com.intellij.ide.util.TipDialog" timestamp="1583688066059">
       <screen x="0" y="23" width="2880" height="1517" />
     </state>
     <state x="1023" y="589" key="com.intellij.ide.util.TipDialog/0.0.2560.1360@0.0.2560.1360" timestamp="1583512259801" />
     <state x="1279" y="745" key="com.intellij.ide.util.TipDialog/0.0.3200.1720@0.0.3200.1720" timestamp="1583453401663" />
     <state x="1023" y="602" key="com.intellij.ide.util.TipDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1583496831170" />
-    <state x="1151" y="680" key="com.intellij.ide.util.TipDialog/0.23.2880.1517@0.23.2880.1517" timestamp="1583673808981" />
+    <state x="1151" y="680" key="com.intellij.ide.util.TipDialog/0.23.2880.1517@0.23.2880.1517" timestamp="1583688066059" />
     <state x="1279" y="758" key="com.intellij.ide.util.TipDialog/0.23.3200.1697@0.23.3200.1697" timestamp="1583462946120" />
     <state x="1265" y="435" key="run.anything.popup" timestamp="1583462944945">
       <screen x="0" y="23" width="3200" height="1697" />
     </state>
     <state x="1265" y="435" key="run.anything.popup/0.23.3200.1697@0.23.3200.1697" timestamp="1583462944945" />
+    <state x="1787" y="312" key="scopes" timestamp="1583688141125">
+      <screen x="0" y="0" width="2880" height="1540" />
+    </state>
+    <state x="1787" y="312" key="scopes/0.0.2880.1540@0.0.2880.1540" timestamp="1583688141125" />
   </component>
 </project>

@@ -13,7 +13,7 @@
 #ifndef RTV1_H
 # define RTV1_H
 
-# include "SDL.h"
+# include "SDL2/SDL.h"
 # include "scene.h"
 
 # define COLOR_MAX 255

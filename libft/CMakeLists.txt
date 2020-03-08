@@ -4,11 +4,11 @@ set(CMAKE_C_STANDARD  90)
 set(CMAKE_C_STANDARD_REQUIRED True)
 
 # set the project name
-project(libft_cmake.a)
+project(ft)
 
 #file(GLOB SOURCES "src/*.c")
 
-set(SOURCES
+set(FT_SOURCES
         src/atoi_itoa/ft_atoi.c
         src/atoi_itoa/ft_atoi_base.c
         src/atoi_itoa/ft_itoa.c
@@ -128,9 +128,10 @@ set(SOURCES
         src/test/insert_mem.c
         )
 
-add_library(${PROJECT_NAME} ${SOURCES})
+#target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include )
+include_directories(${PROJECT_SOURCE_DIR}/include )
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include )
+add_library(${PROJECT_NAME} ${FT_SOURCES})
 
 #add_subdirectory(src)
 

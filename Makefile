@@ -18,7 +18,7 @@ LIB_SDL_EXTENSION = .dylib
 LIB_SDL = libsdl/
 LIB_SDL_FILE = $(LIB_SDL)/lib/libSDL2$(LIB_SDL_EXTENSION)
 
-INCLUDE = -I include/ -I $(LIB_FT)include/ -I $(LIB_SDL)include/SDL2/
+INCLUDE = -I include/ -I $(LIB_FT)include/ -I $(LIB_SDL)include/
 
 # find include -type f -name '*.h' | sed "s/\$/ \\\\/"
 HEADERS = \

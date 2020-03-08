@@ -3,6 +3,11 @@ cmake_minimum_required(VERSION 3.10)
 set(CMAKE_C_STANDARD  90)
 set(CMAKE_C_STANDARD_REQUIRED True)
 
+
+SET(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -mmacosx-version-min=10.7")
+
+
+
 # set the project name
 project(RTv1)
 
@@ -37,26 +42,28 @@ set(SOURCES
 
         )
 
+find_package(SDL2 REQUIRED)
+include_directories(${SDL2_INCLUDE_DIRS})
+
 add_executable(${PROJECT_NAME} ${SOURCES})
 
-target_include_directories(RTv1
+target_include_directories(${PROJECT_NAME}
         PRIVATE
         ${PROJECT_SOURCE_DIR}/include
         )
-target_include_directories(RTv1
+
+target_include_directories(${PROJECT_NAME}
         PRIVATE
         ${PROJECT_SOURCE_DIR}/libft/include
         )
-target_include_directories(RTv1
+
+target_include_directories(${PROJECT_NAME}
         PRIVATE
-        ${PROJECT_SOURCE_DIR}/libsdl/include/SDL2
+        ${PROJECT_SOURCE_DIR}/libsdl/include/
         )
-target_link_libraries( RTv1 PRIVATE ft )
 
 add_subdirectory(libft)
-#add_subdirectory(src)
-#add_subdirectory(libsdl)
+target_link_libraries(${PROJECT_NAME} ft)
 
-
-
+target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES})
 
