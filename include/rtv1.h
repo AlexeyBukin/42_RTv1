@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/06 05:57:11 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/26 14:20:44 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,8 +225,9 @@ t_base_fig			*fig_plane_from_dots(t_dot a, t_dot b, t_dot c, t_color col);
 ** sphere.c
 */
 
+t_ray				trace_sphere_bounce(t_ray ray, t_base_fig *fig);
 t_double3			trace_sphere(t_ray ray,	t_base_fig *s);
-t_base_fig_sphere	*fig_sphere_create(void);
+t_base_fig_sphere	*fig_sphere_create(t_dot pos, double radius, t_color col);
 
 /*
 ** utils.c

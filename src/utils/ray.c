@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/16 18:49:38 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/26 14:20:44 by hush             ###   ########.fr       */
+/*   Created: 2020/03/26 14:47:36 by hush              #+#    #+#             */
+/*   Updated: 2020/03/26 14:47:36 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "rtv1.h"
 
-int		ft_return(int cond_value, int ok_value, int err_val, char *error_msg)
+t_ray		ray_get_inf()
 {
-	if (cond_value == 0)
-		return (ft_puterror(err_val, error_msg));
-	return (ok_value);
+	t_ray		ray;
+
+	ray.dir = d3_get_inf();
+	ray.pos = d3_get_inf();
+	return (ray);
 }

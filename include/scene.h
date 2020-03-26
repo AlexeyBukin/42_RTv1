@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 00:59:24 by hush              #+#    #+#             */
-/*   Updated: 2020/03/06 04:55:13 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/26 14:49:47 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,5 +130,11 @@ typedef struct		s_scene
 	t_dot 			(*func_trace_dot[FIG_TYPES_NUM])(t_ray, t_base_fig*);
 	t_ray			(*func_trace_bounce[FIG_TYPES_NUM])(t_ray, t_base_fig*);
 }					t_scene;
+
+/*
+** utils/ray.c
+*/
+
+t_ray		ray_get_inf();
 
 #endif

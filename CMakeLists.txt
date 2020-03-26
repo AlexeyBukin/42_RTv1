@@ -3,13 +3,29 @@ cmake_minimum_required(VERSION 3.10)
 set(CMAKE_C_STANDARD  90)
 set(CMAKE_C_STANDARD_REQUIRED True)
 
-
-SET(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -mmacosx-version-min=10.7")
-
+# MAC version cmake start
+#SET(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -mmacosx-version-min=10.7")
+# MAC end
 
 
 # set the project name
 project(RTv1)
+
+set(SDL2_INCLUDE_DIR libsdl/include)
+
+# Linux version cmake start
+set(SDL2_LIBRARY libsdl/lib/libSDL2.so)
+
+## includes cmake/FindSDL2.cmake
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+
+# Linux end
+
+
+find_package(SDL2 REQUIRED)
+
+include_directories(${SDL2_INCLUDE_DIR})
+
 
 #file(GLOB SOURCES "src/*.c")
 

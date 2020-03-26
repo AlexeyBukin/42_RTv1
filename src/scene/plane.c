@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:31:21 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/06 20:04:54 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/26 14:20:44 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,7 @@ t_ray				trace_plane_bounce(t_ray ray, t_base_fig *fig)
 	t_vec l_dot_n;
 
 	if (fig == NULL)
-	{
-		bounce.dir = d3_get_inf();
-		bounce.pos = d3_get_inf();
-		return (bounce);
-	}
+		return (ray_get_inf());
 	bounce.pos = trace_plane(ray, fig);
 	l_dot_n = d3_mult(fig->plane.n, vec_dot_product(ray.dir, fig->plane.n) * 2.0);
 	bounce.dir = d3_minus(ray.dir, l_dot_n);

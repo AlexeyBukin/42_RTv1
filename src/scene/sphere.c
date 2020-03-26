@@ -6,11 +6,24 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 16:04:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/06 03:32:02 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/26 15:12:18 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+t_ray				trace_sphere_bounce(t_ray ray, t_base_fig *fig)
+{
+	t_base_fig			plane;
+	t_ray				bounce;
+
+	if (fig == NULL)
+		return (ray_get_inf());
+	bounce.pos = trace_sphere(ray, fig);
+	plane.plane.n = d3_minus(fig->sphere.pos, bounce.pos);
+	bounce.dir = trace_plane_bounce(ray, &plane).dir;
+	return (bounce);
+}
 
 t_double3		trace_sphere(t_ray ray, t_base_fig *fig)
 {
@@ -58,7 +71,7 @@ t_base_fig_sphere	fig_sphere_get(void)
 	return (sphere);
 }
 
-t_base_fig_sphere	*fig_sphere_create(void)
+t_base_fig_sphere	*fig_sphere_create_default(void)
 {
 	t_base_fig_sphere		*sphere;
 
@@ -66,5 +79,19 @@ t_base_fig_sphere	*fig_sphere_create(void)
 		return (ft_puterr_null(1, "fig_sphere_create():"
 							" cannot malloc scene struct"));
 	*sphere = fig_sphere_get();
+	return (sphere);
+}
+
+t_base_fig_sphere	*fig_sphere_create(t_dot pos, double radius, t_color col)
+{
+	t_base_fig_sphere		*sphere;
+
+	if ((sphere = (t_base_fig_sphere*)fig_create()) == NULL)
+		return (ft_puterr_null(1, "fig_sphere_create():"
+								  " cannot malloc scene struct"));
+	sphere->pos = pos;
+	sphere->col = col;
+	sphere->r = radius;
+	sphere->type = FIG_SPHERE;
 	return (sphere);
 }

@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 03:26:48 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/06 22:41:33 by kcharla          ###   ########.fr       */
+/*   Updated: 2020/03/26 15:14:48 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,17 @@ t_color		trace_full(t_rtv1 *rtv1, t_ray ray, size_t id)
     base = (t_figure_base*)rtv1_scene_fig_at(rtv1, id);
     if (base == NULL)
         return (color(0, 0, 0));
-    (void)ray;
 
-    if (base->type != FIG_PLANE)
+	//t_ray bounce = rtv1_scene(rtv1)->func_trace_bounce[base->type](ray, rtv1_scene_fig_at(rtv1, id));
+
+    if (base->type != FIG_PLANE && base->type != FIG_SPHERE)
 	{
 		t_dot tmp_dot = trace_fig(rtv1, ray, rtv1_scene_fig_at(rtv1, id));
 		double dist = 1.0 / d3_dist(tmp_dot, ray.pos);
 		t_color dist_col = color((t_byte)dist, (t_byte)dist, (t_byte)dist);
 		return (color_add(base->col, dist_col));
 	}
-    t_ray bounce = rtv1_scene(rtv1)->func_trace_bounce[FIG_PLANE](ray, rtv1_scene_fig_at(rtv1, id));
+    t_ray bounce = rtv1_scene(rtv1)->func_trace_bounce[base->type](ray, rtv1_scene_fig_at(rtv1, id));
     t_vec bounce_to_light = d3_minus(rtv1_scene(rtv1)->lights[0]->point.pos, bounce.pos);
 
     double cos_a = vec_angle_cos(bounce.dir, bounce_to_light);
@@ -94,38 +95,6 @@ t_color		trace_full(t_rtv1 *rtv1, t_ray ray, size_t id)
 	}
 
 	return (dist_col);
-
-//    if (cos_a >= 0 && cos_a <= 1.0)
-//	{
-//		t_color dist_col = base->col;
-//		t_byte mask = (ft_absd(cos_a) > 1 ? 1 : ft_absd(cos_a)) * 255;
-////		t_byte mask = 255;
-//		dist_col = col_mask(base->col, color(mask, mask, mask));
-//		return (dist_col);
-//	}
-//	if (cos_a >= -1 && cos_a < 0)
-//	{
-//		cos_a = cos_a + 1;
-//		t_color dist_col = base->col;
-//		t_byte mask = cos_a * 255;
-////		t_byte mask = 255;
-//		dist_col = col_mask(base->col, color(mask, mask, mask));
-//		return (dist_col);
-//	}
-    //bounce = rtv1->scene->func_trace_bounce[base->type](ray, (t_base_fig*)base);
-//	i = 0;
-//	light_amount = 0;
-//	ft_putendl("trace(): start");
-//	while (rtv1->scene->lights[i] != NULL)
-//	{
-//		light_amount += trace_light(rtv1->scene->lights[i], bounce);
-//	}
-//	ft_putendl("trace(): start");
-//	if (light_amount > 255)
-//		light_amount = 255;
-    //mask = color(light_amount, light_amount, light_amount);
-    return (base->col);
-    //return (color_mask(base->col, mask));
 }
 
 int			get_nearest_id(t_rtv1 *rtv1, t_ray ray)
