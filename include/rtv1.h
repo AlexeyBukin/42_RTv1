@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/26 14:20:44 by hush             ###   ########.fr       */
+/*   Updated: 2020/03/26 16:55:02 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ void				rtv1_quit(t_rtv1 *rtv1);
 ** init.c
 */
 
-int					rtv1_init(t_rtv1 **rtv1);
+int					rtv1_init(t_rtv1 **rtv1, int ac, char **args);
 t_scene				*rtv1_scene(t_rtv1 *rtv1);
 t_window			*rtv1_window(t_rtv1 *rtv1);
 t_texture			*rtv1_window_texture(t_rtv1 *rtv1);
@@ -175,6 +175,8 @@ t_base_fig			*rtv1_scene_fig_at(t_rtv1 *rtv1, size_t id);
 ** scene.c
 */
 
+t_scene				*scene_default(void);
+t_scene				*scene_read(char *file);
 t_scene				*scene_create(void);
 int					scene_replace_figs(t_scene *scene, t_base_fig *figs_new);
 

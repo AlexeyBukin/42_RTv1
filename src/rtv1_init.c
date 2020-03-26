@@ -6,13 +6,13 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 04:36:18 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/26 14:20:44 by hush             ###   ########.fr       */
+/*   Updated: 2020/03/26 16:53:07 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int				rtv1_init(t_rtv1 **rtv1)
+int				rtv1_init(t_rtv1 **rtv1, int ac, char **args)
 {
 	t_rtv1		*new;
 
@@ -29,7 +29,16 @@ int				rtv1_init(t_rtv1 **rtv1)
 	new->vel_forward = 0;
 	new->vel_right = 0;
 	new->vel_up = 0;
-	new->scene = scene_create();
+
+	if (ac == 2)
+	{
+		new->scene = scene_read(args[1]);
+	}
+	else
+	{
+		new->scene = scene_default();
+	}
+
 	new->w = FALSE;
 	new->a = FALSE;
 	new->s = FALSE;

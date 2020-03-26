@@ -10,6 +10,9 @@ project(ft)
 
 set(FT_SOURCES
         src/atoi_itoa/ft_atoi.c
+        src/atoi_itoa/ft_atof.c
+        src/atoi_itoa/ft_atod.c
+        src/atoi_itoa/ft_atold.c
         src/atoi_itoa/ft_atoi_base.c
         src/atoi_itoa/ft_itoa.c
         src/atoi_itoa/ft_itoa_base.c

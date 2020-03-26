@@ -19,12 +19,12 @@ void		rtv1_quit(t_rtv1 *rtv1)
 	SDL_Quit();
 }
 
-int			main(void)
+int			main(int ac, char **args)
 {
 	t_rtv1	*rtv1;
 
 	rtv1 = NULL;
-	if (rtv1_init(&rtv1) < 0)
+	if (rtv1_init(&rtv1, ac, args) < 0)
 	{
 		rtv1_quit(rtv1);
 		return (ft_puterror(1, "main(): problems running rtv1_init()"));

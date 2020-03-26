@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 19:12:07 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/26 14:20:44 by hush             ###   ########.fr       */
+/*   Updated: 2020/03/26 17:22:17 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ int				get_next_line(const int fd, char **line);
 */
 
 int				ft_atoi(const char *s);
+float			ft_atof(const char *s);
+double			ft_atod(const char *s);
+long double		ft_atold(const char *s);
 int				ft_atoi_base(const char *s, char base);
 
 # define BASE16U "0123456789ABCDEF"
