@@ -2,8 +2,8 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="RTv1" targetName="RTv1" />
       <config projectName="RTv1" targetName="ft" />
+      <config projectName="RTv1" targetName="RTv1" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
@@ -13,17 +13,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b82b6a7-b361-47c4-806f-3c7acc36a66c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/libft/src/atoi_itoa/ft_atod.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libft/src/atoi_itoa/ft_atof.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libft/src/atoi_itoa/ft_atold.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/rtv1.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/rtv1.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/libft/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/libft/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/include/libft.h" beforeDir="false" afterPath="$PROJECT_DIR$/libft/include/libft.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rtv1_init.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/rtv1_init.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/lights.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/lights.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scene/scene.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/scene.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/sphere.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/sphere.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/trace.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/trace.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +49,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/libft/src/atoi_itoa" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C/C++" />
   </component>
   <component name="RecentsManager">
@@ -208,6 +204,8 @@
       <workItem from="1583686817893" duration="780000" />
       <workItem from="1583688959251" duration="3440000" />
       <workItem from="1584212358809" duration="219000" />
+      <workItem from="1586984532102" duration="19000" />
+      <workItem from="1587050869719" duration="3887000" />
     </task>
     <servers />
   </component>
@@ -215,10 +213,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="466" y="142" width="430" height="481" key="FileChooserDialogImpl" timestamp="1584212577041">
+    <state x="466" y="142" width="430" height="481" key="FileChooserDialogImpl" timestamp="1586984549881">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="466" y="142" width="430" height="481" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1584212577041" />
+    <state x="466" y="142" width="430" height="481" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1586984549881" />
     <state x="1464" y="266" width="1092" height="722" key="SettingsEditor" timestamp="1583693288552">
       <screen x="0" y="0" width="2880" height="1540" />
     </state>
@@ -226,9 +224,10 @@
     <state x="1464" y="266" width="1092" height="722" key="SettingsEditor/0.0.2880.1540@0.0.2880.1540" timestamp="1583693288552" />
     <state x="1109" y="539" key="SettingsEditor/0.0.3200.1720@0.0.3200.1720" timestamp="1583455203536" />
     <state x="887" y="442" key="SettingsEditor/0.23.2560.1337@0.23.2560.1337" timestamp="1583500282638" />
-    <state x="1151" y="680" key="com.intellij.ide.util.TipDialog" timestamp="1583688066059">
-      <screen x="0" y="23" width="2880" height="1517" />
+    <state x="546" y="333" key="com.intellij.ide.util.TipDialog" timestamp="1586984530574">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
+    <state x="546" y="333" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1586984530574" />
     <state x="1023" y="589" key="com.intellij.ide.util.TipDialog/0.0.2560.1360@0.0.2560.1360" timestamp="1583512259801" />
     <state x="1279" y="745" key="com.intellij.ide.util.TipDialog/0.0.3200.1720@0.0.3200.1720" timestamp="1583453401663" />
     <state x="1023" y="602" key="com.intellij.ide.util.TipDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1583496831170" />

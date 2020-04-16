@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 04:36:18 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/26 16:53:07 by hush             ###   ########.fr       */
+/*   Updated: 2020/04/16 18:56:41 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int				rtv1_init(t_rtv1 **rtv1, int ac, char **args)
 	}
 	else
 	{
-		new->scene = scene_default();
+		new->scene = scene_default_1();
 	}
 
 	new->w = FALSE;

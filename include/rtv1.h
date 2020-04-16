@@ -175,7 +175,9 @@ t_base_fig			*rtv1_scene_fig_at(t_rtv1 *rtv1, size_t id);
 ** scene.c
 */
 
-t_scene				*scene_default(void);
+t_scene				*scene_default_0(void);
+t_scene				*scene_default_1(void);
+t_scene				*scene_default_2(void);
 t_scene				*scene_read(char *file);
 t_scene				*scene_create(void);
 int					scene_replace_figs(t_scene *scene, t_base_fig *figs_new);

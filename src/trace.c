@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 03:26:48 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/26 15:14:48 by hush             ###   ########.fr       */
+/*   Updated: 2020/04/16 22:33:07 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,14 @@ t_color		trace_full(t_rtv1 *rtv1, t_ray ray, size_t id)
 
     //diffuse
 	cos_a = (cos_a + 1) / 2;
-	t_byte mask = cos_a * 255;
+
+	//if (cos_a < 0.5)
+	//	cos_a *= 0.5;
+
+	t_byte mask = 200;///cos_a * 255;
 	mask = (mask * light_power > 255 ? 255 : mask * light_power);
-	t_color mask_col = color_add(color(mask, mask, mask), color(1, 1, 1));
+	t_color mask_col = color(mask, mask, mask);
+	//t_color mask_col = color_add(color(mask, mask, mask), color(1, 1, 1));
 	t_color dist_col = col_mask(base->col, mask_col);
 
 	//real light

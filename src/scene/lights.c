@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 00:37:12 by hush              #+#    #+#             */
-/*   Updated: 2020/03/26 14:20:44 by hush             ###   ########.fr       */
+/*   Updated: 2020/04/16 19:01:18 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_light		*light_create(void)
 	light = (t_light*)malloc(sizeof(t_light));
 	if (light != NULL)
     {
-	    light->point.pos = dot(5, 0, 4);
+	    light->point.pos = dot(0, 0, 4);
 	    light->point.col = color(255, 255, 255);
 	    light->point.power = 100.0;
     }

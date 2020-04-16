@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 15:14:45 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/26 17:33:08 by hush             ###   ########.fr       */
+/*   Updated: 2020/04/16 19:03:26 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_scene		*scene_create(void)
 	return (scene);
 }
 
-t_scene		*scene_default(void)
+t_scene		*scene_default_0(void)
 {
 	t_scene		*scene;
 
@@ -58,6 +58,34 @@ t_scene		*scene_default(void)
 	if ((scene->lights = light_arr_create(1)) == NULL)
 		return (ft_puterr_null(1, "scene_default():"
 		"cannot malloc lights array"));
+	scene->lights[0] = light_create();
+	return (scene);
+}
+
+t_scene		*scene_default_1(void)
+{
+	t_scene		*scene;
+
+	if ((scene = scene_create()) == NULL)
+		return (ft_puterr_null(1, "scene_default():"
+								  "cannot create scene"));
+
+	if ((scene->figures = fig_arr_create(4)) == NULL)
+		return (ft_puterr_null(1, "scene_default():"
+								  "cannot malloc figures array"));
+	scene->figures[0] = (t_base_fig*)fig_plane_create(vec(0, 0, 1), 3.0, color(0, 100, 0));
+	scene->figures[1] = (t_base_fig*)fig_plane_create(vec(-1, 0, 0), 20.0, color(100, 100, 100));
+
+	scene->figures[2] = (t_base_fig*)fig_sphere_create(dot(5, 1, 1), 1.0, color(100, 0, 100));
+	scene->figures[3] = (t_base_fig*)fig_sphere_create(dot(9, -1, 1), 1.0, color(100, 0, 0));
+
+//    scene->figures[5] = (t_base_fig*)fig_sphere_create();
+//    scene->figures[6] = (t_base_fig*)fig_cyl_create();
+
+
+	if ((scene->lights = light_arr_create(1)) == NULL)
+		return (ft_puterr_null(1, "scene_default():"
+								  "cannot malloc lights array"));
 	scene->lights[0] = light_create();
 	return (scene);
 }

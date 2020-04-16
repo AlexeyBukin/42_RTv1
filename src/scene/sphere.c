@@ -25,6 +25,7 @@ t_ray				trace_sphere_bounce(t_ray ray, t_base_fig *fig)
 	return (bounce);
 }
 
+//TODO redo, render bug when sphere behind camera
 t_double3		trace_sphere(t_ray ray, t_base_fig *fig)
 {
 	t_base_fig_sphere	*s;
