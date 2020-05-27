@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
-    <generated>
-      <config projectName="RTv1" targetName="RTv1" />
-      <config projectName="RTv1" targetName="ft" />
-    </generated>
+    <generated />
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
@@ -32,7 +29,6 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -57,29 +53,19 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C/C++" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/libft" />
       <recent name="$PROJECT_DIR$/libsdl" />
       <recent name="$PROJECT_DIR$/libft/src/atoi_itoa" />
-      <recent name="$PROJECT_DIR$/src/utils" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.RTv1">
-    <configuration name="RTv1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="RTv1" TARGET_NAME="RTv1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="RTv1" RUN_TARGET_NAME="RTv1">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ft" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="RTv1" TARGET_NAME="ft" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="RTv1.1" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -188,10 +174,6 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="CMake Application.RTv1" />
-      <item itemvalue="CMake Application.ft" />
-    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -219,7 +201,7 @@
       <workItem from="1587050869719" duration="3887000" />
       <workItem from="1588463085069" duration="2152000" />
       <workItem from="1588537916666" duration="238000" />
-      <workItem from="1590611857945" duration="5092000" />
+      <workItem from="1590611857945" duration="6171000" />
     </task>
     <servers />
   </component>
@@ -231,6 +213,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="make fix" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="446" y="189" width="470" height="386" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1590617814474">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="446" y="189" width="470" height="386" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.768@0.0.1366.768" timestamp="1590617814474" />
     <state x="294" y="0" width="774" height="765" key="CommitChangelistDialog2" timestamp="1590614457374">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

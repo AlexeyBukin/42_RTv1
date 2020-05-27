@@ -2,7 +2,7 @@
 RTv1
 build/
 cmake-build-debug
-.DS_Store
+.DS_Storeg
 .idea
 
 !.gitignore
