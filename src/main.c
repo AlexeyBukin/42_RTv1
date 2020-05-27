@@ -21,11 +21,11 @@ int			main(int ac, char **args)
 		rtv1_quit(rtv1);
 		return (ft_puterror(1, "main(): rtv1_init() returned NULL"));
 	}
-//	if (rt_loop(rtv1) < 0)
-//	{
-//		rtv1_quit(rtv1);
-//		return (ft_puterror(2, "main(): problems running rtv1_loop()"));
-//	}
+	if (rt_loop(rtv1) < 0)
+	{
+		rtv1_quit(rtv1);
+		return (ft_puterror(2, "main(): problems running rtv1_loop()"));
+	}
 	rtv1_quit(rtv1);
 	return (0);
 }

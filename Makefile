@@ -15,9 +15,9 @@ else
 endif
 
 # (2) General config
-#CC = clang
+CC = clang
 #or "
-CC = gcc -no-pie#" # -fPIC does not work...
+#CC = gcc -no-pie#" # -fPIC does not work...
 
 export DEBUG = -g
 export OPTIM = -O2
