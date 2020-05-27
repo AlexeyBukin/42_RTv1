@@ -14,16 +14,6 @@
 
 int		ft_is_blank(char c)
 {
-	if (c == ' ' || c == '\t' || c == '\n')
-	{
-		return (1);
-	}
-	else if (c == '\r' || c == '\v' || c == '\f')
-	{
-		return (1);
-	}
-	else
-	{
-		return (0);
-	}
+	return (c == ' ' || c == '\t' || c == '\n' ||
+			c == '\r' || c == '\v' || c == '\f');
 }

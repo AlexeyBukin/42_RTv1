@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 16:24:56 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/26 14:20:44 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/22 15:28:12 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 	t_list	*res;
 
 	res = (t_list*)malloc(sizeof(t_list));
-	if (res == 0)
+	if (res == NULL)
 	{
-		return (0);
+		return (NULL);
 	}
-	if (content == 0)
+	if (content == NULL)
 	{
-		res->content = 0;
+		res->content = NULL;
 		res->content_size = 0;
 	}
 	else
@@ -34,6 +34,6 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 		res->content = content_copy;
 		res->content_size = content_size;
 	}
-	res->next = 0;
+	res->next = NULL;
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 21:12:10 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/26 14:20:44 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/04 00:11:09 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memalloc(size_t size)
 	t_byte		*tp;
 
 	tp = (t_byte*)malloc(size);
-	if (tp != 0)
+	if (tp != NULL)
 	{
 		tp = (t_byte*)ft_bzero(tp, size);
 	}

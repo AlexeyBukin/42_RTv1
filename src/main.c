@@ -6,34 +6,26 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:42:27 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/26 14:20:44 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/27 19:14:16 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
-
-void		rtv1_quit(t_rtv1 *rtv1)
-{
-	if (rtv1 != NULL)
-		destroy_rtv1(rtv1);
-	SDL_Quit();
-}
+#include "rt.h"
 
 int			main(int ac, char **args)
 {
-	t_rtv1	*rtv1;
+	t_rt		*rtv1;
 
-	rtv1 = NULL;
-	if (rtv1_init(&rtv1, ac, args) < 0)
+	if ((rtv1 = rtv1_init(ac, args)) == NULL)
 	{
 		rtv1_quit(rtv1);
-		return (ft_puterror(1, "main(): problems running rtv1_init()"));
+		return (ft_puterror(1, "main(): rtv1_init() returned NULL"));
 	}
-	if (rtv1_loop(rtv1) < 0)
-	{
-		rtv1_quit(rtv1);
-		return (ft_puterror(2, "main(): problems running rtv1_loop()"));
-	}
+//	if (rt_loop(rtv1) < 0)
+//	{
+//		rtv1_quit(rtv1);
+//		return (ft_puterror(2, "main(): problems running rtv1_loop()"));
+//	}
 	rtv1_quit(rtv1);
 	return (0);
 }

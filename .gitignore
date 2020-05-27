@@ -1,20 +1,22 @@
 # RTv1
 RTv1
-build/*
+build/
 cmake-build-debug
+.DS_Store
+.idea
 
 !.gitignore
-!.idea
+!.gitmodules
 
 # libft
-libft/build/*
+libft/build/
 
 # LibSDL
-libsdl/bin/*
-libsdl/build_sdl/*
-libsdl/lib/*
-libsdl/share/*
-libsdl/include/*
+libsdl/bin/
+libsdl/build_sdl/
+libsdl/lib/
+libsdl/share/
+libsdl/include/
 
 # Prerequisites
 *.d
