@@ -1,0 +1,4 @@
+[submodule "libsdl/SDL2_source"]
+	path = libsdl/SDL2_source
+	url = https://github.com/spurious/SDL-mirror.git
+	branch = SDL
