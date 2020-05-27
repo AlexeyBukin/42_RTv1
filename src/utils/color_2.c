@@ -6,13 +6,46 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:39:30 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/26 14:20:44 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/28 01:01:34 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "rt.h"
 
-char		*color_to_str(t_color color)
+t_col		col_from_vec(t_vec vector)
+{
+	t_col	res;
+
+	res.r = vector.x;
+	res.g = vector.y;
+	res.b = vector.z;
+	res.a = ALPHA_MAX;
+	return (res);
+}
+
+t_col		col_alpha(t_byte red, t_byte green, t_byte blue, t_byte alpha)
+{
+	t_col		col;
+
+	col.r = red;
+	col.g = green;
+	col.b = blue;
+	col.a = alpha;
+	return (col);
+}
+
+t_col		col(t_byte red, t_byte green, t_byte blue)
+{
+	t_col		col;
+
+	col.r = red;
+	col.g = green;
+	col.b = blue;
+	col.a = ALPHA_MAX;
+	return (col);
+}
+
+char		*col_to_str(t_col color)
 {
 	char	*res;
 
@@ -27,7 +60,7 @@ char		*color_to_str(t_color color)
 	return (res);
 }
 
-char		*color_to_str_color(t_color color)
+char		*col_to_str_color(t_col color)
 {
 	char	*res;
 

@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 01:05:29 by hush              #+#    #+#             */
-/*   Updated: 2020/03/26 14:20:44 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/28 01:01:34 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct		s_double3
 	double 			z;
 }					t_double3;
 
+//todo make vector type
 typedef t_double3	t_vec;
 typedef t_double3	t_dot;
 

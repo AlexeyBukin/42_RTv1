@@ -1,37 +1,32 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: hush <hush@student.42.fr>                  +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/05/27 22:20:09 by hush              #+#    #+#              #
+#    Updated: 2020/05/28 01:01:34 by hush             ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 # Makefile for Rtv1 project in school 21 (ecole 42)
 # written by kcharla, 2020
-#
-# Usage:
-#
-# 1) `make all' OR `make libftprintf.a' to compile libftprintf.a
-#
-# 2.1) `make clean' to delete objects locally and in libft
-# 2.2) `make lclean' to delete objects locally only (don't touch libft)
-#
-# 3.1) `make fclean' to delete libftprintf.a, libft.a and objects locally and
-#			in libft
-# 3.2) `make lfclean' to delete libftprintf.a and objects locally
-#			(don't touch libft)
-#
-# 4.1) `make re' to run `make fclean' and `make all'
-# 4.2) `make lre' to run `make lfclean' and `make all'
-#
-# TO USE DEBUG add `DEBUG=-g' before rule like this: `make DEBUG=-g re'
 
 NAME = libsdl.a
 
-SDL_DIR_NAME=SDL2-2.0.10-source
+#SDL_DIR_NAME=SDL2-2.0.10-source
+SDL_DIR_NAME=SDL2_source
 
 BUILD_DIR = build_sdl/
 
 CC = $(SDL_DIR_NAME)/build-scripts/gcc-fat.sh
 #CC = clang
 
-CLEAN_DIRS=$(BUILD_DIR) bin lib share
-FCLEAN_DIRS=include
+CLEAN_DIRS=$(BUILD_DIR) bin share
+FCLEAN_DIRS=lib include
 
 INSTALL_PATH=$(CURDIR)/
-LIB_SDL_DIR=lib/
+LIB_SDL_DIR=installed/
 
 .PHONY: clean fclean all
 
@@ -46,8 +41,6 @@ $(NAME):
 	make -C $(BUILD_DIR)
 	@echo "make: Running libSDL \`make install'..."
 	make -C $(BUILD_DIR) install
-	#@echo "make: Preparing files..."
-	#cp $(LIB_SDL_DIR)libSDL2.a $(NAME)
 
 clean:
 	@rm -rf $(CLEAN_DIRS)

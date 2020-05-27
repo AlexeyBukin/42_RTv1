@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:45:53 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/26 14:20:44 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/28 01:01:34 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ double			vec_len(t_double3 a)
 	t_double3	zero;
 
 	zero = (t_double3){0, 0, 0};
-	return (ft_absd(d3_dist(zero, a)));
+	return (d3_dist(zero, a));
 }
 
 t_double3		vec_normalize(t_double3 vec)

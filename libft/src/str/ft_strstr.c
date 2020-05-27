@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 20:05:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/26 14:20:44 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/28 01:01:34 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ char	*ft_strstr(const char *s1, const char *s2)
 		}
 		i++;
 	}
-	return (0);
+	return (NULL);
 }

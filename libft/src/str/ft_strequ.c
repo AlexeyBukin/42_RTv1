@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 19:55:33 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/26 14:20:44 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/28 01:01:34 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		ft_strequ(const char *s1, const char *s2)
 {
-	if (s1 == 0 || s2 == 0)
+	if (s1 == NULL || s2 == NULL)
 	{
 		if (s1 == s2)
 			return (0);

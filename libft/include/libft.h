@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 19:12:07 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/26 17:22:17 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/28 01:01:34 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,6 @@ typedef char			t_bool;
 
 # define FALSE 0
 # define TRUE  1
-
-/*
-** gnl (get_next_line)
-*/
-
-# define BUFF_SIZE 32
-
-int				get_next_line(const int fd, char **line);
 
 /*
 ** atoi-itoa
@@ -64,9 +56,19 @@ char			*ft_utoa(unsigned int num);
 char			*ft_utoa_base(unsigned int value, char *base);
 
 /*
+** file
+*/
+# define BUFF_SIZE 127
+
+int				get_next_line(int fd, char **line);
+char 			*ft_file_read(char *filename);
+
+/*
 ** is
 */
 
+int				ft_isnum(int ch);
+int				ft_iscomment(int ch);
 int				ft_isalnum(int c);
 int				ft_isalpha(int ch);
 int				ft_isascii(int c);
@@ -96,7 +98,11 @@ t_list			*ft_lstnew(void const *content, size_t content_size);
 /*
 ** mem
 */
+
 void			*ft_mem_rev(void *pointer_v, size_t count);
+void			*ft_malloc(size_t size);
+void			*ft_realloc(void *ptr, size_t old, size_t new);
+void			*ft_realloc_arr(void *ptr, size_t old,	size_t new, size_t el);
 void			*ft_memalloc(size_t size);
 void			*ft_memccpy(void *d, const void *s, int c, size_t count);
 void			*ft_memchr(const void *p, int c, size_t n);
@@ -129,11 +135,14 @@ void			ft_putstr_free(char *s);
 ** str
 */
 
+char			*ft_str_add(char *s1, const char *s2);
+size_t			ft_str_count(const char *text, const char *word);
 char			**ft_str_div_by(char const *str, int divisor);
 char			*ft_str_div_by_ins(char const *str, int d, char const *ins);
 char			*ft_str_spam(const char *s, int repetitions);
 void			ft_str_up(char *s);
 void			ft_str_low(char *s);
+int				ft_str_next_is(const char *text, const char *word);
 
 char			*ft_strcat(char *s1, const char *s2);
 char			*ft_strcfnr(const char *s, int find, int replace);
@@ -193,6 +202,11 @@ void			*ft_bzero(void *buf, size_t len);
 char			*ft_char_to_str(char c);
 
 int				ft_free(void *p);
+int				ft_free_2(void *p, void *p2);
+int				ft_free_3(void *p, void *p2, void *p3);
+void			*ft_free_null(void *p);
+void			*ft_free_2_null(void *p, void *p2);
+void			*ft_free_3_null(void *p, void *p2, void *p3);
 void			ft_free_char_2d_arr(char ***input);
 
 int				ft_pow(int num, int pow);

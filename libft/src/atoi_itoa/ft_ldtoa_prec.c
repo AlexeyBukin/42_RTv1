@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 21:34:55 by kcharla           #+#    #+#             */
-/*   Updated: 2020/03/26 14:20:44 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/28 01:01:34 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,13 @@
 
 char			*ft_ldtoa_prec(long double num, int prec)
 {
-	int			i;
 	char		*res;
-	int			flags[FLAGS_LEN];
+	int			*flags;
 	char		sign;
 
 	sign = 1;
-	i = 0;
-	while (i < FLAGS_LEN)
-	{
-		flags[i] = 0;
-		i++;
-	}
+	if ((flags = (int*)ft_malloc(sizeof(int) * FLAGS_LEN)) == NULL)
+		return (NULL);
 	if (prec < 0)
 		prec = 6;
 	flags[PRECISION] = prec;
@@ -38,5 +33,7 @@ char			*ft_ldtoa_prec(long double num, int prec)
 		res = bad_way(flags, num);
 	else
 		res = f_get_special(flags);
-	return (width_format(flags, res, sign));
+	res = width_format(flags, res, sign);
+	ft_free(flags);
+	return (res);
 }

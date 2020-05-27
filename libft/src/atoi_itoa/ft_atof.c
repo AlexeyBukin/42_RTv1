@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 17:16:43 by hush              #+#    #+#             */
-/*   Updated: 2020/03/26 17:23:54 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/28 01:01:34 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ float			ft_atof(const char *str)
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
-		res = res * 10 + (str[i++] - 48);
+		res = (float) (res * 10 + (str[i++] - 48.0));
 	res *= negative;
 	if (str[i] == '.')
 		while (str[i] >= '0' && str[i] <= '9')
 		{
 			negative /= 10;
-			res += negative * (str[i] - 48);
+			res += (float) (negative * (str[i] - 48.0));
 			i++;
 		}
 	return (res);
