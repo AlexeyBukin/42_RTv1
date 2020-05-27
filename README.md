@@ -20,4 +20,7 @@ Ray tracing v1 project for school21 (ecole42) by kcharla
 
 
 
+git submodule update --init --recursive
+
+
 Made using SDL2 (this is required by licence)
