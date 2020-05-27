@@ -13,81 +13,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b82b6a7-b361-47c4-806f-3c7acc36a66c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/include/rt.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/rt_parser.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/rt_scene.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/rt_struct.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/rt_trace.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/rt_utils.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/rt_vector.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libft/src/file/ft_file_read.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libft/src/file/get_next_line.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libft/src/is/ft_iscomment.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libft/src/is/ft_isnum.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libft/src/mem/ft_free.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libft/src/mem/ft_realloc.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libft/src/str/ft_str_add.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libft/src/str/ft_str_count.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libft/src/str/ft_str_next_is.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scenes/default.scene" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scenes/example.scene" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/camera/camera.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/camera/project.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/rt.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scene/parse/add_figure.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scene/parse/add_light.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scene/parse/add_material.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scene/parse/comments.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scene/parse/read_comma.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scene/parse/read_id.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scene/parse/read_num.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scene/parse/read_vec.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scene/parse/scene_from_file.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scene/rt_figure_to_str.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scene/rt_light_to_str.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scene/rt_material_to_str.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scene/rt_scene.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/trace/rt_trace.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/trace/trace_dot_cone.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/trace/trace_dot_cylinder.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/trace/trace_dot_plane.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/trace/trace_dot_sphere.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/trace/trace_normal_cone.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/trace/trace_normal_cylinder.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/trace/trace_normal_plane.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/trace/trace_normal_sphere.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/clamp.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/color_1.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/num_1.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/vector_1.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/vector_2.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/vector_3.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/vector_4.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/update_srcs.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/libft/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/libft/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/include/libft.h" beforeDir="false" afterPath="$PROJECT_DIR$/libft/include/libft.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/include/printf.h" beforeDir="false" afterPath="$PROJECT_DIR$/libft/include/printf.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/atoi_itoa/ft_atof.c" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/atoi_itoa/ft_atof.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/atoi_itoa/ft_atoi.c" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/atoi_itoa/ft_atoi.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/atoi_itoa/ft_ldtoa_prec.c" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/atoi_itoa/ft_ldtoa_prec.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/is/ft_isblank.c" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/is/ft_isblank.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/lst/ft_lstadd.c" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/lst/ft_lstadd.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/lst/ft_lstnew.c" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/lst/ft_lstnew.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/mem/ft_memalloc.c" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/mem/ft_memalloc.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/printf/f_special.c" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/printf/f_special.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/printf/flags_f.c" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/printf/flags_f.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/str/ft_strclr.c" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/str/ft_strclr.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/str/ft_strequ.c" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/str/ft_strequ.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/str/ft_strstr.c" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/str/ft_strstr.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libsdl/SDL2_source" beforeDir="false" afterPath="$PROJECT_DIR$/libsdl/SDL2_source" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/events.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/events.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loop.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/loop.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/texture.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/texture.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/color_2.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/color_2.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/window.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/window.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,6 +55,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/libft" />
+      <recent name="$PROJECT_DIR$/libsdl" />
       <recent name="$PROJECT_DIR$/libft/src/atoi_itoa" />
       <recent name="$PROJECT_DIR$/src/utils" />
     </key>
@@ -281,18 +212,22 @@
       <workItem from="1587050869719" duration="3887000" />
       <workItem from="1588463085069" duration="2152000" />
       <workItem from="1588537916666" duration="238000" />
-      <workItem from="1590611857945" duration="2208000" />
+      <workItem from="1590611857945" duration="4763000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="make fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="make fix" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="294" y="0" width="774" height="765" key="CommitChangelistDialog2" timestamp="1590613346208">
+    <state x="294" y="0" width="774" height="765" key="CommitChangelistDialog2" timestamp="1590614457374">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="294" y="0" width="774" height="765" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1590613346208" />
+    <state x="294" y="0" width="774" height="765" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1590614457374" />
     <state x="466" y="142" width="430" height="481" key="FileChooserDialogImpl" timestamp="1588465236132">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -326,6 +261,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="460" y="99" width="441" height="567" key="git4idea.branch.GitSmartOperationDialog/0.0.1366.768@0.0.1366.768" timestamp="1590612084428" />
+    <state x="472" y="178" width="421" height="409" key="git4idea.merge.GitMergeDialog" timestamp="1590616691530">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="472" y="178" width="421" height="409" key="git4idea.merge.GitMergeDialog/0.0.1366.768@0.0.1366.768" timestamp="1590616691530" />
     <state x="1265" y="435" key="run.anything.popup" timestamp="1583462944945">
       <screen x="0" y="23" width="3200" height="1697" />
     </state>
