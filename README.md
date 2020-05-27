@@ -1,26 +1,40 @@
 # RTv1
-Ray tracing v1 project for school21 (ecole42) by kcharla
+42 ray tracing project
 
 ## Build & Run
 ### Mac:
-`git clone git@github.com:Greenman28/RTv1.git RTv1`
 
-`cd RTv1 && make`
+Download first:
 
-`./RTv1`
+`git clone git@github.com:AlexeyBukin/RTv1.git RTv1`
+
+Then load submodules:
+
+`cd RTv1 && git submodule update --init --recursive`
+
+Finally make:
+
+`make macos`
+
+Run:
+
+`./RTv1 scenes/default.scene`
 
 ### Linux:
-`git clone git@github.com:Greenman28/RTv1.git RTv1`
 
-`cd RTv1`
+Download first:
 
-`chmod +ux make_linux.sh && ./make_linux.sh`
+`git clone git@github.com:AlexeyBukin/RTv1.git RTv1`
 
-`./RTv1`
+Then load submodules:
 
+`cd RTv1 && git submodule update --init --recursive`
 
+Finally make:
 
-git submodule update --init --recursive
+`make linux`
 
+Run:
 
-Made using SDL2 (this is required by licence)
+`./RTv1 scenes/default.scene`
+
