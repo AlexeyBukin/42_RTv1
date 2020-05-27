@@ -50,7 +50,7 @@ double			vec_len(t_double3 a)
 	t_double3	zero;
 
 	zero = (t_double3){0, 0, 0};
-	return (d3_dist(zero, a));
+	return (ft_absd(d3_dist(zero, a)));
 }
 
 t_double3		vec_normalize(t_double3 vec)

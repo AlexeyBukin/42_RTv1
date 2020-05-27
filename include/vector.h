@@ -23,7 +23,6 @@ typedef struct		s_double3
 	double 			z;
 }					t_double3;
 
-//todo make vector type
 typedef t_double3	t_vec;
 typedef t_double3	t_dot;
 

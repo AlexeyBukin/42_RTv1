@@ -14,12 +14,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0b82b6a7-b361-47c4-806f-3c7acc36a66c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/rtv1.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/rtv1.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rtv1_init.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/rtv1_init.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/lights.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/lights.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/scene.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/scene.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/vector.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/vector.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scene/sphere.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/sphere.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/trace.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/trace.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/vector_math.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/vector_math.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +28,11 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MacroExpansionManager">
@@ -206,6 +208,8 @@
       <workItem from="1584212358809" duration="219000" />
       <workItem from="1586984532102" duration="19000" />
       <workItem from="1587050869719" duration="3887000" />
+      <workItem from="1588463085069" duration="2152000" />
+      <workItem from="1588537916666" duration="238000" />
     </task>
     <servers />
   </component>
@@ -213,21 +217,22 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="466" y="142" width="430" height="481" key="FileChooserDialogImpl" timestamp="1586984549881">
+    <state x="466" y="142" width="430" height="481" key="FileChooserDialogImpl" timestamp="1588465236132">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="466" y="142" width="430" height="481" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1586984549881" />
-    <state x="1464" y="266" width="1092" height="722" key="SettingsEditor" timestamp="1583693288552">
-      <screen x="0" y="0" width="2880" height="1540" />
+    <state x="466" y="142" width="430" height="481" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1588465236132" />
+    <state x="0" y="38" width="910" height="730" key="SettingsEditor" timestamp="1590611894254">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
+    <state x="0" y="38" width="910" height="730" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1590611894254" />
     <state x="887" y="426" key="SettingsEditor/0.0.2560.1360@0.0.2560.1360" timestamp="1583512275340" />
     <state x="1464" y="266" width="1092" height="722" key="SettingsEditor/0.0.2880.1540@0.0.2880.1540" timestamp="1583693288552" />
     <state x="1109" y="539" key="SettingsEditor/0.0.3200.1720@0.0.3200.1720" timestamp="1583455203536" />
     <state x="887" y="442" key="SettingsEditor/0.23.2560.1337@0.23.2560.1337" timestamp="1583500282638" />
-    <state x="546" y="333" key="com.intellij.ide.util.TipDialog" timestamp="1586984530574">
+    <state x="546" y="333" key="com.intellij.ide.util.TipDialog" timestamp="1588463094629">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="546" y="333" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1586984530574" />
+    <state x="546" y="333" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1588463094629" />
     <state x="1023" y="589" key="com.intellij.ide.util.TipDialog/0.0.2560.1360@0.0.2560.1360" timestamp="1583512259801" />
     <state x="1279" y="745" key="com.intellij.ide.util.TipDialog/0.0.3200.1720@0.0.3200.1720" timestamp="1583453401663" />
     <state x="1023" y="602" key="com.intellij.ide.util.TipDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1583496831170" />
