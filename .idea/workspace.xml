@@ -2,8 +2,8 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="RTv1" targetName="ft" />
       <config projectName="RTv1" targetName="RTv1" />
+      <config projectName="RTv1" targetName="ft" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
@@ -13,10 +13,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b82b6a7-b361-47c4-806f-3c7acc36a66c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/vector.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/vector.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/sphere.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/sphere.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/vector_math.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/vector_math.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libft/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/libft/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libft/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/libft/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libft/include/libft.h" beforeDir="false" afterPath="$PROJECT_DIR$/libft/include/libft.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libft/include/printf.h" beforeDir="false" afterPath="$PROJECT_DIR$/libft/include/printf.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libft/src/atoi_itoa/ft_atof.c" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/atoi_itoa/ft_atof.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libft/src/atoi_itoa/ft_atoi.c" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/atoi_itoa/ft_atoi.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libsdl/SDL2_source" beforeDir="false" afterPath="$PROJECT_DIR$/libsdl/SDL2_source" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +62,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/libft" />
+      <recent name="$PROJECT_DIR$/libsdl" />
       <recent name="$PROJECT_DIR$/libft/src/atoi_itoa" />
       <recent name="$PROJECT_DIR$/src/utils" />
     </key>
@@ -210,17 +219,30 @@
       <workItem from="1587050869719" duration="3887000" />
       <workItem from="1588463085069" duration="2152000" />
       <workItem from="1588537916666" duration="238000" />
+      <workItem from="1590611857945" duration="5092000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="make fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="make fix" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="294" y="0" width="774" height="765" key="CommitChangelistDialog2" timestamp="1590614457374">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="294" y="0" width="774" height="765" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1590614457374" />
     <state x="466" y="142" width="430" height="481" key="FileChooserDialogImpl" timestamp="1588465236132">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="466" y="142" width="430" height="481" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1588465236132" />
+    <state x="396" y="102" width="570" height="560" key="MultipleFileMergeDialog" timestamp="1590612096239">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="396" y="102" width="570" height="560" key="MultipleFileMergeDialog/0.0.1366.768@0.0.1366.768" timestamp="1590612096239" />
     <state x="0" y="38" width="910" height="730" key="SettingsEditor" timestamp="1590611894254">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -229,6 +251,10 @@
     <state x="1464" y="266" width="1092" height="722" key="SettingsEditor/0.0.2880.1540@0.0.2880.1540" timestamp="1583693288552" />
     <state x="1109" y="539" key="SettingsEditor/0.0.3200.1720@0.0.3200.1720" timestamp="1583455203536" />
     <state x="887" y="442" key="SettingsEditor/0.23.2560.1337@0.23.2560.1337" timestamp="1583500282638" />
+    <state x="278" y="120" width="806" height="525" key="Vcs.Push.Dialog.v2" timestamp="1590613300393">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="278" y="120" width="806" height="525" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1590613300393" />
     <state x="546" y="333" key="com.intellij.ide.util.TipDialog" timestamp="1588463094629">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -238,6 +264,14 @@
     <state x="1023" y="602" key="com.intellij.ide.util.TipDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1583496831170" />
     <state x="1151" y="680" key="com.intellij.ide.util.TipDialog/0.23.2880.1517@0.23.2880.1517" timestamp="1583688066059" />
     <state x="1279" y="758" key="com.intellij.ide.util.TipDialog/0.23.3200.1697@0.23.3200.1697" timestamp="1583462946120" />
+    <state x="460" y="99" width="441" height="567" key="git4idea.branch.GitSmartOperationDialog" timestamp="1590612084428">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="460" y="99" width="441" height="567" key="git4idea.branch.GitSmartOperationDialog/0.0.1366.768@0.0.1366.768" timestamp="1590612084428" />
+    <state x="472" y="178" width="421" height="409" key="git4idea.merge.GitMergeDialog" timestamp="1590617022311">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="472" y="178" width="421" height="409" key="git4idea.merge.GitMergeDialog/0.0.1366.768@0.0.1366.768" timestamp="1590617022311" />
     <state x="1265" y="435" key="run.anything.popup" timestamp="1583462944945">
       <screen x="0" y="23" width="3200" height="1697" />
     </state>
