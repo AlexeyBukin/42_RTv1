@@ -11,8 +11,6 @@ if (MAC_OS)
     SET(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -mmacosx-version-min=10.7")
 endif()
 
-
-
 # set the project name
 project(RTv1)
 
@@ -34,10 +32,10 @@ include_directories(${SDL2_INCLUDE_DIR})
 # find src -type f -name '*.c' | sed "s/^/        /"
 set(SOURCES
         src/loop.c
-        src/camera/project.c
         src/main.c
         src/texture.c
         src/utils/vector_2.c
+        src/utils/color.c
         src/utils/vector_1.c
         src/utils/clamp.c
         src/utils/color_1.c
@@ -45,10 +43,10 @@ set(SOURCES
         src/utils/color_2.c
         src/utils/vector_3.c
         src/utils/num_1.c
+        src/utils/ray.c
         src/window.c
         src/rt.c
         src/events.c
-        src/camera/camera.c
         src/scene/rt_material_to_str.c
         src/scene/parse/comments.c
         src/scene/parse/add_light.c
@@ -69,8 +67,10 @@ set(SOURCES
         src/trace/trace_normal_cylinder.c
         src/trace/trace_dot_cone.c
         src/trace/trace_normal_plane.c
-        src/trace/trace_normal_sphere.c
         src/trace/rt_trace.c
+        src/trace/trace_normal_sphere.c
+        src/camera/project.c
+        src/camera/camera.c
         )
 
 find_package(SDL2 REQUIRED)
