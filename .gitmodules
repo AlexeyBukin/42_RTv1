@@ -1,3 +1,6 @@
 [submodule "libsdl/SDL2_source"]
 	path = libsdl/SDL2_source
 	url = https://github.com/spurious/SDL-mirror.git
+[submodule "libft"]
+	path = libft
+	url = git@github.com:AlexeyBukin/libft.git
