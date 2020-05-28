@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 14:09:55 by hush              #+#    #+#             */
-/*   Updated: 2020/05/25 02:26:12 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/29 01:12:40 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@
 ** a   = D|D - (D|V)^2
 ** b/2 = D|X - (D|V)*(X|V)
 ** c   = X|X - (X|V)^2 - r*r
-**/
+*/
+
+/*
+** also used in trace_normal_cylinder.c
+*/
 
 t_vec 				cylinder_intersect(t_ray ray, t_cylinder cyl, t_vec v)
 {
@@ -56,9 +60,9 @@ t_vec 				cylinder_capped(t_ray ray, t_cylinder cyl)
 	t_vec			m;
 	t_num			x_dot_v;
 
-	v = vec_normalize(vec_minus(cyl.top, cyl.pos));
+	v = vec_normalize(vec_minus(cyl.cap, cyl.pos));
 	points = cylinder_intersect(ray, cyl, v);
-	maxm = vec_len(vec_minus(cyl.pos, cyl.top));
+	maxm = vec_len(vec_minus(cyl.pos, cyl.cap));
 	x_dot_v = vec_dot_product(vec_minus(ray.pos, cyl.pos), v);
 	m.x = vec_dot_product(ray.dir, vec_mult(v, points.x)) + x_dot_v;
 	m.y = vec_dot_product(ray.dir, vec_mult(v, points.y)) + x_dot_v;
@@ -71,9 +75,9 @@ t_vec 				cylinder_capped(t_ray ray, t_cylinder cyl)
 	if (m.y < 0)
 		points.y = trace_dot_cap(ray, (t_ray) {cyl.pos, vec_mult(v, -1)});
 	if (m.x > maxm)
-		points.x = trace_dot_cap(ray, (t_ray){cyl.top, v});
+		points.x = trace_dot_cap(ray, (t_ray){cyl.cap, v});
 	if (m.y > maxm)
-		points.y = trace_dot_cap(ray, (t_ray){cyl.top, v});
+		points.y = trace_dot_cap(ray, (t_ray){cyl.cap, v});
 	return (points);
 }
 

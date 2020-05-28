@@ -47,6 +47,8 @@ t_vec			vec_normalize(t_vec vec)
 	t_num		len;
 
 	len = vec_len(vec);
+	if (len == 0)
+		return (vec_inf());
 	vec.x /= len;
 	vec.y /= len;
 	vec.z /= len;

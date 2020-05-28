@@ -59,7 +59,7 @@ char				*cone_to_str(t_cone *cone, t_material *material)
 	res = ft_str_add(res, "]( position:");
 	res = ft_strjoin_free(res, vec_to_str_color(cone->pos));
 	res = ft_str_add(res, ", top:");
-	res = ft_strjoin_free(res, vec_to_str_color(cone->top));
+	res = ft_strjoin_free(res, vec_to_str_color(cone->cap));
 	res = ft_str_add(res, ", radius:");
 	res = ft_strjoin_free(res, ft_ldtoa(cone->r));
 	res = ft_str_add(res, ")");
@@ -77,7 +77,7 @@ char				*cyl_to_str(t_cylinder *cyl, t_material *material)
 	res = ft_str_add(res, "]( position:");
 	res = ft_strjoin_free(res, vec_to_str_color(cyl->pos));
 	res = ft_str_add(res, ", top:");
-	res = ft_strjoin_free(res, vec_to_str_color(cyl->top));
+	res = ft_strjoin_free(res, vec_to_str_color(cyl->cap));
 	res = ft_str_add(res, ", radius:");
 	res = ft_strjoin_free(res, ft_ldtoa(cyl->r));
 	res = ft_str_add(res, ")");

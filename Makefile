@@ -27,14 +27,14 @@ export DEBUG = -g
 export OPTIM = -O2
 export LIB_SDL_EXTENSION
 
-CFLAGS = -Wall -Wextra -Werror $(DEBUG) $(OPTIM)
-
 LIB_FT = libft
 LIB_FT_FILE = $(LIB_FT)/libft.a
 
 LIB_SDL = libsdl
 LIB_SDL_FILE = $(LIB_SDL)/lib/libSDL2$(LIB_SDL_EXTENSION)
-LIB_SDL_FILE_STATIC = $(LIB_SDL)/lib/libSDL2.a
+
+CFLAGS = -Wall -Wextra -Werror $(DEBUG) $(OPTIM) $(OS_FLAGS)
+CLIBS  = $(LIB_FT_FILE) $(LIB_SDL_FILE) -lm
 
 INCLUDE = -I include/ -I $(LIB_FT)/include/ -I $(LIB_SDL)/include/
 
@@ -75,11 +75,10 @@ BUILD_DIRS_REC = $(patsubst $(SRC_DIR)/%, $(BUILD_DIR)/%, $(SRC_DIRS))
 # (4) Rules
 
 all: $(NAME)
-	@echo $(OS) $(LIB_SDL_EXTENSION)
 
 $(NAME): $(LIB_FT_FILE) $(LIB_SDL_FILE) $(BUILD_DIRS_REC) $(O_FILES)
 	@echo "\033[0;32m" "Building RTv1 executable..." "\033[0m"
- 	$(CC) $(CFLAGS) $(O_FILES) $(INCLUDE) -o $(NAME) $(LIB_FT_FILE) $(LIB_SDL_FILE) $(OS_FLAGS)
+	$(CC) $(CFLAGS) $(O_FILES) $(INCLUDE) -o $(NAME)  $(CLIBS)
 	@echo "\033[0;32m" "Done" "\033[0m"
 
 $(LIB_FT_FILE):

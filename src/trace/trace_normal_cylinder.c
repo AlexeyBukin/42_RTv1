@@ -42,9 +42,9 @@ t_vec				trace_normal_cylinder(t_ray ray, t_figure *fig)
 
 	if (fig == NULL)
 		return (vec_inf());
-	v = vec_normalize(vec_minus(fig->cyl.top, fig->cyl.pos));
+	v = vec_normalize(vec_minus(fig->cyl.cap, fig->cyl.pos));
 	dis = cylinder_intersect(ray, fig->cyl, v);
-	maxm = vec_len(vec_minus(fig->cyl.pos, fig->cyl.top));
+	maxm = vec_len(vec_minus(fig->cyl.pos, fig->cyl.cap));
 	m = cylinder_m(ray, v, fig->cyl.pos, dis);
 	if (m.x < 0 || m.y < 0)
 		return (vec_mult(v, -1));

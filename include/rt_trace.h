@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:33:57 by hush              #+#    #+#             */
-/*   Updated: 2020/05/27 15:43:54 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/29 01:12:06 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_vec				trace_normal_plane(t_ray ray, t_figure *fig);
 t_vec				trace_normal_sphere(t_ray ray, t_figure *fig);
 
 t_vec 				cylinder_intersect(t_ray ray, t_cylinder cyl, t_vec v);
+t_vec 				cone_intersect(t_ray ray, t_cone cone, t_vec v);
 
 
 #endif

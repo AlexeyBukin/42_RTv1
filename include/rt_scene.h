@@ -50,14 +50,14 @@ typedef	struct	s_sphere
 typedef	struct	s_cone
 {
 	t_vec			pos;
-	t_vec			top;
+	t_vec			cap;
 	t_num 			r;
 }				t_cone;
 
 typedef	struct	s_cylinder
 {
 	t_vec			pos;
-	t_vec			top;
+	t_vec			cap;
 	t_num 			r;
 }				t_cylinder;
 

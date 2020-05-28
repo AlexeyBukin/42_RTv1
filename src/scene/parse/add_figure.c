@@ -71,7 +71,7 @@ int		scene_read_cone(char **source, t_figure *figure)
 	read_vec(&text, &(cone->pos));
 	if (!read_comma(&text))
 		return (ft_puterror(4, "Expected \',\' "));
-	read_vec(&text, &(cone->top));
+	read_vec(&text, &(cone->cap));
 	if (!read_comma(&text))
 		return (ft_puterror(5, "Expected \',\' "));
 	cone->r = read_num(&text);
