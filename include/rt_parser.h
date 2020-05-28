@@ -21,7 +21,7 @@
 # define KEYWORD_CONE     "cone"
 # define KEYWORD_CYLINDER "cylinder"
 # define KEYWORD_SPHERE   "sphere"
-# define SCENE_DEFAULT    "scenes/default.scene"
+# define SCENE_DEFAULT    "scenes/default.rts"
 
 t_scene			*scene_from_file(char *filename);
 t_num			read_num(char **source);

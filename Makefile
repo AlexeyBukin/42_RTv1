@@ -4,20 +4,24 @@
 NAME = RTv1
 
 # (1) Platform-dependent code
-export OS = "Linux"
+export OS = linux
 
-ifeq ($(OS), "MacOS")
+ifeq ($(OS), macos)
 	LIB_SDL_EXTENSION = .dylib
-else
+	OS_FLAGS =
+else ifeq ($(OS), linux)
 	LIB_SDL_COMPILER= CC\=clang
 	LIB_SDL_EXTENSION = .so
-	LIBM = -lm
+	OS_FLAGS = -lm
+else
+	OS=unknown
+	@echo "Unknown OS"
 endif
 
 # (2) General config
-CC = clang
+#CC = clang
 #or "
-#CC = gcc -no-pie#" # -fPIC does not work...
+CC = gcc -no-pie#" # -fPIC does not work...
 
 export DEBUG = -g
 export OPTIM = -O2
@@ -30,6 +34,7 @@ LIB_FT_FILE = $(LIB_FT)/libft.a
 
 LIB_SDL = libsdl
 LIB_SDL_FILE = $(LIB_SDL)/lib/libSDL2$(LIB_SDL_EXTENSION)
+LIB_SDL_FILE_STATIC = $(LIB_SDL)/lib/libSDL2.a
 
 INCLUDE = -I include/ -I $(LIB_FT)/include/ -I $(LIB_SDL)/include/
 
@@ -65,15 +70,16 @@ O_FILES = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC_FILES))
 SRC_DIRS = $(shell find $(SRC_DIR) -type d)
 BUILD_DIRS_REC = $(patsubst $(SRC_DIR)/%, $(BUILD_DIR)/%, $(SRC_DIRS))
 
-.PHONY: clean fclean all
+.PHONY: clean fclean all macos macos_set linux
 
 # (4) Rules
 
 all: $(NAME)
+	@echo $(OS) $(LIB_SDL_EXTENSION)
 
 $(NAME): $(LIB_FT_FILE) $(LIB_SDL_FILE) $(BUILD_DIRS_REC) $(O_FILES)
 	@echo "\033[0;32m" "Building RTv1 executable..." "\033[0m"
-	$(CC) $(CFLAGS) $(O_FILES) $(INCLUDE) -o $(NAME) $(LIB_FT_FILE) $(LIB_SDL_FILE) $(LIBM)
+ 	$(CC) $(CFLAGS) $(O_FILES) $(INCLUDE) -o $(NAME) $(LIB_FT_FILE) $(LIB_SDL_FILE) $(OS_FLAGS)
 	@echo "\033[0;32m" "Done" "\033[0m"
 
 $(LIB_FT_FILE):
