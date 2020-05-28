@@ -24,7 +24,7 @@ Make:
 
 `make OS=linux`
 
-##Run:
+## Run:
 
 `./RTv1 scenes/default.rts`
 
