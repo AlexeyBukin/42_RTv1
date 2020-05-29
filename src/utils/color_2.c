@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:39:30 by kcharla           #+#    #+#             */
-/*   Updated: 2020/05/28 01:03:44 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/29 13:12:40 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ t_col		col_from_vec(t_vec vector)
 {
 	t_col	res;
 
-	res.r = vector.x;
-	res.g = vector.y;
-	res.b = vector.z;
+	vector = vec_normalize(vector);
+	res.r = ft_absd(vector.x) * COLOR_MAX;
+	res.g = ft_absd(vector.y) * COLOR_MAX;
+	res.b = ft_absd(vector.z) * COLOR_MAX;
 	res.a = ALPHA_MAX;
 	return (res);
 }

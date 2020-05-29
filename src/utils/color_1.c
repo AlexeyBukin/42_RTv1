@@ -71,3 +71,15 @@ t_col		col_from_int(int src)
 	col.g = (src >> 24) & 255;
 	return (col);
 }
+
+t_col		col_from_normal(t_vec vector)
+{
+	t_col	res;
+
+	vector = vec_normalize(vector);
+	res.r = (vector.x + 1) * COLOR_MAX / 2;
+	res.g = (vector.y + 1) * COLOR_MAX / 2;
+	res.b = (vector.z + 1) * COLOR_MAX / 2;
+	res.a = ALPHA_MAX;
+	return (res);
+}

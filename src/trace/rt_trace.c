@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 03:26:48 by kcharla           #+#    #+#             */
-/*   Updated: 2020/05/29 12:32:58 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/29 12:58:58 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ t_col		trace_color(t_vec normal, t_vec bounce, t_material *mat, t_light *light)
 //	t_num acos = vec_angle_cos(bounce, )
 	if (mat == NULL || light == NULL)
 		return (col(0, 0, 0));
+	// to see normals
+	return (col_from_normal(normal));
 	(void)normal;
 	(void)bounce;
 	return (mat->col);
@@ -93,11 +95,11 @@ t_col		trace_bounce(t_scene *scene, t_ray ray, t_ray normal, t_material *mat)
 	while (i < scene->light_num)
 	{
 		//ft_printf("cycle\n");
-		if (ray_point_is_behind(normal, scene->lights[i].pos))
-		{
-			i++;
-			continue ;
-		}
+//		if (ray_point_is_behind(normal, scene->lights[i].pos))
+//		{
+//			i++;
+//			continue ;
+//		}
 
 
 //		t_ray to_light;
