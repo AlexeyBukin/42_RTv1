@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 03:26:48 by kcharla           #+#    #+#             */
-/*   Updated: 2020/05/29 12:58:58 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/29 14:02:02 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,33 +44,11 @@ t_vec		trace_normal_fig(t_ray ray, t_figure *fig)
 		return (vec_inf());
 }
 
-/*
-** TODO redo normally
-** r = l - 2n * (l dot n) / (n dot n)
-*/
-
-//t_ray				trace_plane_bounce(t_ray ray, t_base_fig *fig)
-//{
-//	t_ray bounce;
-//	t_vec l_dot_n;
-//
-//	if (fig == NULL)
-//		return (ray_get_inf());
-//	bounce.pos = trace_plane(ray, fig);
-//	l_dot_n = d3_mult(fig->plane.n, vec_dot_product(ray.dir, fig->plane.n) * 2.0);
-//	bounce.dir = d3_minus(ray.dir, l_dot_n);
-//	return (bounce);
-//}
-
-
-
 t_col		trace_color(t_vec normal, t_vec bounce, t_material *mat, t_light *light)
 {
 //	t_num acos = vec_angle_cos(bounce, )
 	if (mat == NULL || light == NULL)
 		return (col(0, 0, 0));
-	// to see normals
-	return (col_from_normal(normal));
 	(void)normal;
 	(void)bounce;
 	return (mat->col);
@@ -83,7 +61,6 @@ t_col		trace_bounce(t_scene *scene, t_ray ray, t_ray normal, t_material *mat)
 	t_vec		l_dot_n;
 	t_vec		bounce;
 
-	//ft_printf("bounce\n");
 	if (mat == NULL || scene == NULL)
 		return (col(0, 0, 0));
 
@@ -95,11 +72,11 @@ t_col		trace_bounce(t_scene *scene, t_ray ray, t_ray normal, t_material *mat)
 	while (i < scene->light_num)
 	{
 		//ft_printf("cycle\n");
-//		if (ray_point_is_behind(normal, scene->lights[i].pos))
-//		{
-//			i++;
-//			continue ;
-//		}
+		if (ray_point_is_behind(normal, scene->lights[i].pos))
+		{
+			i++;
+			continue ;
+		}
 
 
 //		t_ray to_light;
@@ -115,6 +92,15 @@ t_col		trace_bounce(t_scene *scene, t_ray ray, t_ray normal, t_material *mat)
 	}
 	return (res_col);
 }
+
+/*
+** NOTE: to use "normals" mode:
+**
+** if (nearest != NULL)
+** 		return (col_from_normal(normal.dir));
+**
+** For debug only!
+*/
 
 t_col		rt_trace(t_scene *scene, t_ray ray)
 {
@@ -143,6 +129,7 @@ t_col		rt_trace(t_scene *scene, t_ray ray)
 	{
 		normal.pos = vec_plus(ray.pos, vec_mult(ray.dir, res_dist));
 		normal.dir = trace_normal_fig(ray, nearest);
+		//return (col_from_normal(normal.dir));
 		return (trace_bounce(scene, ray, normal, nearest->mat));
 	}
 	return (col(0, 0, 0));
