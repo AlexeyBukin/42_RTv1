@@ -6,16 +6,11 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 11:48:52 by hush              #+#    #+#             */
-/*   Updated: 2020/05/29 11:32:49 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/29 13:46:38 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-
-t_ray		ray_inf()
-{
-	return ((t_ray){vec_inf(), vec_inf()});
-}
 
 int			vec_cmp_len(t_vec a, t_vec b)
 {
@@ -38,4 +33,9 @@ t_bool		vec_point_is_behind(t_vec vec_from_zero, t_vec point)
 		+ vec_from_zero.z * point.z < 0)
 		return (TRUE);
 	return (FALSE);
+}
+
+t_vec		vec_invert(t_vec vector)
+{
+	return (vec_mult(vector, -1));
 }

@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 14:09:43 by hush              #+#    #+#             */
-/*   Updated: 2020/05/29 12:51:18 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/29 13:27:51 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ t_vec 				cone_capped(t_ray ray, t_cone cone)
 	if ((m.x < 0 && m.y < 0) || (m.x > maxm && m.y > maxm))
 		return (vec_inf());
 	if (m.x < 0)
-		points.x = trace_dot_cap(ray, (t_ray) {cone.pos, vec_mult(v, -1)});
+		points.x = trace_dot_cap(ray, (t_ray) {cone.pos, vec_invert(v)});
 	if (m.y < 0)
-		points.y = trace_dot_cap(ray, (t_ray) {cone.pos, vec_mult(v, -1)});
+		points.y = trace_dot_cap(ray, (t_ray) {cone.pos, vec_invert(v)});
 	if (m.x > maxm)
 		points.x = trace_dot_cap(ray, (t_ray){cone.cap, v});
 	if (m.y > maxm)

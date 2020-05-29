@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 01:01:24 by hush              #+#    #+#             */
-/*   Updated: 2020/05/29 13:14:57 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/29 13:15:50 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ t_num 				num_sqr(t_num a);
 int					num_cmp(t_num a, t_num b);
 
 t_bool				ray_point_is_behind(t_ray ray, t_vec point);
+t_ray				ray_inf();
 
 #endif
