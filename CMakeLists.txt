@@ -35,7 +35,6 @@ set(SOURCES
         src/main.c
         src/texture.c
         src/utils/vector_2.c
-        src/utils/color.c
         src/utils/vector_1.c
         src/utils/clamp.c
         src/utils/color_1.c
@@ -95,6 +94,6 @@ target_include_directories(${PROJECT_NAME}
 
 add_subdirectory(libft)
 target_link_libraries(${PROJECT_NAME} ft)
-
+target_link_libraries(${PROJECT_NAME} m)
 target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES})
 

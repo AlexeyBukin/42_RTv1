@@ -6,17 +6,11 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 04:16:09 by kcharla           #+#    #+#             */
-/*   Updated: 2020/05/27 15:55:07 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/29 11:19:18 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-
-//int			project(t_rt *rtv1)
-//{
-//	(void)rtv1;
-//	return (0);
-//}
 
 int			project(t_rt *rtv1)
 {
@@ -89,7 +83,7 @@ int			project(t_rt *rtv1)
 
 			ray.pos = cam->pos;
 			ray.dir = vec_normalize(vec_minus(dot, cam->pos));
-			traced = rt_trace(rtv1, ray);
+			traced = rt_trace(rtv1->scene, ray);
 			texture_put_pixel(rtv1->window->texture, traced, x, y);
 
 			//int needed = WIN_WIDTH / 3;

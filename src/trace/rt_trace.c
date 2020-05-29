@@ -6,67 +6,142 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 03:26:48 by kcharla           #+#    #+#             */
-/*   Updated: 2020/05/27 15:55:07 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/29 12:32:58 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-t_num		trace_dot_fig(t_rt *rtv1, t_ray ray, t_figure *fig)
+t_num		trace_dot_fig(t_ray ray, t_figure *fig)
 {
-	if (fig == NULL || rtv1 == NULL)
+	if (fig == NULL)
 		return (INFINITY);
-	if (rtv1->scene == NULL)
+	if (fig->type == FIG_PLANE)
+		return (trace_dot_plane(ray, fig));
+	else if (fig->type == FIG_SPHERE)
+		return (trace_dot_sphere(ray, fig));
+	else if (fig->type == FIG_CONE)
+		return (trace_dot_cone(ray, fig));
+	else if (fig->type == FIG_CYL)
+		return (trace_dot_cylinder(ray, fig));
+	else
 		return (INFINITY);
-	if (rtv1->funcs.trace_dot[fig->type] == NULL)
-		return (INFINITY);
-	return (rtv1->funcs.trace_dot[fig->type](ray, fig));
 }
 
-t_vec		trace_normal_fig(t_rt *rtv1, t_ray ray, t_figure *fig)
+t_vec		trace_normal_fig(t_ray ray, t_figure *fig)
 {
-	if (fig == NULL || rtv1 == NULL)
+	if (fig == NULL)
 		return (vec_inf());
-	if (rtv1->scene == NULL)
+	if (fig->type == FIG_PLANE)
+		return (trace_normal_plane(ray, fig));
+	else if (fig->type == FIG_SPHERE)
+		return (trace_normal_sphere(ray, fig));
+	else if (fig->type == FIG_CONE)
+		return (trace_normal_cone(ray, fig));
+	else if (fig->type == FIG_CYL)
+		return (trace_normal_cylinder(ray, fig));
+	else
 		return (vec_inf());
-	if (rtv1->funcs.trace_dot[fig->type] == NULL)
-		return (vec_inf());
-	return (rtv1->funcs.trace_normal[fig->type](ray, fig));
 }
 
-t_col		rt_trace(t_rt *rtv1, t_ray ray)
+/*
+** TODO redo normally
+** r = l - 2n * (l dot n) / (n dot n)
+*/
+
+//t_ray				trace_plane_bounce(t_ray ray, t_base_fig *fig)
+//{
+//	t_ray bounce;
+//	t_vec l_dot_n;
+//
+//	if (fig == NULL)
+//		return (ray_get_inf());
+//	bounce.pos = trace_plane(ray, fig);
+//	l_dot_n = d3_mult(fig->plane.n, vec_dot_product(ray.dir, fig->plane.n) * 2.0);
+//	bounce.dir = d3_minus(ray.dir, l_dot_n);
+//	return (bounce);
+//}
+
+
+
+t_col		trace_color(t_vec normal, t_vec bounce, t_material *mat, t_light *light)
+{
+//	t_num acos = vec_angle_cos(bounce, )
+	if (mat == NULL || light == NULL)
+		return (col(0, 0, 0));
+	(void)normal;
+	(void)bounce;
+	return (mat->col);
+}
+
+t_col		trace_bounce(t_scene *scene, t_ray ray, t_ray normal, t_material *mat)
+{
+	t_col		res_col;
+	size_t		i;
+	t_vec		l_dot_n;
+	t_vec		bounce;
+
+	//ft_printf("bounce\n");
+	if (mat == NULL || scene == NULL)
+		return (col(0, 0, 0));
+
+	l_dot_n = vec_mult(normal.dir, vec_dot_product(ray.dir, normal.dir) * 2.0);
+	bounce = vec_minus(ray.dir, l_dot_n);
+
+	res_col = col(50, 50, 50);
+	i = 0;
+	while (i < scene->light_num)
+	{
+		//ft_printf("cycle\n");
+		if (ray_point_is_behind(normal, scene->lights[i].pos))
+		{
+			i++;
+			continue ;
+		}
+
+
+//		t_ray to_light;
+//		to_light.pos = normal.pos;
+//		to_light.dir = vec_minus(scene->lights[i].pos, normal.pos);
+
+//		if (trace_nearest(scene, to_light) != NULL)
+//			continue ;
+		//(void)bounce;
+		t_col additive = trace_color(normal.dir, bounce, mat,&(scene->lights[i]));
+		res_col = col_add(res_col, additive);
+		i++;
+	}
+	return (res_col);
+}
+
+t_col		rt_trace(t_scene *scene, t_ray ray)
 {
 	t_figure	*nearest;
-	//t_ray		normal;
+	t_ray		normal;
 	t_num		tmp_dist;
 	t_num		res_dist;
 	size_t		i;
 
-	if (rtv1 == NULL)
-		return (col(0, 0, 0));
-	if (rtv1->scene == NULL)
-		return (col(0, 0, 0));
-	if (rtv1->scene->figures == NULL)
+	if (scene == NULL)
 		return (col(0, 0, 0));
 	nearest = NULL;
 	res_dist = INFINITY;
 	i = 0;
-	while (i < rtv1->scene->fig_num)
+	while (i < scene->fig_num)
 	{
-		tmp_dist = trace_dot_fig(rtv1, ray, &(rtv1->scene->figures[i]));
+		tmp_dist = trace_dot_fig(ray, &(scene->figures[i]));
 		if (tmp_dist < res_dist && tmp_dist > 0)
 		{
 			res_dist = tmp_dist;
-			nearest = &(rtv1->scene->figures[i]);
+			nearest = &(scene->figures[i]);
 		}
 		i++;
 	}
 	if (nearest != NULL)
 	{
-		//normal.pos = vec_plus(ray.pos, vec_mult(ray.dir, res_dist));
-		//normal.dir = trace_normal_fig(rtv1, ray, nearest);
-		return (nearest->mat->col);
-		//return (trace_bounce(rtv1, ray, normal, nearest->mat));
+		normal.pos = vec_plus(ray.pos, vec_mult(ray.dir, res_dist));
+		normal.dir = trace_normal_fig(ray, nearest);
+		return (trace_bounce(scene, ray, normal, nearest->mat));
 	}
 	return (col(0, 0, 0));
 }

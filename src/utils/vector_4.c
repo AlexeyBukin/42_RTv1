@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 11:48:52 by hush              #+#    #+#             */
-/*   Updated: 2020/05/24 23:23:32 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/29 11:32:49 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,12 @@ t_vec		vec_zero()
 t_bool		vec_is_zero(t_vec a)
 {
 	return (a.x == 0 && a.y == 0 && a.z == 0);
+}
+
+t_bool		vec_point_is_behind(t_vec vec_from_zero, t_vec point)
+{
+	if (vec_from_zero.x * point.x + vec_from_zero.y * point.y
+		+ vec_from_zero.z * point.z < 0)
+		return (TRUE);
+	return (FALSE);
 }

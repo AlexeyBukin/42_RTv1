@@ -15,7 +15,7 @@
 
 # include "rt_struct.h"
 
-t_col				rt_trace(t_rt *rtv1, t_ray ray);
+t_col				rt_trace(t_scene *scene, t_ray ray);
 
 t_num				trace_dot_cap(t_ray ray, t_ray plane_ray);
 t_num				trace_dot_cone(t_ray ray, t_figure *fig);

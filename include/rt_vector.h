@@ -61,5 +61,6 @@ t_ray				ray_inf();
 int					vec_cmp_len(t_vec a, t_vec b);
 t_vec				vec_zero();
 t_bool				vec_is_zero(t_vec a);
+t_bool				vec_point_is_behind(t_vec vec_from_zero, t_vec point);
 
 #endif

@@ -10,13 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "rt.h"
 
-t_ray		ray_get_inf()
+t_bool		ray_point_is_behind(t_ray ray, t_vec point)
 {
-	t_ray		ray;
-
-	ray.dir = d3_get_inf();
-	ray.pos = d3_get_inf();
-	return (ray);
+	return (vec_point_is_behind(ray.dir, vec_minus(point, ray.pos)));
 }

@@ -16,24 +16,11 @@
 
 t_col		col_add(t_col a, t_col b)
 {
-	int		temp;
-//
-	temp = (a.r + b.r);
-
 	a.r = ((int)(a.r + b.r)) > 255 ? 255 : (a.r + b.r);
-	if (temp > 255 && a.r != 255)
-		ft_printf("overload happen\n");
-
 	a.g = ((int)(a.g + b.g)) > 255 ? 255 : (a.g + b.g);
 	a.b = ((int)(a.b + b.b)) > 255 ? 255 : (a.b + b.b);
 	a.a = ((int)(a.a + b.a)) > 255 ? 255 : (a.a + b.a);
 	return (a);
-
-//	a.r = (t_byte)((int)(a.r + b.r));
-//	a.g = (t_byte)((int)(a.g + b.g));
-//	a.b = (t_byte)((int)(a.b + b.b));
-//	a.a = (t_byte)((int)(a.a + b.a));
-//	return (a);
 }
 
 /*
@@ -53,11 +40,6 @@ t_col		col_mask(t_col col, t_col mask)
 	if (col.a > mask.a)
 		col.a = mask.a;
 	return (col);
-}
-
-t_col		col_clamp(t_col my_col)
-{
-	return (col_mask(my_col, col(255, 255, 255)));
 }
 
 /*

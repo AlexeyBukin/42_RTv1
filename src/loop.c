@@ -94,7 +94,7 @@ int		rt_loop(t_rt *rtv1)
 		}
 		if (rtv1->flags.redraw)
 		{
-			ft_putendl("calling redraw...");
+			//ft_putendl("calling redraw...");
 			if (rt_redraw(rtv1) < 0)
 				return (ft_puterror(3, "rtv1_loop(): redraw()"));
 		}
