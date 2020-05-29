@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:33:29 by hush              #+#    #+#             */
-/*   Updated: 2020/05/29 02:45:32 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/29 13:36:35 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,15 @@ t_vec				trace_normal_cone(t_ray ray, t_figure *fig)
 	dis = cone_intersect(ray, fig->cone, v);
 	maxm = vec_len(vec_minus(fig->cone.pos, fig->cone.cap));
 	m = cone_m(ray, v, fig->cone.pos, dis);
-	if (m.x > maxm || m.y > maxm)
+	if (dis.x > dis.y)
+	{
+		dis.x = dis.y;
+		m.x = m.y;
+	}
+	if (m.x > maxm)
 		return (v);
-	p = vec_plus(ray.pos, vec_mult(ray.dir, dis.x < dis.y ? dis.x : dis.y));
+	p = vec_plus(ray.pos, vec_mult(ray.dir, dis.x));
 	maxm = fig->cone.r / vec_len(vec_minus(fig->cone.pos, fig->cone.cap));
-	maxm *= (maxm * maxm + 1) * ((dis.x < dis.y) ? m.x : m.y);
+	maxm *= (maxm * maxm + 1) * m.x;
 	return (cone_side_nrm(p, fig->cone.pos, v, maxm));
 }

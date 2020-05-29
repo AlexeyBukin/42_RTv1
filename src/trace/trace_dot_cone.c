@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 14:09:43 by hush              #+#    #+#             */
-/*   Updated: 2020/05/29 02:25:24 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/29 12:51:18 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_vec 				cone_capped(t_ray ray, t_cone cone)
 	x_dot_v = vec_dot_product(vec_minus(ray.pos, cone.pos), v);
 	m.x = vec_dot_product(ray.dir, vec_mult(v, points.x)) + x_dot_v;
 	m.y = vec_dot_product(ray.dir, vec_mult(v, points.y)) + x_dot_v;
-	//if (m.x >= 0 && m.x <= maxm && m.y >= 0 && m.y <= maxm)
+	if (m.x >= 0 && m.x <= maxm && m.y >= 0 && m.y <= maxm)
 		return (points);
 	if ((m.x < 0 && m.y < 0) || (m.x > maxm && m.y > maxm))
 		return (vec_inf());
