@@ -6,14 +6,13 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/05/27 16:03:25 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/29 21:15:29 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RTV1_H
 # define RTV1_H
 
-# include "SDL2/SDL.h"
 # include "rt_scene.h"
 # include "libft.h"
 # include "rt_utils.h"
@@ -48,13 +47,6 @@ t_window			*window_init(size_t w, size_t h, const char *name);
 int					window_render(t_window *win);
 
 /*
-** destroy.c
-*/
-
-void				destroy_window(t_window *win);
-void				destroy_rtv1(t_rt *rtv1);
-
-/*
 ** loop.c
 */
 
@@ -79,7 +71,6 @@ t_camera			*camera_init();
 void				camera_free(t_camera *cam);
 int					camera_move_global(t_camera *cam, t_vec dir);
 int					camera_move_local(t_camera *cam, t_vec dir);
-int					camera_init_static(t_camera *cam);
 
 /*
 ** project.c
@@ -97,8 +88,5 @@ void				rtv1_quit(t_rt *rtv1);
 */
 
 t_rt				*rtv1_init(int ac, char **args);
-t_scene				*rtv1_scene(t_rt *rtv1);
-t_window			*rtv1_window(t_rt *rtv1);
-t_texture			*rtv1_window_texture(t_rt *rtv1);
 
 #endif

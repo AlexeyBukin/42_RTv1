@@ -4,18 +4,19 @@
 NAME = RTv1
 
 # (1) Platform-dependent code
-export OS = linux
 
-ifeq ($(OS), macos)
-	LIB_SDL_EXTENSION = .dylib
-	OS_FLAGS =
-else ifeq ($(OS), linux)
-	LIB_SDL_COMPILER= CC\=clang
-	LIB_SDL_EXTENSION = .so
-	OS_FLAGS = -lm
+UNAME := $(shell uname)
+MACOS := Darwin
+LINUX := Linux
+
+ifeq ($(UNAME), $(MACOS))
+$(warning "running make for MacOS")
+else ifeq ($(UNAME), $(LINUX))
+$(warning "running make for Linux")
+LIB_SDL_COMPILER= CC\=clang
+OS_FLAGS = -lm
 else
-	OS=unknown
-	@echo "Unknown OS"
+$(error "Unknown system UNAME: '$(UNAME)', but available only '$(LINUX)' and '$(MACOS)'")
 endif
 
 # (2) General config
@@ -25,16 +26,17 @@ CC = gcc -no-pie#" # -fPIC does not work...
 
 export DEBUG = -g
 export OPTIM = -O2
-export LIB_SDL_EXTENSION
 
 LIB_FT = libft
 LIB_FT_FILE = $(LIB_FT)/libft.a
 
 LIB_SDL = libsdl
-LIB_SDL_FILE = $(LIB_SDL)/lib/libSDL2$(LIB_SDL_EXTENSION)
+LIB_SDL_FILE = $(LIB_SDL)/lib
+LIB_SDL_FLAGS = $(shell $(LIB_SDL)/bin/sdl2-config --cflags)
+LIB_SDL_LIBS = $(shell $(LIB_SDL)/bin/sdl2-config --libs)
 
-CFLAGS = -Wall -Wextra -Werror $(DEBUG) $(OPTIM) $(OS_FLAGS)
-CLIBS  = $(LIB_FT_FILE) $(LIB_SDL_FILE) -lm
+CFLAGS = -Wall -Wextra -Werror $(DEBUG) $(OPTIM) $(OS_FLAGS) $(LIB_SDL_FLAGS)
+CLIBS  = $(LIB_FT_FILE) -lm $(LIB_SDL_LIBS)
 
 INCLUDE = -I include/ -I $(LIB_FT)/include/ -I $(LIB_SDL)/include/
 
