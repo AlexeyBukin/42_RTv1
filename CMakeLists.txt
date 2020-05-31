@@ -3,6 +3,9 @@ cmake_minimum_required(VERSION 3.10)
 set(CMAKE_C_STANDARD  90)
 set(CMAKE_C_STANDARD_REQUIRED True)
 
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
+
 # set the project name
 project(RTv1)
 
@@ -50,7 +53,7 @@ target_link_libraries(${PROJECT_NAME} ft)
 target_link_libraries(${PROJECT_NAME} m)
 
 execute_process(COMMAND
-        ${PROJECT_SOURCE_DIR}/libsdl/bin/sdl2-config --libs | tr -d [:space:]
+        ${PROJECT_SOURCE_DIR}/libsdl/bin/sdl2-config --libs | tr -d '\n\t\r' | tr -d [:space:]
         OUTPUT_VARIABLE SDL_LIBS)
 
 #message(WARNING "flags ${SDL_FLAGS}")

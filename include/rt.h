@@ -6,20 +6,20 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/05/29 21:15:29 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/30 13:07:24 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RTV1_H
 # define RTV1_H
 
-# include "rt_scene.h"
-# include "libft.h"
-# include "rt_utils.h"
-# include "rt_vector.h"
-# include "rt_parser.h"
-# include "rt_trace.h"
-# include "rt_struct.h"
+#include "libft.h"
+#include "rt_parser.h"
+#include "rt_s.h"
+#include "rt_scene.h"
+#include "rt_trace.h"
+#include "rt_utils.h"
+#include "rt_vector.h"
 
 # define WIN_WIDTH  640
 # define WIN_HEIGHT 480

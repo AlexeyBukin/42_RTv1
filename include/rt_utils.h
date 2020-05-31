@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   rt_utils.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/04 01:01:24 by hush              #+#    #+#             */
-/*   Updated: 2020/05/29 13:15:50 by hush             ###   ########.fr       */
+/*   Created: 2020/06/01 02:10:29 by hush              #+#    #+#             */
+/*   Updated: 2020/06/01 02:10:29 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#ifndef RT_UTILS_H
+# define RT_UTILS_H
 
-# include "rt_vector.h"
+# include "rt_utils_s.h"
+# include "rt_vector_s.h"
 
 # define COLOR_MAX 255
 # define COLOR_MIN 0
 # define ALPHA_MAX 255
 # define ALPHA_MIN 0
-
-typedef struct		s_color
-{
-	t_byte			r;
-	t_byte			g;
-	t_byte			b;
-	t_byte			a;
-}					t_col;
 
 /*
 ** color_1.c, color_2.c, ...

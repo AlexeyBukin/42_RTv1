@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 18:14:02 by kcharla           #+#    #+#             */
-/*   Updated: 2020/05/28 01:03:44 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/30 14:17:51 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ void		texture_put_pixel(t_texture *tex, t_col col, size_t x, size_t y)
 		return ;
 	if (tex->img == NULL)
 		return ;
-	if (x >= tex->size_x || y >= tex->size_y)
-	{
+	if (x >= tex->size_x || y >= tex->size_y){
 		ft_putendl("warning: trying to put pixel outside of texture");
 		return ;
 	}

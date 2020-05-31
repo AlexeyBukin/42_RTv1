@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#ifndef RT_PARSER_H
+# define RT_PARSER_H
 
 # include "rt_scene.h"
 

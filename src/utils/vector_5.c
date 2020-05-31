@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_scene.h                                         :+:      :+:    :+:   */
+/*   vector_5.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/30 16:22:01 by hush              #+#    #+#             */
-/*   Updated: 2020/05/30 16:22:01 by hush             ###   ########.fr       */
+/*   Created: 2020/05/30 16:09:01 by hush              #+#    #+#             */
+/*   Updated: 2020/05/30 16:10:14 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RT_SCENE_H
-# define RT_SCENE_H
+#include "rt.h"
 
-# include "rt_scene_s.h"
-
-t_scene				*scene_init();
-void				scene_free(t_scene *scene);
-char				*scene_to_str(t_scene *scene);
-
-char				*figure_to_str(t_figure *fig);
-char				*material_to_str(t_material *material);
-char				*light_to_str(t_light *light);
-
-#endif
+t_vec		vec_from_color(t_col c)
+{
+	return ((t_vec){c.r / 255.0, c.g / 255.0, c.b / 255.0});
+}

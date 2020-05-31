@@ -6,34 +6,15 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 19:24:51 by hush              #+#    #+#             */
-/*   Updated: 2020/05/29 13:47:53 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/30 16:14:48 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTOR_H
-# define VECTOR_H
+#ifndef RT_VECTOR_H
+# define RT_VECTOR_H
 
 #include <math.h>
-
-/*
-** typedef double		t_num;
-** typedef float		t_num;
-*/
-
-typedef double		t_num;
-
-typedef struct		s_vec
-{
-	t_num 			x;
-	t_num 			y;
-	t_num 			z;
-}					t_vec;
-
-typedef	struct		s_ray
-{
-	t_vec			pos;
-	t_vec			dir;
-}					t_ray;
+#include "rt_vector_s.h"
 
 /*
 ** vector_1.c vector_2.c ...
@@ -62,5 +43,8 @@ t_vec				vec_zero();
 t_bool				vec_is_zero(t_vec a);
 t_bool				vec_point_is_behind(t_vec vec_from_zero, t_vec point);
 t_vec				vec_invert(t_vec vector);
+
+
+t_vec				vec_from_color(t_col c);
 
 #endif

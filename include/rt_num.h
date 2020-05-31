@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_scene.h                                         :+:      :+:    :+:   */
+/*   rt_num.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/30 16:22:01 by hush              #+#    #+#             */
-/*   Updated: 2020/05/30 16:22:01 by hush             ###   ########.fr       */
+/*   Created: 2020/05/30 16:28:19 by hush              #+#    #+#             */
+/*   Updated: 2020/05/30 16:28:42 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RT_SCENE_H
-# define RT_SCENE_H
+#ifndef RT_NUM_H
+# define RT_NUM_H
 
-# include "rt_scene_s.h"
+/*
+** typedef double		t_num;
+** typedef float		t_num;
+*/
 
-t_scene				*scene_init();
-void				scene_free(t_scene *scene);
-char				*scene_to_str(t_scene *scene);
-
-char				*figure_to_str(t_figure *fig);
-char				*material_to_str(t_material *material);
-char				*light_to_str(t_light *light);
+typedef float		t_num;
 
 #endif

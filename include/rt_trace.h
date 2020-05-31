@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   trace.h                                            :+:      :+:    :+:   */
+/*   rt_trace.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/27 15:33:57 by hush              #+#    #+#             */
-/*   Updated: 2020/05/29 01:12:06 by hush             ###   ########.fr       */
+/*   Created: 2020/06/01 02:10:15 by hush              #+#    #+#             */
+/*   Updated: 2020/06/01 02:10:15 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TRACE_H
-# define TRACE_H
+#ifndef RT_TRACE_H
+# define RT_TRACE_H
 
-# include "rt_struct.h"
+# include "rt_s.h"
 
 t_col				rt_trace(t_scene *scene, t_ray ray);
 

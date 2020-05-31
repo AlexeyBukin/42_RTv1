@@ -20,7 +20,10 @@ t_rt		*rtv1_init(int ac, char **args)
 	if ((new = (t_rt*)ft_malloc(sizeof(t_rt))) == NULL)
 		return (ft_puterr_null(1, "rtv1_init(): Cannot malloc rtv1"));
 	if (ac > 2)
+	{
+		ft_printf("ac: %i, args: %s %s %s\n", ac, args[0], args[1], args[2]);
 		return (ft_puterr_null(2, "rtv1_init(): Unexpected input..."));
+	}
 	scene_path = (ac == 1) ? SCENE_DEFAULT : args[1];
 	if ((new->scene = scene_from_file(scene_path)) == NULL)
 		return (ft_puterr_null(3, "rtv1_init(): Cannot read scene"));

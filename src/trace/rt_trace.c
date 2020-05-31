@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 03:26:48 by kcharla           #+#    #+#             */
-/*   Updated: 2020/05/29 14:02:02 by hush             ###   ########.fr       */
+/*   Updated: 2020/05/30 15:56:58 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,21 @@ t_vec		trace_normal_fig(t_ray ray, t_figure *fig)
 		return (vec_inf());
 }
 
-t_col		trace_color(t_vec normal, t_vec bounce, t_material *mat, t_light *light)
+t_col		trace_color(t_ray normal, t_vec bounce, t_material *mat, t_light *light)
 {
-//	t_num acos = vec_angle_cos(bounce, )
-	if (mat == NULL || light == NULL)
+//	t_num		cos_normal_bounce;
+//	t_num		cos_bounce_light;
+//	t_vec		to_light;
+//	t_col		res_col;
+
+		if (mat == NULL || light == NULL)
 		return (col(0, 0, 0));
 	(void)normal;
 	(void)bounce;
+//	to_light = vec_minus(light->pos, normal.pos);
+//	res_col = col(0, 0, 0);
+//	cos_normal_bounce = vec_angle_cos(bounce, normal.dir);
+//	cos_bounce_light = vec_angle_cos(bounce, to_light);
 	return (mat->col);
 }
 
@@ -86,7 +94,7 @@ t_col		trace_bounce(t_scene *scene, t_ray ray, t_ray normal, t_material *mat)
 //		if (trace_nearest(scene, to_light) != NULL)
 //			continue ;
 		//(void)bounce;
-		t_col additive = trace_color(normal.dir, bounce, mat,&(scene->lights[i]));
+		t_col additive = trace_color(normal, bounce, mat,&(scene->lights[i]));
 		res_col = col_add(res_col, additive);
 		i++;
 	}

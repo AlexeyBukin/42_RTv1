@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_struct.h                                        :+:      :+:    :+:   */
+/*   rt_s.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/27 15:42:52 by hush              #+#    #+#             */
-/*   Updated: 2020/05/29 21:15:57 by hush             ###   ########.fr       */
+/*   Created: 2020/06/01 02:09:58 by hush              #+#    #+#             */
+/*   Updated: 2020/06/01 02:09:58 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RT_STRUCT_H
-# define RT_STRUCT_H
+#ifndef RT_S_H
+# define RT_S_H
 
 # include "SDL2/SDL.h"
 # include "libft.h"
+#include "rt_scene.h"
 
 typedef struct		s_texture
 {
@@ -30,10 +31,6 @@ typedef struct		s_window
 	SDL_Texture		*sdl_texture;
 	SDL_Renderer	*sdl_renderer;
 }					t_window;
-
-/*
-** basic scene block
-*/
 
 typedef struct		s_camera
 {
