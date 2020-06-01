@@ -48,7 +48,7 @@ int		scene_read_material(t_scene *scene, char **source, t_material *mat)
 	if ((text = *source) == NULL)
 		return (ft_puterror(2, "Entered NULL pointer"));
 	text += ft_strlen(KEYWORD_MATERIAL);
-	if((mat->id = read_id(&text)) == 0 || mat_index(scene, mat->id) >= 0)
+	if((mat->id = read_id(&text)) <= 0 || mat_index(scene, mat->id) >= 0)
 		return (ft_puterror(3, "Parse error: expected correct id"));
 	if (*(text++) != '(')
 		return (ft_puterror(5, "Syntax error: expected \'(\' "));
