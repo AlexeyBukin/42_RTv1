@@ -6,25 +6,25 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 16:29:54 by hush              #+#    #+#             */
-/*   Updated: 2020/06/01 03:55:09 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/02 01:29:58 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_SCENE_S_H
 # define RT_SCENE_S_H
 
-# include "rt_utils_s.h"
-# include "rt_vector_s.h"
-
-# define PBR_ROUGHNESS x
-# define PBR_METALLIC  y
-# define PBR_SPECULAR  x
+#include "rt_utils_s.h"
+#include "rt_vector_s.h"
+#include "rt_camera_s.h"
 
 typedef	struct	s_material
 {
 	long 			id;
-	t_col			col;
-	t_vec 			pbr;
+	t_vec 			col;
+	t_vec 			f0;
+	t_num			roughness;
+	t_num			specular;
+	t_num			metallic;
 }				t_material;
 
 typedef	enum	e_figure_type
@@ -77,8 +77,9 @@ typedef	struct	s_figure
 
 typedef	struct	s_light
 {
+	long 			id;
 	t_vec			pos;
-	t_col			col;
+	t_vec			col;
 	t_num 			power;
 }				t_light;
 
@@ -90,6 +91,8 @@ typedef struct		s_scene
 	size_t			fig_num;
   	t_light			*lights;
 	size_t			light_num;
+	t_camera		*cameras;
+	size_t			cam_num;
 }					t_scene;
 
 #endif

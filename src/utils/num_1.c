@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 23:22:27 by hush              #+#    #+#             */
-/*   Updated: 2020/06/01 04:49:39 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/01 14:57:20 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,29 @@ int			num_cmp(t_num a, t_num b)
 /*
 ** from.x = from_min;
 ** from.y = from_max;
+** to.x = to_min;
 ** to.y = to_max;
-** toy = to_max;
-** TODO map() implementation
+** return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 */
 
 t_num		num_map(t_num num, t_vec from, t_vec to)
 {
-	(void)num;
-	(void)from;
-	(void)to;
-	return (1);
+	num -= from.x;
+	num *= to.y - to.x;
+	num /= from.y - from.x;
+	num += to.x;
+	return (num);
+}
+
+t_num		num_clamp(t_num val, t_num min, t_num max)
+{
+	if (val < min)
+	{
+		return (min);
+	}
+	if (val > max)
+	{
+		return (max);
+	}
+	return (val);
 }

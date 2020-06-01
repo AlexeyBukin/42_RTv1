@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 12:07:43 by hush              #+#    #+#             */
-/*   Updated: 2020/06/01 03:25:55 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/02 01:11:02 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ scene_add_component(char **text, t_scene *scene)
 	if (text == NULL || scene == NULL)
 		return (ft_puterror(1, "Null pointers entered"));
 	if (*text == NULL)
-		return (ft_puterror(2, "Null pointer entered for *text"));
+		return (ft_puterror(2, "Dereference to NULL pointer"));
 	if (ft_str_next_is(*text, KEYWORD_PLANE))
 		return (scene_add_figure(scene, text, FIG_PLANE));
 	if (ft_str_next_is(*text, KEYWORD_SPHERE))
@@ -31,6 +31,8 @@ scene_add_component(char **text, t_scene *scene)
 		return (scene_add_material(scene, text));
 	else if (ft_str_next_is(*text, KEYWORD_LIGHT))
 		return (scene_add_light(scene, text));
+	else if (ft_str_next_is(*text, KEYWORD_CAMERA))
+		return (scene_add_camera(scene, text));
 	return (ft_puterror(3, "Expected known keywords"));
 }
 

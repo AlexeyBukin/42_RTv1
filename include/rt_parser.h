@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 11:05:28 by hush              #+#    #+#             */
-/*   Updated: 2020/05/24 11:05:28 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/02 01:02:31 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define KEYWORD_CONE     "cone"
 # define KEYWORD_CYLINDER "cylinder"
 # define KEYWORD_SPHERE   "sphere"
+# define KEYWORD_CAMERA   "camera"
 # define SCENE_DEFAULT    "scenes/default.rts"
 
 t_scene			*scene_from_file(char *filename);
@@ -34,5 +35,6 @@ void			comments_delete(char *str);
 int				scene_add_figure(t_scene *s, char **src, t_figure_type t);
 int				scene_add_material(t_scene *scene, char **source);
 int				scene_add_light(t_scene *scene, char **source);
+int				scene_add_camera(t_scene *scene, char **source);
 
 #endif

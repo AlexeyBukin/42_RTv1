@@ -6,16 +6,19 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 02:09:58 by hush              #+#    #+#             */
-/*   Updated: 2020/06/01 02:09:58 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/02 01:31:49 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_S_H
 # define RT_S_H
 
-# include "SDL2/SDL.h"
-# include "libft.h"
+#include "SDL2/SDL.h"
+#include "libft.h"
 #include "rt_scene.h"
+#include "rt_scene_s.h"
+#include "rt_utils_s.h"
+#include "rt_vector_s.h"
 
 typedef struct		s_texture
 {
@@ -32,16 +35,7 @@ typedef struct		s_window
 	SDL_Renderer	*sdl_renderer;
 }					t_window;
 
-typedef struct		s_camera
-{
-	t_vec			pos;
-	t_vec			plane_pos;
-	t_vec			direction;
-	t_vec 			direction_right;
-	t_vec 			direction_up;
-	t_num 			size_x;
-	t_num 			size_y;
-}					t_camera;
+
 
 typedef struct		s_keys
 {
@@ -73,6 +67,8 @@ typedef struct		s_flags
 	t_bool			is_moving;
 	t_bool			exit;
 }					t_flags;
+
+//TODO rework this
 
 typedef struct		s_functions
 {
