@@ -31,6 +31,7 @@ set(SOURCES
         src/trace/trace_normal_cone.c    src/trace/trace_dot_sphere.c    src/trace/trace_normal_cylinder.c
         src/trace/trace_dot_cone.c       src/trace/trace_normal_plane.c  src/trace/rt_trace.c
         src/trace/trace_normal_sphere.c  src/camera/project.c            src/camera/camera.c
+        src/utils/vector_5.c
         )
 
 set(SDL2_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/libsdl/include)

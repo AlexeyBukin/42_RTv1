@@ -37,5 +37,5 @@ t_bool		vec_point_is_behind(t_vec vec_from_zero, t_vec point)
 
 t_vec		vec_invert(t_vec vector)
 {
-	return (vec_mult(vector, -1));
+	return (vec_mult_num(vector, -1));
 }

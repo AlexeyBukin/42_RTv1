@@ -28,7 +28,7 @@ t_vec	vec_minus(t_vec a, t_vec b)
 	return (a);
 }
 
-t_vec	vec_mult(t_vec a, t_num b)
+t_vec	vec_mult_num(t_vec a, t_num b)
 {
 	a.x *= b;
 	a.y *= b;

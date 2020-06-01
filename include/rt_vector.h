@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 19:24:51 by hush              #+#    #+#             */
-/*   Updated: 2020/05/30 16:14:48 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/01 04:00:14 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 t_vec				vec_plus(t_vec a, t_vec b);
 t_vec				vec_minus(t_vec a, t_vec b);
-t_vec				vec_mult(t_vec a, t_num b);
+t_vec				vec_mult_num(t_vec a, t_num b);
 t_num				vec_dist_sqr(t_vec a, t_vec b);
 t_num				vec_dist(t_vec a, t_vec b);
 
@@ -46,5 +46,7 @@ t_vec				vec_invert(t_vec vector);
 
 
 t_vec				vec_from_color(t_col c);
+t_vec				vec_mult(t_vec a, t_vec b);
+t_vec				vec2d(t_num newx, t_num newy);
 
 #endif

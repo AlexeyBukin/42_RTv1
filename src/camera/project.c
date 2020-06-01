@@ -36,10 +36,10 @@ int			project(t_rt *rtv1)
 		{
 			double xd = (double) x;
 			double yd = (double) y;
-			t_vec dot_1 = vec_mult(cam->direction_right,
+			t_vec dot_1 = vec_mult_num(cam->direction_right,
 									  (double) cam->size_x * ((double) (xd / WIN_WIDTH) - (1.0 / 2.0)));
 
-			t_vec dot_2 = vec_plus(dot_1, vec_mult(cam->direction_up,
+			t_vec dot_2 = vec_plus(dot_1, vec_mult_num(cam->direction_up,
 								   (double) -1 * cam->size_y * ((double) (yd / WIN_HEIGHT) - (1.0 / 2.0))));
 
 			dot = vec_plus(cam->plane_pos, dot_2);

@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:33:29 by hush              #+#    #+#             */
-/*   Updated: 2020/05/29 13:36:35 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/01 03:36:23 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ t_vec 				cone_m(t_ray ray, t_vec v, t_vec cone_pos, t_vec points)
 	t_vec			m;
 
 	x_dot_v = vec_dot_product(vec_minus(ray.pos, cone_pos), v);
-	m.x = vec_dot_product(ray.dir, vec_mult(v, points.x)) + x_dot_v;
-	m.y = vec_dot_product(ray.dir, vec_mult(v, points.y)) + x_dot_v;
+	m.x = vec_dot_product(ray.dir, vec_mult_num(v, points.x)) + x_dot_v;
+	m.y = vec_dot_product(ray.dir, vec_mult_num(v, points.y)) + x_dot_v;
 	return (m);
 }
 
@@ -28,7 +28,7 @@ static
 t_vec 				cone_side_nrm(t_vec p, t_vec c, t_vec v, t_num mkk)
 {
 	p = vec_minus(p, c);
-	p = vec_minus(p, vec_mult(v, mkk));
+	p = vec_minus(p, vec_mult_num(v, mkk));
 	return (p);
 }
 
@@ -55,7 +55,7 @@ t_vec				trace_normal_cone(t_ray ray, t_figure *fig)
 	}
 	if (m.x > maxm)
 		return (v);
-	p = vec_plus(ray.pos, vec_mult(ray.dir, dis.x));
+	p = vec_plus(ray.pos, vec_mult_num(ray.dir, dis.x));
 	maxm = fig->cone.r / vec_len(vec_minus(fig->cone.pos, fig->cone.cap));
 	maxm *= (maxm * maxm + 1) * m.x;
 	return (cone_side_nrm(p, fig->cone.pos, v, maxm));

@@ -60,9 +60,8 @@ int		scene_read_material(t_scene *scene, char **source, t_material *mat)
 	mat->col.a = read_num(&text);
 	if (!read_comma(&text))
 		return (ft_puterror(8, "Syntax error: expected \',\' "));
-	if (read_vec(&text, &vcol) < 0)
+	if (read_vec(&text, &(mat->pbr)) < 0)
 		return (ft_puterror(9, "Parse error: expected pbr parameters"));
-	*((t_vec*)&(mat->roughness)) = vcol;
 	if (*(text++) != ')')
 		return (ft_puterror(10, "Syntax error: expected \')\' "));
 	*source = text;

@@ -23,9 +23,9 @@ int			camera_move_local(t_camera *cam, t_vec dir)
 	t_vec newdir = (t_vec){0, 0, 0};
 	if (cam == NULL)
 		return (ft_puterror(1, "camera_move(): pointer is NULL"));
-	newdir = vec_plus(newdir, vec_mult(vec_normalize(cam->direction), dir.x));
-	newdir = vec_plus(newdir, vec_mult(vec_normalize(cam->direction_up), dir.z));
-	newdir = vec_plus(newdir, vec_mult(vec_normalize(cam->direction_right), dir.y));
+	newdir = vec_plus(newdir, vec_mult_num(vec_normalize(cam->direction), dir.x));
+	newdir = vec_plus(newdir, vec_mult_num(vec_normalize(cam->direction_up), dir.z));
+	newdir = vec_plus(newdir, vec_mult_num(vec_normalize(cam->direction_right), dir.y));
 	cam->pos = vec_plus(cam->pos, newdir);
 	cam->plane_pos = vec_plus(cam->plane_pos, newdir);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 14:09:12 by hush              #+#    #+#             */
-/*   Updated: 2020/05/29 13:50:06 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/01 03:36:48 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static
 t_vec 				cylinder_side_nrm(t_vec p, t_vec c, t_vec v, t_num m)
 {
 	p = vec_minus(p, c);
-	p = vec_minus(p, vec_mult(v, m));
+	p = vec_minus(p, vec_mult_num(v, m));
 	return (p);
 }
 
@@ -27,8 +27,8 @@ t_vec 				cylinder_m(t_ray ray, t_vec v, t_vec cyl_pos, t_vec points)
 	t_vec			m;
 
 	x_dot_v = vec_dot_product(vec_minus(ray.pos, cyl_pos), v);
-	m.x = vec_dot_product(ray.dir, vec_mult(v, points.x)) + x_dot_v;
-	m.y = vec_dot_product(ray.dir, vec_mult(v, points.y)) + x_dot_v;
+	m.x = vec_dot_product(ray.dir, vec_mult_num(v, points.x)) + x_dot_v;
+	m.y = vec_dot_product(ray.dir, vec_mult_num(v, points.y)) + x_dot_v;
 	return (m);
 }
 
@@ -55,6 +55,6 @@ t_vec				trace_normal_cylinder(t_ray ray, t_figure *fig)
 		return (vec_invert(v));
 	else if (m.x > maxm)
 		return (v);
-	p = vec_plus(ray.pos, vec_mult(ray.dir, dis.x));
+	p = vec_plus(ray.pos, vec_mult_num(ray.dir, dis.x));
 	return (cylinder_side_nrm(p, fig->cyl.pos, v, m.x));
 }

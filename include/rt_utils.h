@@ -37,6 +37,8 @@ t_col				col_alpha(t_byte r, t_byte g, t_byte b, t_byte a);
 char				*col_to_str(t_col color);
 char				*col_to_str_color(t_col color);
 
+t_col				col_from_vec_norm(t_vec vector);
+
 t_num				clamp(t_num val, t_num min, t_num max);
 t_num 				num_sqr(t_num a);
 int					num_cmp(t_num a, t_num b);

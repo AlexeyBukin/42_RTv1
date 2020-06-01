@@ -62,8 +62,8 @@ t_vec 				cone_capped(t_ray ray, t_cone cone)
 	points = cone_intersect(ray, cone, v);
 	maxm = vec_len(vec_minus(cone.pos, cone.cap));
 	x_dot_v = vec_dot_product(vec_minus(ray.pos, cone.pos), v);
-	m.x = vec_dot_product(ray.dir, vec_mult(v, points.x)) + x_dot_v;
-	m.y = vec_dot_product(ray.dir, vec_mult(v, points.y)) + x_dot_v;
+	m.x = vec_dot_product(ray.dir, vec_mult_num(v, points.x)) + x_dot_v;
+	m.y = vec_dot_product(ray.dir, vec_mult_num(v, points.y)) + x_dot_v;
 	if (m.x >= 0 && m.x <= maxm && m.y >= 0 && m.y <= maxm)
 		return (points);
 	if ((m.x < 0 && m.y < 0) || (m.x > maxm && m.y > maxm))

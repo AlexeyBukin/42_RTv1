@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 12:07:43 by hush              #+#    #+#             */
-/*   Updated: 2020/06/01 02:50:50 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/01 03:25:55 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ scene_parse(char *text, t_scene *scene)
 
 	if (text == NULL || scene == NULL)
 		return (ft_puterror(1, "Null pointers entered"));
-	if (*text != '(')
-		return (ft_puterror(2, "Expected \'(\'"));
+	if (*text != '{')
+		return (ft_puterror(2, "Expected \'{\'"));
 	text++;
 	expect_next = TRUE;
 	while (expect_next)
@@ -51,8 +51,8 @@ scene_parse(char *text, t_scene *scene)
 			return (ft_puterror(3, "Cannot add component to scene"));
 		expect_next = read_comma(&text);
 	}
-	if (ft_strcmp(text, ")") != 0)
-		return (ft_puterror(4, "Expected \')\' and EOF"));
+	if (ft_strcmp(text, "}") != 0)
+		return (ft_puterror(4, "Expected \'}\' and EOF"));
 	return (0);
 }
 

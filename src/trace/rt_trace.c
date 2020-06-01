@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 03:26:48 by kcharla           #+#    #+#             */
-/*   Updated: 2020/05/30 15:56:58 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/01 04:48:14 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,52 @@ t_vec		trace_normal_fig(t_ray ray, t_figure *fig)
 		return (vec_inf());
 }
 
+/*
+** params.x = cos_normal_bounce
+** params.y = cos_bounce_light
+** params.z = light power / (distance + 1.0)
+*/
+
+t_vec		trace_color_2(t_vec params, t_vec col_base, t_vec col_light, t_vec pbr)
+{
+	(void)pbr;
+	col_light = vec_mult_num(col_light, params.z);
+	col_light = vec_mult_num(col_light, params.y);
+	col_base = vec_mult(col_base, col_light);
+	return (col_base);
+}
+
+/*
+** params.x = cos_normal_bounce
+** params.y = cos_bounce_light
+** params.z = light power / (distance + 1.0)
+*/
+
 t_col		trace_color(t_ray normal, t_vec bounce, t_material *mat, t_light *light)
 {
 //	t_num		cos_normal_bounce;
 //	t_num		cos_bounce_light;
-//	t_vec		to_light;
+	t_vec		params;
+	t_vec		to_light;
 //	t_col		res_col;
 
-		if (mat == NULL || light == NULL)
+	if (mat == NULL || light == NULL)
 		return (col(0, 0, 0));
-	(void)normal;
-	(void)bounce;
-//	to_light = vec_minus(light->pos, normal.pos);
+	to_light = vec_minus(light->pos, normal.pos);
 //	res_col = col(0, 0, 0);
 //	cos_normal_bounce = vec_angle_cos(bounce, normal.dir);
 //	cos_bounce_light = vec_angle_cos(bounce, to_light);
-	return (mat->col);
+//	return (mat->col);
+	params.x = vec_angle_cos(bounce, normal.dir);
+	params.y = clamp(vec_angle_cos(bounce, to_light), 0.5, 1);
+//	params.y = vec_angle_cos(bounce, to_light);
+	params.z =light->power / clamp(vec_len(to_light), 1, 1);
+
+	// map(num, vec2d(0, 1))
+
+	to_light = trace_color_2(params, vec_from_color(mat->col),
+		vec_from_color(light->col), mat->pbr);
+	return (col_from_vec_norm(to_light));
 }
 
 t_col		trace_bounce(t_scene *scene, t_ray ray, t_ray normal, t_material *mat)
@@ -72,7 +102,7 @@ t_col		trace_bounce(t_scene *scene, t_ray ray, t_ray normal, t_material *mat)
 	if (mat == NULL || scene == NULL)
 		return (col(0, 0, 0));
 
-	l_dot_n = vec_mult(normal.dir, vec_dot_product(ray.dir, normal.dir) * 2.0);
+	l_dot_n = vec_mult_num(normal.dir, vec_dot_product(ray.dir, normal.dir) * 2.0);
 	bounce = vec_minus(ray.dir, l_dot_n);
 
 	res_col = col(50, 50, 50);
@@ -135,7 +165,7 @@ t_col		rt_trace(t_scene *scene, t_ray ray)
 	}
 	if (nearest != NULL)
 	{
-		normal.pos = vec_plus(ray.pos, vec_mult(ray.dir, res_dist));
+		normal.pos = vec_plus(ray.pos, vec_mult_num(ray.dir, res_dist));
 		normal.dir = trace_normal_fig(ray, nearest);
 		//return (col_from_normal(normal.dir));
 		return (trace_bounce(scene, ray, normal, nearest->mat));

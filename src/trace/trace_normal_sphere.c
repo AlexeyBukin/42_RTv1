@@ -19,6 +19,6 @@ t_vec				trace_normal_sphere(t_ray ray, t_figure *fig)
 	if (fig == NULL)
 		return (vec_inf());
 	bounce_pos = vec_plus(ray.pos,
-			vec_mult(ray.dir, trace_dot_sphere(ray, fig)));
+		vec_mult_num(ray.dir, trace_dot_sphere(ray, fig)));
 	return (vec_normalize(vec_minus(bounce_pos, fig->sphere.pos)));
 }

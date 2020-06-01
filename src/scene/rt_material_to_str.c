@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 16:58:34 by hush              #+#    #+#             */
-/*   Updated: 2020/05/27 19:16:15 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/01 03:57:16 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ char				*material_to_str(t_material *material)
 	res = ft_str_add(res, "]( color:");
 	res = ft_strjoin_free(res, col_to_str_color(material->col));
 	res = ft_str_add(res, ", roughness:");
-	res = ft_strjoin_free(res, ft_ldtoa(material->roughness));
+	res = ft_strjoin_free(res, ft_ldtoa(material->pbr.PBR_ROUGHNESS));
 	res = ft_str_add(res, ", metallic:");
-	res = ft_strjoin_free(res, ft_ldtoa(material->metallic));
+	res = ft_strjoin_free(res, ft_ldtoa(material->pbr.PBR_METALLIC));
 	res = ft_str_add(res, ", specular:");
-	res = ft_strjoin_free(res, ft_ldtoa(material->specular));
+	res = ft_strjoin_free(res, ft_ldtoa(material->pbr.PBR_SPECULAR));
 	res = ft_str_add(res, ")");
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 01:05:54 by hush              #+#    #+#             */
-/*   Updated: 2020/05/27 19:17:54 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/01 03:59:06 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_scene		*scene_init()
 	scene->mat_num = 1;
 	scene->materials[0].id = 0;
 	scene->materials[0].col = col(200, 200, 200);
-	scene->materials[0].roughness = 0.5;
+	scene->materials[0].pbr = vec(0.5, 0, 0.5);
 
 	scene->fig_num = 0;
 	scene->figures = NULL;

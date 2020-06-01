@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 16:29:54 by hush              #+#    #+#             */
-/*   Updated: 2020/05/30 16:29:54 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/01 03:55:09 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@
 # include "rt_utils_s.h"
 # include "rt_vector_s.h"
 
+# define PBR_ROUGHNESS x
+# define PBR_METALLIC  y
+# define PBR_SPECULAR  x
+
 typedef	struct	s_material
 {
 	long 			id;
 	t_col			col;
-	t_num 			roughness;
-	t_num 			metallic;
-	t_num 			specular;
+	t_vec 			pbr;
 }				t_material;
 
 typedef	enum	e_figure_type

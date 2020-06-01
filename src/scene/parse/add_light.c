@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 03:11:40 by hush              #+#    #+#             */
-/*   Updated: 2020/06/01 02:36:24 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/01 04:19:03 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		scene_read_light(char **source, t_light *light)
 	if (read_vec(&text, &(vec)) < 0)
 		return (ft_puterror(4, "Cannot read color vector"));
 	light->col = col_from_vec(vec);
+	ft_printf("read from %s to %s\n", vec_to_str(vec), col_to_str(light->col));
 	if (!read_comma(&text))
 		return (ft_puterror(5, "Expected \',\' "));
 	light->power = read_num(&text);
