@@ -74,7 +74,7 @@ O_FILES = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC_FILES))
 SRC_DIRS = $(shell find $(SRC_DIR) -type d)
 BUILD_DIRS_REC = $(patsubst $(SRC_DIR)/%, $(BUILD_DIR)/%, $(SRC_DIRS))
 
-.PHONY: clean fclean all macos macos_set linux
+.PHONY: clean fclean all $(LIB_FT_FILE)
 
 # (4) Rules
 

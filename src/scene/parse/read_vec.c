@@ -21,7 +21,7 @@ int		read_vec(char **source, t_vec *res)
 	if ((text = *source) == NULL)
 		return (ft_puterror(2, "Entered NULL pointers"));
 	if (*text != '<')
-		return (-3);
+		return (ft_puterror(3, "Syntax error: Expected \'<\'"));
 	text++;
 	res->x = read_num(&text);
 	if (!read_comma(&text))

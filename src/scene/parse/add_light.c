@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 03:11:40 by hush              #+#    #+#             */
-/*   Updated: 2020/05/29 12:26:21 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/01 02:36:24 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,15 @@ int		scene_read_light(char **source, t_light *light)
 	text += ft_strlen(KEYWORD_LIGHT);
 	if (*(text++) != '(')
 		return (ft_puterror(3, "Expected \'(\' "));
-	read_vec(&text, &(light->pos));
+	if (read_vec(&text, &(light->pos)) < 0)
+		return (ft_puterror(4, "Cannot read position vector"));
 	if (!read_comma(&text))
-		return (ft_puterror(4, "Expected \',\' "));
+		return (ft_puterror(5, "Expected \',\' "));
 	if (read_vec(&text, &(vec)) < 0)
-		light->col = col(255, 255, 255);
-	else
-	{
-		light->col = col_from_vec(vec);
-		if (!read_comma(&text))
-			return (ft_puterror(5, "Expected \',\' "));
-	}
+		return (ft_puterror(4, "Cannot read color vector"));
+	light->col = col_from_vec(vec);
+	if (!read_comma(&text))
+		return (ft_puterror(5, "Expected \',\' "));
 	light->power = read_num(&text);
 	if (*(text++) != ')')
 		return (ft_puterror(6, "Expected \')\' "));

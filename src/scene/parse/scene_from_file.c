@@ -6,14 +6,14 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 12:07:43 by hush              #+#    #+#             */
-/*   Updated: 2020/05/27 20:26:46 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/01 02:50:50 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-static
-int			scene_add_component(char **text, t_scene *scene)
+static int
+scene_add_component(char **text, t_scene *scene)
 {
 	if (text == NULL || scene == NULL)
 		return (ft_puterror(1, "Null pointers entered"));
@@ -34,8 +34,8 @@ int			scene_add_component(char **text, t_scene *scene)
 	return (ft_puterror(3, "Expected known keywords"));
 }
 
-static
-int			scene_parse(char *text, t_scene *scene)
+static int
+scene_parse(char *text, t_scene *scene)
 {
 	t_bool		expect_next;
 
@@ -56,8 +56,8 @@ int			scene_parse(char *text, t_scene *scene)
 	return (0);
 }
 
-static
-int 		scene_link_ids(t_scene *scene)
+static int
+scene_link_ids(t_scene *scene)
 {
 	long		index;
 	size_t		i;
@@ -75,7 +75,15 @@ int 		scene_link_ids(t_scene *scene)
 	return (0);
 }
 
-t_scene		*scene_from_file(char *filename)
+static void
+*scene_free_null(t_scene *scene, int ecode, char *msg)
+{
+	scene_free(scene);
+	return (ft_puterr_null(ecode, msg));
+}
+
+t_scene
+*scene_from_file(char *filename)
 {
 	t_scene		*scene;
 	char		*file_text;
@@ -85,17 +93,15 @@ t_scene		*scene_from_file(char *filename)
 		ft_puterr_null(1, "Cannot init scene");
 	comments_delete((file_text = ft_file_read(filename)));
 	if (file_text == NULL)
-	{
-		scene_free(scene);
-		ft_puterr_null(2, "Cannot get text from file");
-	}
+		return (scene_free_null(scene, 2, "Cannot get text from file"));
 	if (scene_parse(file_text, scene) < 0)
-		ft_puterr_null(3, "Cannot parse scene from file\n");
-	free(file_text);
+	{
+		ft_free(file_text);
+		return (scene_free_null(scene, 3, "Cannot parse scene from file"));
+	}
+	ft_free(file_text);
 	if (scene_link_ids(scene) < 0)
-		ft_puterr_null(4, "Cannot link resource ids\n");
-
+		return (scene_free_null(scene, 4, "Cannot link resource ids"));
 	ft_putstr_free(scene_to_str(scene));
-
 	return (scene);
 }
