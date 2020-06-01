@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 16:29:54 by hush              #+#    #+#             */
-/*   Updated: 2020/06/02 01:29:58 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/02 02:10:49 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 typedef	struct	s_material
 {
-	long 			id;
+	size_t			id;
 	t_vec 			col;
 	t_vec 			f0;
 	t_num			roughness;
@@ -77,7 +77,7 @@ typedef	struct	s_figure
 
 typedef	struct	s_light
 {
-	long 			id;
+	size_t			id;
 	t_vec			pos;
 	t_vec			col;
 	t_num 			power;

@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 02:27:13 by hush              #+#    #+#             */
-/*   Updated: 2020/06/01 03:22:17 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/02 02:29:58 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,18 @@ scene_read_plane(char **source, t_figure *figure)
 	if (plane == NULL || (text = *source) == NULL)
 		return (ft_puterror(2, "Dereference to NULL pointer"));
 	text += ft_strlen(KEYWORD_PLANE);
-	figure->mat = (t_material*)read_id(&text);
+	if (read_id(&text, (size_t*)&(figure->mat)) < 0)
+		return (ft_puterror(3, "Expected correct id"));
 	figure->type = FIG_PLANE;
 	if (*(text++) != '(')
-		return (ft_puterror(3, "Expected \'(\' "));
+		return (ft_puterror(4, "Expected \'(\' "));
 	if (read_vec(&text, &(plane->n)) < 0)
-		return (ft_puterror(4, "Expected \',\' "));
-	if (!read_comma(&text))
 		return (ft_puterror(5, "Expected \',\' "));
+	if (!read_comma(&text))
+		return (ft_puterror(6, "Expected \',\' "));
 	plane->d = read_num(&text);
 	if (*(text++) != ')')
-		return (ft_puterror(6, "Expected \')\' "));
+		return (ft_puterror(7, "Expected \')\' "));
 	*source = text;
 	return (0);
 }
@@ -65,7 +66,8 @@ scene_read_cone(char **source, t_figure *figure)
 	if (cone == NULL || (text = *source) == NULL)
 		return (ft_puterror(2, "Dereference to NULL pointer"));
 	text += ft_strlen(KEYWORD_CONE);
-	figure->mat = (t_material*)read_id(&text);
+	if (read_id(&text, (size_t*)&(figure->mat)) < 0)
+		return (ft_puterror(3, "Expected correct id"));
 	figure->type = FIG_CONE;
 	if (*(text++) != '(')
 		return (ft_puterror(3, "Expected \'(\' "));

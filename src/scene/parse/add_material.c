@@ -6,17 +6,29 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 16:19:57 by hush              #+#    #+#             */
-/*   Updated: 2020/06/01 20:35:37 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/02 02:22:12 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-int		mat_index(t_scene *scene, long id)
+void	material_set_default(t_material *mat)
+{
+	if (mat == NULL)
+		return ;
+	mat->id = 0;
+	mat->col = vec(0.6, 0.6, 0.6);
+	mat->roughness = 0.5;
+	mat->metallic = 0;
+	mat->specular = 0.5;
+	mat->f0 = vec(0, 0, 0);
+}
+
+int		mat_index(t_scene *scene, size_t id)
 {
 	size_t		i;
 
-	if (scene == NULL || id < 0)
+	if (scene == NULL)
 		return (-1);
 	if (scene->materials == NULL || scene->mat_num == 0)
 		return (-1);
@@ -41,8 +53,8 @@ int		scene_read_material(t_scene *scene, char **source, t_material *mat)
 	if ((text = *source) == NULL)
 		return (ft_puterror(2, "Dereference NULL pointer"));
 	text += ft_strlen(KEYWORD_MATERIAL);
-	if((mat->id = read_id(&text)) <= 0 || mat_index(scene, mat->id) >= 0)
-		return (ft_puterror(3, "Parse error: expected correct id"));
+	if(read_id((&text), &(mat->id)) < 0 || mat_index(scene, mat->id) >= 0)
+		return (ft_puterror(3, "Syntax error: expected correct id"));
 	if (*(text++) != '(')
 		return (ft_puterror(5, "Syntax error: expected \'(\' "));
 	if (read_vec(&text, &(mat->col)) < 0)

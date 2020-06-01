@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 01:05:54 by hush              #+#    #+#             */
-/*   Updated: 2020/06/02 01:56:56 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/02 02:25:25 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,22 @@ t_scene		*scene_init()
 {
 	t_scene		*scene;
 
-	if ((scene = (t_scene*)malloc(sizeof(t_scene))) == NULL)
+	scene = (t_scene*)ft_malloc(sizeof(t_scene));
+	if (scene == NULL)
 		return (ft_puterr_null(1, "scene_create():"
 								  "cannot malloc scene struct"));
-	if ((scene->materials = (t_material*)ft_malloc(sizeof(t_material))) == NULL)
+	scene->materials = (t_material*)ft_malloc(sizeof(t_material));
+	if (scene->materials == NULL)
 		return (ft_puterr_null(1, "scene_create():"
 								  "cannot malloc materials"));
 	scene->mat_num = 1;
-	scene->materials[0].id = 0;
-	scene->materials[0].col = vec(0.6, 0.6, 0.6);
-	scene->materials[0].roughness = 0.5;
-	scene->materials[0].metallic = 0;
-	scene->materials[0].specular = 0.5;
-	scene->materials[0].f0 = vec(0, 0, 0);
-
+	material_set_default(&(scene->materials[0]));
 	scene->fig_num = 0;
 	scene->figures = NULL;
-
 	scene->light_num = 0;
 	scene->lights = NULL;
-
 	scene->cam_num = 0;
 	scene->cameras = NULL;
-
 	return (scene);
 }
 
