@@ -6,31 +6,11 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 21:18:15 by hush              #+#    #+#             */
-/*   Updated: 2020/06/04 03:12:05 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/04 16:13:39 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-//
-//int
-//rt_add_scene(t_rt *rt, char *filename)
-//{
-//	int 	code;
-//
-//	rt->scenes = ft_realloc_arr(rt->scenes, rt->scene_num,
-//								rt->scene_num, sizeof(t_scene));
-//	if (rt->scenes == NULL)
-//		return (ft_puterror(1,"Realloc scenes returned NULL"));
-//
-//	if (rt_read_scene(rt, source, &(scene->materials[scene->mat_num])) < 0)
-//		return (ft_puterror(2, "Cannot read material"));
-//
-//
-//	if (scene_from_file(r) < 0)
-//		return (ft_puterror(2, "Cannot read figure"));
-//	scene->fig_num++;
-//	return (0);
-//}
 
 //todo scenes_from_file to *scenes
 // todo ft_free() on return
@@ -65,21 +45,36 @@ t_rt		*rtv1_init(int ac, char **args)
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 		return (ft_puterr_null(4, "rtv1_init(): Cannot init SDL_VIDEO"));
 	if ((rtv1->window = window_init(WIN_WIDTH, WIN_HEIGHT,
-		rtv1->scenes[0].filename)) == NULL)
+		ft_strdup(rtv1->scenes[0].filename))) == NULL)
 		return (ft_puterr_null(5, "rtv1_init(): Cannot init window"));
 	return (rtv1);
 }
 
-//todo active_scene_lol
+void 	rt_scene_arr_free(t_rt *rtv1)
+{
+	size_t		i;
+
+	if (rtv1 == NULL)
+		return ;
+	i = 0;
+	while (i < rtv1->scene_num)
+	{
+		scene_delete(&(rtv1->scenes[i]));
+		i++;
+	}
+	ft_free(rtv1->scenes);
+}
 
 void		rtv1_free(t_rt *rtv1)
 {
 	if (rtv1 == NULL)
 		return ;
-	scene_free(rtv1->scene_active);
-	window_free(rtv1->window);
+	rt_scene_arr_free(rtv1);
+	//window_free(rtv1->window);
 	ft_free(rtv1);
 }
+
+//todo active_scene_lol
 
 void		rtv1_quit(t_rt *rtv1)
 {

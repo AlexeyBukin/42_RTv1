@@ -67,9 +67,9 @@ void		window_free(t_window *win)
 {
 	if (win == NULL)
 		return ;
-	texture_free(win->texture);
+	//texture_free(win->texture);
 	SDL_DestroyWindow(win->sdl_window);
 	SDL_DestroyTexture(win->sdl_texture);
 	SDL_DestroyRenderer(win->sdl_renderer);
-	ft_free(win);
+	//ft_free(win);
 }

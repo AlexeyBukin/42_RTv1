@@ -13,13 +13,14 @@
 #ifndef RTV1_H
 # define RTV1_H
 
-#include "libft.h"
-#include "rt_parser.h"
-#include "rt_s.h"
-#include "rt_scene.h"
-#include "rt_trace.h"
-#include "rt_utils.h"
-#include "rt_vector.h"
+# include "libft.h"
+# include "rt_parser.h"
+# include "rt_s.h"
+# include "rt_scene.h"
+# include "rt_trace.h"
+# include "rt_utils.h"
+# include "rt_vector.h"
+# include <rt_camera.h>
 
 # define WIN_WIDTH  640
 # define WIN_HEIGHT 480

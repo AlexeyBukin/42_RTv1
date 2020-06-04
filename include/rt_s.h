@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 02:09:58 by hush              #+#    #+#             */
-/*   Updated: 2020/06/04 03:16:40 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/04 13:25:30 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ typedef struct		s_keys
 	t_bool 			mmb;
 	int 			mouse_x;
 	int 			mouse_y;
+	size_t			num;
+	t_bool 			c;
+	t_bool 			f;
 }					t_keys;
 
 typedef struct		s_move

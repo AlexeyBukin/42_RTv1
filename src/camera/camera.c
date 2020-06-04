@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 03:48:52 by kcharla           #+#    #+#             */
-/*   Updated: 2020/06/03 21:40:32 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/04 14:12:23 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,43 @@ t_camera		*camera_init()
 	return (cam);
 }
 
+void 			camera_delete(t_camera *cam)
+{
+	if (cam == NULL)
+		return ;
+	texture_free(cam->texture);
+}
+
 void			camera_free(t_camera *cam)
 {
+	camera_delete(cam);
 	ft_free(cam);
+}
+
+int				camera_config(t_camera *cam)
+{
+//	cam->pos = (t_vec) {0.0, 0.0, 0.0};
+//	cam->dir = (t_vec) {0.0, 0.0, 0.0};
+//	cam->dir_up = (t_vec) {0.0, 0.0, 0.0};
+	if (cam == NULL)
+		return (ft_puterror(1, "Entered NULL pointer"));
+	cam->size_x = (double)WIN_WIDTH / 100.0;
+	cam->size_y = (double)WIN_HEIGHT / 100.0;
+
+	if (vec_is_zero(cam->dir) || vec_isinf(cam->dir))
+		return (ft_puterror(2, "Expected correct vector dir"));
+	cam->dir = vec_normalize(cam->dir);
+	if (vec_is_zero(cam->dir_up) || vec_isinf(cam->dir_up))
+		return (ft_puterror(3, "Expected correct vector dir_up"));
+	cam->dir_up = vec_normalize(cam->dir_up);
+	cam->dir_right = vec_cross_product(cam->dir, cam->dir_up);
+	if (vec_is_zero(cam->dir_right) || vec_isinf(cam->dir_right))
+		return (ft_puterror(4, "Cannot configure dir_right"));
+	cam->dir_right = vec_normalize(cam->dir_right);
+	cam->projection = PROJECTION_PERSPECTIVE;
+	cam->mode = COLOR_MODE_FULL_TRACE;
+
+	//todo remove deprecated
+	cam->plane_pos = vec_mult_num(cam->dir,(double)WIN_WIDTH / 100.0 / 2.0);
+	return (0);
 }

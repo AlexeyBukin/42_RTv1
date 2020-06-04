@@ -6,17 +6,65 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 00:26:47 by kcharla           #+#    #+#             */
-/*   Updated: 2020/05/28 21:15:18 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/04 13:46:18 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
+void 		rt_num_just_pressed(t_rt *rtv1)
+{
+	if (rtv1 == NULL)
+		return ;
+	if (rtv1->keys.num != 0 && rtv1->keys.num < rtv1->scene_active->cam_num)
+	{
+		if (rtv1->keys.c == TRUE && rtv1->keys.f == FALSE)
+		{
+			ft_memcpy(&(rtv1->scene_active->cameras[0]),
+					  &(rtv1->scene_active->cameras[rtv1->keys.num]),
+					  sizeof(t_camera));
+			ft_printf("changed camera\n");
+		}
+		else if (rtv1->keys.f == TRUE && rtv1->keys.c == FALSE)
+		{
+			rtv1->scene_active = &(rtv1->scenes[rtv1->keys.num]);
+			ft_printf("changed scene\n");
+		}
+	}
+}
+
+void		on_num_down(t_rt *rtv1, SDL_Scancode scancode)
+{
+	if (rtv1 == NULL)
+		return ;
+	rtv1->keys.num = 0;
+	if (scancode == SDL_SCANCODE_1)
+		rtv1->keys.num = 1;
+	else if (scancode == SDL_SCANCODE_2)
+		rtv1->keys.num = 2;
+	else if (scancode == SDL_SCANCODE_3)
+		rtv1->keys.num = 3;
+	else if (scancode == SDL_SCANCODE_4)
+		rtv1->keys.num = 4;
+	else if (scancode == SDL_SCANCODE_5)
+		rtv1->keys.num = 5;
+	else if (scancode == SDL_SCANCODE_6)
+		rtv1->keys.num = 6;
+	else if (scancode == SDL_SCANCODE_7)
+		rtv1->keys.num = 7;
+	else if (scancode == SDL_SCANCODE_8)
+		rtv1->keys.num = 8;
+	else if (scancode == SDL_SCANCODE_9)
+		rtv1->keys.num = 9;
+	if (rtv1->keys.num != 0)
+		rt_num_just_pressed(rtv1);
+}
+
 void		on_key_down(t_rt *rtv1, SDL_Scancode scancode)
 {
 	if (rtv1 == NULL)
 		return ;
-	if (scancode == SDL_SCANCODE_ESCAPE)
+	else if (scancode == SDL_SCANCODE_ESCAPE)
 		rtv1->flags.exit = TRUE;
 	else if (scancode == SDL_SCANCODE_R)
 		rtv1->keys.r = TRUE;
@@ -32,6 +80,11 @@ void		on_key_down(t_rt *rtv1, SDL_Scancode scancode)
 		rtv1->keys.q = TRUE;
 	else if (scancode == SDL_SCANCODE_E)
 		rtv1->keys.e = TRUE;
+	else if (scancode == SDL_SCANCODE_C)
+		rtv1->keys.c = TRUE;
+	else if (scancode == SDL_SCANCODE_F)
+		rtv1->keys.f = TRUE;
+	on_num_down(rtv1, scancode);
 }
 
 void		on_key_up(t_rt *rtv1, SDL_Scancode scancode)
@@ -52,6 +105,10 @@ void		on_key_up(t_rt *rtv1, SDL_Scancode scancode)
 		rtv1->keys.q = FALSE;
 	else if (scancode == SDL_SCANCODE_E)
 		rtv1->keys.e = FALSE;
+	else if (scancode == SDL_SCANCODE_C)
+		rtv1->keys.c = FALSE;
+	else if (scancode == SDL_SCANCODE_F)
+		rtv1->keys.f = FALSE;
 }
 
 

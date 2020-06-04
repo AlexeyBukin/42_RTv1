@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 18:13:19 by kcharla           #+#    #+#             */
-/*   Updated: 2020/05/28 01:03:44 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/04 11:34:48 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int		rt_loop(t_rt *rtv1)
 	{
 		ft_memset(&(rtv1->flags), '\0', sizeof(t_flags));
 		iterate_events(rtv1);
+
 		if (rtv1->flags.exit)
 			break ;
 		if (rtv1->flags.is_moving)
