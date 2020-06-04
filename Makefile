@@ -46,10 +46,11 @@ SRC_DIR = src
 # (3) Source files
 
 HEADER_FILES = \
-include/rt_trace.h    include/rt_scene_s.h   include/rt_s.h         \
-include/rt_utils_s.h  include/rt_scene.h     include/rt_num.h       \
-include/rt_parser.h   include/rt_vector.h    include/rt_vector_s.h  \
-include/rt_utils.h    include/rt_camera_s.h  include/rt.h
+include/rt_trace.h      include/rt_scene_s.h   include/rt_s.h         \
+include/rt_utils_s.h    include/rt_scene.h     include/rt_num.h       \
+include/rt_parser.h     include/rt_vector.h    include/rt_vector_s.h  \
+include/rt_utils.h      include/rt_camera_s.h  include/rt.h           \
+include/rt_texture_s.h
 
 SRC_FILES = \
 src/loop.c                      src/main.c                         src/texture.c                    \

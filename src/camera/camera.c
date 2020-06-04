@@ -29,6 +29,7 @@ void		camera_set_default(t_camera	*cam)
 	cam->size_y = (double)WIN_HEIGHT / 100.0;
 	cam->dir_right = (t_vec) {0.0, 1.0, 0.0};
 	cam->dir_up = (t_vec) {0.0, 0.0, 1.0};
+	cam->texture = NULL;
 }
 
 int			camera_move_local(t_camera *cam, t_vec dir)

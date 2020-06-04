@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 01:05:54 by hush              #+#    #+#             */
-/*   Updated: 2020/06/04 02:47:10 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/04 03:08:26 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,9 @@ char		*scene_to_str(t_scene *scene)
 
 	if (scene == NULL)
 		return (ft_strdup("(null)"));
-	res = ft_strdup("scene:\n{\n  Materials:");
+	res = ft_strdup("scene:  \'");
+	res = ft_str_add(res, scene->filename);
+	res = ft_str_add(res, "\'\n{\n  Materials:");
 	i = 0;
 	while (i < scene->mat_num)
 	{

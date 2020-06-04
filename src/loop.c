@@ -89,7 +89,7 @@ int		rt_loop(t_rt *rtv1)
 			//TODO convert coords to global and move
 			// create 't_vec  to_global(t_vec local_coords, t_vec local_x_vec);'
 			// create 'void  move_global(t_vec *move_me, t_vec by_me);'
-			camera_move_local(rtv1->camera, rtv1->movement.vel_local);
+			camera_move_local(rtv1->scene_active->cameras, rtv1->movement.vel_local);
 			rtv1->flags.redraw = TRUE;
 		}
 		if (rtv1->flags.redraw)

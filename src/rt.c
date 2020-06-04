@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 21:18:15 by hush              #+#    #+#             */
-/*   Updated: 2020/06/04 02:36:00 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/04 03:12:05 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ t_rt		*rtv1_init(int ac, char **args)
 	if ((rtv1->window = window_init(WIN_WIDTH, WIN_HEIGHT,
 		rtv1->scenes[0].filename)) == NULL)
 		return (ft_puterr_null(5, "rtv1_init(): Cannot init window"));
-	if ((rtv1->camera = camera_init()) == NULL)
-		return (ft_puterr_null(6, "rtv1_init(): Cannot init camera"));
 	return (rtv1);
 }
 
@@ -79,7 +77,6 @@ void		rtv1_free(t_rt *rtv1)
 	if (rtv1 == NULL)
 		return ;
 	scene_free(rtv1->scene_active);
-	camera_free(rtv1->camera);
 	window_free(rtv1->window);
 	ft_free(rtv1);
 }

@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 02:09:58 by hush              #+#    #+#             */
-/*   Updated: 2020/06/04 01:14:24 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/04 03:16:40 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,7 @@
 #include "rt_scene_s.h"
 #include "rt_utils_s.h"
 #include "rt_vector_s.h"
-
-typedef struct		s_texture
-{
-	size_t			size_x;
-	size_t			size_y;
-	t_byte			*img;
-}					t_texture;
+#include "rt_texture_s.h"
 
 typedef struct		s_window
 {
@@ -34,8 +28,6 @@ typedef struct		s_window
 	SDL_Texture		*sdl_texture;
 	SDL_Renderer	*sdl_renderer;
 }					t_window;
-
-
 
 typedef struct		s_keys
 {
@@ -68,26 +60,16 @@ typedef struct		s_flags
 	t_bool			exit;
 }					t_flags;
 
-//TODO rework this
-
-typedef struct		s_functions
-{
-	t_num			(*trace_dot[4])(t_ray ray, t_figure *fig);
-	t_vec			(*trace_normal[4])(t_ray ray, t_figure *fig);
-}					t_functions;
-
 
 typedef struct		s_rt
 {
 	t_window		*window;
-	t_camera		*camera;
 	t_scene			*scenes;
 	size_t			scene_num;
 	t_scene			*scene_active;
 	t_flags			flags;
 	t_keys 			keys;
 	t_move			movement;
-	t_functions		funcs;
 }					t_rt;
 
 #endif
