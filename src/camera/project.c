@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 04:16:09 by kcharla           #+#    #+#             */
-/*   Updated: 2020/05/29 11:19:18 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/03 21:40:32 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ int			project(t_rt *rtv1)
 		{
 			double xd = (double) x;
 			double yd = (double) y;
-			t_vec dot_1 = vec_mult_num(cam->direction_right,
+			t_vec dot_1 = vec_mult_num(cam->dir_right,
 									  (double) cam->size_x * ((double) (xd / WIN_WIDTH) - (1.0 / 2.0)));
 
-			t_vec dot_2 = vec_plus(dot_1, vec_mult_num(cam->direction_up,
+			t_vec dot_2 = vec_plus(dot_1, vec_mult_num(cam->dir_up,
 								   (double) -1 * cam->size_y * ((double) (yd / WIN_HEIGHT) - (1.0 / 2.0))));
 
 			dot = vec_plus(cam->plane_pos, dot_2);
@@ -83,7 +83,7 @@ int			project(t_rt *rtv1)
 
 			ray.pos = cam->pos;
 			ray.dir = vec_normalize(vec_minus(dot, cam->pos));
-			traced = rt_trace(rtv1->scene, ray);
+			traced = rt_trace(rtv1->scene_active, ray);
 			texture_put_pixel(rtv1->window->texture, traced, x, y);
 
 			//int needed = WIN_WIDTH / 3;

@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/02 01:16:40 by hush              #+#    #+#             */
-/*   Updated: 2020/06/02 01:28:34 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/03 21:39:22 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ char				*camera_to_str(t_camera *camera)
 	res = ft_strjoin_free(res, ft_lltoa(camera->id));
 	res = ft_str_add(res, "]( pos:");
 	res = ft_strjoin_free(res, vec_to_str_color(camera->pos));
-	res = ft_str_add(res, ", direction:");
-	res = ft_strjoin_free(res, vec_to_str_color(camera->direction));
-	res = ft_str_add(res, ", direction_up:");
-	res = ft_strjoin_free(res, vec_to_str_color(camera->direction_up));
+	res = ft_str_add(res, ", dir:");
+	res = ft_strjoin_free(res, vec_to_str_color(camera->dir));
+	res = ft_str_add(res, ", dir_up:");
+	res = ft_strjoin_free(res, vec_to_str_color(camera->dir_up));
 	res = ft_str_add(res, ")");
 	return (res);
 }

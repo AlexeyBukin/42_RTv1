@@ -42,12 +42,14 @@ scene_read_light(char **source, t_light *light)
 int
 scene_add_light(t_scene *scene, char **source)
 {
+	if (scene == NULL)
+		return (ft_puterror(1,"scene is NULL pointer"));
 	scene->lights = ft_realloc_arr(scene->lights, scene->light_num,
 			scene->light_num + 1, sizeof(t_figure));
 	if (scene->figures == NULL)
-		return (ft_puterror(1,"Realloc light returned NULL"));
+		return (ft_puterror(2,"Realloc light returned NULL"));
 	if (scene_read_light(source, &(scene->lights[scene->light_num])) < 0)
-		return (ft_puterror(2, "Cannot read light"));
+		return (ft_puterror(3, "Cannot read light"));
 	scene->lights[scene->light_num].id = scene->light_num;
 	scene->light_num++;
 	return (0);

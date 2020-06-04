@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 02:09:58 by hush              #+#    #+#             */
-/*   Updated: 2020/06/02 01:31:49 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/04 01:14:24 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,9 @@ typedef struct		s_rt
 {
 	t_window		*window;
 	t_camera		*camera;
-	t_scene			*scene;
+	t_scene			*scenes;
+	size_t			scene_num;
+	t_scene			*scene_active;
 	t_flags			flags;
 	t_keys 			keys;
 	t_move			movement;

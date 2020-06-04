@@ -6,11 +6,35 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 01:05:54 by hush              #+#    #+#             */
-/*   Updated: 2020/06/02 02:25:25 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/04 02:47:10 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
+
+int		scene_set_default(t_scene *scene)
+{
+	if (scene == NULL)
+		return (ft_puterror(1, "scene is NULL pointer"));
+	scene->filename = SCENE_FILENAME_UNSET;
+	scene->materials = (t_material*)ft_malloc(sizeof(t_material));
+	if (scene->materials == NULL)
+		return (ft_puterror(2, "cannot malloc materials"));
+	scene->mat_num = 1;
+	material_set_default(&(scene->materials[0]));
+	scene->cameras = (t_camera*)ft_malloc(sizeof(t_camera));
+	if (scene->cameras == NULL)
+		return (ft_puterror(3, "cannot malloc cameras"));
+	camera_set_default(&(scene->cameras[0]));
+	if (scene_camera_config(&(scene->cameras[0])) < 0)
+		return (ft_puterror(4,"cannot configure camera"));
+	scene->cam_num = 1;
+	scene->figures = NULL;
+	scene->fig_num = 0;
+	scene->lights = NULL;
+	scene->light_num = 0;
+	return (0);
+}
 
 t_scene		*scene_init()
 {
@@ -22,16 +46,20 @@ t_scene		*scene_init()
 								  "cannot malloc scene struct"));
 	scene->materials = (t_material*)ft_malloc(sizeof(t_material));
 	if (scene->materials == NULL)
-		return (ft_puterr_null(1, "scene_create():"
-								  "cannot malloc materials"));
+		return (ft_puterr_null(2, "scene_create(): cannot malloc materials"));
 	scene->mat_num = 1;
 	material_set_default(&(scene->materials[0]));
-	scene->fig_num = 0;
+	scene->cameras = (t_camera*)ft_malloc(sizeof(t_camera));
+	if (scene->cameras == NULL)
+		return (ft_puterr_null(3, "scene_create(): cannot malloc cameras"));
+	camera_set_default(&(scene->cameras[0]));
+	if (scene_camera_config(&(scene->cameras[0])) < 0)
+		return (ft_puterr_null(4,"scene_create(): cannot configure camera"));
+	scene->cam_num = 1;
 	scene->figures = NULL;
-	scene->light_num = 0;
+	scene->fig_num = 0;
 	scene->lights = NULL;
-	scene->cam_num = 0;
-	scene->cameras = NULL;
+	scene->light_num = 0;
 	return (scene);
 }
 

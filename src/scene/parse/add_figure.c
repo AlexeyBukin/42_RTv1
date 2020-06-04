@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 02:27:13 by hush              #+#    #+#             */
-/*   Updated: 2020/06/02 02:29:58 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/04 01:27:37 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,12 @@ scene_add_figure(t_scene *scene, char **source, t_figure_type type)
 {
 	int 	code;
 
+	if (scene == NULL)
+		return (ft_puterror(1,"scene is NULL pointer"));
 	scene->figures = ft_realloc_arr(scene->figures, scene->fig_num,
 			scene->fig_num + 1, sizeof(t_figure));
 	if (scene->figures == NULL)
-		return (ft_puterror(1,"Realloc figure returned NULL"));
+		return (ft_puterror(2,"Realloc figure returned NULL"));
 	if (type == FIG_PLANE)
 		code = scene_read_plane(source, &(scene->figures[scene->fig_num]));
 	else if (type == FIG_SPHERE)
@@ -120,7 +122,7 @@ scene_add_figure(t_scene *scene, char **source, t_figure_type type)
 	else
 		code = -1;
 	if (code < 0)
-		return (ft_puterror(2, "Cannot read figure"));
+		return (ft_puterror(3, "Cannot read figure"));
 	scene->fig_num++;
 	return (0);
 }

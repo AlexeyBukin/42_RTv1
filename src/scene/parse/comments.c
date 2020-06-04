@@ -6,19 +6,19 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 12:01:12 by hush              #+#    #+#             */
-/*   Updated: 2020/05/23 21:58:20 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/04 01:37:34 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-void			comments_delete(char *str)
+char			*comments_delete(char *str)
 {
 	size_t		i;
 	size_t		comments_len;
 
 	if (str == NULL)
-		return ;
+		return NULL;
 	i = 0;
 	while(str[i] != '\0')
 	{
@@ -28,6 +28,7 @@ void			comments_delete(char *str)
 		}
 		i++;
 	}
+	return str;
 }
 
 size_t			comments_skip_num(const char *str)
