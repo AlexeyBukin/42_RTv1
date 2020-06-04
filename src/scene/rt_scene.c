@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 01:05:54 by hush              #+#    #+#             */
-/*   Updated: 2020/06/04 16:20:18 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/04 22:45:43 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,18 @@ int		scene_set_default(t_scene *scene)
 		return (ft_puterror(2, "cannot malloc materials"));
 	scene->mat_num = 1;
 	material_set_default(&(scene->materials[0]));
-	scene->cameras = (t_camera*)ft_malloc(sizeof(t_camera));
-	if (scene->cameras == NULL)
-		return (ft_puterror(3, "cannot malloc cameras"));
-	camera_set_default(&(scene->cameras[0]));
-	if (camera_config(&(scene->cameras[0])) < 0)
-		return (ft_puterror(4,"cannot configure camera"));
-	scene->cam_num = 1;
+
+	//scene->cameras = (t_camera*)ft_malloc(sizeof(t_camera));
+	//if (scene->cameras == NULL)
+	//	return (ft_puterror(3, "cannot malloc cameras"));
+	//camera_set_default(&(scene->cameras[0]));
+	//if (camera_config(&(scene->cameras[0])) < 0)
+	//	return (ft_puterror(4,"cannot configure camera"));
+	//scene->cam_num = 1;
+
+	scene->cam_active = NULL;
+	scene->cameras = NULL;
+	scene->cam_num = 0;
 	scene->figures = NULL;
 	scene->fig_num = 0;
 	scene->lights = NULL;
@@ -77,6 +82,10 @@ void 	scene_camera_arr_free(t_scene *scene)
 	}
 	ft_free(scene->cameras);
 }
+
+/*
+** scene->filename is NOT freed
+*/
 
 void 	scene_delete(t_scene *scene)
 {

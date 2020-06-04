@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 21:18:15 by hush              #+#    #+#             */
-/*   Updated: 2020/06/04 02:59:42 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/04 22:51:11 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,19 +86,22 @@ rt_read_scene(t_scene *scene, char *filename)
 	if (scene == NULL || filename == NULL)
 		return (ft_puterror(1, "Entered NULL pointer"));
 	if (scene_set_default(scene) < 0)
-		return (ft_puterror(1, "Cannot init scene"));
+		return (ft_puterror(2, "Cannot init scene"));
 	scene->filename = filename;
 	file_text = comments_delete((ft_read_file(filename)));
 	if (file_text == NULL)
-		return (ft_puterror(2, "Cannot get text from file"));
+		return (ft_puterror(3, "Cannot get text from file"));
 	if (scene_parse(file_text, scene) < 0)
 	{
 		ft_free(file_text);
 		return (ft_puterror(4,"Cannot parse scene from file"));
 	}
 	ft_free(file_text);
+	if (scene->cam_num < 1 || scene->light_num < 1 || scene->fig_num < 1)
+		return (ft_puterror(5, "Scene is invalid"));
+	scene->cam_active = scene->cameras;
 	if (scene_link_ids(scene) < 0)
-		return (ft_puterror(4, "Cannot link resource ids"));
+		return (ft_puterror(6, "Cannot link resource ids"));
 
 	//TODO delete debug symbols
 	ft_putstr_free(scene_to_str(scene));

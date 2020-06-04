@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 16:29:54 by hush              #+#    #+#             */
-/*   Updated: 2020/06/04 16:02:19 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/04 22:31:00 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef	struct	s_light
 typedef struct		s_scene
 {
 	char 			*filename;
+
 	t_material		*materials;
 	size_t			mat_num;
 
@@ -94,6 +95,7 @@ typedef struct		s_scene
 
 	t_camera		*cameras;
 	size_t			cam_num;
+	t_camera		*cam_active;
 
 	t_light			*lights;
 	size_t			light_num;

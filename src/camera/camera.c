@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 03:48:52 by kcharla           #+#    #+#             */
-/*   Updated: 2020/06/04 14:12:23 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/04 21:59:39 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,22 +54,22 @@ int			camera_move_global(t_camera *cam, t_vec dir)
 	return (0);
 }
 
-t_camera		*camera_init()
-{
-	t_camera		*cam;
-
-	if ((cam = (t_camera*)ft_malloc(sizeof(t_camera))) == NULL)
-		return (ft_puterr_null(1, "camera_init(): Cannot malloc camera"));
-	cam->pos = (t_vec) {0.0, 0.0, 0.0};
-//	cam->dir = (t_double3) {1.0, 0.0, 0.0};
-	cam->plane_pos = vec((double)WIN_WIDTH / 100.0 / 2.0, 0.0, 0.0);
-	cam->dir = vec_minus(cam->plane_pos, cam->pos);
-	cam->size_x = (double)WIN_WIDTH / 100.0;
-	cam->size_y = (double)WIN_HEIGHT / 100.0;
-	cam->dir_right = (t_vec) {0.0, 1.0, 0.0};
-	cam->dir_up = (t_vec) {0.0, 0.0, 1.0};
-	return (cam);
-}
+//t_camera		*camera_init()
+//{
+//	t_camera		*cam;
+//
+//	if ((cam = (t_camera*)ft_malloc(sizeof(t_camera))) == NULL)
+//		return (ft_puterr_null(1, "camera_init(): Cannot malloc camera"));
+//	cam->pos = (t_vec) {0.0, 0.0, 0.0};
+////	cam->dir = (t_double3) {1.0, 0.0, 0.0};
+//	cam->plane_pos = vec((double)WIN_WIDTH / 100.0 / 2.0, 0.0, 0.0);
+//	cam->dir = vec_minus(cam->plane_pos, cam->pos);
+//	cam->size_x = (double)WIN_WIDTH / 100.0;
+//	cam->size_y = (double)WIN_HEIGHT / 100.0;
+//	cam->dir_right = (t_vec) {0.0, 1.0, 0.0};
+//	cam->dir_up = (t_vec) {0.0, 0.0, 1.0};
+//	return (cam);
+//}
 
 void 			camera_delete(t_camera *cam)
 {
@@ -84,13 +84,17 @@ void			camera_free(t_camera *cam)
 	ft_free(cam);
 }
 
-int				camera_config(t_camera *cam)
-{
 //	cam->pos = (t_vec) {0.0, 0.0, 0.0};
 //	cam->dir = (t_vec) {0.0, 0.0, 0.0};
 //	cam->dir_up = (t_vec) {0.0, 0.0, 0.0};
+
+int				camera_config(t_camera *cam)
+{
 	if (cam == NULL)
 		return (ft_puterror(1, "Entered NULL pointer"));
+	if ((cam->texture = texture_init(WIN_WIDTH, WIN_HEIGHT)) == NULL)
+		return (ft_puterror(5, "Cannot malloc camera texture"));
+
 	cam->size_x = (double)WIN_WIDTH / 100.0;
 	cam->size_y = (double)WIN_HEIGHT / 100.0;
 

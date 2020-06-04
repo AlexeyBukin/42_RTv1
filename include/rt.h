@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/06/04 16:29:33 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/04 21:28:50 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void				on_mouse_up(t_rt *rtv1, SDL_Scancode scancode);
 ** window.c
 */
 
+int					win_update_from_camera(t_window *win, t_camera *cam);
+int					window_update_texture(t_window *win, t_texture *texture);
 void				window_free(t_window *win);
 t_window			*window_init(size_t w, size_t h, const char *name);
 int					window_render(t_window *win);
@@ -52,7 +54,7 @@ int					window_render(t_window *win);
 */
 
 int					rt_loop(t_rt *rtv1);
-int					window_render(t_window *win);
+//int					window_render(t_window *win);
 
 /*
 ** texture.c

@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 02:09:58 by hush              #+#    #+#             */
-/*   Updated: 2020/06/04 13:25:30 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/04 21:07:21 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 
 typedef struct		s_window
 {
-	t_texture		*texture;
 	SDL_Window		*sdl_window;
 	SDL_Texture		*sdl_texture;
 	SDL_Renderer	*sdl_renderer;
@@ -44,6 +43,7 @@ typedef struct		s_keys
 	int 			mouse_x;
 	int 			mouse_y;
 	size_t			num;
+	t_bool 			x;
 	t_bool 			c;
 	t_bool 			f;
 }					t_keys;
@@ -62,7 +62,6 @@ typedef struct		s_flags
 	t_bool			is_moving;
 	t_bool			exit;
 }					t_flags;
-
 
 typedef struct		s_rt
 {

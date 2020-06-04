@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 18:13:19 by kcharla           #+#    #+#             */
-/*   Updated: 2020/06/04 11:34:48 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/04 22:39:46 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,11 @@ int		rt_redraw(t_rt *rtv1)
 {
 	if (rtv1 == NULL)
 		return (ft_puterror(1, "redraw(): pointer rtv1 is NULL"));
-	if (rtv1->window == NULL)
-		return (ft_puterror(2, "redraw(): pointer rtv1->window is NULL"));
-	texture_fill(rtv1->window->texture, col(0, 0, 0));
-	if (project(rtv1) < 0)
-		return (ft_puterror(3, "redraw(): Can't project()"));
-	if (window_render(rtv1->window) < 0)
+	if (rtv1->scene_active == NULL || rtv1->window == NULL)
+		return (ft_puterror(1, "redraw(): rtv1 has NULL member(s)"));
+	if (project_scene(rtv1->scene_active) < 0)
+		return (ft_puterror(3, "redraw(): cannot project active scene"));
+	if (win_update_from_camera(rtv1->window, rtv1->scene_active->cam_active) < 0)
 		return (ft_puterror(4, "redraw(): Can't window_render()"));
 	return (0);
 }
@@ -90,7 +89,7 @@ int		rt_loop(t_rt *rtv1)
 			//TODO convert coords to global and move
 			// create 't_vec  to_global(t_vec local_coords, t_vec local_x_vec);'
 			// create 'void  move_global(t_vec *move_me, t_vec by_me);'
-			camera_move_local(rtv1->scene_active->cameras, rtv1->movement.vel_local);
+			camera_move_local(rtv1->scene_active->cam_active, rtv1->movement.vel_local);
 			rtv1->flags.redraw = TRUE;
 		}
 		if (rtv1->flags.redraw)

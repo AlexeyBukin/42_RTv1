@@ -68,7 +68,7 @@ t_rt		*rt_new(int ac, char **args)
 	}
 	rt->scene_active = &(rt->scenes[0]);
 	if ((rt->window = window_init(WIN_WIDTH, WIN_HEIGHT,
-		ft_strdup(rt->scenes[0].filename))) == NULL)
+		rt->scenes[0].filename)) == NULL)
 	{
 		rt_scene_arr_free(rt);
 		ft_free(rt);

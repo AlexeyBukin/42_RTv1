@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 00:26:47 by kcharla           #+#    #+#             */
-/*   Updated: 2020/06/04 13:46:18 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/04 23:25:24 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,26 @@ void 		rt_num_just_pressed(t_rt *rtv1)
 {
 	if (rtv1 == NULL)
 		return ;
-	if (rtv1->keys.num != 0 && rtv1->keys.num < rtv1->scene_active->cam_num)
+	if (rtv1->scenes == NULL || rtv1->scene_active == NULL)
+		return ;
+	if (rtv1->keys.num != 0 && rtv1->keys.num < rtv1->scene_num)
 	{
-		if (rtv1->keys.c == TRUE && rtv1->keys.f == FALSE)
-		{
-			ft_memcpy(&(rtv1->scene_active->cameras[0]),
-					  &(rtv1->scene_active->cameras[rtv1->keys.num]),
-					  sizeof(t_camera));
-			rtv1->flags.redraw = TRUE;
-			ft_printf("changed camera\n");
-		}
-		else if (rtv1->keys.f == TRUE && rtv1->keys.c == FALSE)
+		if (rtv1->keys.f == TRUE && rtv1->keys.c == FALSE)
 		{
 			rtv1->scene_active = &(rtv1->scenes[rtv1->keys.num]);
 			rtv1->flags.redraw = TRUE;
 			ft_printf("changed scene\n");
+		}
+	}
+	if (rtv1->scene_active->cameras == NULL)
+		return ;
+	if (rtv1->keys.num != 0 && rtv1->keys.num - 1 < rtv1->scene_active->cam_num)
+	{
+		if (rtv1->keys.c == TRUE && rtv1->keys.f == FALSE)
+		{
+			rtv1->scene_active->cam_active = &(rtv1->scene_active->cameras[rtv1->keys.num - 1]);
+			rtv1->flags.redraw = TRUE;
+			ft_printf("changed camera\n");
 		}
 	}
 }
@@ -86,6 +91,8 @@ void		on_key_down(t_rt *rtv1, SDL_Scancode scancode)
 		rtv1->keys.c = TRUE;
 	else if (scancode == SDL_SCANCODE_F)
 		rtv1->keys.f = TRUE;
+	else if (scancode == SDL_SCANCODE_X)
+		rtv1->keys.x = TRUE;
 	on_num_down(rtv1, scancode);
 }
 
@@ -111,6 +118,8 @@ void		on_key_up(t_rt *rtv1, SDL_Scancode scancode)
 		rtv1->keys.c = FALSE;
 	else if (scancode == SDL_SCANCODE_F)
 		rtv1->keys.f = FALSE;
+	else if (scancode == SDL_SCANCODE_X)
+		rtv1->keys.x = FALSE;
 }
 
 
