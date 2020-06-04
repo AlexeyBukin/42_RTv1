@@ -23,11 +23,13 @@ void 		rt_num_just_pressed(t_rt *rtv1)
 			ft_memcpy(&(rtv1->scene_active->cameras[0]),
 					  &(rtv1->scene_active->cameras[rtv1->keys.num]),
 					  sizeof(t_camera));
+			rtv1->flags.redraw = TRUE;
 			ft_printf("changed camera\n");
 		}
 		else if (rtv1->keys.f == TRUE && rtv1->keys.c == FALSE)
 		{
 			rtv1->scene_active = &(rtv1->scenes[rtv1->keys.num]);
+			rtv1->flags.redraw = TRUE;
 			ft_printf("changed scene\n");
 		}
 	}

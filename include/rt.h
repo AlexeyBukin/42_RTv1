@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/05/30 13:07:24 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/04 16:29:33 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,13 @@ int					project(t_rt *rtv1);
 /*
 ** main.c
 */
-void				rtv1_quit(t_rt *rtv1);
+
 
 /*
-** init.c
+** rt.c
 */
 
-t_rt				*rtv1_init(int ac, char **args);
+t_rt				*rt_new(int ac, char **args);
+void				rt_quit(t_rt *rtv1);
 
 #endif

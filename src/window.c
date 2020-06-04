@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 00:29:47 by kcharla           #+#    #+#             */
-/*   Updated: 2020/05/28 01:03:44 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/04 16:12:16 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ void		window_free(t_window *win)
 {
 	if (win == NULL)
 		return ;
-	//texture_free(win->texture);
+	texture_free(win->texture);
 	SDL_DestroyWindow(win->sdl_window);
 	SDL_DestroyTexture(win->sdl_texture);
 	SDL_DestroyRenderer(win->sdl_renderer);
-	//ft_free(win);
+	ft_free(win);
 }

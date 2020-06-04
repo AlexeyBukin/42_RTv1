@@ -100,7 +100,7 @@ int				camera_config(t_camera *cam)
 	if (vec_is_zero(cam->dir_up) || vec_isinf(cam->dir_up))
 		return (ft_puterror(3, "Expected correct vector dir_up"));
 	cam->dir_up = vec_normalize(cam->dir_up);
-	cam->dir_right = vec_cross_product(cam->dir, cam->dir_up);
+	cam->dir_right = vec_cross_product(cam->dir_up, cam->dir);
 	if (vec_is_zero(cam->dir_right) || vec_isinf(cam->dir_right))
 		return (ft_puterror(4, "Cannot configure dir_right"));
 	cam->dir_right = vec_normalize(cam->dir_right);
