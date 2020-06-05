@@ -6,11 +6,21 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 00:26:47 by kcharla           #+#    #+#             */
-/*   Updated: 2020/06/04 23:25:24 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/06 01:03:24 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
+
+int			keys_pressed_now(t_keys *keys)
+{
+	int		res;
+
+	res = (keys->w + keys->a + keys->s + keys->d);
+	res += (keys->q + keys->e + keys->r);
+	res += (keys->m + keys->c + keys->f);
+	return (res);
+}
 
 void 		rt_num_just_pressed(t_rt *rtv1)
 {
@@ -18,11 +28,11 @@ void 		rt_num_just_pressed(t_rt *rtv1)
 		return ;
 	if (rtv1->scenes == NULL || rtv1->scene_active == NULL)
 		return ;
-	if (rtv1->keys.num != 0 && rtv1->keys.num < rtv1->scene_num)
+	if (rtv1->keys.num != 0 && rtv1->keys.num - 1 < rtv1->scene_num)
 	{
-		if (rtv1->keys.f == TRUE && rtv1->keys.c == FALSE)
+		if (keys_pressed_now(&(rtv1->keys)) == 1 && rtv1->keys.f == TRUE)
 		{
-			rtv1->scene_active = &(rtv1->scenes[rtv1->keys.num]);
+			rtv1->scene_active = &(rtv1->scenes[rtv1->keys.num - 1]);
 			rtv1->flags.redraw = TRUE;
 			ft_printf("changed scene\n");
 		}
@@ -31,12 +41,29 @@ void 		rt_num_just_pressed(t_rt *rtv1)
 		return ;
 	if (rtv1->keys.num != 0 && rtv1->keys.num - 1 < rtv1->scene_active->cam_num)
 	{
-		if (rtv1->keys.c == TRUE && rtv1->keys.f == FALSE)
+		if (keys_pressed_now(&(rtv1->keys)) == 1 && rtv1->keys.c == TRUE)
 		{
 			rtv1->scene_active->cam_active = &(rtv1->scene_active->cameras[rtv1->keys.num - 1]);
 			rtv1->flags.redraw = TRUE;
 			ft_printf("changed camera\n");
 		}
+	}
+	if (rtv1->scene_active->cam_active == NULL)
+		return ;
+	if (rtv1->keys.num != 0 && keys_pressed_now(&(rtv1->keys)) == 1 && rtv1->keys.m == TRUE)
+	{
+		if (rtv1->keys.num == 1)
+			rtv1->scene_active->cam_active->mode = TRACE_MODE_FULL;
+		else if (rtv1->keys.num == 2)
+			rtv1->scene_active->cam_active->mode = TRACE_MODE_NORMALS;
+		else if (rtv1->keys.num == 3)
+			rtv1->scene_active->cam_active->mode = TRACE_MODE_LIGHT;
+		else if (rtv1->keys.num == 4)
+			rtv1->scene_active->cam_active->mode = TRACE_MODE_COLOR;
+		else
+			return ;
+		rtv1->flags.redraw = TRUE;
+		ft_printf("changed color mode\n");
 	}
 }
 
@@ -91,8 +118,10 @@ void		on_key_down(t_rt *rtv1, SDL_Scancode scancode)
 		rtv1->keys.c = TRUE;
 	else if (scancode == SDL_SCANCODE_F)
 		rtv1->keys.f = TRUE;
-	else if (scancode == SDL_SCANCODE_X)
-		rtv1->keys.x = TRUE;
+//	else if (scancode == SDL_SCANCODE_X)
+//		rtv1->keys.x = TRUE;
+	else if (scancode == SDL_SCANCODE_M)
+		rtv1->keys.m = TRUE;
 	on_num_down(rtv1, scancode);
 }
 
@@ -118,10 +147,11 @@ void		on_key_up(t_rt *rtv1, SDL_Scancode scancode)
 		rtv1->keys.c = FALSE;
 	else if (scancode == SDL_SCANCODE_F)
 		rtv1->keys.f = FALSE;
-	else if (scancode == SDL_SCANCODE_X)
-		rtv1->keys.x = FALSE;
+//	else if (scancode == SDL_SCANCODE_X)
+//		rtv1->keys.x = FALSE;
+	else if (scancode == SDL_SCANCODE_M)
+		rtv1->keys.m = FALSE;
 }
-
 
 void		on_mouse_down(t_rt *rtv1, SDL_Scancode scancode)
 {

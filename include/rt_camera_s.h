@@ -21,13 +21,13 @@ typedef enum		e_camera_projection
 	PROJECTION_PERSPECTIVE
 }					t_projection;
 
-typedef enum		e_camera_color_mode
+typedef enum		e_trace_mode
 {
-	COLOR_MODE_FULL_TRACE,
-	COLOR_MODE_NORMALS,
-	COLOR_MODE_LIGHT_AMOUNT,
-	COLOR_MODE_COLOR_ONLY
-}					t_color_mode;
+	TRACE_MODE_FULL,
+	TRACE_MODE_NORMALS,
+	TRACE_MODE_LIGHT,
+	TRACE_MODE_COLOR
+}					t_trace_mode;
 
 typedef struct		s_camera
 {
@@ -40,7 +40,7 @@ typedef struct		s_camera
 	t_num 			size_x;
 	t_num 			size_y;
 	t_projection	projection;
-	t_color_mode	mode;
+	t_trace_mode	mode;
 	t_texture		*texture;
 }					t_camera;
 

@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 04:16:09 by kcharla           #+#    #+#             */
-/*   Updated: 2020/06/04 21:59:39 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/05 22:43:04 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int			project_scene(t_scene *scene)
 		while (x < WIN_WIDTH)
 		{
 			ray = project_get_ray_from_coords(cam, x, y);
-			texture_put_pixel(cam->texture, rt_trace(scene, ray), x, y);
+			texture_put_pixel(cam->texture, rt_trace(scene, ray, cam->mode), x, y);
 			x++;
 		}
 		y++;

@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 03:48:52 by kcharla           #+#    #+#             */
-/*   Updated: 2020/06/04 21:59:39 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/05 21:39:52 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,23 +54,6 @@ int			camera_move_global(t_camera *cam, t_vec dir)
 	return (0);
 }
 
-//t_camera		*camera_init()
-//{
-//	t_camera		*cam;
-//
-//	if ((cam = (t_camera*)ft_malloc(sizeof(t_camera))) == NULL)
-//		return (ft_puterr_null(1, "camera_init(): Cannot malloc camera"));
-//	cam->pos = (t_vec) {0.0, 0.0, 0.0};
-////	cam->dir = (t_double3) {1.0, 0.0, 0.0};
-//	cam->plane_pos = vec((double)WIN_WIDTH / 100.0 / 2.0, 0.0, 0.0);
-//	cam->dir = vec_minus(cam->plane_pos, cam->pos);
-//	cam->size_x = (double)WIN_WIDTH / 100.0;
-//	cam->size_y = (double)WIN_HEIGHT / 100.0;
-//	cam->dir_right = (t_vec) {0.0, 1.0, 0.0};
-//	cam->dir_up = (t_vec) {0.0, 0.0, 1.0};
-//	return (cam);
-//}
-
 void 			camera_delete(t_camera *cam)
 {
 	if (cam == NULL)
@@ -109,7 +92,7 @@ int				camera_config(t_camera *cam)
 		return (ft_puterror(4, "Cannot configure dir_right"));
 	cam->dir_right = vec_normalize(cam->dir_right);
 	cam->projection = PROJECTION_PERSPECTIVE;
-	cam->mode = COLOR_MODE_FULL_TRACE;
+	cam->mode = TRACE_MODE_FULL;
 
 	//todo remove deprecated
 	cam->plane_pos = vec_mult_num(cam->dir,(double)WIN_WIDTH / 100.0 / 2.0);

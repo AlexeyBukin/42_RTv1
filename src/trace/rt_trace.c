@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 03:26:48 by kcharla           #+#    #+#             */
-/*   Updated: 2020/06/01 20:29:55 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/05 23:55:44 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,16 +147,156 @@ t_col		trace_bounce(t_scene *scene, t_ray ray, t_ray normal, t_material *mat)
 ** For debug only!
 */
 
-t_col		rt_trace(t_scene *scene, t_ray ray)
+//t_col		rt_trace_mode_full(t_scene *scene, t_ray ray)
+//{
+//	t_figure	*nearest;
+//	t_ray		normal;
+//	t_num		tmp_dist;
+//	t_num		res_dist;
+//	size_t		i;
+//
+//	if (scene == NULL)
+//		return (col(0, 0, 0));
+//	nearest = NULL;
+//	res_dist = INFINITY;
+//	i = 0;
+//	while (i < scene->fig_num)
+//	{
+//		tmp_dist = trace_dot_fig(ray, &(scene->figures[i]));
+//		if (tmp_dist < res_dist && tmp_dist > 0)
+//		{
+//			res_dist = tmp_dist;
+//			nearest = &(scene->figures[i]);
+//		}
+//		i++;
+//	}
+//	if (nearest != NULL)
+//	{
+//		normal.pos = vec_plus(ray.pos, vec_mult_num(ray.dir, res_dist));
+//		normal.dir = trace_normal_fig(ray, nearest);
+//		//return (col_from_normal(normal.dir));
+//		return (trace_bounce(scene, ray, normal, nearest->mat));
+//	}
+//	return (col(0, 0, 0));
+//}
+//
+//t_col		rt_trace_mode_normals(t_scene *scene, t_ray ray)
+//{
+//	t_figure	*nearest;
+//	t_ray		normal;
+//	t_num		tmp_dist;
+//	t_num		res_dist;
+//	size_t		i;
+//
+//	if (scene == NULL)
+//		return (col(0, 0, 0));
+//	nearest = NULL;
+//	res_dist = INFINITY;
+//	i = 0;
+//	while (i < scene->fig_num)
+//	{
+//		tmp_dist = trace_dot_fig(ray, &(scene->figures[i]));
+//		if (tmp_dist < res_dist && tmp_dist > 0)
+//		{
+//			res_dist = tmp_dist;
+//			nearest = &(scene->figures[i]);
+//		}
+//		i++;
+//	}
+//	if (nearest != NULL)
+//	{
+//		normal.dir = trace_normal_fig(ray, nearest);
+//		return (col_from_normal(normal.dir));
+//	}
+//	return (col(0, 0, 0));
+//}
+//
+//t_col		rt_trace_mode_color_only(t_scene *scene, t_ray ray)
+//{
+//	t_figure	*nearest;
+//	t_num		tmp_dist;
+//	t_num		res_dist;
+//	size_t		i;
+//
+//	if (scene == NULL)
+//		return (col(0, 0, 0));
+//	nearest = NULL;
+//	res_dist = INFINITY;
+//	i = 0;
+//	while (i < scene->fig_num)
+//	{
+//		tmp_dist = trace_dot_fig(ray, &(scene->figures[i]));
+//		if (tmp_dist < res_dist && tmp_dist > 0)
+//		{
+//			res_dist = tmp_dist;
+//			nearest = &(scene->figures[i]);
+//		}
+//		i++;
+//	}
+//	if (nearest != NULL)
+//	{
+//		if (nearest->mat != NULL)
+//			return (col_from_vec(nearest->mat->col));
+//	}
+//	return (col(0, 0, 0));
+//}
+//
+//t_col		rt_trace_mode_light(t_scene *scene, t_ray ray)
+//{
+//	t_figure	*nearest;
+//	t_ray		normal;
+//	t_num		tmp_dist;
+//	t_num		res_dist;
+//	size_t		i;
+//
+//	if (scene == NULL)
+//		return (col(0, 0, 0));
+//	nearest = NULL;
+//	res_dist = INFINITY;
+//	i = 0;
+//	while (i < scene->fig_num)
+//	{
+//		tmp_dist = trace_dot_fig(ray, &(scene->figures[i]));
+//		if (tmp_dist < res_dist && tmp_dist > 0)
+//		{
+//			res_dist = tmp_dist;
+//			nearest = &(scene->figures[i]);
+//		}
+//		i++;
+//	}
+//	if (nearest != NULL)
+//	{
+//		normal.pos = vec_plus(ray.pos, vec_mult_num(ray.dir, res_dist));
+//		normal.dir = trace_normal_fig(ray, nearest);
+//		t_col res = trace_bounce(scene, ray, normal, nearest->mat);
+//		//todo return vec, check if vec nums > 1
+//		return (res);
+//	}
+//	return (col(0, 0, 0));
+//}
+
+t_col		rt_trace(t_scene *scene, t_ray ray, t_trace_mode mode)
+{
+	if (mode == TRACE_MODE_FULL)
+		return (rt_trace_mode_full(scene, ray));
+	else if (mode == TRACE_MODE_NORMALS)
+		return (rt_trace_mode_normals(scene, ray));
+	else if (mode == TRACE_MODE_COLOR)
+		return (rt_trace_mode_color_only(scene, ray));
+	else if (mode == TRACE_MODE_LIGHT)
+		return (rt_trace_mode_light(scene, ray));
+	return (col(0, 0, 0));
+}
+
+t_figure	*rt_trace_nearest_dist(t_scene *scene, t_ray ray, t_num *dist)
 {
 	t_figure	*nearest;
-	t_ray		normal;
 	t_num		tmp_dist;
 	t_num		res_dist;
 	size_t		i;
 
 	if (scene == NULL)
-		return (col(0, 0, 0));
+		return (ft_puterr_null(1, "Entered NULL scene pointer"));
 	nearest = NULL;
 	res_dist = INFINITY;
 	i = 0;
@@ -170,14 +310,14 @@ t_col		rt_trace(t_scene *scene, t_ray ray)
 		}
 		i++;
 	}
-	if (nearest != NULL)
-	{
-		normal.pos = vec_plus(ray.pos, vec_mult_num(ray.dir, res_dist));
-		normal.dir = trace_normal_fig(ray, nearest);
-		//return (col_from_normal(normal.dir));
-		return (trace_bounce(scene, ray, normal, nearest->mat));
-	}
-	return (col(0, 0, 0));
+	if (dist != NULL)
+		*dist = res_dist;
+	return (nearest);
+}
+
+t_figure	*rt_trace_nearest(t_scene *scene, t_ray ray)
+{
+	return (rt_trace_nearest_dist(scene, ray, NULL));
 }
 
 //t_col		trace_full(t_rt *rtv1, t_ray ray, size_t id)
