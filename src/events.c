@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 00:26:47 by kcharla           #+#    #+#             */
-/*   Updated: 2020/06/06 01:03:24 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/06 17:34:32 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@ void 		rt_num_just_pressed(t_rt *rtv1)
 			rtv1->scene_active->cam_active->mode = TRACE_MODE_LIGHT;
 		else if (rtv1->keys.num == 4)
 			rtv1->scene_active->cam_active->mode = TRACE_MODE_COLOR;
+		else if (rtv1->keys.num == 5)
+			rtv1->scene_active->cam_active->mode = TRACE_MODE_BRDF_G;
+		else if (rtv1->keys.num == 6)
+			rtv1->scene_active->cam_active->mode = TRACE_MODE_BRDF_D;
 		else
 			return ;
 		rtv1->flags.redraw = TRUE;

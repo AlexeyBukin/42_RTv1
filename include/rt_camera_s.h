@@ -26,7 +26,10 @@ typedef enum		e_trace_mode
 	TRACE_MODE_FULL,
 	TRACE_MODE_NORMALS,
 	TRACE_MODE_LIGHT,
-	TRACE_MODE_COLOR
+	TRACE_MODE_COLOR,
+	TRACE_MODE_BRDF_G,
+	TRACE_MODE_BRDF_D
+
 }					t_trace_mode;
 
 typedef struct		s_camera

@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 02:10:15 by hush              #+#    #+#             */
-/*   Updated: 2020/06/05 23:56:01 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/06 17:41:06 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define RT_TRACE_H
 
 # include "rt_s.h"
+
+t_col				rt_trace_brdf_g(t_scene *scene, t_ray ray);
+t_col				rt_trace_brdf_d(t_scene *scene, t_ray ray);
+
 
 /*
 ** rt_trace.c

@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 03:26:48 by kcharla           #+#    #+#             */
-/*   Updated: 2020/06/05 23:55:44 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/06 17:39:28 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -285,6 +285,10 @@ t_col		rt_trace(t_scene *scene, t_ray ray, t_trace_mode mode)
 		return (rt_trace_mode_color_only(scene, ray));
 	else if (mode == TRACE_MODE_LIGHT)
 		return (rt_trace_mode_light(scene, ray));
+	else if (mode == TRACE_MODE_BRDF_G)
+		return (rt_trace_brdf_g(scene, ray));
+	else if (mode == TRACE_MODE_BRDF_D)
+		return (rt_trace_brdf_d(scene, ray));
 	return (col(0, 0, 0));
 }
 
