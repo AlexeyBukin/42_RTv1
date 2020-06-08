@@ -6,49 +6,33 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:45:53 by kcharla           #+#    #+#             */
-/*   Updated: 2020/05/03 04:59:04 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/08 20:55:08 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-
-
-t_num			vec_dot_product(t_vec a, t_vec b)
+t_vec	vec_plus_num(t_vec v, t_num n)
 {
-	a.x *= b.x;
-	a.y *= b.y;
-	a.z *= b.z;
-	return (a.x + a.y + a.z);
+	return (vec_do_num(v, n, num_plus));
 }
 
-t_num			vec_angle_cos(t_vec a, t_vec b)
+t_vec	vec_minus_num(t_vec v, t_num n)
 {
-	return (vec_dot_product(vec_normalize(a), vec_normalize(b)));
+	return (vec_do_num(v, n, num_minus));
 }
 
-t_vec			vec_cross_product(t_vec a, t_vec b)
+t_vec		vec_mult_num(t_vec v, t_num n)
 {
-	t_vec	vp;
-
-	vp.x = a.y * b.z - b.y * a.z;
-	vp.y = a.z * b.x - b.z * a.x;
-	vp.z = a.x * b.y - b.x * a.y;
-	return (vp);
+	return (vec_do_num(v, n, num_mult));
 }
 
-t_num			vec_len(t_vec a)
+t_vec		vec_div_num(t_vec v, t_num n)
 {
-	return (vec_dist(vec_zero(), a));
+	return (vec_do_num(v, n, num_div));
 }
 
-t_vec			vec_normalize(t_vec vec)
+t_num		vec_sum(t_vec v)
 {
-	t_num		len;
-
-	len = vec_len(vec);
-	vec.x /= len;
-	vec.y /= len;
-	vec.z /= len;
-	return (vec);
+	return (v.x + v.y + v.z);
 }

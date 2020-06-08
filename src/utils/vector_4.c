@@ -6,36 +6,40 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 11:48:52 by hush              #+#    #+#             */
-/*   Updated: 2020/05/29 13:46:38 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/08 20:51:04 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-int			vec_cmp_len(t_vec a, t_vec b)
-{
-	return (num_cmp(vec_dist_sqr(vec_zero(), a), vec_dist_sqr(vec_zero(), b)));
-}
-
-t_vec		vec_zero()
-{
-	return ((t_vec){0, 0, 0});
-}
-
-t_bool		vec_is_zero(t_vec a)
-{
-	return (a.x == 0 && a.y == 0 && a.z == 0);
-}
-
-t_bool		vec_point_is_behind(t_vec vec_from_zero, t_vec point)
-{
-	if (vec_from_zero.x * point.x + vec_from_zero.y * point.y
-		+ vec_from_zero.z * point.z < 0)
-		return (TRUE);
-	return (FALSE);
-}
-
 t_vec		vec_invert(t_vec vector)
 {
 	return (vec_mult_num(vector, -1));
 }
+
+t_vec		vec_normalize(t_vec vec)
+{
+	return (vec_do_num(vec, vec_len(vec), num_div));
+}
+
+t_num		vec_dot(t_vec a, t_vec b)
+{
+	return (vec_sum(vec_mult(a, b)));
+}
+
+t_vec		vec_cross(t_vec a, t_vec b)
+{
+	t_vec	vp;
+
+	vp.x = a.y * b.z - b.y * a.z;
+	vp.y = a.z * b.x - b.z * a.x;
+	vp.z = a.x * b.y - b.x * a.y;
+	return (vp);
+}
+
+t_num			vec_angle_cos(t_vec a, t_vec b)
+{
+	return (vec_dot(vec_normalize(a), vec_normalize(b)));
+}
+
+

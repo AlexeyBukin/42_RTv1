@@ -34,11 +34,11 @@ t_vec 				cylinder_intersect(t_ray ray, t_cylinder cyl, t_vec v)
 	t_num 		d;
 
 	x = vec_minus(ray.pos, cyl.pos);
-	a = vec_dot_product(ray.dir, ray.dir)
-			- num_sqr(vec_dot_product(ray.dir, v));
-	b = (vec_dot_product(ray.dir, x) - vec_dot_product(ray.dir, v)
-			* vec_dot_product(x, v)) * 2;
-	c = vec_dot_product(x, x) - num_sqr(vec_dot_product(x, v))
+	a = vec_dot(ray.dir, ray.dir)
+			- num_sqr(vec_dot(ray.dir, v));
+	b = (vec_dot(ray.dir, x) - vec_dot(ray.dir, v)
+			* vec_dot(x, v)) * 2;
+	c = vec_dot(x, x) - num_sqr(vec_dot(x, v))
 			- num_sqr(cyl.r);
 	d = (b * b) - 4 * a * c;
 	if (d < 0)
@@ -63,9 +63,9 @@ t_vec 				cylinder_capped(t_ray ray, t_cylinder cyl)
 	v = vec_normalize(vec_minus(cyl.cap, cyl.pos));
 	points = cylinder_intersect(ray, cyl, v);
 	maxm = vec_len(vec_minus(cyl.pos, cyl.cap));
-	x_dot_v = vec_dot_product(vec_minus(ray.pos, cyl.pos), v);
-	m.x = vec_dot_product(ray.dir, vec_mult_num(v, points.x)) + x_dot_v;
-	m.y = vec_dot_product(ray.dir, vec_mult_num(v, points.y)) + x_dot_v;
+	x_dot_v = vec_dot(vec_minus(ray.pos, cyl.pos), v);
+	m.x = vec_dot(ray.dir, vec_mult_num(v, points.x)) + x_dot_v;
+	m.y = vec_dot(ray.dir, vec_mult_num(v, points.y)) + x_dot_v;
 	if (m.x >= 0 && m.x <= maxm && m.y >= 0 && m.y <= maxm)
 		return (points);
 	if ((m.x < 0 && m.y < 0) || (m.x > maxm && m.y > maxm))

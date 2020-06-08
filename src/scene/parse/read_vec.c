@@ -33,7 +33,7 @@ int		read_vec(char **source, t_vec *res)
 	if (*text != '>')
 		return (ft_puterror(6, "Syntax error: Expected \'>\'"));
 	text++;
-	if (vec_isinf(*res))
+	if (vec_is_inf(*res))
 		return (ft_puterror(7, "Parse error: vector is infinite"));
 	*source = text;
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 02:10:29 by hush              #+#    #+#             */
-/*   Updated: 2020/06/04 02:09:33 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/08 15:28:51 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,7 @@ t_col				col_alpha(t_byte r, t_byte g, t_byte b, t_byte a);
 char				*col_to_str(t_col color);
 char				*col_to_str_color(t_col color);
 
-/*
-** num_1.c, ...
-*/
 
-t_num				num_clamp(t_num val, t_num min, t_num max);
-t_num 				num_sqr(t_num a);
-int					num_cmp(t_num a, t_num b);
-t_num				num_map(t_num num, t_vec from, t_vec to);
 
 /*
 ** ray_1.c, ...

@@ -33,11 +33,12 @@ t_vec 				cone_intersect(t_ray ray, t_cone cone, t_vec v)
 
 	d = cone.r / vec_len(vec_minus(cone.pos, cone.cap));
 	x = vec_minus(ray.pos, cone.pos);
-	a = vec_dot_product(ray.dir, ray.dir)
-		- (1 + (d * d)) * num_sqr(vec_dot_product(ray.dir, v));
-	b = (vec_dot_product(ray.dir, x) - vec_dot_product(ray.dir, v)
-			* (1 + d * d) * vec_dot_product(x, v)) * 2;
-	c = vec_dot_product(x, x) - (1 + d * d) * num_sqr(vec_dot_product(x, v));
+	a = vec_dot(ray.dir, ray.dir)
+		- (1 + (d * d)) * num_sqr(vec_dot(ray.dir, v));
+	b = (vec_dot(ray.dir, x) -
+		 vec_dot(ray.dir, v)
+			* (1 + d * d) * vec_dot(x, v)) * 2;
+	c = vec_dot(x, x) - (1 + d * d) * num_sqr(vec_dot(x, v));
 	d = (b * b) - 4 * a * c;
 	if (d < 0)
 		return (vec_inf());
@@ -61,9 +62,9 @@ t_vec 				cone_capped(t_ray ray, t_cone cone)
 	v = vec_normalize(vec_minus(cone.cap, cone.pos));
 	points = cone_intersect(ray, cone, v);
 	maxm = vec_len(vec_minus(cone.pos, cone.cap));
-	x_dot_v = vec_dot_product(vec_minus(ray.pos, cone.pos), v);
-	m.x = vec_dot_product(ray.dir, vec_mult_num(v, points.x)) + x_dot_v;
-	m.y = vec_dot_product(ray.dir, vec_mult_num(v, points.y)) + x_dot_v;
+	x_dot_v = vec_dot(vec_minus(ray.pos, cone.pos), v);
+	m.x = vec_dot(ray.dir, vec_mult_num(v, points.x)) + x_dot_v;
+	m.y = vec_dot(ray.dir, vec_mult_num(v, points.y)) + x_dot_v;
 	if (m.x >= 0 && m.x <= maxm && m.y >= 0 && m.y <= maxm)
 		return (points);
 	if ((m.x < 0 && m.y < 0) || (m.x > maxm && m.y > maxm))

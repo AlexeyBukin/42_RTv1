@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 03:26:48 by kcharla           #+#    #+#             */
-/*   Updated: 2020/06/06 17:39:28 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/08 21:00:23 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_vec		trace_color_2(t_vec params, t_vec col_base, t_vec col_light, t_vec pbr)
 	(void)pbr;
 	col_light = vec_mult_num(col_light, params.z);
 	//TODO pbr
-	//params.y = num_map(params.y, vec2d(0.0, 1.0), vec2d(0.5, 1.0));
+	//params.y = num_map(params.y, vec2d(0.0, 1.0), vec_2d(0.5, 1.0));
 	col_light = vec_mult_num(col_light, params.y);
 	col_base = vec_mult(col_base, col_light);
 	return (col_base);
@@ -86,15 +86,15 @@ t_col		trace_color(t_ray normal, t_vec bounce, t_material *mat, t_light *light)
 //	cos_bounce_light = vec_angle_cos(bounce, to_light);
 //	return (mat->col);
 	params.x = vec_angle_cos(bounce, normal.dir);
-	//params.y = num_map(vec_angle_cos(bounce, to_light), vec2d(0.0, 1.0), vec2d(0.5, 1.0));
+	//params.y = num_map(vec_angle_cos(bounce, to_light), vec2d(0.0, 1.0), vec_2d(0.5, 1.0));
 	params.y = vec_angle_cos(bounce, to_light);
 //	params.z = 1.0 - (atan(vec_len(to_light) * RT_DISTANCE_PARAMETER) / M_PI * 2.0);
 	params.z = 1.0 - (atan(vec_len(to_light) * (1.0 / light->power)) / M_PI * 2.0);
 	params.z = params.z * light->power;
 
-	// map(num, vec2d(0, 1))
+	// map(num, vec_2d(0, 1))
 
-	to_light = trace_color_2(params, mat->col,
+	to_light = trace_color_2(params, mat->albedo,
 		light->col, *((t_vec*)&(mat->roughness)));
 	return (col_from_vec_norm(to_light));
 }
@@ -109,7 +109,7 @@ t_col		trace_bounce(t_scene *scene, t_ray ray, t_ray normal, t_material *mat)
 	if (mat == NULL || scene == NULL)
 		return (col(0, 0, 0));
 
-	l_dot_n = vec_mult_num(normal.dir, vec_dot_product(ray.dir, normal.dir) * 2.0);
+	l_dot_n = vec_mult_num(normal.dir, vec_dot(ray.dir, normal.dir) * 2.0);
 	bounce = vec_minus(ray.dir, l_dot_n);
 
 	res_col = col(50, 50, 50);
@@ -277,8 +277,10 @@ t_col		trace_bounce(t_scene *scene, t_ray ray, t_ray normal, t_material *mat)
 
 t_col		rt_trace(t_scene *scene, t_ray ray, t_trace_mode mode)
 {
+	//if (mode == TRACE_MODE_FULL)
+	//	return (rt_trace_mode_full(scene, ray));
 	if (mode == TRACE_MODE_FULL)
-		return (rt_trace_mode_full(scene, ray));
+		return (rt_trace_mode_ggx(scene, ray));
 	else if (mode == TRACE_MODE_NORMALS)
 		return (rt_trace_mode_normals(scene, ray));
 	else if (mode == TRACE_MODE_COLOR)

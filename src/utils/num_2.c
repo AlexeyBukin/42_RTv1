@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_vector_s.h                                      :+:      :+:    :+:   */
+/*   num_2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/30 16:19:40 by hush              #+#    #+#             */
-/*   Updated: 2020/05/30 16:27:11 by hush             ###   ########.fr       */
+/*   Created: 2020/06/08 15:27:17 by hush              #+#    #+#             */
+/*   Updated: 2020/06/08 20:18:54 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RT_VECTOR_S_H
-# define RT_VECTOR_S_H
+#include "rt.h"
 
-#include "rt_num_s.h"
-
-typedef struct		s_vec
+t_num		num_min(t_num a, t_num b)
 {
-	t_num 			x;
-	t_num 			y;
-	t_num 			z;
-}					t_vec;
+	return (a < b ? a : b);
+}
 
-#endif
+t_num		num_max(t_num a, t_num b)
+{
+	return (a > b ? a : b);
+}
+
+t_num		num_clamp(t_num val, t_num min, t_num max)
+{
+	if (val < min)
+	{
+		return (min);
+	}
+	if (val > max)
+	{
+		return (max);
+	}
+	return (val);
+}

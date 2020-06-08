@@ -24,9 +24,9 @@ t_vec 				sphere_intersect_points(t_ray ray, t_sphere sphere)
 	t_vec		a_min_c;
 	a_min_c = vec_minus(ray.pos, sphere.pos);
 
-	a = vec_dot_product(ray.dir, ray.dir);
-	b = 2 * vec_dot_product(ray.dir, a_min_c);
-	c = vec_dot_product(a_min_c, a_min_c) - (sphere.r * sphere.r);
+	a = vec_dot(ray.dir, ray.dir);
+	b = 2 * vec_dot(ray.dir, a_min_c);
+	c = vec_dot(a_min_c, a_min_c) - (sphere.r * sphere.r);
 
 	d = (b * b) - 4 * a * c;
 

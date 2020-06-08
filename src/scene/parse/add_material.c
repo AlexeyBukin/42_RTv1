@@ -17,7 +17,7 @@ void	material_set_default(t_material *mat)
 	if (mat == NULL)
 		return ;
 	mat->id = 0;
-	mat->col = vec(0.6, 0.6, 0.6);
+	mat->albedo = vec(0.6, 0.6, 0.6);
 	mat->roughness = 0.5;
 	mat->metallic = 0;
 	mat->specular = 0.5;
@@ -57,7 +57,7 @@ int		scene_read_material(t_scene *scene, char **source, t_material *mat)
 		return (ft_puterror(3, "Syntax error: expected correct id"));
 	if (*(text++) != '(')
 		return (ft_puterror(5, "Syntax error: expected \'(\' "));
-	if (read_vec(&text, &(mat->col)) < 0)
+	if (read_vec(&text, &(mat->albedo)) < 0)
 		return (ft_puterror(6, "Syntax error: expected color vector"));
 	if (!read_comma(&text))
 		return (ft_puterror(7, "Syntax error: expected \',\' "));

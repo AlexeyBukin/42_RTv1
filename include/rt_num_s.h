@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_vector_s.h                                      :+:      :+:    :+:   */
+/*   rt_num.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/30 16:19:40 by hush              #+#    #+#             */
-/*   Updated: 2020/05/30 16:27:11 by hush             ###   ########.fr       */
+/*   Created: 2020/05/30 16:28:19 by hush              #+#    #+#             */
+/*   Updated: 2020/06/08 20:16:47 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RT_VECTOR_S_H
-# define RT_VECTOR_S_H
+#ifndef RT_NUM_S_H
+# define RT_NUM_S_H
 
-#include "rt_num_s.h"
+/*
+** typedef double		t_num;
+** typedef float		t_num;
+*/
 
-typedef struct		s_vec
-{
-	t_num 			x;
-	t_num 			y;
-	t_num 			z;
-}					t_vec;
+typedef float		t_num;
 
 #endif

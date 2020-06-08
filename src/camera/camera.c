@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 03:48:52 by kcharla           #+#    #+#             */
-/*   Updated: 2020/06/05 21:39:52 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/08 20:35:06 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,14 @@ int				camera_config(t_camera *cam)
 	cam->size_x = (double)WIN_WIDTH / 100.0;
 	cam->size_y = (double)WIN_HEIGHT / 100.0;
 
-	if (vec_is_zero(cam->dir) || vec_isinf(cam->dir))
+	if (vec_is_zero(cam->dir) || vec_is_inf(cam->dir))
 		return (ft_puterror(2, "Expected correct vector dir"));
 	cam->dir = vec_normalize(cam->dir);
-	if (vec_is_zero(cam->dir_up) || vec_isinf(cam->dir_up))
+	if (vec_is_zero(cam->dir_up) || vec_is_inf(cam->dir_up))
 		return (ft_puterror(3, "Expected correct vector dir_up"));
 	cam->dir_up = vec_normalize(cam->dir_up);
-	cam->dir_right = vec_cross_product(cam->dir_up, cam->dir);
-	if (vec_is_zero(cam->dir_right) || vec_isinf(cam->dir_right))
+	cam->dir_right = vec_cross(cam->dir_up, cam->dir);
+	if (vec_is_zero(cam->dir_right) || vec_is_inf(cam->dir_right))
 		return (ft_puterror(4, "Cannot configure dir_right"));
 	cam->dir_right = vec_normalize(cam->dir_right);
 	cam->projection = PROJECTION_PERSPECTIVE;

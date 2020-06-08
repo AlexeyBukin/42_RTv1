@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_vector_s.h                                      :+:      :+:    :+:   */
+/*   vector_8.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/30 16:19:40 by hush              #+#    #+#             */
-/*   Updated: 2020/05/30 16:27:11 by hush             ###   ########.fr       */
+/*   Created: 2020/06/08 21:33:30 by hush              #+#    #+#             */
+/*   Updated: 2020/06/08 22:02:45 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RT_VECTOR_S_H
-# define RT_VECTOR_S_H
+#include "rt.h"
 
-#include "rt_num_s.h"
-
-typedef struct		s_vec
+t_vec		vec_to_srgb(t_vec v)
 {
-	t_num 			x;
-	t_num 			y;
-	t_num 			z;
-}					t_vec;
-
-#endif
+	v.x = pow(v.x, 1/2.2);
+	v.y = pow(v.y, 1/2.2);
+	v.z = pow(v.z, 1/2.2);
+	return (v);
+//	return (vec_do_num(v, 1/2.2, (t_num(*)(t_num, t_num))pow));
+//	return (vec_do_num(v, 1/2.2, pow));
+}

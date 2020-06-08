@@ -47,7 +47,7 @@ t_col		rt_trace_mode_color_only(t_scene *scene, t_ray ray)
 	if ((nearest = rt_trace_nearest(scene, ray)) != NULL)
 	{
 		if (nearest->mat != NULL)
-			return (col_from_vec_norm(nearest->mat->col));
+			return (col_from_vec_norm(nearest->mat->albedo));
 	}
 	return (col(0, 0, 0));
 }

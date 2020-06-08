@@ -21,10 +21,10 @@ t_num					trace_dot_plane(t_ray ray, t_figure *fig)
 	if (fig == NULL)
 		return (INFINITY);
 	pl = &(fig->plane);
-	denom = vec_dot_product(pl->n, ray.dir);
+	denom = vec_dot(pl->n, ray.dir);
 	if (ft_absd(denom) < EPSILON)
 		return (INFINITY);
-	t = -1 * (vec_dot_product(pl->n, ray.pos) + pl->d) / denom;
+	t = -1 * (vec_dot(pl->n, ray.pos) + pl->d) / denom;
 	if (t < EPSILON)
 		return (INFINITY);
 	return (t);

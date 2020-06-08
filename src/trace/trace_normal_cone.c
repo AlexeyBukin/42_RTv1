@@ -18,9 +18,9 @@ t_vec 				cone_m(t_ray ray, t_vec v, t_vec cone_pos, t_vec points)
 	t_num			x_dot_v;
 	t_vec			m;
 
-	x_dot_v = vec_dot_product(vec_minus(ray.pos, cone_pos), v);
-	m.x = vec_dot_product(ray.dir, vec_mult_num(v, points.x)) + x_dot_v;
-	m.y = vec_dot_product(ray.dir, vec_mult_num(v, points.y)) + x_dot_v;
+	x_dot_v = vec_dot(vec_minus(ray.pos, cone_pos), v);
+	m.x = vec_dot(ray.dir, vec_mult_num(v, points.x)) + x_dot_v;
+	m.y = vec_dot(ray.dir, vec_mult_num(v, points.y)) + x_dot_v;
 	return (m);
 }
 
