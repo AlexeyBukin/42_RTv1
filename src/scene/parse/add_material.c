@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 16:19:57 by hush              #+#    #+#             */
-/*   Updated: 2020/06/04 01:27:06 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/08 23:42:37 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ int		scene_read_material(t_scene *scene, char **source, t_material *mat)
 
 int			scene_add_material(t_scene *scene, char **source)
 {
+	t_num		spec;
+
 	if (scene == NULL)
 		return (ft_puterror(1,"scene is NULL pointer"));
 	scene->materials = (t_material*)ft_realloc_arr(scene->materials, scene->mat_num,
@@ -83,6 +85,17 @@ int			scene_add_material(t_scene *scene, char **source)
 		return (ft_puterror(2,"Realloc material returned NULL"));
 	if (scene_read_material(scene, source, &(scene->materials[scene->mat_num])) < 0)
 		return (ft_puterror(3, "Cannot read material"));
+
+	if (scene->materials[scene->mat_num].metallic < 0.5)
+	{
+		spec = scene->materials[scene->mat_num].specular;
+		scene->materials[scene->mat_num].f0 = vec(spec, spec, spec);
+	}
+	else
+	{
+		scene->materials[scene->mat_num].albedo = vec_zero();
+	}
+
 	scene->mat_num++;
 	return (0);
 }
