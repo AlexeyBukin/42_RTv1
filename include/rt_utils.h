@@ -44,6 +44,7 @@ char				*col_to_str_color(t_col color);
 ** ray_1.c, ...
 */
 
+t_ray				ray(t_vec position, t_vec direction);
 t_bool				ray_point_is_behind(t_ray ray, t_vec point);
 t_ray				ray_inf();
 

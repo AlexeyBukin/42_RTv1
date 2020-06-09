@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 16:40:56 by hush              #+#    #+#             */
-/*   Updated: 2020/06/08 23:26:23 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/09 14:45:39 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,34 +57,14 @@ t_vec cook_torrance_ggx(t_vec n, t_vec l, t_vec v, t_material *m)
 	diffK = vec_mult(m->albedo, diffK);
 	diffK = vec_mult_num(diffK, n_dot_l / M_PI);
 	t_vec res = vec_max(vec_zero(), vec_plus(diffK, specK));
+	return (res);
 //	t_vec res = vec_max(vec_zero(),  specK);
-	return (vec_to_srgb(res));
 //	return (vec_to_srgb(vec(g, g, g)));
 }
 
 // k = (D * F * G) / (4 * (V * N) * (N * L))
 
-//t_num	brdf()
-//{
-//	t_num res;
-//	t_num d;
-//	t_num f;
-//	t_num g;
-//	t_vec n;
-//	t_vec v;
-//	t_vec l;
-//	t_vec h;
-//
-//	h = vec_normalize(vec_plus(v, l));
-//	g = brdf_get_g();
-//	d = brdf_get_d();
-//	f = 0;//get_d();
-//
-//	res = (d * f * g) / (4.0 * vec_dot_product(v, n) * vec_dot(n, l));
-//	return (res);
-//}
-
-t_col		rt_trace_mode_ggx(t_scene *scene, t_ray ray)
+t_col		rt_trace_mode_ggx(t_scene *scene, t_ray cam_ray)
 {
 	t_figure	*nearest;
 	t_ray		normal;
@@ -92,26 +72,69 @@ t_col		rt_trace_mode_ggx(t_scene *scene, t_ray ray)
 	t_vec		to_light;
 	t_vec		to_view;
 
-	if ((nearest = rt_trace_nearest_dist(scene, ray, &dist)) != NULL)
+	if ((nearest = rt_trace_nearest_dist(scene, cam_ray, &dist)) != NULL)
 	{
-		normal.pos = vec_plus(ray.pos, vec_mult_num(ray.dir, dist));
-		normal.dir = trace_normal_fig(ray, nearest);
+		normal.pos = vec_plus(cam_ray.pos, vec_mult_num(cam_ray.dir, dist - 0.001));
+		normal.dir = trace_normal_fig(cam_ray, nearest);
 
-		if (ray_point_is_behind(normal, scene->lights[0].pos))
+		t_vec res = vec_zero();
+
+		size_t		i;
+		i = 0;
+		while (i < scene->light_num)
 		{
-			return (col(0, 0, 0));
-		}
+			if (ray_point_is_behind(normal, scene->lights[i].pos))
+			{
+				i++;
+				continue ;
+			}
 
-		to_light = vec_minus(scene->lights[0].pos, normal.pos);
-		to_view = vec_invert(ray.dir);
-		t_vec res = cook_torrance_ggx(normal.dir, to_view, to_light, nearest->mat);
-		return (col_from_vec_norm(res));
+			to_light = vec_minus(scene->lights[i].pos, normal.pos);
+
+			t_num		dist_to_shadow;
+			t_figure	*nearest_fig_shadow;
+//			if (rt_trace_nearest_dist(scene, (t_ray){normal.pos, to_light}, &dist) != NULL)
+			if ((nearest_fig_shadow = rt_trace_nearest_dist(scene, ray(normal.pos, to_light), &dist_to_shadow)) != NULL)
+			{
+
+				//dist /= 10;
+				//res = vec(dist, dist, dist);
+//				int t = nearest_fig_shadow->type;
+//				t_num 	dist2 = dist;
+				t_num	dist_to_light = vec_len(to_light);
+				if (dist_to_shadow < dist_to_light)
+				{
+					//i = i;
+					//return (col_from_vec_norm(vec_to_srgb(vec(0.1, 0.1, 0.1))));
+					//return (col_from_vec_norm(vec_to_srgb(vec(0.2, 0.2, 0.2))));
+					i++;
+					continue ;
+				}
+//				else
+//				{
+//					return (col_from_vec_norm(vec_to_srgb(vec(0.9, 0.9, 0.9))));
+//				}
+
+				//	res = vec(0, 0, 0);
+//				if (dist < vec_dist_sqr(vec_zero(), to_light))
+//				{
+//					i++;
+//					continue ;
+//				}
+			}
+
+			to_view = vec_invert(cam_ray.dir);
+			res = vec_plus(res, cook_torrance_ggx(normal.dir, to_view, to_light, nearest->mat));
+			i++;
+		}
+		res = vec_clamp(res, 0, 1);
+		return (col_from_vec_norm(vec_to_srgb(res)));
 	}
 	return (col(0, 0, 0));
 }
 
 
-t_num	brdf_get_g(t_vec n, t_vec v, t_vec l, t_material *mat)
+t_num		brdf_get_g(t_vec n, t_vec v, t_vec l, t_material *mat)
 {
 	t_num	g;
 	t_num	roug_sqr;
@@ -124,7 +147,7 @@ t_num	brdf_get_g(t_vec n, t_vec v, t_vec l, t_material *mat)
 	return (g);
 }
 
-t_num	brdf_get_d(t_vec n, t_vec v, t_vec l, t_material *mat)
+t_num		brdf_get_d(t_vec n, t_vec v, t_vec l, t_material *mat)
 {
 	t_num	d;
 	t_num	roug_sqr;

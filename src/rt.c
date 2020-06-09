@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 21:18:15 by hush              #+#    #+#             */
-/*   Updated: 2020/06/04 16:42:43 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/09 15:17:10 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,10 @@ t_rt		*rt_new(int ac, char **args)
 		ft_free(rt);
 		return (ft_puterr_null(3, "rtv1_new(): Cannot init window"));
 	}
+
+//	t_num dist_to_plane = 0.0;
+//	t_figure *near = rt_trace_nearest_dist(rt->scene_active, ray(vec(1, -1, 1), vec(-1, 1, -1)), &dist_to_plane);
+//	dist_to_plane = dist_to_plane;
 
 	return (rt);
 }

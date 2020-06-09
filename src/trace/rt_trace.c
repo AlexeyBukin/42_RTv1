@@ -287,6 +287,8 @@ t_col		rt_trace(t_scene *scene, t_ray ray, t_trace_mode mode)
 		return (rt_trace_mode_color_only(scene, ray));
 	else if (mode == TRACE_MODE_LIGHT)
 		return (rt_trace_mode_light(scene, ray));
+	else if (mode == TRACE_MODE_DIST)
+		return (rt_trace_mode_dist(scene, ray));
 	else if (mode == TRACE_MODE_BRDF_G)
 		return (rt_trace_brdf_g(scene, ray));
 	else if (mode == TRACE_MODE_BRDF_D)

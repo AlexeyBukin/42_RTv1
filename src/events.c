@@ -61,8 +61,10 @@ void 		rt_num_just_pressed(t_rt *rtv1)
 		else if (rtv1->keys.num == 4)
 			rtv1->scene_active->cam_active->mode = TRACE_MODE_COLOR;
 		else if (rtv1->keys.num == 5)
-			rtv1->scene_active->cam_active->mode = TRACE_MODE_BRDF_G;
+			rtv1->scene_active->cam_active->mode = TRACE_MODE_DIST;
 		else if (rtv1->keys.num == 6)
+			rtv1->scene_active->cam_active->mode = TRACE_MODE_BRDF_G;
+		else if (rtv1->keys.num == 7)
 			rtv1->scene_active->cam_active->mode = TRACE_MODE_BRDF_D;
 		else
 			return ;

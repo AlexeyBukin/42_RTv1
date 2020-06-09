@@ -24,7 +24,7 @@
 # include "rt_camera.h"
 
 # define WIN_WIDTH  640
-# define WIN_HEIGHT 480
+# define WIN_HEIGHT 640
 
 # define VEL_DELTA 0.2
 

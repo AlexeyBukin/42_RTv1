@@ -12,6 +12,15 @@
 
 #include "rt.h"
 
+t_ray		ray(t_vec position, t_vec direction)
+{
+	t_ray		res;
+
+	res.pos = position;
+	res.dir = direction;
+	return (res);
+}
+
 t_bool		ray_point_is_behind(t_ray ray, t_vec point)
 {
 	return (vec_point_is_behind(ray.dir, vec_minus(point, ray.pos)));

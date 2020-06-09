@@ -29,6 +29,7 @@ typedef	struct	s_material
 
 typedef	enum	e_figure_type
 {
+	FIG_NONE,
 	FIG_PLANE,
 	FIG_SPHERE,
 	FIG_CONE,

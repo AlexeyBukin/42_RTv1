@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 14:10:07 by hush              #+#    #+#             */
-/*   Updated: 2020/05/24 16:08:01 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/09 11:22:43 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,6 @@ t_num				trace_dot_sphere(t_ray ray, t_figure *fig)
 		minimal = points.x;
 	if (points.y > 0 && points.y < minimal)
 		minimal = points.y;
-
 	return (minimal);
-//	if (minimal == INFINITY)
-//		res = vec_inf();
-//	else
-//	{
-//		res = vec_plus(ray.pos, vec_mult(ray.dir, minimal));
-//		//ft_printf("nice\n");
-//	}
-//
-//
-//	return (res);
 }
 

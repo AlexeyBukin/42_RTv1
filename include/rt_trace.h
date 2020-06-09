@@ -43,6 +43,7 @@ t_col				rt_trace_mode_full(t_scene *scene, t_ray ray);
 t_col				rt_trace_mode_normals(t_scene *scene, t_ray ray);
 t_col				rt_trace_mode_color_only(t_scene *scene, t_ray ray);
 t_col				rt_trace_mode_light(t_scene *scene, t_ray ray);
+t_col				rt_trace_mode_dist(t_scene *scene, t_ray ray);
 
 /*
 ** rt_trace_dot_cone.c, rt_trace_normal_cone.c, ...
