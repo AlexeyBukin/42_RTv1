@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 02:10:15 by hush              #+#    #+#             */
-/*   Updated: 2020/06/08 17:40:57 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/09 12:48:57 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 t_vec				fresnel_schlick(t_vec f0, t_num cos_theta);
 t_col				rt_trace_brdf_g(t_scene *scene, t_ray ray);
 t_col				rt_trace_brdf_d(t_scene *scene, t_ray ray);
-
+t_num				brdf_get_d(t_vec n, t_vec v, t_vec l, t_material *mat);
+t_num				brdf_get_g(t_vec n, t_vec v, t_vec l, t_material *mat);
 
 /*
 ** rt_trace.c

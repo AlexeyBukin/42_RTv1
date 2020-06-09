@@ -1,0 +1,41 @@
+/* ************************************************************************** */
+/*                    RTv1 intra 42 first scene by kcharla (.rts)             */
+/* ************************************************************************** */
+
+{
+    //            color        pbr                f0
+	//            r  g  b      r    s    m        r  g  b
+    material[2](< 1, 1, 0 >, < 0.1, 0.1, 0.0 >, < 0, 0, 0 >),
+
+    // one yellow cone
+    //         position     cap       radius
+    //         x  y  z
+	cone[2](<3, 1, 0>, <3, -1, 2>, 2),
+	cone[2](<3, 1, 0>, <3,  3, -2>, 2),
+
+	material[5](< 0, 1, 0 >, < 0.3, 0.1, 0.0 >, < 0, 0, 0 >),
+	cylinder[5](<3, -2, -2>, <3, 3, 5>, 0.5),
+
+ 	//            color            pbr                f0
+	//            r  g  b          r    s    m        r  g  b
+    material[3](< 0.1, 0.1, 0.1 >, < 0.7, 0.1, 0.0 >, < 0, 0, 0 >),
+
+    // one grey plane
+	plane[3](<0, 0, 1>, 1),
+
+	material[6](< 0, 0, 1 >, < 0.7, 0.1, 0.0 >, < 0, 0, 0 >),
+	 // one blue plane
+    plane[6](<1, 0, 0>, -5),
+
+	material[4](< 1, 0, 0 >, < 0.2, 0.1, 0.0 >, < 0, 0, 0 >),
+	// one red sphere
+	sphere[4](<2.4, 0, -0.2>,    0.7),
+
+ 	// and one point light
+ 	//      position   color     power
+    //      x  y  z    r  g  b
+	light(< -4, 4, 0>, <1, 1, 1>,  50),
+
+	// default camera
+	camera(<,,>, <1,,>, <,,1>)
+}
