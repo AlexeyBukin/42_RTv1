@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 21:18:15 by hush              #+#    #+#             */
-/*   Updated: 2020/06/04 22:51:11 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/11 23:16:40 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ scene_parse(char *text, t_scene *scene)
 	{
 		if (scene_add_component(&text, scene) < 0)
 			return (ft_puterror(3, "Cannot add component to scene"));
-		expect_next = read_comma(&text);
+		expect_next = read_comma(&text) == 0 ? TRUE : FALSE;
 	}
 	if (ft_strcmp(text, "}") != 0)
 		return (ft_puterror(4, "Expected \'}\' and EOF"));

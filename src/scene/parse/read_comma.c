@@ -6,23 +6,20 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 12:04:08 by hush              #+#    #+#             */
-/*   Updated: 2020/05/23 12:04:08 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/11 23:10:52 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-t_bool		read_comma(char **str)
+int		read_comma(char **str)
 {
-	t_bool		is_comma;
-	char		*ptr;
-
 	if (str == NULL)
-		return (FALSE);
-	if ((ptr = *str) == NULL)
-		return (FALSE);
-	is_comma = (t_bool) (*ptr == ',');
-	if (is_comma)
-		(*str)++;
-	return (is_comma);
+		return (ft_puterror(1, "Entered NULL pointer(s) "));
+	if (*str == NULL)
+		return (ft_puterror(2, "Dereference to NULL pointer(s) "));
+	if (*(*str) != ',')
+		return (-3);
+	(*str)++;
+	return (0);
 }

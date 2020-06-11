@@ -26,7 +26,7 @@ t_scene				*scene_init();
 char				*scene_to_str(t_scene *scene);
 
 char				*figure_to_str(t_figure *fig);
-char				*material_to_str(t_material *material);
+char				*material_to_str(t_material *mat);
 char				*light_to_str(t_light *light);
 char				*camera_to_str(t_camera *camera);
 void				material_set_default(t_material *mat);

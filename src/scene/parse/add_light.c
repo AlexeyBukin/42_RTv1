@@ -26,11 +26,11 @@ scene_read_light(char **source, t_light *light)
 		return (ft_puterror(3, "Expected \'(\' "));
 	if (read_vec(&text, &(light->pos)) < 0)
 		return (ft_puterror(4, "Cannot read position vector"));
-	if (!read_comma(&text))
+	if (read_comma(&text) < 0)
 		return (ft_puterror(5, "Expected \',\' "));
 	if (read_vec(&text, &(light->col)) < 0)
 		return (ft_puterror(4, "Cannot read color vector"));
-	if (!read_comma(&text))
+	if (read_comma(&text) < 0)
 		return (ft_puterror(5, "Expected \',\' "));
 	light->power = read_num(&text);
 	if (*(text++) != ')')

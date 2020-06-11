@@ -31,7 +31,7 @@ scene_read_plane(char **source, t_figure *figure)
 		return (ft_puterror(4, "Expected \'(\' "));
 	if (read_vec(&text, &(plane->n)) < 0)
 		return (ft_puterror(5, "Expected \',\' "));
-	if (!read_comma(&text))
+	if (read_comma(&text) < 0)
 		return (ft_puterror(6, "Expected \',\' "));
 	plane->d = read_num(&text);
 	if (*(text++) != ')')
@@ -73,11 +73,11 @@ scene_read_cone(char **source, t_figure *figure)
 		return (ft_puterror(3, "Expected \'(\' "));
 	if (read_vec(&text, &(cone->pos)) < 0)
 		return (ft_puterror(5, "Cannot read position vector"));
-	if (!read_comma(&text))
+	if (read_comma(&text) < 0)
 		return (ft_puterror(4, "Expected \',\' "));
 	if (read_vec(&text, &(cone->cap)) < 0)
 		return (ft_puterror(5, "Cannot read cap position vector"));
-	if (!read_comma(&text))
+	if (read_comma(&text) < 0)
 		return (ft_puterror(5, "Expected \',\' "));
 	cone->r = read_num(&text);
 	if (*(text++) != ')')

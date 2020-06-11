@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 16:19:57 by hush              #+#    #+#             */
-/*   Updated: 2020/06/11 20:03:17 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/11 22:57:20 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	material_set_default(t_material *mat)
 	mat->id = 0;
 	mat->albedo = vec(0.6, 0.6, 0.6);
 	mat->roughness = 0.5;
-	mat->is_metal = 0;
+	mat->metalness = 0;
 	mat->ior = 0.5;
 	mat->f0 = vec(0, 0, 0);
 }
@@ -44,39 +44,49 @@ int		mat_index(t_scene *scene, size_t id)
 	return (-1);
 }
 
+static
+void		material_apply_metalness(t_material *mat)
+{
+	if (mat == NULL)
+		return ;
+	if (mat->metalness == TRUE)
+	{
+		mat->f0 = vec_mult_num(mat->albedo, mat->ior);
+		mat->albedo = vec_zero();
+	}
+	else
+	{
+		mat->f0 = vec(mat->ior, mat->ior, mat->ior);
+	}
+}
+
 int		scene_read_material(t_scene *scene, char **source, t_material *mat)
 {
-	char 			*text;
-
 	if (source == NULL || mat == NULL)
 		return (ft_puterror(1, "Entered NULL pointer"));
-	if ((text = *source) == NULL)
+	if (*source == NULL)
 		return (ft_puterror(2, "Dereference NULL pointer"));
-	text += ft_strlen(KEYWORD_MATERIAL);
-	if(read_id((&text), &(mat->id)) < 0 || mat_index(scene, mat->id) >= 0)
+	(*source) += ft_strlen(KEYWORD_MATERIAL);
+	if(read_id((source), &(mat->id)) < 0 || mat_index(scene, mat->id) >= 0)
 		return (ft_puterror(3, "Syntax error: expected correct id"));
-	if (*(text++) != '(')
-		return (ft_puterror(5, "Syntax error: expected \'(\' "));
-	if (read_vec(&text, &(mat->albedo)) < 0)
+	if (*((*source)++) != '(')
+		return (ft_puterror(4, "Syntax error: expected \'(\' "));
+	if (read_num_bound(source, &(mat->metalness), 0.0, 1.0) < 0)
+		return (ft_puterror(5, "Syntax error: expected metalness number"));
+	if (read_vec_after_comma(source, &(mat->albedo)) < 0)
 		return (ft_puterror(6, "Syntax error: expected color vector"));
-	if (!read_comma(&text))
-		return (ft_puterror(7, "Syntax error: expected \',\' "));
-	if (read_vec(&text, (t_vec*)&(mat->roughness)) < 0)
-		return (ft_puterror(6, "Syntax error: expected pbr vector"));
-	if (!read_comma(&text))
-		return (ft_puterror(7, "Syntax error: expected \',\' "));
-	if (read_vec(&text, &(mat->f0)) < 0)
-		return (ft_puterror(6, "Syntax error: expected f0 vector"));
-	if (*(text++) != ')')
-		return (ft_puterror(10, "Syntax error: expected \')\' "));
-	*source = text;
+	if (read_num_bound_after_comma(source, &(mat->roughness), 0.0, 1.0) < 0)
+		return (ft_puterror(7, "Syntax error: expected roughness number"));
+	if (read_num_bound_after_comma(source, &(mat->ior), 1.0, 10.0) < 0)
+		return (ft_puterror(8, "Syntax error: expected IOR number"));
+	if (*((*source)++) != ')')
+		return (ft_puterror(9, "Syntax error: expected \')\' "));
+	material_apply_metalness(mat);
 	return (0);
 }
 
 int			scene_add_material(t_scene *scene, char **source)
 {
-	t_num		ior;
-
 	if (scene == NULL)
 		return (ft_puterror(1,"scene is NULL pointer"));
 	scene->materials = (t_material*)ft_realloc_arr(scene->materials, scene->mat_num,
@@ -85,17 +95,6 @@ int			scene_add_material(t_scene *scene, char **source)
 		return (ft_puterror(2,"Realloc material returned NULL"));
 	if (scene_read_material(scene, source, &(scene->materials[scene->mat_num])) < 0)
 		return (ft_puterror(3, "Cannot read material"));
-
-	if (scene->materials[scene->mat_num].is_metal == TRUE)
-	{
-		ior = scene->materials[scene->mat_num].ior;
-		scene->materials[scene->mat_num].f0 = vec(ior, ior, ior);
-	}
-	else
-	{
-		scene->materials[scene->mat_num].albedo = vec_zero();
-	}
-
 	scene->mat_num++;
 	return (0);
 }

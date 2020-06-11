@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 11:05:28 by hush              #+#    #+#             */
-/*   Updated: 2020/06/02 02:15:19 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/11 23:06:25 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,18 @@
 # define KEYWORD_CAMERA   "camera"
 # define SCENE_DEFAULT    "scenes/default.rts"
 
-t_scene			*scene_from_file(char *filename);
+//t_scene			*scene_from_file(char *filename);
+
 t_num			read_num(char **source);
+int				read_num_bound(char **source, t_num *num, t_num min, t_num max);
+int				read_num_after_comma(char **source, t_num *num);
+int				read_num_bound_after_comma(char **src, t_num *n, t_num min, t_num max);
+
 int				read_vec(char **source, t_vec *res);
-t_bool			read_comma(char **str);
+int				read_vec_after_comma(char **source, t_vec *res);
+
+int				read_comma(char **str);
+
 int				read_id(char **source, size_t *id_field);
 int				mat_index(t_scene *scene, size_t id);
 size_t			comments_skip_num(const char *str);

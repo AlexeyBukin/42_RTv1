@@ -27,11 +27,11 @@ parse_camera(char **source, t_camera *camera)
 		return (ft_puterror(3, "Expected \'(\' "));
 	if (read_vec(&text, &(camera->pos)) < 0)
 		return (ft_puterror(4, "Expected position vector "));
-	if (!read_comma(&text))
+	if (read_comma(&text) < 0)
 		return (ft_puterror(5, "Expected \',\' "));
 	if (read_vec(&text, &(camera->dir)) < 0)
 		return (ft_puterror(6, "Expected dir vector"));
-	if (!read_comma(&text))
+	if (read_comma(&text) < 0)
 		return (ft_puterror(7, "Expected \',\' "));
 	if (read_vec(&text, &(camera->dir_up)) < 0)
 		return (ft_puterror(8, "Expected up vector"));
