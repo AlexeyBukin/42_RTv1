@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 16:19:57 by hush              #+#    #+#             */
-/*   Updated: 2020/06/08 23:42:37 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/11 20:03:17 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	material_set_default(t_material *mat)
 	mat->id = 0;
 	mat->albedo = vec(0.6, 0.6, 0.6);
 	mat->roughness = 0.5;
-	mat->metallic = 0;
-	mat->specular = 0.5;
+	mat->is_metal = 0;
+	mat->ior = 0.5;
 	mat->f0 = vec(0, 0, 0);
 }
 
@@ -75,7 +75,7 @@ int		scene_read_material(t_scene *scene, char **source, t_material *mat)
 
 int			scene_add_material(t_scene *scene, char **source)
 {
-	t_num		spec;
+	t_num		ior;
 
 	if (scene == NULL)
 		return (ft_puterror(1,"scene is NULL pointer"));
@@ -86,10 +86,10 @@ int			scene_add_material(t_scene *scene, char **source)
 	if (scene_read_material(scene, source, &(scene->materials[scene->mat_num])) < 0)
 		return (ft_puterror(3, "Cannot read material"));
 
-	if (scene->materials[scene->mat_num].metallic < 0.5)
+	if (scene->materials[scene->mat_num].is_metal == TRUE)
 	{
-		spec = scene->materials[scene->mat_num].specular;
-		scene->materials[scene->mat_num].f0 = vec(spec, spec, spec);
+		ior = scene->materials[scene->mat_num].ior;
+		scene->materials[scene->mat_num].f0 = vec(ior, ior, ior);
 	}
 	else
 	{

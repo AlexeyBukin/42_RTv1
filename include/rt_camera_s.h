@@ -15,6 +15,7 @@
 
 #include "rt_s.h"
 #include "rt_texture_s.h"
+
 typedef enum		e_camera_projection
 {
 	PROJECTION_ORTOGRAPHIC,

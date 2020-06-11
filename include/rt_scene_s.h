@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 16:29:54 by hush              #+#    #+#             */
-/*   Updated: 2020/06/08 22:19:56 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/11 20:03:17 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@
 typedef	struct	s_material
 {
 	size_t			id;
+	t_bool			is_metal;
+	t_num			roughness;
+	t_num			ior;
 	t_vec			albedo;
 	t_vec 			f0;
-	t_num			roughness;
-	t_num			specular;
-	t_num			metallic;
+
 }				t_material;
 
 typedef	enum	e_figure_type

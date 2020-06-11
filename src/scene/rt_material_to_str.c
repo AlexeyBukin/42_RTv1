@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 16:58:34 by hush              #+#    #+#             */
-/*   Updated: 2020/06/01 03:57:16 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/11 20:01:17 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ char				*material_to_str(t_material *material)
 	res = ft_strjoin_free(res, vec_to_str_color(material->albedo));
 	res = ft_str_add(res, ", roughness:");
 	res = ft_strjoin_free(res, ft_ldtoa(material->roughness));
-	res = ft_str_add(res, ", metallic:");
-	res = ft_strjoin_free(res, ft_ldtoa(material->metallic));
-	res = ft_str_add(res, ", specular:");
-	res = ft_strjoin_free(res, ft_ldtoa(material->specular));
+	res = ft_str_add(res, ", is_metal:");
+	res = ft_strjoin_free(res, ft_ldtoa(material->is_metal));
+	res = ft_str_add(res, ", ior:");
+	res = ft_strjoin_free(res, ft_ldtoa(material->ior));
 	res = ft_str_add(res, ", f0:");
 	res = ft_strjoin_free(res, vec_to_str_color(material->f0));
 	res = ft_str_add(res, ")");
