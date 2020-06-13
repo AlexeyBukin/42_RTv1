@@ -6,18 +6,11 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 16:40:56 by hush              #+#    #+#             */
-/*   Updated: 2020/06/09 23:22:21 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/13 19:31:09 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-
-//функция расчета затухания для источника света
-//t_num GetAttenuation(t_num distance, t_num lightInnerR, t_num invLightOuterR)
-//{
-//	t_num d = num_max(distance, lightInnerR);
-//	return num_clamp(1.0 - pow(d * invLightOuterR, 4.0), 0, 1) / (d * d + 1.0);
-//}
 
 /*
 **  n is normal
@@ -29,6 +22,10 @@
 ** vec_angle_cos(h, v) is used in UE4
 ** vec_angle_cos(h, l) is used in Frostbyte
 ** basically they are the same
+*/
+
+/*
+** specular = (D * F * G) / (4 * (V * N) * (N * L))
 */
 
 t_vec cook_torrance_ggx(t_vec n, t_vec l, t_vec v, t_material *m)
@@ -70,8 +67,6 @@ t_vec cook_torrance_ggx(t_vec n, t_vec l, t_vec v, t_material *m)
 	return (res);
 }
 
-// k = (D * F * G) / (4 * (V * N) * (N * L))
-
 t_col		rt_trace_mode_ggx(t_scene *scene, t_ray cam_ray)
 {
 	t_figure	*nearest;
@@ -109,12 +104,10 @@ t_col		rt_trace_mode_ggx(t_scene *scene, t_ray cam_ray)
 				}
 			}
 			to_view = vec_invert(cam_ray.dir);
-			t_vec ggx_res = cook_torrance_ggx(normal.dir, to_view, to_light, nearest->mat);
+			t_vec ggx_res = cook_torrance_ggx(normal.dir, to_light, to_view, nearest->mat);
 
-//			light_amount = 2.0;
 			light_amount = scene->lights[i].power / (dist_to_light * dist_to_light + 1.0);
 
-			//todo to_light -> light_amount
 			res = vec_plus(res, vec_mult_num(ggx_res, light_amount));
 			i++;
 		}

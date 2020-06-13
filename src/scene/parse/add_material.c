@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 16:19:57 by hush              #+#    #+#             */
-/*   Updated: 2020/06/11 22:57:20 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/13 14:36:54 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,26 @@ int		mat_index(t_scene *scene, size_t id)
 	return (-1);
 }
 
+/*
+** F0 = ((1-ior)/(1+ior))²
+*/
+
 static
-void		material_apply_metalness(t_material *mat)
+void	material_apply_parameters(t_material *mat)
 {
+	t_num		tmp_f0;
+
 	if (mat == NULL)
 		return ;
+	tmp_f0 = num_sqr((1 - mat->ior) / (1 + mat->ior));
 	if (mat->metalness == TRUE)
 	{
-		mat->f0 = vec_mult_num(mat->albedo, mat->ior);
+		mat->f0 = mat->albedo;
 		mat->albedo = vec_zero();
 	}
 	else
 	{
-		mat->f0 = vec(mat->ior, mat->ior, mat->ior);
+		mat->f0 = vec(tmp_f0, tmp_f0, tmp_f0);
 	}
 }
 
@@ -81,7 +88,7 @@ int		scene_read_material(t_scene *scene, char **source, t_material *mat)
 		return (ft_puterror(8, "Syntax error: expected IOR number"));
 	if (*((*source)++) != ')')
 		return (ft_puterror(9, "Syntax error: expected \')\' "));
-	material_apply_metalness(mat);
+	material_apply_parameters(mat);
 	return (0);
 }
 
