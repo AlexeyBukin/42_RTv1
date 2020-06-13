@@ -1,41 +1,104 @@
-/* ************************************************************************** */
-/*                    RTv1 intra 42 first scene by kcharla (.rts)             */
-/* ************************************************************************** */
+/* ************************************************************************* */
+/*                    RTv1 intra 42 first scene by kcharla (.rts)            */
+/* ************************************************************************* */
 
 {
-    //            color        pbr                f0
-	//            r  g  b      r    s    m        r  g  b
-    material[2](< 1, 1, 0 >, < 0.1, 0.1, 0.0 >, < 0, 0, 0 >),
 
-    // one yellow cone
-    //         position     cap       radius
-    //         x  y  z
-	cone[2](<3, 1, 0>, <3, -1, 2>, 2),
-	cone[2](<3, 1, 0>, <3,  3, -2>, 2),
+/*---------------YELLOW CONE-------------------------------------------------*/
 
-	material[5](< 0, 1, 0 >, < 0.3, 0.1, 0.0 >, < 0, 0, 0 >),
-	cylinder[5](<3, -2, -2>, <3, 3, 5>, 0.5),
+	material[2]			/* material ID      */
+	(
+		0.0,			/* metalness (0:1)  */
+	 	< 1, 1, 0>,		/* color (0..1)     */
+	 	0.3,			/* roughness (0..1) */
+	 	5.1				/* IOR (1..100)     */
+	),
+	cone[2]		    		/* material ID */
+	(
+		<3, 1, 0>,  		/* position 1  */
+		<3, -1, 2>, 		/* position 2  */
+		2           		/* radius      */
+	),
+	cone[2]                 /* material ID */
+	(
+		<3, 1, 0>,          /* position 1  */
+		<3,  3, -2>,        /* position 2  */
+		2                   /* radius      */
+	),
 
- 	//            color            pbr                f0
-	//            r  g  b          r    s    m        r  g  b
-    material[3](< 0.1, 0.1, 0.1 >, < 0.7, 0.1, 0.0 >, < 0, 0, 0 >),
+/*---------------GREEN CYLINDER----------------------------------------------*/
 
-    // one grey plane
-	plane[3](<0, 0, 1>, 1),
+	material[5]			/* material ID      */
+	(
+		0.0,			/* metalness (0:1)  */
+	 	< 0, 1, 0>,		/* color (0..1)     */
+	 	0.3,			/* roughness (0..1) */
+	 	5.1				/* IOR (1..100)     */
+	),
+	cylinder[5]			/* material ID      */
+	(
+		< 3, -2, -2>,	/* position 1 		*/
+		< 3, 3, 5>,		/* position 2 		*/
+		0.5				/* radius     		*/
+	),
 
-	material[6](< 0, 0, 1 >, < 0.7, 0.1, 0.0 >, < 0, 0, 0 >),
-	 // one blue plane
-    plane[6](<1, 0, 0>, -5),
+/*---------------GREY PLANE--------------------------------------------------*/
 
-	material[4](< 1, 0, 0 >, < 0.2, 0.1, 0.0 >, < 0, 0, 0 >),
-	// one red sphere
-	sphere[4](<2.4, 0, -0.2>,    0.7),
+	material[3]				/* material ID      */
+	(
+		0.0,				/* metalness (0:1)  */
+	 	< 0.1, 0.1, 0.1>,	/* color (0..1)     */
+	 	0.3,				/* roughness (0..1) */
+	 	5.1					/* IOR (1..100)     */
+	),
+	plane[3]				/* material ID */
+	(
+		<0, 0, 1>,			/* normal      */
+		1					/* d parameter */
+	),
 
- 	// and one point light
- 	//      position   color     power
-    //      x  y  z    r  g  b
-	light(< -4, 4, 0>, <1, 1, 1>,  50),
+/*---------------BLUE PLANE--------------------------------------------------*/
 
-	// default camera
-	camera(<,,>, <1,,>, <,,1>)
+	material[6]			/* material ID      */
+	(
+		0.0,			/* metalness (0:1)  */
+	 	< 0, 0, 1>,		/* color (0..1)     */
+	 	0.9,			/* roughness (0..1) */
+	 	1.2				/* IOR (1..100)     */
+	),
+	plane[6]			/* material ID */
+	(
+		<1, 0, 0>,		/* normal      */
+		-5				/* d parameter */
+	),
+
+/*---------------RED SPHERE--------------------------------------------------*/
+
+	material[4]			/* material ID      */
+	(
+		0.0,				/* metalness (0:1)  */
+	 	< 1, 0, 0>,			/* color (0..1)     */
+	 	0.3,				/* roughness (0..1) */
+	 	5.1					/* IOR (1..100)     */
+	),
+	sphere[4]				/* material ID */
+    (
+    	< 2.4, 0, -0.2>,	/* position    */
+    	0.7					/* radius      */
+    ),
+
+/*---------------LIGHT AND CAMERA--------------------------------------------*/
+
+	light
+	(
+		< -5, 3, 5>,	/* position */
+		< 1, 1, 1>,		/* color    */
+		100				/* power    */
+	),
+	camera
+   	(
+   		< 0, 0, 0>,		/* position     */
+   		< 1, 0, 0>,		/* direction    */
+   		< 0, 0, 1>		/* direction_up */
+   	)
 }

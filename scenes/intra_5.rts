@@ -1,0 +1,173 @@
+/* ************************************************************************* */
+/*                    RTv1 intra 42 first scene by kcharla (.rts)            */
+/* ************************************************************************* */
+
+{
+
+/*---------------FLOOR-------------------------------------------------------*/
+
+	material[1]				/* material ID      */
+	(
+		0.0,				/* metalness (0:1)  */
+	 	< 0.1, 0.1, 0.1>,	/* color (0..1)     */
+	 	0.3,				/* roughness (0..1) */
+	 	5.1					/* IOR (1..100)     */
+	),
+	plane[1]				/* material ID */
+	(
+		<0, 0, 1>,			/* normal      */
+		2					/* d parameter */
+	),
+
+/*---------------WALL--------------------------------------------------------*/
+
+	material[2]			/* material ID      */
+	(
+		0.0,			/* metalness (0:1)  */
+	 	< 0, 0, 1>,		/* color (0..1)     */
+	 	0.9,			/* roughness (0..1) */
+	 	1.2				/* IOR (1..100)     */
+	),
+	plane[2]			/* material ID */
+	(
+		<1, 0, 0>,		/* normal      */
+		-10				/* d parameter */
+	),
+
+/*---------------CEILING-----------------------------------------------------*/
+
+	material[3]			/* material ID      */
+	(
+		0.0,				/* metalness (0:1)  */
+	 	< 0.5, 0.5, 0.5>,	/* color (0..1)     */
+	 	0.9,				/* roughness (0..1) */
+	 	1.2					/* IOR (1..100)     */
+	),
+	plane[3]			/* material ID */
+	(
+		<0, 0, 1>,		/* normal      */
+		-2				/* d parameter */
+	),
+
+/*---------------COLUMN MATERIAL---------------------------------------------*/
+
+	material[4]				/* material ID      */
+	(
+		0.0,				/* metalness (0:1)  */
+	 	< 0.5, 0.5, 0.5>,	/* color (0..1)     */
+	 	0.3,				/* roughness (0..1) */
+	 	1.6					/* IOR (1..100)     */
+	),
+
+/*---------------COLUMN FRONT LEFT-------------------------------------------*/
+
+	sphere[4]				/* material ID */
+    (
+    	< 4, -2, -2>,		/* position    */
+    	0.7					/* radius      */
+    ),
+	cylinder[4]				/* material ID      */
+	(
+		< 4, -2, -2>,		/* position 1 		*/
+		< 4, -2, 6>,		/* position 2 		*/
+		0.5					/* radius     		*/
+	),
+	sphere[4]				/* material ID */
+    (
+    	< 4, -2, 2>,		/* position    */
+    	0.7					/* radius      */
+    ),
+
+/*---------------COLUMN FRONT RIGHT------------------------------------------*/
+
+	sphere[4]				/* material ID */
+    (
+    	< 4, 2, -2>,		/* position    */
+    	0.7					/* radius      */
+    ),
+	cylinder[4]				/* material ID      */
+	(
+		< 4, 2, -2>,		/* position 1 		*/
+		< 4, 2, 6>,		/* position 2 		*/
+		0.5					/* radius     		*/
+	),
+	sphere[4]				/* material ID */
+    (
+    	< 4, 2, 2>,		/* position    */
+    	0.7					/* radius      */
+    ),
+
+/*---------------COLUMN BACK RIGHT-------------------------------------------*/
+
+	sphere[4]				/* material ID */
+    (
+    	< 8, 2, -2>,		/* position    */
+    	0.7					/* radius      */
+    ),
+	cylinder[4]				/* material ID      */
+	(
+		< 8, 2, -2>,		/* position 1 		*/
+		< 8, 2, 6>,		/* position 2 		*/
+		0.5					/* radius     		*/
+	),
+	sphere[4]				/* material ID */
+    (
+    	< 8, 2, 2>,		/* position    */
+    	0.7					/* radius      */
+    ),
+
+/*---------------COLUMN BACK LEFT--------------------------------------------*/
+
+	sphere[4]				/* material ID */
+    (
+    	< 8, -2, -2>,		/* position    */
+    	0.7					/* radius      */
+    ),
+	cylinder[4]				/* material ID      */
+	(
+		< 8, -2, -2>,		/* position 1 		*/
+		< 8, -2, 6>,		/* position 2 		*/
+		0.5					/* radius     		*/
+	),
+	sphere[4]				/* material ID */
+    (
+    	< 8, -2, 2>,		/* position    */
+    	0.7					/* radius      */
+    ),
+
+/*---------------RED SPHERE--------------------------------------------------*/
+
+	material[5]				/* material ID      */
+	(
+		1.0,				/* metalness (0:1)  */
+	 	< 1, 0, 0>,			/* color (0..1)     */
+	 	0.3,				/* roughness (0..1) */
+	 	5.1					/* IOR (1..100)     */
+	),
+	sphere[5]				/* material ID      */
+    (
+    	< 3.5, 0, -1.2>,	/* position */
+    	0.4					/* radius   */
+    ),
+
+/*---------------LIGHT AND CAMERA--------------------------------------------*/
+
+	light
+	(
+		< -5, 8, 1>,	/* position */
+		< 1, 1, 1>,		/* color    */
+		100				/* power    */
+	),
+	light
+	(
+		< -5, -8, 1>,	/* position */
+		< 1, 1, 1>,		/* color    */
+		100				/* power    */
+	),
+	camera
+   	(
+   		< 0, 0, 0>,		/* position     */
+   		< 1, 0, 0>,		/* direction    */
+   		< 0, 0, 1>		/* direction_up */
+   	)
+}
