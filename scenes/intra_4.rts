@@ -48,8 +48,8 @@
 	(
 		0.0,				/* metalness (0:1)  */
 	 	< 0.1, 0.1, 0.1>,	/* color (0..1)     */
-	 	0.3,				/* roughness (0..1) */
-	 	5.1					/* IOR (1..100)     */
+	 	0.99,				/* roughness (0..1) */
+	 	1.1					/* IOR (1..100)     */
 	),
 	plane[3]				/* material ID */
 	(
@@ -91,13 +91,25 @@
 
 	light
 	(
-		< -5, 3, 5>,	/* position */
+		< 0, 0, 0>,	/* position */
 		< 1, 1, 1>,		/* color    */
 		100				/* power    */
 	),
+//	camera
+//   	(
+//   		< 0, 0, 0>,		/* position     */
+//   		< 1, 0, 0>,		/* direction    */
+//   		< 0, 0, 1>		/* direction_up */
+//   	),
 	camera
    	(
-   		< 0, 0, 0>,		/* position     */
+   		< -1, 8, 0>,		/* position     */
+   		< 1, -1, 0>,	/* direction    */
+   		< 0, 0, 1>		/* direction_up */
+   	),
+	camera
+   	(
+   		< -3, 0, 0>,		/* position     */
    		< 1, 0, 0>,		/* direction    */
    		< 0, 0, 1>		/* direction_up */
    	)

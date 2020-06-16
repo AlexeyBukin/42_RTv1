@@ -6,26 +6,11 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/05 23:00:42 by hush              #+#    #+#             */
-/*   Updated: 2020/06/09 12:46:41 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/15 16:53:43 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "rt.h"
-
-t_col		rt_trace_mode_full(t_scene *scene, t_ray ray)
-{
-	t_figure	*nearest;
-	t_ray		normal;
-	t_num		dist;
-
-	if ((nearest = rt_trace_nearest_dist(scene, ray, &dist)) != NULL)
-	{
-		normal.pos = vec_plus(ray.pos, vec_mult_num(ray.dir, dist));
-		normal.dir = trace_normal_fig(ray, nearest);
-		return (trace_bounce(scene, ray, normal, nearest->mat));
-	}
-	return (col(0, 0, 0));
-}
 
 t_col		rt_trace_mode_normals(t_scene *scene, t_ray ray)
 {
@@ -54,17 +39,25 @@ t_col		rt_trace_mode_color_only(t_scene *scene, t_ray ray)
 
 t_col		rt_trace_mode_light(t_scene *scene, t_ray ray)
 {
-	t_figure	*nearest;
 	t_ray		normal;
+	t_vec		res;
+	t_num		light_amount;
 	t_num		dist;
+	size_t		i;
 
-	if ((nearest = rt_trace_nearest_dist(scene, ray, &dist)) != NULL)
+	if (rt_trace_nearest_dist(scene, ray, &dist) != NULL)
 	{
+		res = vec_zero();
 		normal.pos = vec_plus(ray.pos, vec_mult_num(ray.dir, dist));
-		normal.dir = trace_normal_fig(ray, nearest);
-		t_col res = trace_bounce(scene, ray, normal, nearest->mat);
-		//todo return vec, check if vec nums > 1
-		return (res);
+		i = 0;
+		while (i < scene->light_num)
+		{
+			dist = vec_len(vec_minus(scene->lights[i].pos, normal.pos));
+			light_amount = scene->lights[i].power / (dist * dist + 1.0);
+			res = vec_plus(res, vec(light_amount, light_amount, light_amount));
+			i++;
+		}
+		return (col_from_vec_norm(res));
 	}
 	return (col(0, 0, 0));
 }

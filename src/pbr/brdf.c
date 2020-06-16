@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 16:40:56 by hush              #+#    #+#             */
-/*   Updated: 2020/06/13 19:31:09 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/15 17:03:25 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ t_col		rt_trace_mode_ggx(t_scene *scene, t_ray cam_ray)
 
 	if ((nearest = rt_trace_nearest_dist(scene, cam_ray, &dist)) != NULL)
 	{
-		normal.pos = vec_plus(cam_ray.pos, vec_mult_num(cam_ray.dir, dist - 0.001));
+		normal.pos = vec_plus(cam_ray.pos, vec_mult_num(cam_ray.dir, dist - 0.0001));
 		normal.dir = trace_normal_fig(cam_ray, nearest);
 		t_vec res = vec_zero();
 		i = 0;

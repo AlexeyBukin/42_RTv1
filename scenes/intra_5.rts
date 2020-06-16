@@ -139,7 +139,7 @@
 
 	material[5]				/* material ID      */
 	(
-		1.0,				/* metalness (0:1)  */
+		0.0,				/* metalness (0:1)  */
 	 	< 1, 0, 0>,			/* color (0..1)     */
 	 	0.3,				/* roughness (0..1) */
 	 	5.1					/* IOR (1..100)     */
