@@ -12,21 +12,24 @@ Then load submodules:
 `cd RTv1 && git submodule update --init --recursive`
 
 ## Build
-### Mac:
 
-Make:
-
-`make OS=macos`
-
-### Linux:
-
-Make:
-
-`make OS=linux`
+`make`
 
 ## Run:
 
 `./RTv1 scenes/default.rts`
+
+## Use:
+
+`./RTv1 file1 file2 ...`
+
+Hold WASD to move chosen camera.
+
+Hold F and press nums (1, 2, 3 ..) to change used FILE.
+
+Hold C and press nums to change active CAMERA.
+
+Hold M and press nums to change trace MODE of active camera.
 
 ```
 /* ************************************************************************** */
