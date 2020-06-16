@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 14:09:43 by hush              #+#    #+#             */
-/*   Updated: 2020/06/16 13:19:18 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/16 21:40:09 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ t_vec 				cone_intersect(t_ray ray, t_cone cone, t_vec v)
 ** m = D|V*t + X|V
 */
 
-#define CONE_EPSILON 0.001
-
 static
 t_vec 				cone_capped(t_ray ray_in, t_cone cone)
 {
@@ -71,30 +69,12 @@ t_vec 				cone_capped(t_ray ray_in, t_cone cone)
 	clamped.x = num_clamp(m.x, 0, maxm);
 	clamped.y = num_clamp(m.y, 0, maxm);
 
-//	if (clamped.x == m.x && clamped.y == m.y)
-//		return (points);
-
 	if (clamped.x != m.x && clamped.y != m.y)
 		return (vec_inf());
 	if (clamped.x != m.x)
 		points.x = trace_dot_cap(ray_in, ray(cone.cap, v));
 	if (clamped.y != m.y)
 		points.y = trace_dot_cap(ray_in, ray(cone.cap, v));
-
-//
-//	if (m.x > 0 && m.x < maxm && m.y > 0 && m.y <= maxm)
-//		return (points);
-//	//if ((m.x < 0 && m.y < 0) || (m.x > maxm && m.y > maxm))
-//	if (m.x != num_clamp(m.x, 0, maxm) && m.y != num_clamp(m.y, 0, maxm))
-//		return (vec_inf());
-//	if (m.x < 0)
-//		points.x = trace_dot_cap(ray_in, (t_ray) {cone.pos, vec_invert(v)});
-//	if (m.y < 0)
-//		points.y = trace_dot_cap(ray_in, (t_ray) {cone.pos, vec_invert(v)});
-//	if (m.x > maxm)
-//		points.x = trace_dot_cap(ray_in, (t_ray){cone.cap, v});
-//	if (m.y > maxm)
-//		points.y = trace_dot_cap(ray_in, (t_ray){cone.cap, v});
 	return (points);
 }
 
