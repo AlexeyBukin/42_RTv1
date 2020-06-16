@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 16:40:56 by hush              #+#    #+#             */
-/*   Updated: 2020/06/15 17:03:25 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/16 18:22:04 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ t_vec cook_torrance_ggx(t_vec n, t_vec l, t_vec v, t_material *m)
 	g = g * ggx_partial_geometry(n_dot_l, rough_sqr);
 
 	f = fresnel_schlick(m->f0, h_dot_v);
-
 	t_vec specK = vec_mult_num(f, g * d * 0.25 / (n_dot_v + 0.001));
 
 	t_vec diffK = vec_clamp(vec_minus(vec(1.0, 1.0, 1.0), f), 0.0, 1.0);

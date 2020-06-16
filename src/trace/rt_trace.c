@@ -60,6 +60,8 @@ t_col		rt_trace(t_scene *scene, t_ray ray, t_trace_mode mode)
 		return (rt_trace_brdf_g(scene, ray));
 	else if (mode == TRACE_MODE_BRDF_D)
 		return (rt_trace_brdf_d(scene, ray));
+	else if (mode == TRACE_MODE_NORM_ANGLE)
+		return (rt_trace_mode_normals_angle(scene, ray));
 	return (col(0, 0, 0));
 }
 

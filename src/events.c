@@ -66,6 +66,8 @@ void 		rt_num_just_pressed(t_rt *rtv1)
 			rtv1->scene_active->cam_active->mode = TRACE_MODE_BRDF_G;
 		else if (rtv1->keys.num == 7)
 			rtv1->scene_active->cam_active->mode = TRACE_MODE_BRDF_D;
+		else if (rtv1->keys.num == 8)
+			rtv1->scene_active->cam_active->mode = TRACE_MODE_NORM_ANGLE;
 		else
 			return ;
 		rtv1->flags.redraw = TRUE;

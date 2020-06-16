@@ -38,8 +38,8 @@ t_vec				trace_normal_fig(t_ray ray, t_figure *fig);
 */
 
 t_col				rt_trace_mode_ggx(t_scene *scene, t_ray ray);
-t_col				rt_trace_mode_full(t_scene *scene, t_ray ray);
 t_col				rt_trace_mode_normals(t_scene *scene, t_ray ray);
+t_col				rt_trace_mode_normals_angle(t_scene *scene, t_ray ray);
 t_col				rt_trace_mode_color_only(t_scene *scene, t_ray ray);
 t_col				rt_trace_mode_light(t_scene *scene, t_ray ray);
 t_col				rt_trace_mode_dist(t_scene *scene, t_ray ray);

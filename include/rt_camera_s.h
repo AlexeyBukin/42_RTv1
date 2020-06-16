@@ -30,7 +30,8 @@ typedef enum		e_trace_mode
 	TRACE_MODE_COLOR,
 	TRACE_MODE_DIST,
 	TRACE_MODE_BRDF_G,
-	TRACE_MODE_BRDF_D
+	TRACE_MODE_BRDF_D,
+	TRACE_MODE_NORM_ANGLE
 
 }					t_trace_mode;
 
