@@ -6,22 +6,20 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 14:09:12 by hush              #+#    #+#             */
-/*   Updated: 2020/06/01 03:36:48 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/17 23:43:13 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-static
-t_vec 				cylinder_side_nrm(t_vec p, t_vec c, t_vec v, t_num m)
+static t_vec		cylinder_side_nrm(t_vec p, t_vec c, t_vec v, t_num m)
 {
 	p = vec_minus(p, c);
 	p = vec_minus(p, vec_mult_num(v, m));
 	return (p);
 }
 
-static
-t_vec 				cylinder_m(t_ray ray, t_vec v, t_vec cyl_pos, t_vec points)
+static t_vec		cylinder_m(t_ray ray, t_vec v, t_vec cyl_pos, t_vec points)
 {
 	t_num			x_dot_v;
 	t_vec			m;

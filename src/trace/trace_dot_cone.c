@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 14:09:43 by hush              #+#    #+#             */
-/*   Updated: 2020/06/16 21:40:09 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/17 23:47:25 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,20 @@
 ** c   = X|X - (1+k*k)*(X|V)^2
 */
 
-t_vec 				cone_intersect(t_ray ray, t_cone cone, t_vec v)
+t_vec				cone_intersect(t_ray ray, t_cone cone, t_vec v)
 {
 	t_vec		x;
 	t_num		a;
 	t_num		b;
 	t_num		c;
-	t_num 		d;
+	t_num		d;
 
 	d = cone.r / vec_len(vec_minus(cone.pos, cone.cap));
 	x = vec_minus(ray.pos, cone.pos);
 	a = vec_dot(ray.dir, ray.dir)
 		- (1 + (d * d)) * num_sqr(vec_dot(ray.dir, v));
 	b = (vec_dot(ray.dir, x) -
-		 vec_dot(ray.dir, v)
-			* (1 + d * d) * vec_dot(x, v)) * 2;
+		vec_dot(ray.dir, v) * (1 + d * d) * vec_dot(x, v)) * 2;
 	c = vec_dot(x, x) - (1 + d * d) * num_sqr(vec_dot(x, v));
 	d = (b * b) - 4 * a * c;
 	if (d < 0)
@@ -46,12 +45,12 @@ t_vec 				cone_intersect(t_ray ray, t_cone cone, t_vec v)
 
 /*
 ** m = D|V*t + X|V
+**
+** maxm = vec_len(vec_minus(cone.pos, cone.cap));
 */
 
-static
-t_vec 				cone_capped(t_ray ray_in, t_cone cone)
+static t_vec		cone_capped(t_ray ray_in, t_cone cone)
 {
-	t_num			maxm;
 	t_vec			points;
 	t_vec			v;
 	t_vec			m;
@@ -61,14 +60,11 @@ t_vec 				cone_capped(t_ray ray_in, t_cone cone)
 	v = vec_normalize(vec_minus(cone.cap, cone.pos));
 	ray_in.dir = vec_normalize(ray_in.dir);
 	points = cone_intersect(ray_in, cone, v);
-	maxm = vec_len(vec_minus(cone.pos, cone.cap));
 	x_dot_v = vec_dot(vec_minus(ray_in.pos, cone.pos), v);
 	m.x = vec_dot(ray_in.dir, vec_mult_num(v, points.x)) + x_dot_v;
 	m.y = vec_dot(ray_in.dir, vec_mult_num(v, points.y)) + x_dot_v;
-
-	clamped.x = num_clamp(m.x, 0, maxm);
-	clamped.y = num_clamp(m.y, 0, maxm);
-
+	clamped.x = num_clamp(m.x, 0, vec_len(vec_minus(cone.pos, cone.cap)));
+	clamped.y = num_clamp(m.y, 0, vec_len(vec_minus(cone.pos, cone.cap)));
 	if (clamped.x != m.x && clamped.y != m.y)
 		return (vec_inf());
 	if (clamped.x != m.x)

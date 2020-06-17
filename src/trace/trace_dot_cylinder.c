@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 14:09:55 by hush              #+#    #+#             */
-/*   Updated: 2020/05/29 13:26:26 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/17 23:44:31 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@
 ** also used in trace_normal_cylinder.c
 */
 
-t_vec 				cylinder_intersect(t_ray ray, t_cylinder cyl, t_vec v)
+t_vec				cylinder_intersect(t_ray ray, t_cylinder cyl, t_vec v)
 {
 	t_vec		x;
 	t_num		a;
 	t_num		b;
 	t_num		c;
-	t_num 		d;
+	t_num		d;
 
 	x = vec_minus(ray.pos, cyl.pos);
 	a = vec_dot(ray.dir, ray.dir)
@@ -51,8 +51,7 @@ t_vec 				cylinder_intersect(t_ray ray, t_cylinder cyl, t_vec v)
 ** m = D|V*t + X|V
 */
 
-static
-t_vec 				cylinder_capped(t_ray ray, t_cylinder cyl)
+static t_vec		cylinder_capped(t_ray ray, t_cylinder cyl)
 {
 	t_num			maxm;
 	t_vec			points;

@@ -54,7 +54,7 @@ t_num				trace_dot_cylinder(t_ray ray, t_figure *fig);
 t_num				trace_dot_plane(t_ray ray, t_figure *fig);
 t_num				trace_dot_sphere(t_ray ray, t_figure *fig);
 
-t_vec				trace_normal_cone(t_ray ray, t_figure *fig);
+t_vec				trace_normal_cone(t_ray ray_in, t_figure *fig);
 t_vec				trace_normal_cylinder(t_ray ray, t_figure *fig);
 t_vec				trace_normal_plane(t_ray ray, t_figure *fig);
 t_vec				trace_normal_sphere(t_ray ray, t_figure *fig);

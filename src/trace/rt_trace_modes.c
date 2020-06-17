@@ -6,21 +6,22 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/05 23:00:42 by hush              #+#    #+#             */
-/*   Updated: 2020/06/16 18:51:35 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/17 23:34:48 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "rt.h"
+#include "rt.h"
 
 t_col		rt_trace_mode_normals_angle(t_scene *scene, t_ray ray)
 {
 	t_figure	*nearest;
 	t_vec		normal;
+	t_num		angle_in;
 
 	if ((nearest = rt_trace_nearest(scene, ray)) != NULL)
 	{
 		normal = trace_normal_fig(ray, nearest);
-		t_num angle_in = 1.0 - vec_angle_cos(normal, vec_invert(ray.dir));
+		angle_in = 1.0 - vec_angle_cos(normal, vec_invert(ray.dir));
 		return (col_from_vec(vec(angle_in * 256, 0, 0)));
 	}
 	return (col(0, 0, 0));
