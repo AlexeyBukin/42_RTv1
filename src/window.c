@@ -6,7 +6,7 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 00:29:47 by kcharla           #+#    #+#             */
-/*   Updated: 2020/06/04 21:42:17 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/17 23:53:48 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int				window_update_texture(t_window *win, t_texture *texture)
 	return (0);
 }
 
-void		window_free(t_window *win)
+void			window_free(t_window *win)
 {
 	if (win == NULL)
 		return ;

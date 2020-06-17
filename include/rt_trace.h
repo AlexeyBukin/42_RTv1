@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 02:10:15 by hush              #+#    #+#             */
-/*   Updated: 2020/06/15 16:35:35 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/17 23:36:23 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_vec 				cone_intersect(t_ray ray, t_cone cone, t_vec v);
 ** ggx.c
 */
 
-t_num				ggx_distribution(t_num cosThetaNH, t_num alpha);
+t_num				ggx_distribution(t_num cos_theta_nh, t_num alpha);
 t_num				ggx_partial_geometry(t_num cos_theta_n, t_num alpha);
 
 /*
