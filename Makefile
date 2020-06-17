@@ -53,24 +53,23 @@ include/rt_camera.h    include/rt_utils.h    include/rt_num_s.h      \
 include/rt_camera_s.h  include/rt.h          include/rt_texture_s.h
 
 SRC_FILES = \
-src/loop.c                      src/main.c                         src/texture.c                    \
-src/utils/vector_2.c            src/utils/vector_8.c               src/utils/vector_1.c             \
-src/utils/vector_7.c            src/utils/vector_6.c               src/utils/color_1.c              \
-src/utils/vector_4.c            src/utils/color_2.c                src/utils/num_2.c                \
-src/utils/vector_3.c            src/utils/vector_5.c               src/utils/human_1.c              \
-src/utils/num_1.c               src/utils/ray.c                    src/window.c                     \
-src/rt.c                        src/events.c                       src/pbr/schlick.c                \
-src/pbr/ggx.c                   src/pbr/brdf.c                     src/scene/rt_material_to_str.c   \
-src/scene/parse/comments.c      src/scene/parse/add_light.c        src/scene/parse/read_comma.c     \
-src/scene/parse/add_material.c  src/scene/parse/add_camera.c       src/scene/parse/read_num.c       \
-src/scene/parse/add_figure.c    src/scene/parse/read_id.c          src/scene/parse/read_vec.c       \
-src/scene/rt_scene.c            src/scene/rt_figure_to_str.c       src/scene/rt_add_scene.c         \
-src/scene/rt_camera_to_str.c    src/scene/rt_light_to_str.c        src/trace/trace_dot_cylinder.c   \
-src/trace/rt_trace_modes.c      src/trace/trace_dot_plane.c        src/trace/trace_normal_cone.c    \
-src/trace/trace_dot_sphere.c    src/trace/trace_normal_cylinder.c  src/trace/trace_dot_cone.c       \
-src/trace/trace_normal_plane.c  src/trace/rt_trace.c               src/trace/trace_normal_sphere.c  \
-src/camera/project.c            \
-src/camera/camera.c
+src/loop.c                       src/events_1.c                  src/main.c                         \
+src/texture.c                    src/utils/vector_2.c            src/utils/vector_8.c               \
+src/utils/vector_1.c             src/utils/vector_7.c            src/utils/vector_6.c               \
+src/utils/color_1.c              src/utils/vector_4.c            src/utils/color_2.c                \
+src/utils/num_2.c                src/utils/vector_3.c            src/utils/vector_5.c               \
+src/utils/human_1.c              src/utils/num_1.c               src/utils/ray.c                    \
+src/window.c                     src/rt.c                        src/events_2.c                     \
+src/pbr/schlick.c                src/pbr/ggx.c                   src/pbr/brdf.c                     \
+src/scene/rt_material_to_str.c   src/scene/parse/comments.c      src/scene/parse/add_light.c        \
+src/scene/parse/read_comma.c     src/scene/parse/add_material.c  src/scene/parse/add_camera.c       \
+src/scene/parse/read_num.c       src/scene/parse/add_figure.c    src/scene/parse/read_id.c          \
+src/scene/parse/read_vec.c       src/scene/rt_scene.c            src/scene/rt_figure_to_str.c       \
+src/scene/rt_add_scene.c         src/scene/rt_camera_to_str.c    src/scene/rt_light_to_str.c        \
+src/trace/trace_dot_cylinder.c   src/trace/rt_trace_modes.c      src/trace/trace_dot_plane.c        \
+src/trace/trace_normal_cone.c    src/trace/trace_dot_sphere.c    src/trace/trace_normal_cylinder.c  \
+src/trace/trace_dot_cone.c       src/trace/trace_normal_plane.c  src/trace/rt_trace.c               \
+src/trace/trace_normal_sphere.c  src/camera/project.c            src/camera/camera.c
 
 
 O_FILES = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC_FILES))

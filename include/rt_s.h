@@ -43,7 +43,6 @@ typedef struct		s_keys
 	int 			mouse_x;
 	int 			mouse_y;
 	size_t			num;
-//	t_bool 			x;
 	t_bool 			c;
 	t_bool 			f;
 	t_bool 			m;

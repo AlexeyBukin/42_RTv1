@@ -31,7 +31,7 @@
 # define EPSILON   0.0001
 
 /*
-** events.c
+** events_1.c
 */
 
 void				on_key_down(t_rt *rtv1, SDL_Scancode scancode);
@@ -39,6 +39,12 @@ void				on_key_up(t_rt *rtv1, SDL_Scancode scancode);
 void				on_mouse_down(t_rt *rtv1, SDL_Scancode scancode);
 void				on_mouse_move(t_rt *rtv1, int x, int y);
 void				on_mouse_up(t_rt *rtv1, SDL_Scancode scancode);
+
+/*
+** events_2.c
+*/
+
+void				on_num_down(t_rt *rtv1, SDL_Scancode scancode);
 
 /*
 ** window.c
