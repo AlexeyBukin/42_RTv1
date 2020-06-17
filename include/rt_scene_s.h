@@ -6,16 +6,16 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 16:29:54 by hush              #+#    #+#             */
-/*   Updated: 2020/06/13 13:52:53 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/18 01:00:42 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_SCENE_S_H
 # define RT_SCENE_S_H
 
-#include "rt_utils_s.h"
-#include "rt_vector_s.h"
-#include "rt_camera_s.h"
+# include "rt_utils_s.h"
+# include "rt_vector_s.h"
+# include "rt_camera_s.h"
 
 typedef	struct	s_material
 {
@@ -25,7 +25,6 @@ typedef	struct	s_material
 	t_num			ior;
 	t_vec			albedo;
 	t_vec 			f0;
-
 }				t_material;
 
 typedef	enum	e_figure_type
@@ -48,7 +47,6 @@ typedef	struct	s_sphere
 	t_vec			pos;
 	t_num 			r;
 }				t_sphere;
-
 
 typedef	struct	s_cone
 {
@@ -85,7 +83,7 @@ typedef	struct	s_light
 	t_num 			power;
 }				t_light;
 
-typedef struct		s_scene
+typedef struct	s_scene
 {
 	char 			*filename;
 	t_material		*materials;
@@ -97,6 +95,6 @@ typedef struct		s_scene
 	t_camera		*cam_active;
 	t_light			*lights;
 	size_t			light_num;
-}					t_scene;
+}				t_scene;
 
 #endif

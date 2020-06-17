@@ -6,28 +6,28 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 02:09:58 by hush              #+#    #+#             */
-/*   Updated: 2020/06/04 21:07:21 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/18 00:59:51 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_S_H
 # define RT_S_H
 
-#include "SDL2/SDL.h"
-#include "libft.h"
-#include "rt_scene.h"
-#include "rt_scene_s.h"
-#include "rt_utils_s.h"
-#include "rt_vector_s.h"
-#include "rt_texture_s.h"
+# include "SDL2/SDL.h"
+# include "libft.h"
+# include "rt_scene.h"
+# include "rt_scene_s.h"
+# include "rt_utils_s.h"
+# include "rt_vector_s.h"
+# include "rt_texture_s.h"
 
-typedef struct		ggx_loop
+typedef struct		s_ggx_loop
 {
 	t_ray			normal;
 	t_ray			cam_ray;
 	t_scene			*scene;
 	t_light			*lamp;
-	t_material 		*mat;
+	t_material		*mat;
 }					t_ggx_loop;
 
 typedef struct		s_window
@@ -39,22 +39,22 @@ typedef struct		s_window
 
 typedef struct		s_keys
 {
-	t_bool 			w;
-	t_bool 			a;
-	t_bool 			s;
-	t_bool 			d;
-	t_bool 			q;
-	t_bool 			e;
-	t_bool 			r;
-	t_bool 			lmb;
-	t_bool 			rmb;
-	t_bool 			mmb;
-	int 			mouse_x;
-	int 			mouse_y;
+	t_bool			w;
+	t_bool			a;
+	t_bool			s;
+	t_bool			d;
+	t_bool			q;
+	t_bool			e;
+	t_bool			r;
+	t_bool			lmb;
+	t_bool			rmb;
+	t_bool			mmb;
+	int				mouse_x;
+	int				mouse_y;
 	size_t			num;
-	t_bool 			c;
-	t_bool 			f;
-	t_bool 			m;
+	t_bool			c;
+	t_bool			f;
+	t_bool			m;
 }					t_keys;
 
 typedef struct		s_move
@@ -79,7 +79,7 @@ typedef struct		s_rt
 	size_t			scene_num;
 	t_scene			*scene_active;
 	t_flags			flags;
-	t_keys 			keys;
+	t_keys			keys;
 	t_move			movement;
 }					t_rt;
 
