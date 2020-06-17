@@ -12,12 +12,12 @@
 
 #include "rt.h"
 
-t_vec	vec_plus(t_vec a, t_vec b)
+t_vec		vec_plus(t_vec a, t_vec b)
 {
 	return (vec_do_vec(a, b, num_plus));
 }
 
-t_vec	vec_minus(t_vec a, t_vec b)
+t_vec		vec_minus(t_vec a, t_vec b)
 {
 	return (vec_do_vec(a, b, num_minus));
 }

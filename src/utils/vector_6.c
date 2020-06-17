@@ -46,7 +46,7 @@ char		*vec_to_str(t_vec a)
 	return (res);
 }
 
-char			*vec_to_str_color(t_vec a)
+char		*vec_to_str_color(t_vec a)
 {
 	char		*res;
 

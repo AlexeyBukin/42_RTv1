@@ -26,7 +26,7 @@ t_bool		ray_point_is_behind(t_ray ray, t_vec point)
 	return (vec_point_is_behind(ray.dir, vec_minus(point, ray.pos)));
 }
 
-t_ray		ray_inf()
+t_ray		ray_inf(void)
 {
 	return ((t_ray){vec_inf(), vec_inf()});
 }

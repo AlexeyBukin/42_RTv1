@@ -14,7 +14,7 @@
 
 t_num		vec_dist_sqr(t_vec a, t_vec b)
 {
-	return vec_sum(vec_sqr(vec_minus(a, b)));
+	return (vec_sum(vec_sqr(vec_minus(a, b))));
 }
 
 t_num		vec_dist(t_vec a, t_vec b)

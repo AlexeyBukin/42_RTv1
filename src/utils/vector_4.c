@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 11:48:52 by hush              #+#    #+#             */
-/*   Updated: 2020/06/08 20:51:04 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/17 21:35:20 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,7 @@ t_vec		vec_cross(t_vec a, t_vec b)
 	return (vp);
 }
 
-t_num			vec_angle_cos(t_vec a, t_vec b)
+t_num		vec_angle_cos(t_vec a, t_vec b)
 {
 	return (vec_dot(vec_normalize(a), vec_normalize(b)));
 }
-
-

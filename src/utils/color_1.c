@@ -6,13 +6,11 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 18:14:06 by kcharla           #+#    #+#             */
-/*   Updated: 2020/05/27 16:16:07 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/17 21:40:02 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-
-
 
 t_col		col_add(t_col a, t_col b)
 {
@@ -21,25 +19,6 @@ t_col		col_add(t_col a, t_col b)
 	a.b = ((int)(a.b + b.b)) > 255 ? 255 : (a.b + b.b);
 	a.a = ((int)(a.a + b.a)) > 255 ? 255 : (a.a + b.a);
 	return (a);
-}
-
-/*
-** col_mask() constraints input values by mask
-**
-** if slow col = mask.r * (col.r > mask.r) + col * !(col.r > mask.r);
-*/
-
-t_col		col_mask(t_col col, t_col mask)
-{
-	if (col.r > mask.r)
-		col.r = mask.r;
-	if (col.g > mask.g)
-		col.g = mask.g;
-	if (col.b > mask.b)
-		col.b = mask.b;
-	if (col.a > mask.a)
-		col.a = mask.a;
-	return (col);
 }
 
 /*
@@ -80,6 +59,17 @@ t_col		col_from_normal(t_vec vector)
 	res.r = (vector.x + 1) * COLOR_MAX / 2;
 	res.g = (vector.y + 1) * COLOR_MAX / 2;
 	res.b = (vector.z + 1) * COLOR_MAX / 2;
+	res.a = ALPHA_MAX;
+	return (res);
+}
+
+t_col		col_from_vec_norm(t_vec vector)
+{
+	t_col	res;
+
+	res.r = num_clamp(vector.x, 0, 1) * COLOR_MAX;
+	res.g = num_clamp(vector.y, 0, 1) * COLOR_MAX;
+	res.b = num_clamp(vector.z, 0, 1) * COLOR_MAX;
 	res.a = ALPHA_MAX;
 	return (res);
 }

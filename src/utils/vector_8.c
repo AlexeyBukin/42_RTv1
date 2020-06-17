@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 21:33:30 by hush              #+#    #+#             */
-/*   Updated: 2020/06/08 22:02:45 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/17 21:45:55 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 t_vec		vec_to_srgb(t_vec v)
 {
-	v.x = pow(v.x, 1/2.2);
-	v.y = pow(v.y, 1/2.2);
-	v.z = pow(v.z, 1/2.2);
+	v.x = pow(v.x, 1 / 2.2);
+	v.y = pow(v.y, 1 / 2.2);
+	v.z = pow(v.z, 1 / 2.2);
 	return (v);
-//	return (vec_do_num(v, 1/2.2, (t_num(*)(t_num, t_num))pow));
-//	return (vec_do_num(v, 1/2.2, pow));
 }

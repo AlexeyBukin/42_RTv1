@@ -14,7 +14,6 @@
 
 t_bool			vec_point_is_behind(t_vec vec_from_zero, t_vec point)
 {
-
 	if (vec_sum(vec_mult(vec_from_zero, point)) < 0)
 		return (TRUE);
 	return (FALSE);
