@@ -19,7 +19,7 @@ t_num					trace_dot_plane(t_ray ray, t_figure *fig)
 
 	if (fig == NULL)
 		return (INFINITY);
-	pl = &(fig->plane);
+	pl = &(fig->figs.plane);
 	ray.dir = vec_normalize(ray.dir);
 	d_dot_v = vec_dot(ray.dir, pl->n);
 	return (-1 * vec_dot(vec_minus(ray.pos,
@@ -31,8 +31,8 @@ t_num					trace_dot_cap(t_ray ray, t_ray plane_ray)
 	t_figure		fig;
 
 	fig.type = FIG_PLANE;
-	fig.plane.n = plane_ray.dir;
-	fig.plane.d = -(plane_ray.dir.x * plane_ray.pos.x + plane_ray.dir.y *
+	fig.figs.plane.n = plane_ray.dir;
+	fig.figs.plane.d = -(plane_ray.dir.x * plane_ray.pos.x + plane_ray.dir.y *
 			plane_ray.pos.y + plane_ray.dir.z * plane_ray.pos.z);
 	return (trace_dot_plane(ray, &fig));
 }

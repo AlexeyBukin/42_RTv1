@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 16:29:54 by hush              #+#    #+#             */
-/*   Updated: 2020/06/18 01:00:42 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/18 01:02:16 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,19 @@ typedef	struct	s_cylinder
 	t_num 			r;
 }				t_cylinder;
 
+union			u_figs
+{
+	t_plane		plane;
+	t_sphere	sphere;
+	t_cylinder	cyl;
+	t_cone		cone;
+};
+
 typedef	struct	s_figure
 {
 	t_material		*mat;
 	t_figure_type	type;
-	union
-	{
-		t_plane		plane;
-		t_sphere	sphere;
-		t_cylinder	cyl;
-		t_cone		cone;
-	};
+	union u_figs	figs;
 }				t_figure;
 
 typedef	struct	s_light

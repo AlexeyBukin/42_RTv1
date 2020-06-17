@@ -81,7 +81,7 @@ t_num				trace_dot_cone(t_ray ray, t_figure *fig)
 
 	if (fig == NULL)
 		return (INFINITY);
-	points = cone_capped(ray, fig->cone);
+	points = cone_capped(ray, fig->figs.cone);
 	minimal = INFINITY;
 	if (points.x > 0 && points.x < minimal)
 		minimal = points.x;

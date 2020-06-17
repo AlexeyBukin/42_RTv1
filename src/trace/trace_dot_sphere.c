@@ -37,7 +37,7 @@ t_num					trace_dot_sphere(t_ray ray, t_figure *fig)
 
 	if (fig == NULL)
 		return (INFINITY);
-	points = sphere_intersect_points(ray, fig->sphere);
+	points = sphere_intersect_points(ray, fig->figs.sphere);
 	minimal = INFINITY;
 	if (points.x > 0 && points.x < minimal)
 		minimal = points.x;

@@ -87,7 +87,7 @@ t_num				trace_dot_cylinder(t_ray ray, t_figure *fig)
 
 	if (fig == NULL)
 		return (INFINITY);
-	points = cylinder_capped(ray, fig->cyl);
+	points = cylinder_capped(ray, fig->figs.cyl);
 	minimal = INFINITY;
 	if (points.x > 0 && points.x < minimal)
 		minimal = points.x;

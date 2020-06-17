@@ -16,8 +16,8 @@ t_vec				trace_normal_plane(t_ray ray, t_figure *fig)
 {
 	if (fig == NULL)
 		return (vec_inf());
-	if (fig->plane.n.x * ray.pos.x + fig->plane.n.y * ray.pos.y
-		+ fig->plane.n.z * ray.pos.z + fig->plane.d < 0)
-		return (vec_invert(fig->plane.n));
-	return (fig->plane.n);
+	if (fig->figs.plane.n.x * ray.pos.x + fig->figs.plane.n.y * ray.pos.y
+		+ fig->figs.plane.n.z * ray.pos.z + fig->figs.plane.d < 0)
+		return (vec_invert(fig->figs.plane.n));
+	return (fig->figs.plane.n);
 }

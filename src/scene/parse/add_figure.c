@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 02:27:13 by hush              #+#    #+#             */
-/*   Updated: 2020/06/17 22:28:33 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/17 22:28:55 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int		scene_read_plane(char **source, t_figure *figure)
 
 	if (source == NULL || figure == NULL)
 		return (ft_puterror(1, "Entered NULL pointer"));
-	plane = &(figure->plane);
+	plane = &(figure->figs.plane);
 	if (plane == NULL || (text = *source) == NULL)
 		return (ft_puterror(2, "Dereference to NULL pointer"));
 	text += ft_strlen(KEYWORD_PLANE);
@@ -66,15 +66,15 @@ static int		scene_read_cone(char **source, t_figure *figure)
 	figure->type = FIG_CONE;
 	if (*(text++) != '(')
 		return (ft_puterror(3, "Expected \'(\' "));
-	if (read_vec(&text, &(figure->cone.pos)) < 0)
+	if (read_vec(&text, &(figure->figs.cone.pos)) < 0)
 		return (ft_puterror(5, "Cannot read position vector"));
 	if (read_comma(&text) < 0)
 		return (ft_puterror(4, "Expected \',\' "));
-	if (read_vec(&text, &(figure->cone.cap)) < 0)
+	if (read_vec(&text, &(figure->figs.cone.cap)) < 0)
 		return (ft_puterror(5, "Cannot read cap position vector"));
 	if (read_comma(&text) < 0)
 		return (ft_puterror(5, "Expected \',\' "));
-	figure->cone.r = read_num(&text);
+	figure->figs.cone.r = read_num(&text);
 	if (*(text++) != ')')
 		return (ft_puterror(6, "Expected \')\' "));
 	*source = text;

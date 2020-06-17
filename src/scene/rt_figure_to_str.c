@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 16:58:38 by hush              #+#    #+#             */
-/*   Updated: 2020/06/17 23:21:19 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/17 23:21:47 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,13 @@ char				*figure_to_str(t_figure *fig)
 	if (fig == NULL)
 		return (ft_puterr_null(1, "figure_to_str(): NULL pointer"));
 	if (fig->type == FIG_PLANE)
-		return (plain_to_str(&(fig->plane), fig->mat));
+		return (plain_to_str(&(fig->figs.plane), fig->mat));
 	else if (fig->type == FIG_SPHERE)
-		return (sphere_to_str(&(fig->sphere), fig->mat));
+		return (sphere_to_str(&(fig->figs.sphere), fig->mat));
 	else if (fig->type == FIG_CONE)
-		return (cone_to_str(&(fig->cone), fig->mat));
+		return (cone_to_str(&(fig->figs.cone), fig->mat));
 	else if (fig->type == FIG_CYL)
-		return (cyl_to_str(&(fig->cyl), fig->mat));
+		return (cyl_to_str(&(fig->figs.cyl), fig->mat));
 	else
 		return (ft_puterr_null(2, "figure_to_str(): unknown FIGURE"));
 }
