@@ -21,6 +21,15 @@
 #include "rt_vector_s.h"
 #include "rt_texture_s.h"
 
+typedef struct		ggx_loop
+{
+	t_ray			normal;
+	t_ray			cam_ray;
+	t_scene			*scene;
+	t_light			*lamp;
+	t_material 		*mat;
+}					t_ggx_loop;
+
 typedef struct		s_window
 {
 	SDL_Window		*sdl_window;

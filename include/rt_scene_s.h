@@ -88,17 +88,13 @@ typedef	struct	s_light
 typedef struct		s_scene
 {
 	char 			*filename;
-
 	t_material		*materials;
 	size_t			mat_num;
-
 	t_figure		*figures;
 	size_t			fig_num;
-
 	t_camera		*cameras;
 	size_t			cam_num;
 	t_camera		*cam_active;
-
 	t_light			*lights;
 	size_t			light_num;
 }					t_scene;

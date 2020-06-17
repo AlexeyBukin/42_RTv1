@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 16:40:56 by hush              #+#    #+#             */
-/*   Updated: 2020/06/16 18:22:04 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/18 00:51:13 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,90 +28,83 @@
 ** specular = (D * F * G) / (4 * (V * N) * (N * L))
 */
 
-t_vec cook_torrance_ggx(t_vec n, t_vec l, t_vec v, t_material *m)
+t_vec			cook_torrance_ggx(t_vec n, t_vec l, t_vec v, t_material *m)
 {
-	t_num		rough_sqr;
-	t_num		d;
 	t_num		g;
-	t_vec		f;
-	t_vec		h;
+	t_vec		f_diffk;
+	t_num		n_dot_v;
+	t_num		n_dot_l;
+	t_vec		speck;
 
 	n = vec_normalize(n);
 	l = vec_normalize(l);
 	v = vec_normalize(v);
-	h = vec_normalize(vec_plus(v, l));
-
-	t_num n_dot_v = vec_dot(n, v);
-	t_num n_dot_l = vec_dot(n, l);
-	t_num h_dot_v = vec_dot(h, v);
-
+	n_dot_v = vec_dot(n, v);
+	n_dot_l = vec_dot(n, l);
 	if (n_dot_l <= 0 || n_dot_v <= 0)
 		return (vec_zero());
-
-	rough_sqr = num_sqr(m->roughness);
-
-	d = ggx_distribution(vec_dot(n, h), rough_sqr);
-
-	g = ggx_partial_geometry(n_dot_v, rough_sqr);
-	g = g * ggx_partial_geometry(n_dot_l, rough_sqr);
-
-	f = fresnel_schlick(m->f0, h_dot_v);
-	t_vec specK = vec_mult_num(f, g * d * 0.25 / (n_dot_v + 0.001));
-
-	t_vec diffK = vec_clamp(vec_minus(vec(1.0, 1.0, 1.0), f), 0.0, 1.0);
-	diffK = vec_mult(m->albedo, diffK);
-	diffK = vec_mult_num(diffK, n_dot_l / M_PI);
-
-	t_vec res = vec_plus(specK, diffK);
-	return (res);
+	g = ggx_partial_geometry(n_dot_v, num_sqr(m->roughness));
+	g = g * ggx_partial_geometry(n_dot_l, num_sqr(m->roughness));
+	f_diffk = fresnel_schlick(m->f0, vec_dot(vec_normalize(vec_plus(v, l)), v));
+	speck = vec_mult_num(f_diffk, g *
+	ggx_distribution(vec_dot(n, vec_normalize(vec_plus(v, l))),
+		num_sqr(m->roughness)) * 0.25 / (n_dot_v + 0.001));
+	f_diffk = vec_clamp(vec_minus(vec(1.0, 1.0, 1.0), f_diffk), 0.0, 1.0);
+	f_diffk = vec_mult(m->albedo, f_diffk);
+	f_diffk = vec_mult_num(f_diffk, n_dot_l / M_PI);
+	return (vec_plus(speck, f_diffk));
 }
 
-t_col		rt_trace_mode_ggx(t_scene *scene, t_ray cam_ray)
+static t_vec	rt_trace_mode_ggx_loop(t_ggx_loop info)
 {
-	t_figure	*nearest;
-	t_ray		normal;
-	t_num		dist;
 	t_vec		to_light;
 	t_vec		to_view;
-	size_t		i;
 	t_num		dist_to_shadow;
 	t_num		dist_to_light;
 	t_num		light_amount;
 
-	if ((nearest = rt_trace_nearest_dist(scene, cam_ray, &dist)) != NULL)
+	if (info.lamp == NULL)
+		return (vec_zero());
+	if (ray_point_is_behind(info.normal, info.lamp->pos))
+		return (vec_zero());
+	to_light = vec_minus(info.lamp->pos, info.normal.pos);
+	dist_to_light = vec_len(to_light);
+	if (rt_trace_nearest_dist(info.scene,
+		ray(info.normal.pos, to_light), &dist_to_shadow) != NULL)
 	{
-		normal.pos = vec_plus(cam_ray.pos, vec_mult_num(cam_ray.dir, dist - 0.0001));
-		normal.dir = trace_normal_fig(cam_ray, nearest);
-		t_vec res = vec_zero();
-		i = 0;
-		while (i < scene->light_num)
+		if (dist_to_shadow < dist_to_light)
 		{
-			if (ray_point_is_behind(normal, scene->lights[i].pos))
-			{
-				i++;
-				continue ;
-			}
-			to_light = vec_minus(scene->lights[i].pos, normal.pos);
-			dist_to_light = vec_len(to_light);
-
-			if (rt_trace_nearest_dist(scene, ray(normal.pos, to_light), &dist_to_shadow) != NULL)
-			{
-				if (dist_to_shadow < dist_to_light)
-				{
-					i++;
-					continue ;
-				}
-			}
-			to_view = vec_invert(cam_ray.dir);
-			t_vec ggx_res = cook_torrance_ggx(normal.dir, to_light, to_view, nearest->mat);
-
-			light_amount = scene->lights[i].power / (dist_to_light * dist_to_light + 1.0);
-
-			res = vec_plus(res, vec_mult_num(ggx_res, light_amount));
-			i++;
+			return (vec_zero());
 		}
-		res = vec_clamp(res, 0, 1);
-		return (col_from_vec_norm(vec_to_srgb(res)));
 	}
-	return (col(0, 0, 0));
+	to_view = vec_invert(info.cam_ray.dir);
+	light_amount = info.lamp->power / (dist_to_light * dist_to_light + 1.0);
+	return (vec_mult_num(cook_torrance_ggx(info.normal.dir, to_light,
+		to_view, info.mat), light_amount));
+}
+
+t_col			rt_trace_mode_ggx(t_scene *scene, t_ray cam_ray)
+{
+	t_figure	*nearest;
+	t_ray		normal;
+	t_num		dist;
+	size_t		i;
+	t_vec		res;
+
+	if ((nearest = rt_trace_nearest_dist(scene, cam_ray, &dist)) == NULL)
+		return (col(0, 0, 0));
+	normal.pos = vec_plus(cam_ray.pos,
+		vec_mult_num(cam_ray.dir, dist - 0.0001));
+	normal.dir = trace_normal_fig(cam_ray, nearest);
+	res = vec_zero();
+	i = 0;
+	while (i < scene->light_num)
+	{
+		res = vec_plus(res, rt_trace_mode_ggx_loop((t_ggx_loop){
+			normal, cam_ray, scene, &(scene->lights[i]), nearest->mat
+		}));
+		i++;
+	}
+	res = vec_clamp(res, 0, 1);
+	return (col_from_vec_norm(vec_to_srgb(res)));
 }

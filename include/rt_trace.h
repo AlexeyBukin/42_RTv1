@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 02:10:15 by hush              #+#    #+#             */
-/*   Updated: 2020/06/17 23:36:23 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/17 23:57:36 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define RT_TRACE_H
 
 # include "rt_s.h"
-
-
 
 t_vec				fresnel_schlick(t_vec f0, t_num cos_theta);
 t_col				rt_trace_brdf_g(t_scene *scene, t_ray ray);
