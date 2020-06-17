@@ -6,13 +6,13 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 16:19:57 by hush              #+#    #+#             */
-/*   Updated: 2020/06/13 14:36:54 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/17 23:01:05 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-void	material_set_default(t_material *mat)
+void			material_set_default(t_material *mat)
 {
 	if (mat == NULL)
 		return ;
@@ -24,7 +24,7 @@ void	material_set_default(t_material *mat)
 	mat->f0 = vec(0, 0, 0);
 }
 
-int		mat_index(t_scene *scene, size_t id)
+int				mat_index(t_scene *scene, size_t id)
 {
 	size_t		i;
 
@@ -48,8 +48,7 @@ int		mat_index(t_scene *scene, size_t id)
 ** F0 = ((1-ior)/(1+ior))²
 */
 
-static
-void	material_apply_parameters(t_material *mat)
+static void		material_apply_parameters(t_material *mat)
 {
 	t_num		tmp_f0;
 
@@ -67,14 +66,15 @@ void	material_apply_parameters(t_material *mat)
 	}
 }
 
-int		scene_read_material(t_scene *scene, char **source, t_material *mat)
+int				scene_read_material(t_scene *scene, char **source,\
+t_material *mat)
 {
 	if (source == NULL || mat == NULL)
 		return (ft_puterror(1, "Entered NULL pointer"));
 	if (*source == NULL)
 		return (ft_puterror(2, "Dereference NULL pointer"));
 	(*source) += ft_strlen(KEYWORD_MATERIAL);
-	if(read_id((source), &(mat->id)) < 0 || mat_index(scene, mat->id) >= 0)
+	if (read_id((source), &(mat->id)) < 0 || mat_index(scene, mat->id) >= 0)
 		return (ft_puterror(3, "Syntax error: expected correct id"));
 	if (*((*source)++) != '(')
 		return (ft_puterror(4, "Syntax error: expected \'(\' "));
@@ -92,15 +92,16 @@ int		scene_read_material(t_scene *scene, char **source, t_material *mat)
 	return (0);
 }
 
-int			scene_add_material(t_scene *scene, char **source)
+int				scene_add_material(t_scene *scene, char **source)
 {
 	if (scene == NULL)
-		return (ft_puterror(1,"scene is NULL pointer"));
-	scene->materials = (t_material*)ft_realloc_arr(scene->materials, scene->mat_num,
-			scene->mat_num + 1, sizeof(t_material));
+		return (ft_puterror(1, "scene is NULL pointer"));
+	scene->materials = (t_material*)ft_realloc_arr(scene->materials,
+		scene->mat_num, scene->mat_num + 1, sizeof(t_material));
 	if (scene->materials == NULL)
-		return (ft_puterror(2,"Realloc material returned NULL"));
-	if (scene_read_material(scene, source, &(scene->materials[scene->mat_num])) < 0)
+		return (ft_puterror(2, "Realloc material returned NULL"));
+	if (scene_read_material(scene, source,
+		&(scene->materials[scene->mat_num])) < 0)
 		return (ft_puterror(3, "Cannot read material"));
 	scene->mat_num++;
 	return (0);

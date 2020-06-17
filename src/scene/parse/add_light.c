@@ -6,16 +6,15 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 03:11:40 by hush              #+#    #+#             */
-/*   Updated: 2020/06/13 13:52:53 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/17 22:58:51 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-static int
-scene_read_light(char **source, t_light *light)
+static int		scene_read_light(char **source, t_light *light)
 {
-	char 			*text;
+	char		*text;
 
 	if (source == NULL || light == NULL)
 		return (ft_puterror(1, "Entered NULL pointer"));
@@ -39,15 +38,14 @@ scene_read_light(char **source, t_light *light)
 	return (0);
 }
 
-int
-scene_add_light(t_scene *scene, char **source)
+int				scene_add_light(t_scene *scene, char **source)
 {
 	if (scene == NULL)
-		return (ft_puterror(1,"scene is NULL pointer"));
+		return (ft_puterror(1, "scene is NULL pointer"));
 	scene->lights = ft_realloc_arr(scene->lights, scene->light_num,
 			scene->light_num + 1, sizeof(t_figure));
 	if (scene->figures == NULL)
-		return (ft_puterror(2,"Realloc light returned NULL"));
+		return (ft_puterror(2, "Realloc light returned NULL"));
 	if (scene_read_light(source, &(scene->lights[scene->light_num])) < 0)
 		return (ft_puterror(3, "Cannot read light"));
 	scene->lights[scene->light_num].id = scene->light_num;

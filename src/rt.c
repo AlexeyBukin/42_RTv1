@@ -6,13 +6,13 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 21:18:15 by hush              #+#    #+#             */
-/*   Updated: 2020/06/09 15:17:10 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/17 22:22:38 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-int 		rt_scene_arr_read(t_rt *rt, size_t ac, char **av)
+int			rt_scene_arr_read(t_rt *rt, size_t ac, char **av)
 {
 	size_t		i;
 
@@ -28,7 +28,7 @@ int 		rt_scene_arr_read(t_rt *rt, size_t ac, char **av)
 	else
 	{
 		i = 1;
-		while (i < (size_t) ac)
+		while (i < (size_t)ac)
 		{
 			if ((rt_add_scene(rt, av[i])) < 0)
 				return (ft_puterror(3, "Cannot add scene"));
@@ -38,7 +38,7 @@ int 		rt_scene_arr_read(t_rt *rt, size_t ac, char **av)
 	return (0);
 }
 
-void 	rt_scene_arr_free(t_rt *rtv1)
+void		rt_scene_arr_free(t_rt *rtv1)
 {
 	size_t		i;
 
@@ -52,8 +52,6 @@ void 	rt_scene_arr_free(t_rt *rtv1)
 	}
 	ft_free(rtv1->scenes);
 }
-
-// todo ft_free() on return
 
 t_rt		*rt_new(int ac, char **args)
 {
@@ -74,11 +72,6 @@ t_rt		*rt_new(int ac, char **args)
 		ft_free(rt);
 		return (ft_puterr_null(3, "rtv1_new(): Cannot init window"));
 	}
-
-//	t_num dist_to_plane = 0.0;
-//	t_figure *near = rt_trace_nearest_dist(rt->scene_active, ray(vec(1, -1, 1), vec(-1, 1, -1)), &dist_to_plane);
-//	dist_to_plane = dist_to_plane;
-
 	return (rt);
 }
 

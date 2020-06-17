@@ -6,17 +6,16 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 02:27:13 by hush              #+#    #+#             */
-/*   Updated: 2020/06/13 13:52:54 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/17 22:28:33 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-static int
-scene_read_plane(char **source, t_figure *figure)
+static int		scene_read_plane(char **source, t_figure *figure)
 {
 	t_plane			*plane;
-	char 			*text;
+	char			*text;
 
 	if (source == NULL || figure == NULL)
 		return (ft_puterror(1, "Entered NULL pointer"));
@@ -40,8 +39,7 @@ scene_read_plane(char **source, t_figure *figure)
 	return (0);
 }
 
-static int
-scene_read_sphere(char **source, t_figure *figure)
+static int		scene_read_sphere(char **source, t_figure *figure)
 {
 	if (source == NULL || figure == NULL)
 		return (ft_puterror(1, "Entered NULL pointer"));
@@ -54,16 +52,13 @@ scene_read_sphere(char **source, t_figure *figure)
 	return (0);
 }
 
-static int
-scene_read_cone(char **source, t_figure *figure)
+static int		scene_read_cone(char **source, t_figure *figure)
 {
-	t_cone			*cone;
-	char 			*text;
+	char			*text;
 
 	if (source == NULL || figure == NULL)
 		return (ft_puterror(1, "Entered NULL pointer"));
-	cone = (t_cone*)&(figure->cone);
-	if (cone == NULL || (text = *source) == NULL)
+	if ((text = *source) == NULL)
 		return (ft_puterror(2, "Dereference to NULL pointer"));
 	text += ft_strlen(KEYWORD_CONE);
 	if (read_id(&text, (size_t*)&(figure->mat)) < 0)
@@ -71,23 +66,22 @@ scene_read_cone(char **source, t_figure *figure)
 	figure->type = FIG_CONE;
 	if (*(text++) != '(')
 		return (ft_puterror(3, "Expected \'(\' "));
-	if (read_vec(&text, &(cone->pos)) < 0)
+	if (read_vec(&text, &(figure->cone.pos)) < 0)
 		return (ft_puterror(5, "Cannot read position vector"));
 	if (read_comma(&text) < 0)
 		return (ft_puterror(4, "Expected \',\' "));
-	if (read_vec(&text, &(cone->cap)) < 0)
+	if (read_vec(&text, &(figure->cone.cap)) < 0)
 		return (ft_puterror(5, "Cannot read cap position vector"));
 	if (read_comma(&text) < 0)
 		return (ft_puterror(5, "Expected \',\' "));
-	cone->r = read_num(&text);
+	figure->cone.r = read_num(&text);
 	if (*(text++) != ')')
 		return (ft_puterror(6, "Expected \')\' "));
 	*source = text;
 	return (0);
 }
 
-static int
-scene_read_cyl(char **source, t_figure *figure)
+static int		scene_read_cyl(char **source, t_figure *figure)
 {
 	if (source == NULL || figure == NULL)
 		return (ft_puterror(1, "Entered NULL pointer"));
@@ -100,17 +94,17 @@ scene_read_cyl(char **source, t_figure *figure)
 	return (0);
 }
 
-int
-scene_add_figure(t_scene *scene, char **source, t_figure_type type)
+int				scene_add_figure(t_scene *scene, char **source,
+	t_figure_type type)
 {
-	int 	code;
+	int		code;
 
 	if (scene == NULL)
-		return (ft_puterror(1,"scene is NULL pointer"));
+		return (ft_puterror(1, "scene is NULL pointer"));
 	scene->figures = ft_realloc_arr(scene->figures, scene->fig_num,
 			scene->fig_num + 1, sizeof(t_figure));
 	if (scene->figures == NULL)
-		return (ft_puterror(2,"Realloc figure returned NULL"));
+		return (ft_puterror(2, "Realloc figure returned NULL"));
 	if (type == FIG_PLANE)
 		code = scene_read_plane(source, &(scene->figures[scene->fig_num]));
 	else if (type == FIG_SPHERE)

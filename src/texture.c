@@ -20,7 +20,8 @@ void		texture_put_pixel(t_texture *tex, t_col col, size_t x, size_t y)
 		return ;
 	if (tex->img == NULL)
 		return ;
-	if (x >= tex->size_x || y >= tex->size_y){
+	if (x >= tex->size_x || y >= tex->size_y)
+	{
 		ft_putendl("warning: trying to put pixel outside of texture");
 		return ;
 	}
