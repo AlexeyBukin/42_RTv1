@@ -14,7 +14,7 @@
 
 char				*light_to_str(t_light *light)
 {
-	char 	*res;
+	char			*res;
 
 	if (light == NULL)
 		return (ft_puterr_null(1, "plain_to_str(): NULL pointer"));

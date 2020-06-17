@@ -6,14 +6,13 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 21:18:15 by hush              #+#    #+#             */
-/*   Updated: 2020/06/13 13:52:53 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/17 23:24:11 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-static int
-scene_add_component(char **text, t_scene *scene)
+static int		scene_add_component(char **text, t_scene *scene)
 {
 	if (text == NULL || scene == NULL)
 		return (ft_puterror(1, "Null pointers entered"));
@@ -36,9 +35,7 @@ scene_add_component(char **text, t_scene *scene)
 	return (ft_puterror(3, "Expected known keywords"));
 }
 
-
-static int
-scene_parse(char *text, t_scene *scene)
+static int		scene_parse(char *text, t_scene *scene)
 {
 	t_bool		expect_next;
 
@@ -59,8 +56,7 @@ scene_parse(char *text, t_scene *scene)
 	return (0);
 }
 
-static int
-scene_link_ids(t_scene *scene)
+static int		scene_link_ids(t_scene *scene)
 {
 	long		index;
 	size_t		i;
@@ -78,8 +74,16 @@ scene_link_ids(t_scene *scene)
 	return (0);
 }
 
-int
-rt_read_scene(t_scene *scene, char *filename)
+/*
+** if (scene_link_ids(scene) < 0)
+**		return (ft_puterror(6, "Cannot link resource ids"));
+**
+**	//TODO delete debug symbols
+**	ft_putstr_free(scene_to_str(scene));
+**	return (0);
+*/
+
+int				rt_read_scene(t_scene *scene, char *filename)
 {
 	char		*file_text;
 
@@ -94,7 +98,7 @@ rt_read_scene(t_scene *scene, char *filename)
 	if (scene_parse(file_text, scene) < 0)
 	{
 		ft_free(file_text);
-		return (ft_puterror(4,"Cannot parse scene from file"));
+		return (ft_puterror(4, "Cannot parse scene from file"));
 	}
 	ft_free(file_text);
 	if (scene->cam_num < 1 || scene->light_num < 1 || scene->fig_num < 1)
@@ -102,21 +106,17 @@ rt_read_scene(t_scene *scene, char *filename)
 	scene->cam_active = scene->cameras;
 	if (scene_link_ids(scene) < 0)
 		return (ft_puterror(6, "Cannot link resource ids"));
-
-	//TODO delete debug symbols
-	ft_putstr_free(scene_to_str(scene));
 	return (0);
 }
 
-int
-rt_add_scene(t_rt *rt, char *filename)
+int				rt_add_scene(t_rt *rt, char *filename)
 {
 	if (rt == NULL)
-		return (ft_puterror(1,"rt is NULL pointer"));
+		return (ft_puterror(1, "rt is NULL pointer"));
 	rt->scenes = (t_scene*)ft_realloc_arr(rt->scenes, rt->scene_num,
 								rt->scene_num + 1, sizeof(t_scene));
 	if (rt->scenes == NULL)
-		return (ft_puterror(2,"Realloc scenes returned NULL"));
+		return (ft_puterror(2, "Realloc scenes returned NULL"));
 	if (rt_read_scene(&(rt->scenes[rt->scene_num]), filename) < 0)
 		return (ft_puterror(3, "Cannot read scene"));
 	rt->scene_num++;

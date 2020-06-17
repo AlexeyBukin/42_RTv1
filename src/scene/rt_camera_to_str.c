@@ -14,7 +14,7 @@
 
 char				*camera_to_str(t_camera *camera)
 {
-	char 	*res;
+	char			*res;
 
 	if (camera == NULL)
 		return (ft_puterr_null(1, "camera_to_str(): NULL pointer"));

@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 16:58:38 by hush              #+#    #+#             */
-/*   Updated: 2020/05/27 16:58:38 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/17 23:21:19 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char				*plain_to_str(t_plane *plane, t_material *material)
 {
-	char 	*res;
+	char			*res;
 
 	if (plane == NULL || material == NULL)
 		return (ft_puterr_null(1, "plain_to_str(): NULL pointer"));
@@ -34,7 +34,7 @@ char				*plain_to_str(t_plane *plane, t_material *material)
 
 char				*sphere_to_str(t_sphere *sphere, t_material *material)
 {
-	char 	*res;
+	char			*res;
 
 	if (sphere == NULL || material == NULL)
 		return (ft_puterr_null(1, "sphere_to_str(): NULL pointer"));
@@ -50,7 +50,7 @@ char				*sphere_to_str(t_sphere *sphere, t_material *material)
 
 char				*cone_to_str(t_cone *cone, t_material *material)
 {
-	char 	*res;
+	char			*res;
 
 	if (cone == NULL || material == NULL)
 		return (ft_puterr_null(1, "cone_to_str(): NULL pointer"));
@@ -68,7 +68,7 @@ char				*cone_to_str(t_cone *cone, t_material *material)
 
 char				*cyl_to_str(t_cylinder *cyl, t_material *material)
 {
-	char 	*res;
+	char			*res;
 
 	if (cyl == NULL || material == NULL)
 		return (ft_puterr_null(1, "cyl_to_str(): NULL pointer"));

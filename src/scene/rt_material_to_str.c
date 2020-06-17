@@ -14,7 +14,7 @@
 
 char				*material_to_str(t_material *mat)
 {
-	char 	*res;
+	char			*res;
 
 	if (mat == NULL)
 		return (ft_puterr_null(1, "plain_to_str(): NULL pointer"));
