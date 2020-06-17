@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   rt_parser.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/24 11:05:28 by hush              #+#    #+#             */
-/*   Updated: 2020/06/13 13:52:54 by hush             ###   ########.fr       */
+/*   Created: 2020/06/18 01:15:45 by hush              #+#    #+#             */
+/*   Updated: 2020/06/18 01:15:59 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,11 @@
 # define KEYWORD_CAMERA   "camera"
 # define SCENE_DEFAULT    "scenes/default.rts"
 
-//t_scene			*scene_from_file(char *filename);
-
 t_num			read_num(char **source);
 int				read_num_bound(char **source, t_num *num, t_num min, t_num max);
 int				read_num_after_comma(char **source, t_num *num);
-int				read_num_bound_after_comma(char **src, t_num *n, t_num min, t_num max);
+int				read_num_bound_after_comma(char **src, t_num *n,
+				t_num min, t_num max);
 
 int				read_vec(char **source, t_vec *res);
 int				read_vec_after_comma(char **source, t_vec *res);

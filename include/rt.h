@@ -6,12 +6,12 @@
 /*   By: kcharla <kcharla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 14:23:16 by kcharla           #+#    #+#             */
-/*   Updated: 2020/06/04 21:28:50 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/18 01:13:25 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RTV1_H
-# define RTV1_H
+#ifndef RT_H
+# define RT_H
 
 # include "libft.h"
 # include "rt_parser.h"
@@ -61,7 +61,6 @@ int					window_render(t_window *win);
 */
 
 int					rt_loop(t_rt *rtv1);
-//int					window_render(t_window *win);
 
 /*
 ** texture.c
@@ -72,26 +71,6 @@ t_texture			*texture_init(size_t w, size_t h);
 void				texture_fill(t_texture *texture, t_col col);
 void				texture_put_pixel(t_texture *texture, t_col col,
 						size_t x, size_t y);
-
-/*
-** camera.c
-*/
-
-t_camera			*camera_init();
-void				camera_free(t_camera *cam);
-int					camera_move_global(t_camera *cam, t_vec dir);
-int					camera_move_local(t_camera *cam, t_vec dir);
-
-/*
-** project.c
-*/
-
-int					project(t_rt *rtv1);
-
-/*
-** main.c
-*/
-
 
 /*
 ** rt.c

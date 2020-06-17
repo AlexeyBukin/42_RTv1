@@ -13,7 +13,7 @@
 #ifndef RT_NUM_H
 # define RT_NUM_H
 
-#include "rt_vector_s.h"
+# include "rt_vector_s.h"
 
 /*
 ** num_1.c, ...

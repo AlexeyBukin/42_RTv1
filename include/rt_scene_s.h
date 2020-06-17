@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 16:29:54 by hush              #+#    #+#             */
-/*   Updated: 2020/06/18 01:02:16 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/18 01:10:39 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef	struct	s_material
 	t_num			roughness;
 	t_num			ior;
 	t_vec			albedo;
-	t_vec 			f0;
+	t_vec			f0;
 }				t_material;
 
 typedef	enum	e_figure_type
@@ -45,21 +45,21 @@ typedef	struct	s_plane
 typedef	struct	s_sphere
 {
 	t_vec			pos;
-	t_num 			r;
+	t_num			r;
 }				t_sphere;
 
 typedef	struct	s_cone
 {
 	t_vec			pos;
 	t_vec			cap;
-	t_num 			r;
+	t_num			r;
 }				t_cone;
 
 typedef	struct	s_cylinder
 {
 	t_vec			pos;
 	t_vec			cap;
-	t_num 			r;
+	t_num			r;
 }				t_cylinder;
 
 union			u_figs
@@ -82,12 +82,12 @@ typedef	struct	s_light
 	size_t			id;
 	t_vec			pos;
 	t_vec			col;
-	t_num 			power;
+	t_num			power;
 }				t_light;
 
 typedef struct	s_scene
 {
-	char 			*filename;
+	char			*filename;
 	t_material		*materials;
 	size_t			mat_num;
 	t_figure		*figures;

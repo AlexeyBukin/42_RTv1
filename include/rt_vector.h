@@ -13,8 +13,8 @@
 #ifndef RT_VECTOR_H
 # define RT_VECTOR_H
 
-#include <math.h>
-#include "rt_vector_s.h"
+# include <math.h>
+# include "rt_vector_s.h"
 
 /*
 ** vector_1.c
@@ -90,6 +90,5 @@ t_vec				vec_max_min(t_vec v, t_num n);
 */
 
 t_vec				vec_to_srgb(t_vec v);
-
 
 #endif

@@ -38,8 +38,6 @@ t_col				col_alpha(t_byte r, t_byte g, t_byte b, t_byte a);
 char				*col_to_str(t_col color);
 char				*col_to_str_color(t_col color);
 
-
-
 /*
 ** ray_1.c, ...
 */

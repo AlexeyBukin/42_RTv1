@@ -13,13 +13,13 @@
 #ifndef RT_VECTOR_S_H
 # define RT_VECTOR_S_H
 
-#include "rt_num_s.h"
+# include "rt_num_s.h"
 
 typedef struct		s_vec
 {
-	t_num 			x;
-	t_num 			y;
-	t_num 			z;
+	t_num			x;
+	t_num			y;
+	t_num			z;
 }					t_vec;
 
 #endif

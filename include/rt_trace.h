@@ -6,7 +6,7 @@
 /*   By: hush <hush@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 02:10:15 by hush              #+#    #+#             */
-/*   Updated: 2020/06/17 23:57:36 by hush             ###   ########.fr       */
+/*   Updated: 2020/06/18 01:15:09 by hush             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ t_num				brdf_get_g(t_vec n, t_vec v, t_vec l, t_material *mat);
 
 t_col				rt_trace(t_scene *scene, t_ray ray, t_trace_mode mode);
 t_figure			*rt_trace_nearest(t_scene *scene, t_ray ray);
-t_figure			*rt_trace_nearest_dist(t_scene *scene, t_ray ray, t_num *dist);
+t_figure			*rt_trace_nearest_dist(t_scene *scn, t_ray ray,
+					t_num *dist);
 t_num				trace_dot_fig(t_ray ray, t_figure *fig);
 t_vec				trace_normal_fig(t_ray ray, t_figure *fig);
 
@@ -57,9 +58,8 @@ t_vec				trace_normal_cylinder(t_ray ray, t_figure *fig);
 t_vec				trace_normal_plane(t_ray ray, t_figure *fig);
 t_vec				trace_normal_sphere(t_ray ray, t_figure *fig);
 
-t_vec 				cylinder_intersect(t_ray ray, t_cylinder cyl, t_vec v);
-t_vec 				cone_intersect(t_ray ray, t_cone cone, t_vec v);
-
+t_vec				cylinder_intersect(t_ray ray, t_cylinder cyl, t_vec v);
+t_vec				cone_intersect(t_ray ray, t_cone cone, t_vec v);
 
 /*
 ** ggx.c
